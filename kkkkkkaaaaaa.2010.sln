@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kkkkkkaaaaaa.NUnit.2010", "kkkkkkaaaaaa.NUnit\kkkkkkaaaaaa.NUnit.2010.csproj", "{974288D2-2847-437D-B863-55B652D46821}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kkkkkkaaaaaa.Xunit.2010", "kkkkkkaaaaaa.Xunit.2010\kkkkkkaaaaaa.Xunit.2010.csproj", "{59AEB377-0AAA-486E-BC7E-3BA5BC5AED09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kkkkkkaaaaaa.Xunit.2010", "kkkkkkaaaaaa.Xunit\kkkkkkaaaaaa.Xunit.2010.csproj", "{59AEB377-0AAA-486E-BC7E-3BA5BC5AED09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,7 +33,6 @@ Global
 		{59AEB377-0AAA-486E-BC7E-3BA5BC5AED09}.Debug|x86.Build.0 = Debug|x86
 		{59AEB377-0AAA-486E-BC7E-3BA5BC5AED09}.Release|Any CPU.ActiveCfg = Release|x86
 		{59AEB377-0AAA-486E-BC7E-3BA5BC5AED09}.Release|x64.ActiveCfg = Release|x86
-		{59AEB377-0AAA-486E-BC7E-3BA5BC5AED09}.Release|x64.Build.0 = Release|x86
 		{59AEB377-0AAA-486E-BC7E-3BA5BC5AED09}.Release|x86.ActiveCfg = Release|x86
 		{59AEB377-0AAA-486E-BC7E-3BA5BC5AED09}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection

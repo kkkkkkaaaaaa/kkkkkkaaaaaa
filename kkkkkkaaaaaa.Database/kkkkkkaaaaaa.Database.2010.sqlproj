@@ -168,5 +168,6 @@
     <Build Include="dbo\Tables\RoleAuthorizations.sql" />
     <Build Include="dbo\Views\AuthorizationView.sql" />
     <Build Include="dbo\Stored Procedures\usp_SelectUsers.sql" />
+    <Build Include="dbo\Stored Procedures\usp_InsertUsers.sql" />
   </ItemGroup>
 </Project>

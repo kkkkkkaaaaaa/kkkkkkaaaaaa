@@ -1,5 +1,4 @@
-﻿CREATE PROCEDURE usp_SelectUsers
-(
+﻿CREATE PROCEDURE usp_SelectUsers (
 	@id			BIGINT
 	, @enabled	BIT
 ) AS

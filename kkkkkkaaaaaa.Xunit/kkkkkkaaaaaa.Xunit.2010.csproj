@@ -48,6 +48,7 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <DebugType>full</DebugType>
+    <OutputPath>bin\Debug\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.config" />

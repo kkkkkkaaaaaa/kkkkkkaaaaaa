@@ -2,16 +2,45 @@
 	@id			BIGINT
 	, @Enabled	BIT
 ) AS
+
+	-- 変数
 	DECLARE
-		@update		VARCHAR(MAX)
-		, @set		VARCHAR(MAX)
-		, @where	VARCHAR(MAX)
+		@insert		VARCHAR(MAX)
+		, @into		VARCHAR(MAX)
+		, @values	VARCHAR(MAX)
 		, @error	INT
 
-	--
-	EXECUTE (@update)
+	-- INSERT
+	SET @insert = 'INSERT'
 
-	-- 
+	-- INTO
+	SET @into = ' INTO Users ('
+		+ 'ID'
+		+ ', FamilyName'
+		+ ', MiddleName'
+		+ ', GivenName'
+		+ ', Description'
+		+ ', Enabled'
+		+ ', UpdatedOn'
+		+ ', CreatedOn'
+		+ ')'
+
+	-- VALUES
+	SET @values = ' VALUES ('
+		+ '@id'
+		+ ', @familyName'
+		+ ', @middleName'
+		+ ', @givenName'
+		+ ', @description'
+		+ ', @enabled'
+		+ ', @updatedOn'
+		+ ', @createdOn'
+		+ ')'
+
+	-- 実行
+	EXECUTE (@insert + @into + @values)
+
+	-- 結果
 	SET @error = @@ERROR
 
 	RETURN @error

@@ -5,15 +5,25 @@
 
 	-- ローカル変数
 	DECLARE
-		@select		AS NVARCHAR(MAX) = 'SELECT * '
-		, @from		AS NVARCHAR(MAX) = 'FROM Users '
-		, @where	AS NVARCHAR(MAX) = 'WHERE 1 = 1 '
-		, @orderby	AS NVARCHAR(MAX) = 'ORDER BY UpdatedOn DESC'
+		@select		AS NVARCHAR(MAX)
+		, @from		AS NVARCHAR(MAX)
+		, @where	AS NVARCHAR(MAX)
+		, @orderby	AS NVARCHAR(MAX)
 		, @result	AS INT
 
+	-- SELECT
+	SET @select = 'SELECT *'
+
+	-- FROM
+	SET @from = ' FROM Users'
+
 	-- WHERE
+	SET @where = '1 = 1'
 	IF @id		IS NOT NULL		SET @where = @where + ' AND ID = ' + @id
 	IF @id		IS NOT NULL		SET @where = @where + ' AND Enabled = ' + CONVERT(NVARCHAR, @enabled, NULL)
+
+	-- ORDER BY
+	SET @orderby = ' ORDER BY UpdatedOn DESC'
 
 	--クエリー
 	SET @select = @select + @from + @where + @orderby

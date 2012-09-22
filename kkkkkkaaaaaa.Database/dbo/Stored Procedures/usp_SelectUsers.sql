@@ -1,4 +1,5 @@
 ﻿CREATE PROCEDURE usp_SelectUsers (
+	-- パラメーター
 	@id			BIGINT
 	, @enabled	BIT
 ) AS
@@ -12,18 +13,18 @@
 		, @result	AS INT
 
 	-- SELECT
-	SET @select = 'SELECT *'
+	SET @select = N'SELECT *'
 
 	-- FROM
-	SET @from = ' FROM Users'
+	SET @from = N' FROM Users'
 
 	-- WHERE
-	SET @where = '1 = 1'
-	IF @id		IS NOT NULL		SET @where = @where + ' AND ID = ' + @id
-	IF @id		IS NOT NULL		SET @where = @where + ' AND Enabled = ' + CONVERT(NVARCHAR, @enabled, NULL)
+	SET @where = N'1 = 1'
+	IF @id		IS NOT NULL		SET @where = @where + N' AND ID = ' + @id
+	IF @id		IS NOT NULL		SET @where = @where + N' AND Enabled = ' + CONVERT(NVARCHAR, @enabled, NULL)
 
 	-- ORDER BY
-	SET @orderby = ' ORDER BY UpdatedOn DESC'
+	SET @orderby = N' ORDER BY UpdatedOn DESC'
 
 	--クエリー
 	SET @select = @select + @from + @where + @orderby

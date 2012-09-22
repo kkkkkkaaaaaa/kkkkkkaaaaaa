@@ -1,7 +1,8 @@
 ﻿CREATE PROCEDURE usp_UpdateUsers (
-	@familyName		VARCHAR(MAX)
-	, @middleName	VARCHAR(MAX)
-	, @givenName	VARCHAR(MAX)
+	-- パラメーター
+	@familyName		VARCHAR(1024)
+	, @middleName	VARCHAR(1024)
+	, @givenName	VARCHAR(1024)
 	, @description	VARCHAR(MAX)
 	, @enabled		BIT
 	, @updatedOn	DateTime2(7)
@@ -16,19 +17,19 @@ AS
 		, @error	INT
 
 	-- UPDATE
-	SET @update	= 'UPDATE Users'
+	SET @update	= N'UPDATE Users'
 
 	-- SET
-	SET @set = ' SET'
-		+ ' FamilyName		= @familyName'
-		+ ', MiddleName		= @middleName'
-		+ ', GivenName		= @givenName'
-		+ ', Description	= @description'
-		+ ', Enabled		= @enabled'
-		+ ', UpdateOn		= @updatedOn'
+	SET @set = N' SET'
+		+ N' FamilyName		= @familyName'
+		+ N', MiddleName	= @middleName'
+		+ N', GivenName		= @givenName'
+		+ N', Description	= @description'
+		+ N', Enabled		= @enabled'
+		+ N', UpdateOn		= @updatedOn'
 
 	-- WHERE
-	SET @where = ' ID = ' + @id
+	SET @where = N' ID = ' + @id
 
 	-- 実行
 	EXECUTE (@update + @set + @where)

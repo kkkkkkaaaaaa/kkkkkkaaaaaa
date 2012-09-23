@@ -18,31 +18,31 @@
 		, @error	INT
 
 	-- INSERT
-	SET @insert = N'INSERT'
+	SET @insert = 'INSERT'
 
 	-- INTO
-	SET @into = N' INTO Users ('
-		+ N'ID'
-		+ N', FamilyName'
-		+ N', MiddleName'
-		+ N', GivenName'
-		+ N', Description'
-		+ N', Enabled'
-		+ N', UpdatedOn'
-		+ N', CreatedOn'
-		+ N')'
+	SET @into = ' INTO Users ('
+		+ 'ID'
+		+ ', FamilyName'
+		+ ', MiddleName'
+		+ ', GivenName'
+		+ ', Description'
+		+ ', Enabled'
+		+ ', UpdatedOn'
+		+ ', CreatedOn'
+		+ ')'
 
 	-- VALUES
-	SET @values = N' VALUES ('
-		+ N'@id'
-		+ N', @familyName'
-		+ N', @middleName'
-		+ N', @givenName'
-		+ N', @description'
-		+ N', @enabled'
-		+ N', @updatedOn'
-		+ N', @createdOn'
-		+ N')'
+	SET @values = ' VALUES ('
+		+ '@id'
+		+ ', @familyName'
+		+ ', @middleName'
+		+ ', @givenName'
+		+ ', @description'
+		+ ', @enabled'
+		+ ', @updatedOn'
+		+ ', @createdOn'
+		+ ')'
 
 	-- 実行
 	EXECUTE (@insert + @into + @values)

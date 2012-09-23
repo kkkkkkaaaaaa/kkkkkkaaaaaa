@@ -17,19 +17,19 @@ AS
 		, @error	INT
 
 	-- UPDATE
-	SET @update	= N'UPDATE Users'
+	SET @update	= 'UPDATE Users'
 
 	-- SET
-	SET @set = N' SET'
-		+ N' FamilyName		= @familyName'
-		+ N', MiddleName	= @middleName'
-		+ N', GivenName		= @givenName'
-		+ N', Description	= @description'
-		+ N', Enabled		= @enabled'
-		+ N', UpdateOn		= @updatedOn'
+	SET @set = ' SET'
+		+ ' FamilyName		= @familyName'
+		+ ', MiddleName	= @middleName'
+		+ ', GivenName		= @givenName'
+		+ ', Description	= @description'
+		+ ', Enabled		= @enabled'
+		+ ', UpdateOn		= @updatedOn'
 
 	-- WHERE
-	SET @where = N' ID = ' + @id
+	SET @where = ' ID = ' + @id
 
 	-- 実行
 	EXECUTE (@update + @set + @where)

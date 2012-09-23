@@ -13,18 +13,18 @@
 		, @result	AS INT
 
 	-- SELECT
-	SET @select = N'SELECT *'
+	SET @select = 'SELECT *'
 
 	-- FROM
-	SET @from = N' FROM Users'
+	SET @from = ' FROM Users'
 
 	-- WHERE
-	SET @where = N'1 = 1'
-	IF @id		IS NOT NULL		SET @where = @where + N' AND ID = ' + @id
-	IF @id		IS NOT NULL		SET @where = @where + N' AND Enabled = ' + CONVERT(NVARCHAR, @enabled, NULL)
+	SET @where = '1 = 1'
+	IF @id		IS NOT NULL		SET @where = @where + ' AND ID = ' + @id
+	IF @id		IS NOT NULL		SET @where = @where + ' AND Enabled = ' + CONVERT(NVARCHAR, @enabled, NULL)
 
 	-- ORDER BY
-	SET @orderby = N' ORDER BY UpdatedOn DESC'
+	SET @orderby = ' ORDER BY UpdatedOn DESC'
 
 	--クエリー
 	SET @select = @select + @from + @where + @orderby

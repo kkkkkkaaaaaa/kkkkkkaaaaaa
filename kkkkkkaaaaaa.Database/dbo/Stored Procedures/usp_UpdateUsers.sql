@@ -19,13 +19,23 @@ AS
 	-- UPDATE
 	SET @update	= 'UPDATE Users'
 
+	
 	-- SET
 	SET @set = ' SET'
-		+ ' FamilyName		= @familyName'
-		+ ', MiddleName	= @middleName'
-		+ ', GivenName		= @givenName'
-		+ ', Description	= @description'
-		+ ', Enabled		= @enabled'
+	IF @id IS NOT NULL BEGIN
+		SET @set = @set
+			+ ' FamilyName		= @familyName'
+			+ ', MiddleName		= @middleName'
+			+ ', GivenName		= @givenName'
+			+ ', Description	= @description'
+
+	END ELSE IF @enabled IS NOT NULL BEGIN
+		SET @set = @set
+			+ ', Enabled		= @enabled'
+
+	END
+
+	SET @set = @set
 		+ ', UpdateOn		= @updatedOn'
 
 	-- WHERE

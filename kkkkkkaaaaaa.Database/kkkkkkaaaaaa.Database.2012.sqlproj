@@ -106,6 +106,7 @@
     <Folder Include="dbo\Stored Procedures" />
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Views" />
+    <Folder Include="dbo\Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Stored Procedures\usp_InsertUsers.sql" />
@@ -126,5 +127,6 @@
     <Build Include="dbo\Views\AuthorizationView.sql" />
     <Build Include="dbo\Stored Procedures\usp_TruncateUsers.sql" />
     <Build Include="dbo\Stored Procedures\usp_DeleteUsers.sql" />
+    <Build Include="dbo\Functions\SelectUTCDateTime.sql" />
   </ItemGroup>
 </Project>

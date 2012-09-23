@@ -20,8 +20,8 @@
 
 	-- WHERE
 	SET @where = '1 = 1'
-	IF @id		IS NOT NULL		SET @where = @where + ' AND ID = ' + @id
-	IF @id		IS NOT NULL		SET @where = @where + ' AND Enabled = ' + CONVERT(NVARCHAR, @enabled, NULL)
+	IF @id			IS NOT NULL		SET @where = @where + ' AND ID = ' + @id
+	IF @enabled		IS NOT NULL		SET @where = @where + ' AND Enabled = ' + CONVERT(NVARCHAR, @enabled, NULL)
 
 	-- ORDER BY
 	SET @orderby = ' ORDER BY UpdatedOn DESC'

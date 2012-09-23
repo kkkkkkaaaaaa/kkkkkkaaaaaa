@@ -5,11 +5,60 @@ using System.Data.Common;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
+    /// <summary>
+    /// データソースから行の前方向ストリームを読み取ります。
+    /// </summary>
     public class KandaDataReader : DbDataReader
     {
+        /// <summary>
+        /// コンストラクタ―。
+        /// </summary>
+        /// <param name="command"></param>
+        public KandaDataReader(DbCommand command)
+        {
+            this._command = command;
+        }
+
+        /// <summary>
+        /// データソースに対して実行するテキストコマンドを取得または設定します。
+        /// </summary>
+        public string CommandText
+        {
+            get { return this._command.CommandText; }
+        }
+
+        /// <summary>
+        /// DbCommand.CommandText の解釈方法を指示または指定します。
+        /// </summary>
+        public CommandType CommandType
+        {
+            get { return this._command.CommandType; }
+            set { this._command.CommandType = value; }
+        }
+
+        /// <summary>
+        /// DbCommand.Connection に対して DbCommand.CommandText を実行し、CommandBehavior の値の 1 つを使用して DbDataReader を実行します。
+        /// </summary>
+        /// <param name="behavior"></param>
+        /// <returns></returns>
+        public DbDataReader ExecuteReader(CommandBehavior behavior)
+        {
+            this._reader = this._command.ExecuteReader(behavior);
+
+            return this;
+        }
+
+        public DbDataReader ExecuteReader()
+        {
+            return this.ExecuteReader(CommandBehavior.Default);
+        }
+
+        /// <summary>
+        /// DbDataReader オブジェクトを閉じます。
+        /// </summary>
         public override void Close()
         {
-            throw new NotImplementedException();
+            this._reader.Close();
         }
 
         public override DataTable GetSchemaTable()
@@ -171,5 +220,13 @@ namespace kkkkkkaaaaaa.Data.Common
         {
             throw new NotImplementedException();
         }
+
+        #region Private mebers..
+
+        private readonly DbCommand _command;
+
+        private DbDataReader _reader;
+
+        #endregion
     }
 }

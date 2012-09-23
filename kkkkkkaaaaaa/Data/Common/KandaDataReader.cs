@@ -19,6 +19,27 @@ namespace kkkkkkaaaaaa.Data.Common
             this._command = command;
         }
 
+
+        /// <summary>
+        /// 指定した列の値を Object のインスタンスとして取得します。
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns></returns>
+        public override object this[int ordinal]
+        {
+            get { return this._reader[ordinal]; }
+        }
+
+        /// <summary>
+        /// 指定した列の値を Object のインスタンスとして取得します。
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public override object this[string name]
+        {
+            get { return this._reader[name]; }
+        }
+
         /// <summary>
         /// データソースに対して実行するテキストコマンドを取得または設定します。
         /// </summary>
@@ -36,6 +57,7 @@ namespace kkkkkkaaaaaa.Data.Common
             set { this._command.CommandType = value; }
         }
 
+
         /// <summary>
         /// DbCommand.Connection に対して DbCommand.CommandText を実行し、CommandBehavior の値の 1 つを使用して DbDataReader を実行します。
         /// </summary>
@@ -48,9 +70,35 @@ namespace kkkkkkaaaaaa.Data.Common
             return this;
         }
 
+        /// <summary>
+        /// DbCommand.Connection に対して DbCommand.CommandText を実行し、CommandBehavior の値の 1 つを使用して DbDataReader を実行します。
+        /// </summary>
         public DbDataReader ExecuteReader()
         {
             return this.ExecuteReader(CommandBehavior.Default);
+        }
+
+        public override IEnumerator GetEnumerator()
+        {
+            return this._reader.GetEnumerator();
+        }
+
+        /// <summary>
+        /// DbDataReader の列メタデータを記述する DataTable を返します。
+        /// </summary>
+        /// <returns></returns>
+        public override DataTable GetSchemaTable()
+        {
+            return this._reader.GetSchemaTable();
+        }
+
+        /// <summary>
+        /// リーダーを結果セットの次のレコードに進めます。
+        /// </summary>
+        /// <returns></returns>
+        public override bool Read()
+        {
+            return this._reader.Read();
         }
 
         /// <summary>
@@ -61,19 +109,51 @@ namespace kkkkkkaaaaaa.Data.Common
             this._reader.Close();
         }
 
-        public override DataTable GetSchemaTable()
+        /// <summary>
+        /// 列の名前を指定して、列の序数を取得します。
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public override int GetOrdinal(string name)
         {
-            throw new NotImplementedException();
+            return this._reader.GetOrdinal(name);
         }
 
-        public override bool NextResult()
+        public override string GetName(int ordinal)
         {
-            throw new NotImplementedException();
+            return this._reader.GetName(ordinal);
         }
 
-        public override bool Read()
+        /// <summary>
+        /// 列に格納されている値が存在しない値または欠損値かどうかを表す値を取得します。
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns></returns>
+        public override bool IsDBNull(int ordinal)
         {
-            throw new NotImplementedException();
+            return this._reader.IsDBNull(ordinal);
+        }
+
+        /// <summary>
+        /// 列に格納されている値が存在しない値または欠損値かどうかを表す値を取得します。
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public bool IsDBNull(string name)
+        {
+            var ordinal = this.GetOrdinal(name);
+
+            return this.IsDBNull(ordinal);
+        }
+
+        public override Type GetFieldType(int ordinal)
+        {
+            return this._reader.GetFieldType(ordinal);
+        }
+
+        public override string GetDataTypeName(int ordinal)
+        {
+            return this._reader.GetDataTypeName(ordinal);
         }
 
         public override int Depth
@@ -87,6 +167,21 @@ namespace kkkkkkaaaaaa.Data.Common
         }
 
         public override int RecordsAffected
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public override bool NextResult()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override int FieldCount
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public override bool HasRows
         {
             get { throw new NotImplementedException(); }
         }
@@ -156,31 +251,6 @@ namespace kkkkkkaaaaaa.Data.Common
             throw new NotImplementedException();
         }
 
-        public override bool IsDBNull(int ordinal)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override int FieldCount
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override object this[int ordinal]
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override object this[string name]
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override bool HasRows
-        {
-            get { throw new NotImplementedException(); }
-        }
-
         public override decimal GetDecimal(int ordinal)
         {
             throw new NotImplementedException();
@@ -196,35 +266,11 @@ namespace kkkkkkaaaaaa.Data.Common
             throw new NotImplementedException();
         }
 
-        public override string GetName(int ordinal)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override int GetOrdinal(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string GetDataTypeName(int ordinal)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Type GetFieldType(int ordinal)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override IEnumerator GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
         #region Private mebers..
 
+        /// <summary>データソースに対して実行する SQl ステートメントまたはストアドプロシージャを表わします。</summary>
         private readonly DbCommand _command;
-
+        /// <summary>データソースから行の前方向ストリームを読み取ります。</summary>
         private DbDataReader _reader;
 
         #endregion

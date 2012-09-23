@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。 
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("")]
+[assembly: AssemblyTitle("kkkkkkaaaaaa.NUnit.Properties")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("")]
+[assembly: AssemblyProduct("kkkkkkaaaaaa.NUnit.Properties")]
 [assembly: AssemblyCopyright("Copyright @ 2012 Kanda, Yuichiro. Some rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 次の GUID は、このプロジェクトが COM に公開される場合の、typelib の ID です
-[assembly: Guid("f933a80b-5698-42e6-87c0-cf3a6c8e7470")]
+[assembly: Guid("8c840b44-9027-45b5-a3ef-9e087592e106")]
 
 // アセンブリのバージョン情報は、以下の 4 つの値で構成されています:
 //
@@ -31,6 +31,3 @@ using System.Runtime.InteropServices;
 //
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
-[assembly: InternalsVisibleTo("kkkkkkaaaaaa.Xunit")]
-[assembly: InternalsVisibleTo("kkkkkkaaaaaa.NUnit")]

@@ -45,7 +45,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         public string CommandText
         {
-            get { return this._command.CommandText; }
+            get { return this.InnerCommand.CommandText; }
         }
 
         /// <summary>
@@ -53,8 +53,8 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         public CommandType CommandType
         {
-            get { return this._command.CommandType; }
-            set { this._command.CommandType = value; }
+            get { return this.InnerCommand.CommandType; }
+            set { this.InnerCommand.CommandType = value; }
         }
 
 
@@ -65,7 +65,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public DbDataReader ExecuteReader(CommandBehavior behavior)
         {
-            this._reader = this._command.ExecuteReader(behavior);
+            this._reader = this.InnerCommand.ExecuteReader(behavior);
 
             return this;
         }
@@ -78,6 +78,10 @@ namespace kkkkkkaaaaaa.Data.Common
             return this.ExecuteReader(CommandBehavior.Default);
         }
 
+        /// <summary>
+        /// データリーダーの行の反復に使用できる IEnumarator を返します。
+        /// </summary>
+        /// <returns></returns>
         public override IEnumerator GetEnumerator()
         {
             return this._reader.GetEnumerator();
@@ -106,7 +110,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         public override void Close()
         {
-            this._reader.Close();
+            if (this._reader != null) { this._reader.Close(); }
         }
 
         /// <summary>
@@ -119,6 +123,11 @@ namespace kkkkkkaaaaaa.Data.Common
             return this._reader.GetOrdinal(name);
         }
 
+        /// <summary>
+        /// 0 から始まる列の序数を指定して、列の名前を取得します。
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns></returns>
         public override string GetName(int ordinal)
         {
             return this._reader.GetName(ordinal);
@@ -146,14 +155,56 @@ namespace kkkkkkaaaaaa.Data.Common
             return this.IsDBNull(ordinal);
         }
 
+        /// <summary>
+        /// 指定した列のデータ型を取得します。
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns></returns>
         public override Type GetFieldType(int ordinal)
         {
             return this._reader.GetFieldType(ordinal);
         }
 
+        /// <summary>
+        /// 指定した列のデータ型の名前を取得します。
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns></returns>
         public override string GetDataTypeName(int ordinal)
         {
             return this._reader.GetDataTypeName(ordinal);
+        }
+
+        /// <summary>
+        /// DbDataReader によって使用されているマネージリソースを解放し、オプションでアンマネージリソースも解放します。
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (this.InnerCommand != null) { this.InnerCommand.Dispose(); }
+                if (this._reader != null) { this._reader.Dispose(); }
+            }
+
+            base.Dispose(disposing);
+        }
+
+
+
+        public override bool HasRows
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public override int RecordsAffected
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public override int FieldCount
+        {
+            get { throw new NotImplementedException(); }
         }
 
         public override int Depth
@@ -166,24 +217,10 @@ namespace kkkkkkaaaaaa.Data.Common
             get { throw new NotImplementedException(); }
         }
 
-        public override int RecordsAffected
-        {
-            get { throw new NotImplementedException(); }
-        }
 
         public override bool NextResult()
         {
             throw new NotImplementedException();
-        }
-
-        public override int FieldCount
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override bool HasRows
-        {
-            get { throw new NotImplementedException(); }
         }
 
         public override bool GetBoolean(int ordinal)
@@ -266,9 +303,18 @@ namespace kkkkkkaaaaaa.Data.Common
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// データソースに対して実行する SQL ステートメントまたはストアドプロシージャを表わします。
+        /// </summary>
+        internal DbCommand InnerCommand
+        {
+            get { return this._command; }
+        }
+
+
         #region Private mebers..
 
-        /// <summary>データソースに対して実行する SQl ステートメントまたはストアドプロシージャを表わします。</summary>
+        /// <summary>データソースに対して実行する SQL ステートメントまたはストアドプロシージャを表わします。</summary>
         private readonly DbCommand _command;
         /// <summary>データソースから行の前方向ストリームを読み取ります。</summary>
         private DbDataReader _reader;

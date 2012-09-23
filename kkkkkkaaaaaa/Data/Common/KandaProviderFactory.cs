@@ -36,19 +36,13 @@ namespace kkkkkkaaaaaa.Data.Common
         }
 
         /// <summary>
-        /// DbCommand クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// DbDataReader クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
-        /// <param name="connection">データベースへの接続。</param>
-        /// <param name="transaction">トランザクション。</param>
+        /// <param name="command"></param>
         /// <returns></returns>
-        public DbCommand CreateCommand(DbConnection connection, DbTransaction transaction)
+        public DbDataReader CreateReader(DbCommand command)
         {
-            var command = this.CreateCommand();
-
-            command.Connection = connection;
-            command.Transaction = transaction;
-
-            return command;
+            return new KandaDataReader(command);
         }
 
         /// <summary>
@@ -57,9 +51,14 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public DbDataReader CreateReader(DbConnection connection, DbTransaction transaction)
+        public DbDataReader CreateReader(DbConnection connection, DbTransaction transaction = null)
         {
-            var command = this.CreateCommand(connection, transaction);
+            var command = connection.CreateCommand();
+
+            // var command = this.CreateCommand();
+
+            // command.Connection = connection;
+            // command.Transaction = transaction;
 
             return new KandaDataReader(command);
         }
@@ -72,6 +71,7 @@ namespace kkkkkkaaaaaa.Data.Common
         {
             return this._factory.CreateParameter();
         }
+
 
         /// <summary>
         /// コンストラクタ―。

@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Data.SqlClient;
 using System.Data.Common;
 
 namespace kkkkkkaaaaaa.Data.Common
@@ -73,18 +72,6 @@ namespace kkkkkkaaaaaa.Data.Common
         {
             return this._factory.CreateParameter();
         }
-
-        /// <summary>
-        /// DbParameter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public DbParameter CreateParameter(string name, object value)
-        {
-            return this.CreateParameter(name, value, ParameterDirection.Input);
-        }
-
 
         /// <summary>
         /// コンストラクタ―。

@@ -84,11 +84,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Common\KandaDataReader.cs" />
+    <Compile Include="Data\Common\KandaDbDataMapper.cs" />
+    <Compile Include="Data\Common\KandaMappingAttribute.cs" />
     <Compile Include="Data\Common\KandaProviderFactories.cs" />
     <Compile Include="Data\Common\KandaProviderFactory.2010.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\Common\KandaProviderFactory.cs" />
+    <Compile Include="Data\KandaParameterMappingAttribute.cs" />
+    <Compile Include="KandaDataMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

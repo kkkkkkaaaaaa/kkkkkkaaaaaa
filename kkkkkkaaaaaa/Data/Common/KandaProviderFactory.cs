@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.Common;
 
 namespace kkkkkkaaaaaa.Data.Common
@@ -79,8 +80,22 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <param name="factory"></param>
         internal KandaProviderFactory(DbProviderFactory factory)
         {
+            if (factory == null) { throw new ArgumentNullException(string.Format(@"{0}.ctor()", this.GetType().FullName)); }
+
             this._factory = factory;
         }
+
+        #region Protected members...
+
+        /// <summary>
+        /// 何もしません。
+        /// </summary>
+        protected void DoNothing()
+        {
+            // 何もしない
+        }
+
+        #endregion
 
         #region Private members...
 

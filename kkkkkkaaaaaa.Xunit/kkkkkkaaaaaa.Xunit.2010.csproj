@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>kkkkkkaaaaaa.Xunit</RootNamespace>
-    <AssemblyName>kkkkkkaaaaaa.Xunit.2010</AssemblyName>
+    <AssemblyName>kkkkkkaaaaaa.Xunit</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -61,17 +61,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Common\KandaDataReaderFacts.cs" />
+    <Compile Include="Data\Common\KandaDbXunitFacts.cs" />
     <Compile Include="Data\Common\KandaProviderFactoriesFacts.cs" />
     <Compile Include="Data\Common\KandaProviderFactoryFacts.cs" />
+    <Compile Include="Data\Common\KandaXunitProviderFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
     <Reference Include="xunit">
       <HintPath>..\Externals\Xunit\xunit.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\kkkkkkaaaaaa\kkkkkkaaaaaa.csproj">
+      <Project>{24985E63-0FAF-4F7B-93DD-6764F0E3F6A4}</Project>
+      <Name>kkkkkkaaaaaa</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

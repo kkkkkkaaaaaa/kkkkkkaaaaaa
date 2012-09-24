@@ -26,7 +26,7 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
         [Fact()]
         public void CreateFact()
         {
-            var c = this._factory.CreateCommand();
+            var a = this._factory.CreateDataAdapter();
         }
     }
 }

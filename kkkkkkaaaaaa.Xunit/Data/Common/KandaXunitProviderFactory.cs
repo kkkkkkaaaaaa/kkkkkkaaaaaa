@@ -26,12 +26,12 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
         }
 
         /// <summary>
-        /// 
+        /// 新しいインスタンスを返します。
         /// </summary>
         /// <returns></returns>
         public override DbConnection CreateConnection()
         {
-            var builder = this.CreateConnectionStringBuilder();
+            var builder = base.CreateConnectionStringBuilder();
 
             builder.Add(@"Data Source", @"(localdb)\kkkkkkaaaaaa_2010");
             builder.Add(@"Initial Catalog", @"kkkkkkaaaaaa.Database.2012");

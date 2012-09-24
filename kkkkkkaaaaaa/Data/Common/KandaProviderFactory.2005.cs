@@ -8,6 +8,35 @@ namespace kkkkkkaaaaaa.Data.Common
     /// </summary>
     public partial class KandaProviderFactory
     {
+
+        /// <summary>
+        /// DbCommand クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <param name="connection">データベースへの接続。</param>
+        /// <param name="transaction">トランザクション。</param>
+        /// <returns></returns>
+        public DbCommand CreateCommand(DbConnection connection, DbTransaction transaction)
+        {
+            var command = connection.CreateCommand();
+
+            command.Transaction = transaction;
+
+            return command;
+        }
+
+        /// <summary>
+        /// DbDataReader クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public DbDataReader CreateReader(DbConnection connection, DbTransaction transaction)
+        {
+            var command = this.CreateCommand(connection, transaction);
+
+            return new KandaDataReader(command);
+        }
+
         /// <summary>
         /// DbParameter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>

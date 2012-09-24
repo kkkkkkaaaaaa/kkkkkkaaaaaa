@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.Common;
+using System.Security;
+using System.Security.Permissions;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
@@ -9,6 +11,27 @@ namespace kkkkkkaaaaaa.Data.Common
     /// </summary>
     public partial class KandaProviderFactory : DbProviderFactory
     {
+        /// <summary>
+        /// DbProviderFactory が DbDataSourfceEnumarator クラスをサポートするかどうかを示します。
+        /// </summary>
+        public override bool CanCreateDataSourceEnumerator
+        {
+            get
+            {
+                return this._factory.CanCreateDataSourceEnumerator;
+            }
+        }
+
+
+        /// <summary>
+        /// DbDataSourceEnumarator クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <returns></returns>
+        public override DbDataSourceEnumerator CreateDataSourceEnumerator()
+        {
+            return this._factory.CreateDataSourceEnumerator();
+        }
+
         /// <summary>
         /// DbCommandBuilder クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
@@ -37,6 +60,43 @@ namespace kkkkkkaaaaaa.Data.Common
         }
 
         /// <summary>
+        /// DbParameter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <returns></returns>
+        public override DbParameter CreateParameter()
+        {
+            return this._factory.CreateParameter();
+        }
+
+        /// <summary>
+        /// DbCommandBuilder クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <returns></returns>
+        public override DbCommandBuilder CreateCommandBuilder()
+        {
+            return this._factory.CreateCommandBuilder();
+        }
+
+        /// <summary>
+        /// DbDataAdapter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <returns></returns>
+        public override DbDataAdapter CreateDataAdapter()
+        {
+            return this._factory.CreateDataAdapter();
+        }
+
+        /// <summary>
+        /// プロバイダーのバージョンの CodeAccessPermission クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public override CodeAccessPermission CreatePermission(PermissionState state)
+        {
+            return this._factory.CreatePermission(state);
+        }
+
+        /// <summary>
         /// DbDataReader クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <param name="command"></param>
@@ -46,38 +106,11 @@ namespace kkkkkkaaaaaa.Data.Common
             return new KandaDataReader(command);
         }
 
-        /// <summary>
-        /// DbDataReader クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
-        /// </summary>
-        /// <param name="connection"></param>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        public DbDataReader CreateReader(DbConnection connection, DbTransaction transaction = null)
-        {
-            var command = connection.CreateCommand();
-
-            // var command = this.CreateCommand();
-
-            // command.Connection = connection;
-            // command.Transaction = transaction;
-
-            return new KandaDataReader(command);
-        }
-
-        /// <summary>
-        /// DbParameter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
-        /// </summary>
-        /// <returns></returns>
-        public override DbParameter CreateParameter()
-        {
-            return this._factory.CreateParameter();
-        }
-
 
         /// <summary>
         /// コンストラクタ―。
         /// </summary>
-        /// <param name="factory"></param>
+        /// <param name="factory">DbProviderFactory。</param>
         internal KandaProviderFactory(DbProviderFactory factory)
         {
             if (factory == null) { throw new ArgumentNullException(string.Format(@"{0}.ctor()", this.GetType().FullName)); }

@@ -22,6 +22,24 @@ namespace kkkkkkaaaaaa.Data.Common
         }
 
         /// <summary>
+        /// DbDataReader クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public DbDataReader CreateReader(DbConnection connection, DbTransaction transaction = null)
+        {
+            var command = connection.CreateCommand();
+
+            // var command = this.CreateCommand();
+
+            // command.Connection = connection;
+            // command.Transaction = transaction;
+
+            return new KandaDataReader(command);
+        }
+
+        /// <summary>
         /// DbParameter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <param name="name"></param>

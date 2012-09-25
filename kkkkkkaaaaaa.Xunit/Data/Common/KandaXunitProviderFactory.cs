@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Data.Common;
 using System.Threading;
 using kkkkkkaaaaaa.Data.Common;
@@ -13,39 +14,61 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
         /// <summary>
         /// Singleton インスタンス。
         /// </summary>
-        public readonly static KandaXunitProviderFactory Instance = new KandaXunitProviderFactory(KandaProviderFactories.GetFactory(@"System.Data.SqlClient"));
-
-        /// <summary>
-        /// コンストラクタ。
-        /// </summary>
-        /// <param name="factory"></param>
-        internal KandaXunitProviderFactory(DbProviderFactory factory)
-            : base(factory)
+        public static KandaXunitProviderFactory Instance
         {
-            this.DoNothing();
+            get { return KandaXunitProviderFactory._instance; }
         }
 
         /// <summary>
-        /// 新しいインスタンスを返します。
+        /// DbConnection クラスをを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <returns></returns>
         public override DbConnection CreateConnection()
         {
             var builder = base.CreateConnectionStringBuilder();
-
+            //builder.ConnectionString = @"Data Source=(localdb)\kkkkkkaaaaaa_2010;Initial Catalog=kkkkkkaaaaaa.Database.2012;Integrated Security=True;Pooling=False;Connect Timeout=30";
             builder.Add(@"Data Source", @"(localdb)\kkkkkkaaaaaa_2010");
             builder.Add(@"Initial Catalog", @"kkkkkkaaaaaa.Database.2012");
             builder.Add(@"Integrated Security", @"True");
             builder.Add(@"Pooling", @"False");
             builder.Add(@"Connect Timeout", @"30");
 
-            //builder.ConnectionString = @"Data Source=(localdb)\kkkkkkaaaaaa_2010;Initial Catalog=kkkkkkaaaaaa.Database.2012;Integrated Security=True;Pooling=False;Connect Timeout=30";
-
             var connection = base.CreateConnection();
             connection.ConnectionString = builder.ConnectionString;
 
             return connection;
         }
+
+        /// <summary>
+        /// DbConnectionReader クラスを実装しているクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <returns></returns>
+        public KandaDataReader CreateReader(DbConnection connection)
+        {
+            var reader = base.CreateReader(connection);
+
+            reader.CommandType = CommandType.StoredProcedure;
+
+            return reader;
+        }
+
+        #region Private members...
+
+        /// <summary>
+        /// コンストラクタ。
+        /// </summary>
+        /// <param name="factory"></param>
+        private KandaXunitProviderFactory(DbProviderFactory factory)
+            : base(factory)
+        {
+            this.DoNothing();
+        }
+
+        /// <summary></summary>
+        private readonly static KandaXunitProviderFactory _instance = new KandaXunitProviderFactory(KandaProviderFactories.GetFactory(@"System.Data.SqlClient"));
+
+        #endregion
 
     }
 }

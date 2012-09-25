@@ -8,7 +8,7 @@ namespace kkkkkkaaaaaa.Data.Common
     /// <summary>
     /// データソースから行の前方向ストリームを読み取ります。
     /// </summary>
-    public class KandaDataReader : DbDataReader
+    public partial class KandaDataReader : DbDataReader
     {
         /// <summary>
         /// コンストラクタ―。
@@ -41,11 +41,20 @@ namespace kkkkkkaaaaaa.Data.Common
         }
 
         /// <summary>
+        /// DbParameter オブジェクトのコレクションを返します。
+        /// </summary>
+        public DbParameterCollection Parameters
+        {
+            get { return this._command.Parameters; }
+        }
+
+        /// <summary>
         /// データソースに対して実行するテキストコマンドを取得または設定します。
         /// </summary>
         public string CommandText
         {
-            get { return this.InnerCommand.CommandText; }
+            get { return this._command.CommandText; }
+            set { this._command.CommandText = value; }
         }
 
         /// <summary>
@@ -53,8 +62,8 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         public CommandType CommandType
         {
-            get { return this.InnerCommand.CommandType; }
-            set { this.InnerCommand.CommandType = value; }
+            get { return this._command.CommandType; }
+            set { this._command.CommandType = value; }
         }
 
 
@@ -65,7 +74,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public DbDataReader ExecuteReader(CommandBehavior behavior)
         {
-            this._reader = this.InnerCommand.ExecuteReader(behavior);
+            this._reader = this._command.ExecuteReader(behavior);
 
             return this;
         }
@@ -183,13 +192,12 @@ namespace kkkkkkaaaaaa.Data.Common
         {
             if (disposing)
             {
-                if (this.InnerCommand != null) { this.InnerCommand.Dispose(); }
+                if (this._command != null) { this._command.Dispose(); }
                 if (this._reader != null) { this._reader.Dispose(); }
             }
 
             base.Dispose(disposing);
         }
-
 
 
         public override bool HasRows
@@ -302,15 +310,7 @@ namespace kkkkkkaaaaaa.Data.Common
         {
             throw new NotImplementedException();
         }
-
-        /// <summary>
-        /// データソースに対して実行する SQL ステートメントまたはストアドプロシージャを表わします。
-        /// </summary>
-        internal DbCommand InnerCommand
-        {
-            get { return this._command; }
-        }
-
+        
 
         #region Private mebers..
 

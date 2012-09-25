@@ -9,4 +9,3 @@
     [UpdatedOn]   DATETIME2 (7)   NOT NULL,
     CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
-

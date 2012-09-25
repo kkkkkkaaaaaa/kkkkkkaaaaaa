@@ -19,9 +19,10 @@
 	SET @from = ' FROM Users'
 
 	-- WHERE
-	SET @where = '1 = 1'
-	IF @id			IS NOT NULL		SET @where = @where + ' AND ID = ' + @id
-	IF @enabled		IS NOT NULL		SET @where = @where + ' AND Enabled = ' + CONVERT(NVARCHAR, @enabled, NULL)
+	SET @where = ' WHERE 1 = 1'
+	IF @id			IS NOT NULL		SET @where = @where + ' AND ID = ' + CAST(@id AS NVARCHAR)
+	IF @enabled		IS NOT NULL		SET @where = @where + ' AND Enabled = ' + CAST(@enabled AS NVARCHAR)
+	--IF @enabled		IS NOT NULL		SET @where = @where + ' AND Enabled = ' + CONVERT(NVARCHAR(1), @enabled, NULL)
 
 	-- ORDER BY
 	SET @orderby = ' ORDER BY UpdatedOn DESC'

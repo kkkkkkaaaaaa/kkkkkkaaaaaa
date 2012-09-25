@@ -11,15 +11,15 @@
 
 	-- SERVERPROPERTY('ProductVersion')
 	SET @version	= CAST(SERVERPROPERTY('ProductVersion') AS VARCHAR)
-	SELECT @version AS [Version]
+	--SELECT @version AS [Version]
 
 	-- '.' のインデックス
 	SET @index		= CAST(PATINDEX('%.%', @version) AS INT)
-	SELECT @index AS [Index]
+	--SELECT @index AS [Index]
 
 	-- メジャーバージョン
 	SET @mejor		= SUBSTRING(@version, 0, @index)
-	SELECT @mejor AS [MejorVersion]
+	--SELECT @mejor AS [MejorVersion]
 
 	-- 現在時刻
 	IF @mejor >= 11		SET @datetime = SYSUTCDATETIME()

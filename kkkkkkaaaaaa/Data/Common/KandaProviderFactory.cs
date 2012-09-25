@@ -42,7 +42,7 @@ namespace kkkkkkaaaaaa.Data.Common
         }
 
         /// <summary>
-        /// DbConnection クラスを実装しているプロバイダーの新しいインスタンスを返します。
+        /// DbConnection クラスをを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <returns></returns>
         public override DbConnection CreateConnection()
@@ -101,7 +101,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        public DbDataReader CreateReader(DbCommand command)
+        public virtual KandaDataReader CreateReader(DbCommand command)
         {
             return new KandaDataReader(command);
         }

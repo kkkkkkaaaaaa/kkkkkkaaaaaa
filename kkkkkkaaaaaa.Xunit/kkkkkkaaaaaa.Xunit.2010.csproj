@@ -60,8 +60,9 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\SelectUTCDateTimeFacts.cs" />
     <Compile Include="Data\Common\KandaDataReaderFacts.cs" />
-    <Compile Include="Data\Common\KandaDbXunitFacts.cs" />
+    <Compile Include="Data\KandaDbXunitFacts.cs" />
     <Compile Include="Data\Common\KandaProviderFactoriesFacts.cs" />
     <Compile Include="Data\Common\KandaProviderFactoryFacts.cs" />
     <Compile Include="Data\Common\KandaXunitProviderFactory.cs" />

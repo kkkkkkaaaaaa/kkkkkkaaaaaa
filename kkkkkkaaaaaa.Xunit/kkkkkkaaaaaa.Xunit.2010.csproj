@@ -62,10 +62,10 @@
   <ItemGroup>
     <Compile Include="Database\SelectUTCDateTimeFacts.cs" />
     <Compile Include="Data\Common\KandaDataReaderFacts.cs" />
-    <Compile Include="Data\KandaDbXunitFacts.cs" />
+    <Compile Include="Data\KandaXunitDataFacts.cs" />
     <Compile Include="Data\Common\KandaProviderFactoriesFacts.cs" />
     <Compile Include="Data\Common\KandaProviderFactoryFacts.cs" />
-    <Compile Include="Data\Common\KandaXunitProviderFactory.cs" />
+    <Compile Include="Data\KandaXunitProviderFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -11,7 +11,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <param name="connection">データベースへの接続。</param>
         /// <param name="transaction">トランザクション。</param>
         /// <returns></returns>
-        public DbCommand CreateCommand(DbConnection connection, DbTransaction transaction = null)
+        public virtual DbCommand CreateCommand(DbConnection connection, DbTransaction transaction = null)
         {
             var command = this.CreateCommand();
 

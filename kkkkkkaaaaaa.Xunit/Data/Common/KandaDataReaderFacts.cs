@@ -5,7 +5,7 @@ using kkkkkkaaaaaa.Data.Common;
 
 namespace kkkkkkaaaaaa.Xunit.Data.Common
 {
-    public class KandaDataReaderFacts : KandaDbXunitFacts
+    public class KandaDataReaderFacts : KandaXunitDataFacts
     {
         [Fact()]
         public void ExecuteReaderFact()

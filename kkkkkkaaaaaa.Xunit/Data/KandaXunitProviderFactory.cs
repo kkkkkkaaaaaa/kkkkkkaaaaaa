@@ -1,10 +1,8 @@
-using System;
 using System.Data;
 using System.Data.Common;
-using System.Threading;
 using kkkkkkaaaaaa.Data.Common;
 
-namespace kkkkkkaaaaaa.Xunit.Data.Common
+namespace kkkkkkaaaaaa.Xunit.Data
 {
     /// <summary>
     /// 
@@ -37,6 +35,21 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
             connection.ConnectionString = builder.ConnectionString;
 
             return connection;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public override DbCommand  CreateCommand(DbConnection connection, DbTransaction transaction = null)
+        {
+            var command = base.CreateCommand(connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            return command;
         }
 
         /// <summary>

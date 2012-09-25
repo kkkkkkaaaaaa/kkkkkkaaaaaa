@@ -5,7 +5,7 @@ using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Data.Common
 {
-    public class KandaProviderFactoryFacts : KandaDbXunitFacts
+    public class KandaProviderFactoryFacts : KandaXunitDataFacts
     {
         [Fact()]
         public void CreataConnectionFact()

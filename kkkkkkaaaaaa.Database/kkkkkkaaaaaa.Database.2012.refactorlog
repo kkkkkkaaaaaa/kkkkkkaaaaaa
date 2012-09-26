@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="53524c8d-d377-4ef3-beeb-cc6e71918c4b" ChangeDateTime="09/25/2012 12:32:36">
+    <Property Name="ElementName" Value="[dbo].[MembershipUsers].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MembershipUsers]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="524b300d-fb8b-4f90-b3ef-07d5207db502" ChangeDateTime="09/25/2012 12:34:38">
+    <Property Name="ElementName" Value="[dbo].[UserMemberships].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserMemberships]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MembershipID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="da9fb412-9f74-4a02-88b2-f97e1b508608" ChangeDateTime="09/25/2012 12:35:03">
+    <Property Name="ElementName" Value="[dbo].[UserMemberships].[MembershipID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserMemberships]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="580bcc71-d905-44db-9e91-698e3ac29e01" ChangeDateTime="09/25/2012 12:35:06">
+    <Property Name="ElementName" Value="[dbo].[UserMemberships].[UserID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserMemberships]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MembershipID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8e818018-6131-45f8-9002-823144c05099" ChangeDateTime="09/25/2012 12:36:39">
+    <Property Name="ElementName" Value="[dbo].[MembershipRoles].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MembershipRoles]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MembershipID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1a570ed7-2833-48a8-b80d-60669f8fe230" ChangeDateTime="09/25/2012 12:38:10">
+    <Property Name="ElementName" Value="[dbo].[MembershipAuthorizations].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MembershipAuthorizations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MembershipID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5b661c98-6306-4bca-9585-8d8adf047caa" ChangeDateTime="09/25/2012 12:39:20">
+    <Property Name="ElementName" Value="[dbo].[Memberships].[UserID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Memberships]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+</Operations>

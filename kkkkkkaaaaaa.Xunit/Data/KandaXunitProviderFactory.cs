@@ -45,7 +45,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
         /// <returns></returns>
         public override DbCommand  CreateCommand(DbConnection connection, DbTransaction transaction = null)
         {
-            var command = base.CreateCommand(connection);
+            var command = base.CreateCommand(connection, transaction);
 
             command.CommandType = CommandType.StoredProcedure;
 

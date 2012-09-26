@@ -6,8 +6,7 @@
 	, @given_name	NVARCHAR(1024)
 	, @description	NVARCHAR(MAX)
 	, @enabled		BIT
-	, @updated_on	DATETIME2(7)
-	, @Created_on	DATETIME2(7)
+	, @created_on	DATETIME2(7)
 ) AS
 
 	-- 変数
@@ -40,7 +39,7 @@
 		+ ', @givenName'
 		+ ', @description'
 		+ ', @enabled'
-		+ ', @updatedOn'
+		+ ', @createdOn'
 		+ ', @createdOn'
 		+ ')'
 

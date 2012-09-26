@@ -1,8 +1,10 @@
 ﻿CREATE TABLE [dbo].[Memberships] (
-    [UserID]   BIGINT          NOT NULL,
+    [ID]   BIGINT          NOT NULL,
     [Name]     NVARCHAR (1024) NOT NULL,
-    [Password] NVARCHAR (MAX)  NOT NULL,
+    [Password] NVARCHAR (128)  NOT NULL,
     [Enabled]  BIT             NOT NULL,
-    CONSTRAINT [PK_Authentications] PRIMARY KEY CLUSTERED ([UserID] ASC)
+    [CreatedOn] DATETIME2 NOT NULL, 
+    [UpdatedOn] NCHAR(10) NOT NULL, 
+    CONSTRAINT [PK_Authentications] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 

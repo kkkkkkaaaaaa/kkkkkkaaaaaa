@@ -14,13 +14,14 @@
     </RootPath>
     <RootNamespace>kkkkkkaaaaaa.Database</RootNamespace>
     <AssemblyName>kkkkkkaaaaaa.Database.2012</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>1041,CS</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetLanguage>CS</TargetLanguage>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <SqlServerVerification>False</SqlServerVerification>
+    <DefaultCollation>Japanese_BIN2</DefaultCollation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -130,5 +131,13 @@
     <Build Include="dbo\Stored Procedures\usp_TruncateUsers.sql" />
     <Build Include="dbo\Stored Procedures\usp_DeleteUsers.sql" />
     <Build Include="dbo\Functions\SelectUTCDateTime.sql" />
+    <Build Include="dbo\Stored Procedures\usp_SelectMemberships.sql" />
+    <Build Include="dbo\Stored Procedures\usp_InsertMemberships.sql" />
+    <Build Include="dbo\Tables\UserMemberships.sql" />
+    <Build Include="dbo\Tables\MembershipRoles.sql" />
+    <Build Include="dbo\Tables\MembershipAuthorizations.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="kkkkkkaaaaaa.Database.2012.refactorlog" />
   </ItemGroup>
 </Project>

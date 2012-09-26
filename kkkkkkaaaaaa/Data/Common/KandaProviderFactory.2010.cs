@@ -13,7 +13,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public virtual DbCommand CreateCommand(DbConnection connection, DbTransaction transaction = null)
         {
-            var command = this.CreateCommand();
+            var command = connection.CreateCommand();
 
             command.Connection = connection;
             command.Transaction = transaction;

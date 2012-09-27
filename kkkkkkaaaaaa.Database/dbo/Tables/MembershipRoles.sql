@@ -1,6 +1,8 @@
 ﻿CREATE TABLE [dbo].[MembershipRoles]
 (
+    [ID] BIGINT NOT NULL, 
 	[MembershipID] BIGINT NOT NULL , 
     [RoleID] BIGINT NOT NULL, 
-    PRIMARY KEY ([MembershipID], [RoleID])
+    [Enabled] BIT NOT NULL, 
+    CONSTRAINT [PK_MembershipRoles] PRIMARY KEY ([ID]) 
 )

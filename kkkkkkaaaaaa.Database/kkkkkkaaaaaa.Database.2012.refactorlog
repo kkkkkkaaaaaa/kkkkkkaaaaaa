@@ -49,4 +49,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="5bbbdeb6-00e6-4f91-bb0b-bf2ddae9e192" ChangeDateTime="09/26/2012 23:59:34">
+    <Property Name="ElementName" Value="[dbo].[MembershipRoles].[Enabled]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MembershipRoles]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DAtetime" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="df958426-6cb4-4a24-bdc3-8d0acf9bfac2" ChangeDateTime="09/27/2012 00:31:18">
+    <Property Name="ElementName" Value="[dbo].[MembershipRoles].[Exabled]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MembershipRoles]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Enabled" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6a190909-8bc6-4520-bd36-11596b0ceda1" ChangeDateTime="09/27/2012 00:56:23">
+    <Property Name="ElementName" Value="[dbo].[Authorizations].[PredicateID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Authorizations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SubjectID" />
+  </Operation>
 </Operations>

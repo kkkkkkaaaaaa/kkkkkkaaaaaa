@@ -75,10 +75,8 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.Xml" />
     <Reference Include="xunit">
       <HintPath>..\Externals\Xunit\xunit.dll</HintPath>
     </Reference>

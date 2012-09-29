@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
 using System.Reflection;
 
 namespace kkkkkkaaaaaa.Data.Common
@@ -24,8 +25,9 @@ namespace kkkkkkaaaaaa.Data.Common
             {
                 var attributes = (KandaMappingAttribute[]) member.GetCustomAttributes(typeof (KandaMappingAttribute), true);
                 foreach (var attribute in attributes)
+                //foreach (var attribute in attributes.Where((attribute) => { return !attribute.Ignore; }))
                 {
-                    if (attribute.Ignore) { continue; } // 無視
+                    if (attribute.Ignore) { continue; }
 
                     foreach (DataRow row in schema.Rows)
                     {

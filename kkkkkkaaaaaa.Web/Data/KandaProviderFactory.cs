@@ -59,7 +59,7 @@ namespace kkkkkkaaaaaa.Web.Data
         /// コンストラクタ―。
         /// </summary>
         private KandaProviderFactory()
-            : base(DbProviderFactories.GetFactory(@"Syetem.Data.SqlClient"))
+            : base(DbProviderFactories.GetFactory(@"System.Data.SqlClient"))
         {
             this.DoNothing();
         }

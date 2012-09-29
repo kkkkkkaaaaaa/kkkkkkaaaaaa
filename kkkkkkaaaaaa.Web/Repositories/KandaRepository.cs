@@ -8,7 +8,13 @@ namespace kkkkkkaaaaaa.Web.Repositories
 {
     public class KandaRepository
     {
-        public DateTime GetUtcDateTime(DbConnection connection, DbTransaction transaction)
+        /// <summary>
+        /// システムの現在時刻を取得します。
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public DateTime GetUtcDateTime(DbConnection connection, DbTransaction transaction = null)
         {
             var utc = KandaTableDataGateway.GetUtcDateTime(connection, transaction);
 

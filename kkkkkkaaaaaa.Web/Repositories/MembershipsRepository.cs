@@ -26,8 +26,14 @@ namespace kkkkkkaaaaaa.Web.Repositories
 
             try
             {
-                reader = MembershipsGateway.SelectMemberships(name, password, connection, transaction);
+                reader = MembershipsGateway.Select(name, password, connection, transaction);
 
+                var membership = default(MembershipEntity);
+                KandaDbDataMapper.MapToObject(reader, membership);
+                
+                var user = new KandaMembershipUser(membership);
+
+                /*
                 var user = new MembershipUser (
                     Membership.Provider.GetType().FullName
                     , reader.GetString(@"Name")
@@ -42,6 +48,7 @@ namespace kkkkkkaaaaaa.Web.Repositories
                     , default(DateTime)
                     , default(DateTime)
                     , default(DateTime));
+                */
 
                 return user;
             }
@@ -58,9 +65,39 @@ namespace kkkkkkaaaaaa.Web.Repositories
 
         public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
+            entity.ID = MembershipsGateway.SelectNextID(connection, transaction);
+            entity.CreatedOn = MembershipsGateway.GetUtcDateTime(connection, transaction);
+
             var affected = MembershipsGateway.InsertMemberships(entity, connection, transaction);
 
             return (affected == 1);
         }
+
+        public bool Update(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
+        {
+            entity.UpdatedOn = MembershipsGateway.GetUtcDateTime(connection, transaction);
+
+            var affected = MembershipsGateway.UpdatedMemberships(entity, connection, transaction);
+
+            return (affected == 1);
+        }
+    }
+
+    public class KandaMembershipUser : MembershipUser
+    {
+        public KandaMembershipUser(MembershipEntity membership)
+        {
+            this._membership = membership;
+        }
+
+        public override string UserName
+        {
+            get
+            {
+                return this._membership.Name;
+            }
+        }
+
+        private readonly MembershipEntity _membership;
     }
 }

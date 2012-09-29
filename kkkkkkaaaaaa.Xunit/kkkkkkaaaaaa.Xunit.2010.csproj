@@ -69,25 +69,31 @@
     <Compile Include="Data\Common\KandaProviderFactoryFacts.cs" />
     <Compile Include="Data\KandaXunitProviderFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\Repositories\KandaRepositoryFacts.cs" />
+    <Compile Include="Web\Repositories\KandaXunitRepositoryFacts.cs" />
+    <Compile Include="Web\Repositories\MembershipsRepositoryFacts.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml" />
     <Reference Include="xunit">
       <HintPath>..\Externals\Xunit\xunit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\kkkkkkaaaaaa.Web\kkkkkkaaaaaa.Web.2010.csproj">
+      <Project>{CDA9A6B9-DE6B-4A59-8CAF-8F3CDE68467B}</Project>
+      <Name>kkkkkkaaaaaa.Web.2010</Name>
+    </ProjectReference>
     <ProjectReference Include="..\kkkkkkaaaaaa\kkkkkkaaaaaa.csproj">
       <Project>{24985E63-0FAF-4F7B-93DD-6764F0E3F6A4}</Project>
       <Name>kkkkkkaaaaaa</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Web\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

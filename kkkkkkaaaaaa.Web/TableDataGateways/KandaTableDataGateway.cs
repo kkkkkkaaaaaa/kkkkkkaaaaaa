@@ -12,22 +12,14 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connction, transaction);
 
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter(@"Result", DBNull.Value, ParameterDirection.ReturnValue));
-
-            command.CommandText = @"SelectUTCDateTime";
-
-            var scalar = command.ExecuteScalar();
-
-            /*
-            var result = this._factory.CreateParameter("Result", default(DateTime), ParameterDirection.ReturnValue);
+            var result = KandaTableDataGateway._factory.CreateParameter("Result", DBNull.Value, ParameterDirection.ReturnValue);
             command.Parameters.Add(result);
+
+            command.CommandText = @"GetUTCDateTime";
 
             command.ExecuteNonQuery();
 
-            Assert.True(default(DateTime) < (DateTime)result.Value);
-            */
-
-            return (DateTime) scalar;
+            return (DateTime)result.Value;
         }
 
         #region Protected members...

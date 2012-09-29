@@ -10,41 +10,33 @@ namespace kkkkkkaaaaaa.Data.Common
     {
         public static void MapToObject<T>(DbDataReader reader, T obj) where T : new()
         {
-            if (obj == null) { obj = new T(); }
+            if (!reader.Read()) { return; } // レコードなし
+            var schema = reader.GetSchemaTable();
 
+            if (obj == null) { obj = new T(); } // インスタンス作成
 
-            var type = typeof(T);
+            var type = typeof (T);
             var members = new List<MemberInfo>();
             members.AddRange(type.GetProperties(BindingFlags.Public));
             members.AddRange(type.GetFields(BindingFlags.Public));
 
-            if (!reader.Read()) { return; }
-            var schema = reader.GetSchemaTable();
-            
-            foreach(DataRow row in schema.Rows)
+            foreach (var member in members)
             {
-                var name = (string)row[@"Name"];
-                foreach (var member in members)
+                var attributes = (KandaMappingAttribute[]) member.GetCustomAttributes(typeof (KandaMappingAttribute), true);
+                foreach (var attribute in attributes)
                 {
-                    var attributes = (KandaMappingAttribute[])member.GetCustomAttributes(typeof (KandaMappingAttribute), true);
-                    foreach (var attribute in attributes)
-                    {
-                        if (attribute.MappingName != name) { continue; }
+                    if (attribute.Ignore) { continue; } // 無視
 
-                        if (member is PropertyInfo)
-                        {
-                            //((PropertyInfo)member).SetValue(obj, reader[name], null);
-                            ((PropertyInfo)member).SetValue(obj, reader[name], BindingFlags.Default, null, null, null);
-                        }
-                        else if (member is FieldInfo)
-                        {
-                            //((FieldInfo)member).SetValue(obj, reader[name]);
-                            ((FieldInfo)member).SetValue(obj, reader[name], BindingFlags.Default, null, null);
-                        }
-                        else
-                        {
-                            throw new Exception(string.Format(@"KandaDbDataMapper.MapToObject<T>()"));
-                        }
+                    foreach (DataRow row in schema.Rows)
+                    {
+                        var name = (string) row[@"Name"];
+
+                        if ((member.Name == name) || (attribute.MappingName == name)) { continue; } // 一致なし
+
+                        if (member is PropertyInfo) { ((PropertyInfo) member).SetValue(obj, reader[name], BindingFlags.Default, null, null, null); } // プロパティ
+                        else if (member is FieldInfo) { ((FieldInfo) member).SetValue(obj, reader[name], BindingFlags.Default, null, null); } // フィールドｒ
+                        else { throw new Exception(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
+
                         break;
                     }
                 }

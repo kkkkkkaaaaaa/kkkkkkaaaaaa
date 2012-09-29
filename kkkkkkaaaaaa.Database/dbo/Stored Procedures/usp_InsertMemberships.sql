@@ -14,7 +14,32 @@
 		, @values	VARCHAR(MAX)
 		, @error	INT
 
-	INSERT INTO
+	-- INSERT
+	SET @insert = 'INSERT'
+
+	-- INTO
+	SET @into = ' INTO Memberships ('
+		+ 'Name'
+		+ ', Password'
+		+ ', Enabled'
+		+ ', CreatedOn'
+		+ ', UpdatedOn'
+	IF 0 < @id	SET @into = @into + ', ID'
+
+	-- VALUES
+	SET @values = ') VALUES ('
+		+ '@name'
+		+ ', @password'
+		+ ', @enabled'
+		+ ', @createdOn'
+		+ ', @createdOn'
+	IF (0 < @id) SET @values = @values + ', @id'
+	SET @values = @values + ')'
+
+	EXECUTE (@insert + @into + @values)
+
+	/*
+	INSERT
 		Memberships (
 			ID
 			, Name
@@ -30,6 +55,7 @@
 			, @createdOn
 			, @createdOn
 		)
+	*/
 
 	-- 戻り値
 	SET @error = @@ERROR

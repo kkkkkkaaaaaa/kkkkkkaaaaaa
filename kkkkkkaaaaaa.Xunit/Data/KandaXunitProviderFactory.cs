@@ -7,7 +7,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
     /// <summary>
     /// 
     /// </summary>
-    public class KandaXunitProviderFactory : KandaProviderFactory
+    public class KandaXunitProviderFactory : KandaDbProviderFactory
     {
         /// <summary>
         /// Singleton インスタンス。
@@ -57,7 +57,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
         /// </summary>
         /// <param name="connection"></param>
         /// <returns></returns>
-        public KandaDataReader CreateReader(DbConnection connection)
+        public KandaDbDataReader CreateReader(DbConnection connection)
         {
             var reader = base.CreateReader(connection);
 
@@ -72,14 +72,14 @@ namespace kkkkkkaaaaaa.Xunit.Data
         /// コンストラクタ。
         /// </summary>
         /// <param name="factory"></param>
-        private KandaXunitProviderFactory(DbProviderFactory factory)
-            : base(factory)
+        private KandaXunitProviderFactory()
+            : base(DbProviderFactories.GetFactory(@"System.Data.SqlClient"))
         {
             this.DoNothing();
         }
 
         /// <summary></summary>
-        private readonly static KandaXunitProviderFactory _instance = new KandaXunitProviderFactory(KandaProviderFactories.GetFactory(@"System.Data.SqlClient"));
+        private readonly static KandaXunitProviderFactory _instance = new KandaXunitProviderFactory();
 
         #endregion
 

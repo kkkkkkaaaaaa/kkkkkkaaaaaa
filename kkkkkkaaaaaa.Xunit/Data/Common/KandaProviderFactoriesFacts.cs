@@ -15,7 +15,7 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
         [Fact()]
         public void GetFactoryClassesFact()
         {
-            var classes = KandaProviderFactories.GetFactoryClasses();
+            var classes = KandaDbProviderFactories.GetFactoryClasses();
 
             Assert.True(classes.Rows.Count > 0);
         }
@@ -23,12 +23,12 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
         [Fact()]
         public void GetFactoryByClassFact()
         {
-            var classes = KandaProviderFactories.GetFactoryClasses();
+            var classes = KandaDbProviderFactories.GetFactoryClasses();
 
             foreach (DataRow c in classes.Rows)
             {
-                var factory = KandaProviderFactories.GetFactory(c);
-                Assert.True(factory is KandaProviderFactory);
+                var factory = KandaDbProviderFactories.GetFactory(c);
+                Assert.True(factory is KandaDbProviderFactory);
             }
         }
 
@@ -36,11 +36,11 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
         public void GetFactoryByClassThrowsExceptionFact()
         {
             var factory = default(DbProviderFactory);
-            var classes = KandaProviderFactories.GetFactoryClasses();
+            var classes = KandaDbProviderFactories.GetFactoryClasses();
 
-            Assert.Throws<ArgumentNullException>(() => { factory = KandaProviderFactories.GetFactory(default(DataRow)); });
-            Assert.Throws<ConfigurationErrorsException>(() => { factory = KandaProviderFactories.GetFactory(classes.NewRow()); });
-            Assert.Throws<ConfigurationErrorsException>(() => { factory = KandaProviderFactories.GetFactory(new DataTable().NewRow()); });
+            Assert.Throws<ArgumentNullException>(() => { factory = KandaDbProviderFactories.GetFactory(default(DataRow)); });
+            Assert.Throws<ConfigurationErrorsException>(() => { factory = KandaDbProviderFactories.GetFactory(classes.NewRow()); });
+            Assert.Throws<ConfigurationErrorsException>(() => { factory = KandaDbProviderFactories.GetFactory(new DataTable().NewRow()); });
             Assert.True(factory == default(DbProviderFactory));
         }
 
@@ -48,16 +48,16 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
         public void GetFactoryByNameFact()
         {
             const string NAME = @"System.Data.SqlClient";
-            var factory = KandaProviderFactories.GetFactory(NAME);
+            var factory = KandaDbProviderFactories.GetFactory(NAME);
 
-            Assert.True(factory is KandaProviderFactory);
+            Assert.True(factory is KandaDbProviderFactory);
         }
 
         [Fact()]
         public void GetFactoryByNameThrowsExceptionFact()
         {
-            Assert.Throws<ArgumentNullException>(() => { var factory = KandaProviderFactories.GetFactory(default(DataRow)); });
-            Assert.Throws<ArgumentException>(() => { var factory = KandaProviderFactories.GetFactory(@"Not exist provider name."); });
+            Assert.Throws<ArgumentNullException>(() => { var factory = KandaDbProviderFactories.GetFactory(default(DataRow)); });
+            Assert.Throws<ArgumentException>(() => { var factory = KandaDbProviderFactories.GetFactory(@"Not exist provider name."); });
         }
     }
 }

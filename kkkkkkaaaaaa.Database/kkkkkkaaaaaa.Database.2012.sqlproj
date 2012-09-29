@@ -136,7 +136,7 @@
     <Build Include="dbo\Views\AuthorizationView.sql" />
     <Build Include="dbo\Stored Procedures\usp_TruncateUsers.sql" />
     <Build Include="dbo\Stored Procedures\usp_DeleteUsers.sql" />
-    <Build Include="dbo\Functions\SelectUTCDateTime.sql" />
+    <Build Include="dbo\Functions\GetUTCDateTime.sql" />
     <Build Include="dbo\Stored Procedures\usp_SelectMemberships.sql" />
     <Build Include="dbo\Stored Procedures\usp_InsertMemberships.sql" />
     <Build Include="dbo\Tables\UserMemberships.sql" />

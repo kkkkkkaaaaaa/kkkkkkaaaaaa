@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kkkkkkaaaaaa.NUnit.2010", "kkkkkkaaaaaa.NUnit\kkkkkkaaaaaa.NUnit.2010.csproj", "{974288D2-2847-437D-B863-55B652D46821}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kkkkkkaaaaaa.Xunit.2010", "kkkkkkaaaaaa.Xunit\kkkkkkaaaaaa.Xunit.2010.csproj", "{59AEB377-0AAA-486E-BC7E-3BA5BC5AED09}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kkkkkkaaaaaa", "kkkkkkaaaaaa\kkkkkkaaaaaa.csproj", "{24985E63-0FAF-4F7B-93DD-6764F0E3F6A4}"
@@ -21,18 +19,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{974288D2-2847-437D-B863-55B652D46821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{974288D2-2847-437D-B863-55B652D46821}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{974288D2-2847-437D-B863-55B652D46821}.Debug|x64.ActiveCfg = Debug|x64
-		{974288D2-2847-437D-B863-55B652D46821}.Debug|x64.Build.0 = Debug|x64
-		{974288D2-2847-437D-B863-55B652D46821}.Debug|x86.ActiveCfg = Debug|x86
-		{974288D2-2847-437D-B863-55B652D46821}.Debug|x86.Build.0 = Debug|x86
-		{974288D2-2847-437D-B863-55B652D46821}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{974288D2-2847-437D-B863-55B652D46821}.Release|Any CPU.Build.0 = Release|Any CPU
-		{974288D2-2847-437D-B863-55B652D46821}.Release|x64.ActiveCfg = Release|x64
-		{974288D2-2847-437D-B863-55B652D46821}.Release|x64.Build.0 = Release|x64
-		{974288D2-2847-437D-B863-55B652D46821}.Release|x86.ActiveCfg = Release|x86
-		{974288D2-2847-437D-B863-55B652D46821}.Release|x86.Build.0 = Release|x86
 		{59AEB377-0AAA-486E-BC7E-3BA5BC5AED09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{59AEB377-0AAA-486E-BC7E-3BA5BC5AED09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59AEB377-0AAA-486E-BC7E-3BA5BC5AED09}.Debug|x64.ActiveCfg = Debug|x64

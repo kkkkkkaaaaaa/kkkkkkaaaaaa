@@ -11,7 +11,7 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
         public void ExecuteReaderFact()
         {
             var connection = default(DbConnection);
-            var reader = default (KandaDataReader);
+            var reader = default (KandaDbDataReader);
 
             try
             {

@@ -20,7 +20,7 @@ namespace kkkkkkaaaaaa.Xunit.Database
                 connection.Open();
 
                 command = this._factory.CreateCommand(connection);
-                command.CommandText = @"SelectUTCDateTime";
+                command.CommandText = @"GetUTCDateTime";
 
                 var result = this._factory.CreateParameter("Result", default(DateTime), ParameterDirection.ReturnValue);
                 command.Parameters.Add(result);

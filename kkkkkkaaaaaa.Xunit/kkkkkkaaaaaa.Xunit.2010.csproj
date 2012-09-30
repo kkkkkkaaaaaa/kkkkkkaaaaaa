@@ -61,7 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\AuthorizationsFacts.cs" />
-    <Compile Include="Database\MembershipsFacts.cs" />
     <Compile Include="Database\RolesFacts.cs" />
     <Compile Include="Database\SelectUTCDateTimeFacts.cs" />
     <Compile Include="Data\Common\KandaDataReaderFacts.cs" />
@@ -72,6 +71,7 @@
     <Compile Include="Web\Repositories\KandaRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\KandaXunitRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\MembershipsRepositoryFacts.cs" />
+    <Compile Include="Web\Repositories\UsersRepositoryFacts.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -22,6 +22,27 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
             return (DateTime)result.Value;
         }
 
+        public static long SelectNextID(string table, DbConnection connection, DbTransaction transaction)
+        {
+            return 0L;
+        }
+
+        public static int Truncate(string table, DbConnection connection, DbTransaction transaction)
+        {
+            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
+
+            command.CommandText = @"usp_TruncateTable";
+
+            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@table", table));
+
+            var result = KandaTableDataGateway._factory.CreateParameter("Result", DBNull.Value, ParameterDirection.ReturnValue);
+            command.Parameters.Add(result);
+
+            return (int) result.Value;
+        }
+
+
+
         public static void SetIdentityInsert(string table, bool on, DbConnection connection, DbTransaction transaction = null)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);

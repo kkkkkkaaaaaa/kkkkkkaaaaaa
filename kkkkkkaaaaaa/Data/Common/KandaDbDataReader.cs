@@ -45,7 +45,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         public DbParameterCollection Parameters
         {
-            get { return this._command.Parameters; }
+            get { return this.InnerCommand.Parameters; }
         }
 
         /// <summary>
@@ -53,8 +53,8 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         public string CommandText
         {
-            get { return this._command.CommandText; }
-            set { this._command.CommandText = value; }
+            get { return this.InnerCommand.CommandText; }
+            set { this.InnerCommand.CommandText = value; }
         }
 
         /// <summary>
@@ -62,8 +62,8 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         public CommandType CommandType
         {
-            get { return this._command.CommandType; }
-            set { this._command.CommandType = value; }
+            get { return this.InnerCommand.CommandType; }
+            set { this.InnerCommand.CommandType = value; }
         }
 
 
@@ -74,7 +74,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public DbDataReader ExecuteReader(CommandBehavior behavior)
         {
-            this._reader = this._command.ExecuteReader(behavior);
+            this._reader = this.InnerCommand.ExecuteReader(behavior);
 
             return this;
         }
@@ -292,7 +292,7 @@ namespace kkkkkkaaaaaa.Data.Common
         {
             if (disposing)
             {
-                if (this._command != null) { this._command.Dispose(); }
+                if (this.InnerCommand != null) { this.InnerCommand.Dispose(); }
                 if (this._reader != null) { this._reader.Dispose(); }
             }
 
@@ -385,7 +385,12 @@ namespace kkkkkkaaaaaa.Data.Common
         {
             throw new NotImplementedException();
         }
-        
+
+
+        internal DbCommand InnerCommand
+        {
+            get { return this._command; }
+        }
 
         #region Private mebers..
 

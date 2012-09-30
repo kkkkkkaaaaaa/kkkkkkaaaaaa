@@ -5,6 +5,7 @@
 	, @givenName	VARCHAR(1024)
 	, @description	VARCHAR(MAX)
 	, @enabled		BIT
+	, @createdOn	DateTime2(7)
 	, @updatedOn	DateTime2(7)
 	, @id			VARCHAR(MAX)
 )

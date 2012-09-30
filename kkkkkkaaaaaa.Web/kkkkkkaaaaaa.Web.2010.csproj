@@ -44,12 +44,15 @@
   <ItemGroup>
     <Compile Include="DataTransferObjects\KandaMembershipUser.cs" />
     <Compile Include="DataTransferObjects\MembershipEntity.cs" />
+    <Compile Include="DataTransferObjects\UserEntity.cs" />
     <Compile Include="Data\KandaProviderFactory.cs" />
     <Compile Include="Repositories\KandaRepository.cs" />
     <Compile Include="Repositories\MembershipsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\UsersRepository.cs" />
     <Compile Include="TableDataGateways\KandaTableDataGateway.cs" />
     <Compile Include="TableDataGateways\MembershipsGateway.cs" />
+    <Compile Include="TableDataGateways\UsersGateway.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DomainModels\" />

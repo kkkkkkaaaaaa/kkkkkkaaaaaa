@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Data.Common;
 using System.Web.Security;
 using kkkkkkaaaaaa.Data.Common;
@@ -8,7 +8,7 @@ using kkkkkkaaaaaa.Web.TableDataGateways;
 namespace kkkkkkaaaaaa.Web.Repositories
 {
     /// <summary>
-    /// 
+    /// Memberships の Repository です。
     /// </summary>
     public class MembershipsRepository : KandaRepository
     {
@@ -38,6 +38,13 @@ namespace kkkkkkaaaaaa.Web.Repositories
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public MembershipEntity Find(long id, DbConnection connection, DbTransaction transaction)
         {
             var reader = default(KandaDbDataReader);
@@ -54,11 +61,23 @@ namespace kkkkkkaaaaaa.Web.Repositories
             }
         }
 
-        public MembershipUserCollection Search(/* SearchMembershipsCriteria criteria */)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<MembershipUser> Search(/* SearchMembershipsCriteria criteria */)
         {
-            return new MembershipUserCollection();
+            return default(IEnumerable<MembershipUser>);
+            //return new MembershipUserCollection();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
             if (entity.ID <= 0) { entity.ID = MembershipsGateway.SelectNextID(connection, transaction); }
@@ -68,20 +87,40 @@ namespace kkkkkkaaaaaa.Web.Repositories
             return (affected == 1);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Update(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            entity.UpdatedOn = MembershipsGateway.GetUtcDateTime(connection, transaction);
-
             var affected = MembershipsGateway.Update(entity, connection, transaction);
 
             return (affected == 1);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connction"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Truncate(DbConnection connction, DbTransaction transaction)
         {
-            var count = MembershipsGateway.Truncate(connction, transaction);
+            var error = MembershipsGateway.Truncate(connction, transaction);
 
-            return (0 == count);
+            return (error == 0);
+        }
+
+
+        /// <summary>
+        /// コンストラクタ―。
+        /// </summary>
+        internal MembershipsRepository()
+        {
+            this.DoNothing();
         }
     }
 }

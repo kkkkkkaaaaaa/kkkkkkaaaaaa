@@ -49,11 +49,6 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
             return (long)scalar;
         }
 
-        public static void SetIdentityInsert(bool on, DbConnection connection, DbTransaction transaction)
-        {
-            KandaTableDataGateway.SetIdentityInsert(@"Memberships", on, connection, transaction);
-        }
-
         public static int Insert(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
@@ -64,11 +59,15 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
             command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@name", entity.Name));
             command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@password", entity.Password));
             command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@enabled", entity.Enabled));
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@createdOn", entity.CreatedOn, DbType.DateTime2));
+            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@createdOn", entity.CreatedOn));
+            //command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@createdOn", entity.CreatedOn, DbType.DateTime2));
 
-            var affected = command.ExecuteNonQuery();
+            var result = KandaTableDataGateway._factory.CreateParameter(@"Result", DbType.Int32, 8, ParameterDirection.ReturnValue, DBNull.Value);
+            command.Parameters.Add(result);
 
-            return affected;
+            command.ExecuteNonQuery();
+            
+            return (int)result.Value;
         }
 
         public static int Update(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
@@ -79,14 +78,16 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
 
             command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@password", entity.Password));
             command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@enabled", entity.Enabled));
-            //command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@updatedOn", entity.UpdatedOn));
             command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@updatedOn", entity.UpdatedOn, DbType.DateTime2));
 
             command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@id", entity.ID));
 
-            var affected = command.ExecuteNonQuery();
+            var result = KandaTableDataGateway._factory.CreateParameter(@"Result", DBNull.Value, ParameterDirection.Output);
+            command.Parameters.Add(result);
 
-            return affected;
+            command.ExecuteNonQuery();
+
+            return (int)result.Value;
         }
 
         internal static int Truncate(DbConnection connection, DbTransaction transaction)
@@ -95,7 +96,7 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
 
             command.CommandText = @"usp_TruncateMemberships";
 
-            var result = KandaTableDataGateway._factory.CreateParameter("Result", DBNull.Value, ParameterDirection.ReturnValue);
+            var result = KandaTableDataGateway._factory.CreateParameter(@"Result", DBNull.Value, ParameterDirection.ReturnValue);
             command.Parameters.Add(result);
 
             command.ExecuteNonQuery();

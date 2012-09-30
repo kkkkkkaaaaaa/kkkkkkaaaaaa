@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.Common;
-using System.Data.SqlClient;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
@@ -23,6 +22,19 @@ namespace kkkkkkaaaaaa.Data.Common
             return command;
         }
 
+        public DbParameter CreateParameter(string name, DbType dbType, int size, ParameterDirection direction, object value)
+        {
+            var parameter = this.CreateParameter();
+
+            parameter.ParameterName = name;
+            parameter.DbType = dbType;
+            parameter.Size = size;
+            parameter.Direction = direction;
+            parameter.Value = value;
+
+            return parameter;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -31,13 +43,14 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <param name="type"></param>
         /// <param name="direction"></param>
         /// <returns></returns>
-        public DbParameter CreateParameter(string name, object value, DbType type, ParameterDirection direction)
+        public DbParameter CreateParameter(string name, object value, DbType type, int size, ParameterDirection direction)
         {
             var parameter = this.CreateParameter();
 
             parameter.ParameterName = name;
             parameter.Value = value;
             parameter.DbType = type;
+            parameter.Size = size;
             parameter.Direction = direction;
 
             return parameter;
@@ -51,7 +64,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public DbParameter CreateParameter(string name, object value)
         {
-            return this.CreateParameter(name, value, default(DbType), ParameterDirection.Input);
+            return this.CreateParameter(name, value, default(DbType), default(int), ParameterDirection.Input);
         }
 
         /// <summary>
@@ -63,7 +76,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public DbParameter CreateParameter(string name, object value, ParameterDirection direction)
         {
-            return this.CreateParameter(name, value, default(DbType), direction);
+            return this.CreateParameter(name, value, default(DbType), default(int), direction);
         }
 
         /// <summary>
@@ -75,7 +88,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public DbParameter CreateParameter(string name, object value, DbType type)
         {
-            return this.CreateParameter(name, value, type, ParameterDirection.Input);
+            return this.CreateParameter(name, value, type, default(int), ParameterDirection.Input);
         }
 
         /// <summary>
@@ -85,7 +98,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public DbParameter CreateParameter(string name)
         {
-            return this.CreateParameter(name, DBNull.Value, default(DbType), ParameterDirection.Input);
+            return this.CreateParameter(name, DBNull.Value, default(DbType), default(int), ParameterDirection.Input);
         }
 
         /*

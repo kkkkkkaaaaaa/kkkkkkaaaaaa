@@ -1,14 +1,14 @@
 ﻿CREATE PROCEDURE usp_InsertUsers (
 	-- パラメーター
-	@id				BIGINT
-	, @family_name	NVARCHAR(1024)
-	, @middle_name	NVARCHAR(1024)
-	, @given_name	NVARCHAR(1024)
-	, @description	NVARCHAR(MAX)
-	, @enabled		BIT
-	, @created_on	DATETIME2(7)
+	@id					BIGINT
+	, @familyName		NVARCHAR(1024)
+	, @givenName		NVARCHAR(1024)
+	, @additionalName	NVARCHAR(1024)
+	, @description		NVARCHAR(MAX)
+	, @enabled			BIT
+	, @createdOn		DATETIME2(7)
+	, @updatedOn		DATETIME2(7)
 ) AS
-
 	-- 変数
 	DECLARE
 		@insert		VARCHAR(MAX)
@@ -21,27 +21,28 @@
 
 	-- INTO
 	SET @into = ' INTO Users ('
-		+ 'ID'
-		+ ', FamilyName'
-		+ ', MiddleName'
+		+ 'FamilyName'
 		+ ', GivenName'
+		+ ', AdditionalName'
 		+ ', Description'
 		+ ', Enabled'
-		+ ', UpdatedOn'
 		+ ', CreatedOn'
-		+ ')'
+		+ ', UpdatedOn'
+	IF (0 < @id)	SET @into = @into + ', ID'
 
 	-- VALUES
-	SET @values = ' VALUES ('
-		+ '@id'
-		+ ', @familyName'
-		+ ', @middleName'
-		+ ', @givenName'
-		+ ', @description'
-		+ ', @enabled'
-		+ ', @createdOn'
-		+ ', @createdOn'
-		+ ')'
+	SET @values = ') VALUES ('
+		+ '''' + @familyName + ''''
+		+ ', ''' + @givenName + ''''
+		+ ', ''' + @additionalName + ''''
+		+ ', ''' + @description + ''''
+		+ ', ' + CONVERT(NVARCHAR, @enabled) + ''
+		+ ', ''' + CONVERT(NVARCHAR, @createdOn) + ''''
+		+ ', ''' + CONVERT(NVARCHAR, @createdOn) + ''''
+
+	IF (0 < @id)	SET @values = @values + ', ' + CONVERT(NVARCHAR, @id)
+
+	SET @values = @values + ')'
 
 	-- 実行
 	EXECUTE (@insert + @into + @values)

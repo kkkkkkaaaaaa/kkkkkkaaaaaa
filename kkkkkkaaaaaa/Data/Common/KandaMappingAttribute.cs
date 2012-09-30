@@ -8,12 +8,13 @@ namespace kkkkkkaaaaaa.Data.Common
         public KandaMappingAttribute(string mappingName)
         {
             this.MappingName = mappingName;
+            this.Description = this.MappingName;
         }
 
         public string MappingName { get; protected set; }
 
-        public bool Ignore = false;
+        public bool Ignore { get; set; }
 
-        internal string Description = @"";
+        public string Description { get; set; }
     }
 }

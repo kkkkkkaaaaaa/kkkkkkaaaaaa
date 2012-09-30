@@ -68,7 +68,7 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
         }
 
         [Fact()]
-        public void InsertFact()
+        public void CreateFact()
         {
             var connction = default(DbConnection);
             var transaction = default(DbTransaction);

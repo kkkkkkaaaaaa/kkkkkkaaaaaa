@@ -12,52 +12,36 @@
 		@insert		VARCHAR(MAX)
 		, @into		VARCHAR(MAX)
 		, @values	VARCHAR(MAX)
-		, @error	INT
+		, @count	INT
 
 	-- INSERT
 	SET @insert = 'INSERT'
-
+	
 	-- INTO
 	SET @into = ' INTO Memberships ('
 		+ 'Name'
-		+ ', Password'
-		+ ', Enabled'
+		+ ', [Password]'
+		+ ', [Enabled]'
 		+ ', CreatedOn'
 		+ ', UpdatedOn'
-	IF 0 < @id	SET @into = @into + ', ID'
+
+	IF (0 < @id)	SET @into = @into + ', ID'
 
 	-- VALUES
 	SET @values = ') VALUES ('
-		+ '@name'
-		+ ', @password'
-		+ ', @enabled'
-		+ ', @createdOn'
-		+ ', @createdOn'
-	IF (0 < @id) SET @values = @values + ', @id'
+		+ '''' + @name + ''''
+		+ ', ''' + @password + ''''
+		+ ', ' + CONVERT(NVARCHAR, @enabled)
+		+ ', ''' + CONVERT(NVARCHAR, @createdOn, 121) + ''''
+		+ ', ''' + CONVERT(NVARCHAR, @createdOn, 121) + ''''
+		
+	IF (0 < @id)	SET @values = @values + ', ' + CONVERT(NVARCHAR, @id)
+
 	SET @values = @values + ')'
 
 	EXECUTE (@insert + @into + @values)
 
-	/*
-	INSERT
-		Memberships (
-			ID
-			, Name
-			, [Password]
-			, [Enabled]
-			, CreatedOn
-			, UpdatedOn
-		) VALUES (
-			@id
-			, @name
-			, @password
-			, @enabled
-			, @createdOn
-			, @createdOn
-		)
-	*/
-
 	-- 戻り値
-	SET @error = @@ERROR
+	SET @count = @@ROWCOUNT
 
-	RETURN @error
+	RETURN @count

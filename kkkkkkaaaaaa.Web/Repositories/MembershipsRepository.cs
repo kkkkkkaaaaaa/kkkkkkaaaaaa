@@ -65,10 +65,9 @@ namespace kkkkkkaaaaaa.Web.Repositories
 
         public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            entity.ID = MembershipsGateway.SelectNextID(connection, transaction);
-            entity.CreatedOn = MembershipsGateway.GetUtcDateTime(connection, transaction);
+            if (entity.ID <= 0) { entity.ID = MembershipsGateway.SelectNextID(connection, transaction); }
 
-            var affected = MembershipsGateway.InsertMemberships(entity, connection, transaction);
+            var affected = MembershipsGateway.Insert(entity, connection, transaction);
 
             return (affected == 1);
         }
@@ -77,27 +76,16 @@ namespace kkkkkkaaaaaa.Web.Repositories
         {
             entity.UpdatedOn = MembershipsGateway.GetUtcDateTime(connection, transaction);
 
-            var affected = MembershipsGateway.UpdatedMemberships(entity, connection, transaction);
+            var affected = MembershipsGateway.Update(entity, connection, transaction);
 
             return (affected == 1);
         }
-    }
 
-    public class KandaMembershipUser : MembershipUser
-    {
-        public KandaMembershipUser(MembershipEntity membership)
+        public bool Truncate(DbConnection connction, DbTransaction transaction)
         {
-            this._membership = membership;
-        }
+            var count = MembershipsGateway.Truncate(connction, transaction);
 
-        public override string UserName
-        {
-            get
-            {
-                return this._membership.Name;
-            }
+            return (0 == count);
         }
-
-        private readonly MembershipEntity _membership;
     }
 }

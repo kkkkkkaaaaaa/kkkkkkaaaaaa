@@ -155,6 +155,8 @@
     <Build Include="dbo\Stored Procedures\usp_InsertUserAttributes.sql" />
     <Build Include="dbo\Stored Procedures\usp_UpdateUserAttributes.sql" />
     <Build Include="dbo\Stored Procedures\usp_UpdateAuthorizations.sql" />
+    <Build Include="dbo\Stored Procedures\usp_TruncateMemberships.sql" />
+    <Build Include="dbo\Stored Procedures\usp_SelectNextMembershipID.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="kkkkkkaaaaaa.Database.2012.refactorlog" />

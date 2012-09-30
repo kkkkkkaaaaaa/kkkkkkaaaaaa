@@ -42,6 +42,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTransferObjects\KandaMembershipUser.cs" />
     <Compile Include="DataTransferObjects\MembershipEntity.cs" />
     <Compile Include="Data\KandaProviderFactory.cs" />
     <Compile Include="Repositories\KandaRepository.cs" />
@@ -75,7 +76,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52156</DevelopmentServerPort>
+          <DevelopmentServerPort>64932</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

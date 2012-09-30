@@ -25,18 +25,19 @@ namespace kkkkkkaaaaaa.Data.Common
             {
                 var attributes = (KandaMappingAttribute[]) member.GetCustomAttributes(typeof (KandaMappingAttribute), true);
                 foreach (var attribute in attributes)
-                //foreach (var attribute in attributes.Where((attribute) => { return !attribute.Ignore; }))
+                // foreach (var attribute in attributes.Where((attribute) => { return !attribute.Ignore; })) // LINQ
                 {
                     if (attribute.Ignore) { continue; }
 
                     foreach (DataRow row in schema.Rows)
+                    // foreach (var name in schema.Rows.Cast<DataRow>().Select(row => (string)row[@"ColumnName"]).Where(name => (member.Name != name) && (attribute.MappingName != name))) // LINQ
                     {
-                        var name = (string) row[@"Name"];
+                        var name = (string)row[@"ColumnName"];
 
                         if ((member.Name == name) || (attribute.MappingName == name)) { continue; } // 一致なし
 
                         if (member is PropertyInfo) { ((PropertyInfo) member).SetValue(obj, reader[name], BindingFlags.Default, null, null, null); } // プロパティ
-                        else if (member is FieldInfo) { ((FieldInfo) member).SetValue(obj, reader[name], BindingFlags.Default, null, null); } // フィールドｒ
+                        else if (member is FieldInfo) { ((FieldInfo) member).SetValue(obj, reader[name], BindingFlags.Default, null, null); } // フィールド
                         else { throw new Exception(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
 
                         break;

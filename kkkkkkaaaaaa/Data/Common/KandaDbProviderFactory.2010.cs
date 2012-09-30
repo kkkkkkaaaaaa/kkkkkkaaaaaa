@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.Common;
+using System.Data.SqlClient;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
@@ -26,18 +27,56 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="name"></param>
         /// <param name="value"></param>
-        /// <param name="direction"></param>
         /// <returns></returns>
-        public DbParameter CreateParameter(string name, object value, ParameterDirection direction = ParameterDirection.Input)
+        public DbParameter CreateParameter(string name, object value)
+        {
+            return this.CreateParameter(name, value, default(DbType), ParameterDirection.Input);
+        }
+
+        public DbParameter CreateParameter(string name, object value, ParameterDirection direction)
+        {
+            return this.CreateParameter(name, value, default(DbType), direction);
+        }
+
+        public DbParameter CreateParameter(string name, object value, DbType type)
+        {
+            return this.CreateParameter(name, value, type, ParameterDirection.Input);
+        }
+
+        public DbParameter CreateParameter(string name, object value, DbType type, ParameterDirection direction)
         {
             var parameter = this.CreateParameter();
 
             parameter.ParameterName = name;
             parameter.Value = value;
+            parameter.DbType = type;
             parameter.Direction = direction;
 
             return parameter;
         }
+
+        /*
+        /// <summary>
+        /// DbParameter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        /// <param name="type"></param>
+        /// <param name="direction"></param>
+        /// <returns></returns>
+        public DbParameter CreateParameter(string name, object value, DbType type = DbType.Object, ParameterDirection direction = ParameterDirection.Input)
+        {
+
+            var parameter = this.CreateParameter();
+
+            parameter.ParameterName = name;
+            parameter.Value = value;
+            parameter.DbType = type;
+            parameter.Direction = direction;
+
+            return parameter;
+        }
+        */
 
         /// <summary>
         /// DbDataReader クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。

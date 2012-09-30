@@ -44,12 +44,13 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <param name="value"></param>
         /// <param name="direction"></param>
         /// <returns></returns>
-        public DbParameter CreateParameter(string name, object value, ParameterDirection direction)
+        public DbParameter CreateParameter(string name, object value, DbType type, ParameterDirection direction)
         {
             var parameter = this.CreateParameter();
 
             parameter.ParameterName = name;
             parameter.Value = value;
+            parameter.DbType = type;
             parameter.Direction = direction;
 
             return parameter;

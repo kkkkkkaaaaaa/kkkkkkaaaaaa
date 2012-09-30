@@ -22,6 +22,18 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
             return (DateTime)result.Value;
         }
 
+        public static void SetIdentityInsert(string table, bool on, DbConnection connection, DbTransaction transaction = null)
+        {
+            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
+
+            command.CommandType = CommandType.Text;
+
+            const string SET = @"SET IDENTITY_INSERT {0} {1}";
+            command.CommandText = string.Format(SET, table, (on ? @"ON" : @"OFF"));
+
+            command.ExecuteNonQuery();
+        }
+
         #region Protected members...
 
         /// <summary>

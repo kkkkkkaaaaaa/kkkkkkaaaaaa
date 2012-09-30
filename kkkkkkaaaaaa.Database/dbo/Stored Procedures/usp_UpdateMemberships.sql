@@ -2,6 +2,7 @@
 	-- パラメーター
 	@password		VARCHAR(128)
 	, @enabled		BIT
+	, @updatedOn	DATETIME2
 	, @id			BIGINT
 AS
 	-- 変数
@@ -12,8 +13,9 @@ AS
 	UPDATE
 		Memberships
 	SET
-		[Password]	= @password
+		[Password]		= @password
 		, [Enabled]		= @enabled
+		, UpdatedOn		= @updatedOn
 	WHERE
 		ID				= @id
 

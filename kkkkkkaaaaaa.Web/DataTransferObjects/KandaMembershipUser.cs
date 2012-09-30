@@ -6,7 +6,7 @@ namespace kkkkkkaaaaaa.Web.DataTransferObjects
     public class KandaMembershipUser : MembershipUser
     {
         public KandaMembershipUser(MembershipEntity membership)
-            : base(Membership.Provider.GetType().FullName, membership.Name, membership.ID, @"", @"", @"", true, false, membership.CreatedOn, default(DateTime), default(DateTime), default(DateTime), default(DateTime))
+            : base(Membership.Provider.Name, membership.Name, membership.ID, @"", @"", @"", membership.Enabled, false, membership.CreatedOn, default(DateTime), default(DateTime), default(DateTime), default(DateTime))
         {
             this.doNothing();
         }

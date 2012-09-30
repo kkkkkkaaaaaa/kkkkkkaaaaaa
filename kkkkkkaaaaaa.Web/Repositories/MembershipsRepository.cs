@@ -28,29 +28,25 @@ namespace kkkkkkaaaaaa.Web.Repositories
             {
                 reader = MembershipsGateway.Select(name, password, connection, transaction);
 
-                var membership = default(MembershipEntity);
-                KandaDbDataMapper.MapToObject(reader, membership);
+                var membership = KandaDbDataMapper.MapToObject<MembershipEntity>(reader);
                 
-                var user = new KandaMembershipUser(membership);
+                return new KandaMembershipUser(membership);
+            }
+            finally
+            {
+                if (reader != null) { reader.Close(); }
+            }
+        }
 
-                /*
-                var user = new MembershipUser (
-                    Membership.Provider.GetType().FullName
-                    , reader.GetString(@"Name")
-                    , reader.GetInt64(@"ID")
-                    , default(string)
-                    , default(string)
-                    , reader.GetString(@"Description")
-                    , default(bool)
-                    , default(bool)
-                    , reader.GetDateTime(@"CreatedOn")
-                    , default(DateTime)
-                    , default(DateTime)
-                    , default(DateTime)
-                    , default(DateTime));
-                */
+        public MembershipEntity Find(long id, DbConnection connection, DbTransaction transaction)
+        {
+            var reader = default(KandaDbDataReader);
 
-                return user;
+            try
+            {
+                reader = MembershipsGateway.Select(id, connection, transaction);
+                
+                return KandaDbDataMapper.MapToObject<MembershipEntity>(reader);
             }
             finally
             {

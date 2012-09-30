@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 
@@ -14,12 +15,32 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public virtual DbCommand CreateCommand(DbConnection connection, DbTransaction transaction = null)
         {
-            var command = connection.CreateCommand();
+            var command = this.CreateCommand();
 
             command.Connection = connection;
             command.Transaction = transaction;
 
             return command;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        /// <param name="type"></param>
+        /// <param name="direction"></param>
+        /// <returns></returns>
+        public DbParameter CreateParameter(string name, object value, DbType type, ParameterDirection direction)
+        {
+            var parameter = this.CreateParameter();
+
+            parameter.ParameterName = name;
+            parameter.Value = value;
+            parameter.DbType = type;
+            parameter.Direction = direction;
+
+            return parameter;
         }
 
         /// <summary>
@@ -33,26 +54,38 @@ namespace kkkkkkaaaaaa.Data.Common
             return this.CreateParameter(name, value, default(DbType), ParameterDirection.Input);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        /// <param name="direction"></param>
+        /// <returns></returns>
         public DbParameter CreateParameter(string name, object value, ParameterDirection direction)
         {
             return this.CreateParameter(name, value, default(DbType), direction);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public DbParameter CreateParameter(string name, object value, DbType type)
         {
             return this.CreateParameter(name, value, type, ParameterDirection.Input);
         }
 
-        public DbParameter CreateParameter(string name, object value, DbType type, ParameterDirection direction)
+        /// <summary>
+        /// DbParameter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public DbParameter CreateParameter(string name)
         {
-            var parameter = this.CreateParameter();
-
-            parameter.ParameterName = name;
-            parameter.Value = value;
-            parameter.DbType = type;
-            parameter.Direction = direction;
-
-            return parameter;
+            return this.CreateParameter(name, DBNull.Value, default(DbType), ParameterDirection.Input);
         }
 
         /*
@@ -86,12 +119,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public virtual KandaDbDataReader CreateReader(DbConnection connection, DbTransaction transaction = null)
         {
-            var command = connection.CreateCommand();
-            
-            // var command = this.CreateCommand();
-
-            // command.Connection = connection;
-            // command.Transaction = transaction;
+            var command = this.CreateCommand(connection, transaction);
 
             return new KandaDbDataReader(command);
         }

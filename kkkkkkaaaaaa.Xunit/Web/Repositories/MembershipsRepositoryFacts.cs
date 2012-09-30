@@ -10,7 +10,7 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
     public class MembershipsRepositoryFacts : KandaRepositoryFacts
     {
         [Fact()]
-        public void FindFact()
+        public void FindByMembershipFact()
         {
             var connction = default(DbConnection);
             var transaction = default(DbTransaction);
@@ -18,12 +18,104 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
             try
             {
                 connction = this._factory.CreateConnection();
+                connction.Open();
+
                 transaction = connction.BeginTransaction(IsolationLevel.Serializable);
 
                 var repository = new MembershipsRepository();
-                var entity = repository.Find(@"System", @"", connction, transaction);
 
-                Assert.Equal(1, entity.ProviderUserKey);
+                var id = long.MaxValue;
+                var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                Assert.True(repository.Create(new MembershipEntity() { ID = id, Name = @"System", Password = @"", Enabled = true, CreatedOn = createdOn, }, connction, transaction));
+
+                var user = repository.Find(@"System", @"", connction, transaction);
+                Assert.Equal(1L, user.ProviderUserKey);
+            }
+            finally
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                if (connction != null) { connction.Close(); }
+            }
+        }
+
+        [Fact()]
+        public void FindByIDFact()
+        {
+            var connction = default(DbConnection);
+            var transaction = default(DbTransaction);
+
+            try
+            {
+                connction = this._factory.CreateConnection();
+                connction.Open();
+
+                transaction = connction.BeginTransaction(IsolationLevel.Serializable);
+
+                var repository = new MembershipsRepository();
+
+                var id = long.MaxValue;
+                var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                Assert.True(repository.Create(new MembershipEntity() { ID = id, Name = @"System", Password = @"", Enabled = true, CreatedOn = createdOn, }, connction, transaction));
+
+                var entity = repository.Find(1L, connction, transaction);
+                Assert.Equal(1L, entity.ID);
+            }
+            finally
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                if (connction != null) { connction.Close(); }
+            }
+        }
+
+        [Fact()]
+        public void InsertFact()
+        {
+            var connction = default(DbConnection);
+            var transaction = default(DbTransaction);
+
+            try
+            {
+                connction = this._factory.CreateConnection();
+                connction.Open();
+
+                transaction = connction.BeginTransaction(IsolationLevel.Serializable);
+
+                var repository = new MembershipsRepository();
+
+                var id = long.MaxValue;
+                var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                Assert.True(repository.Create(new MembershipEntity() { ID = id, Name = @"System", Password = @"", Enabled = true, CreatedOn = createdOn, }, connction, transaction));
+                Assert.Equal(id, repository.Find(id, connction, transaction).ID);
+            }
+            finally
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                if (connction != null) { connction.Close(); }
+            }
+        }
+
+        [Fact()]
+        public void UpdateFact()
+        {
+            var connction = default(DbConnection);
+            var transaction = default(DbTransaction);
+
+            try
+            {
+                connction = this._factory.CreateConnection();
+                connction.Open();
+
+                transaction = connction.BeginTransaction(IsolationLevel.Serializable);
+
+                var repository = new MembershipsRepository();
+
+                var id = long.MaxValue;
+                var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                repository.Create(new MembershipEntity() { ID = id, Name = @"System", Password = @"", Enabled = true, CreatedOn = createdOn, }, connction, transaction);
+
+                var updatedOn = repository.GetUtcDateTime(connction, transaction);
+                Assert.True(repository.Update(new MembershipEntity() { ID = id, Name = @"System", Password = @"", Enabled = true, UpdatedOn = updatedOn, }, connction, transaction));
+                Assert.True(createdOn < repository.Find(id, connction, transaction).UpdatedOn);
             }
             finally
             {
@@ -63,6 +155,11 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                     Assert.True(true);
                 }
                 
+            }
+            catch
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                throw;
             }
             finally
             {

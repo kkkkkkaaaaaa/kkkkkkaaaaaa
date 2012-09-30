@@ -9,41 +9,55 @@ namespace kkkkkkaaaaaa.Data.Common
 {
     public class KandaDbDataMapper : KandaDataMapper
     {
-        public static void MapToObject<T>(DbDataReader reader, T obj) where T : new()
+        public static void MapToObject<T>(DbDataReader reader, T obj)
         {
+            var type = typeof(T);
+            if (obj == null) { throw new ArgumentNullException(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
+
             if (!reader.Read()) { return; } // レコードなし
             var schema = reader.GetSchemaTable();
 
-            if (obj == null) { obj = new T(); } // インスタンス作成
-
-            var type = typeof (T);
             var members = new List<MemberInfo>();
-            members.AddRange(type.GetProperties(BindingFlags.Public));
-            members.AddRange(type.GetFields(BindingFlags.Public));
+            members.AddRange(type.GetProperties((BindingFlags.Instance | BindingFlags.Public)));
+            members.AddRange(type.GetFields((BindingFlags.Instance | BindingFlags.Public)));
 
             foreach (var member in members)
             {
-                var attributes = (KandaMappingAttribute[]) member.GetCustomAttributes(typeof (KandaMappingAttribute), true);
-                foreach (var attribute in attributes)
-                // foreach (var attribute in attributes.Where((attribute) => { return !attribute.Ignore; })) // LINQ
+                foreach (DataRow row in schema.Rows)
                 {
-                    if (attribute.Ignore) { continue; }
+                    var name = (string)row[@"ColumnName"];
 
-                    foreach (DataRow row in schema.Rows)
-                    // foreach (var name in schema.Rows.Cast<DataRow>().Select(row => (string)row[@"ColumnName"]).Where(name => (member.Name != name) && (attribute.MappingName != name))) // LINQ
+                    var attributes = (KandaMappingAttribute[])member.GetCustomAttributes(typeof(KandaMappingAttribute), true);
+                    if (attributes.Length > 1) { throw new Exception(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
+                    foreach (var attribute in attributes)
                     {
-                        var name = (string)row[@"ColumnName"];
+                        if (attribute.Ignore) { break; } // 無視
+                        if (attribute.MappingName != name) { continue; } // マッピング一致なし
 
-                        if ((member.Name == name) || (attribute.MappingName == name)) { continue; } // 一致なし
-
-                        if (member is PropertyInfo) { ((PropertyInfo) member).SetValue(obj, reader[name], BindingFlags.Default, null, null, null); } // プロパティ
-                        else if (member is FieldInfo) { ((FieldInfo) member).SetValue(obj, reader[name], BindingFlags.Default, null, null); } // フィールド
+                        if (member is PropertyInfo) { ((PropertyInfo)member).SetValue(obj, reader[name], BindingFlags.Default, null, null, null); } // プロパティ
+                        else if (member is FieldInfo) { ((FieldInfo)member).SetValue(obj, reader[name], BindingFlags.Default, null, null); } // フィールド
                         else { throw new Exception(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
-
                         break;
                     }
+
+                    if (attributes.Length > 0) { continue; } // MappingAttribute あり
+                    if (member.Name != name) { continue; } // メンバー名一致なし
+
+                    if (member is PropertyInfo) { ((PropertyInfo)member).SetValue(obj, reader[name], BindingFlags.Default, null, null, null); } // プロパティ
+                    else if (member is FieldInfo) { ((FieldInfo)member).SetValue(obj, reader[name], BindingFlags.Default, null, null); } // フィールド
+                    else { throw new Exception(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
+                    break;
                 }
             }
+        }
+
+        public static T MapToObject<T>(DbDataReader reader) where T : new()
+        {
+            var obj = new T();
+
+            KandaDbDataMapper.MapToObject<T>(reader, obj);
+
+            return obj;
         }
     }
 }

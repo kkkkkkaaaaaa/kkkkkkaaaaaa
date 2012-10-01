@@ -60,7 +60,9 @@ namespace kkkkkkaaaaaa.Web.Repositories
         /// <returns></returns>
         public bool Update(RoleEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            throw new System.NotImplementedException();
+            var updated = RolesGateway.Update(entity, connection, transaction);
+
+            return (updated == 1);
         }
 
         /// <summary>

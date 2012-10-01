@@ -19,10 +19,10 @@
 
 	-- SET
 	SET @set = ' SET'
-		+ ' Name			= ''' + CONVERT(VARCHAR(MAX), @name) + ''''
-		+ ', [Description]	= ''' + CONVERT(VARCHAR(MAX), @description) + ''''
+		+ ' Name			= ''' + @name + ''''
+		+ ', [Description]	= ''' + @description + ''''
 		+ ', [Enabled]		= ' + CONVERT(VARCHAR(MAX), @enabled) + ''
-		+ ', UdpatedOn		= ''' + CONVERT(VARCHAR(MAX), @updatedOn) + ''''
+		+ ', UpdatedOn		= ''' + CONVERT(VARCHAR(MAX), @updatedOn) + ''''
 
 	-- WHERE
 	SET @where = ' WHERE'

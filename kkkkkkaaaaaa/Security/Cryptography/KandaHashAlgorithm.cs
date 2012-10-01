@@ -4,17 +4,21 @@ using System.Text;
 
 namespace kkkkkkaaaaaa.Security.Cryptography
 {
-    public static class KandaSHA5126CryptoServiceProvider
+    /// <summary>
+    /// 暗号ハッシュアルゴリズム。
+    /// </summary>
+    public class KandaHashAlgorithm
     {
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="hashName"></param>
         /// <param name="s"></param>
         /// <param name="encoding"></param>
         /// <returns></returns>
-        public static string ComputeHash(string s, Encoding encoding)
+        public static string ComputeHash(string hashName, string s, Encoding encoding)
         {
-            var algorithm = HashAlgorithm.Create(typeof (SHA512).FullName);
+            var algorithm = HashAlgorithm.Create(hashName);
             var buffer = encoding.GetBytes(s);
             var hash = algorithm.ComputeHash(buffer, 0, buffer.Length);
 

@@ -80,9 +80,9 @@ namespace kkkkkkaaaaaa.Data.Common
                 {
                     var parameter = command.CreateParameter();
                     parameter.ParameterName = attribute.MappingName;
-                    parameter.Value = KandaDataMapper.GetValue(member, obj);
                     parameter.DbType = attribute.DbType;
                     parameter.Direction = attribute.Direction;
+                    parameter.Value = ((parameter.Direction == ParameterDirection.Input) ? KandaDataMapper.GetValue(member, obj) : attribute.DefaultValue);
 
                     command.Parameters.Add(parameter);
                 }

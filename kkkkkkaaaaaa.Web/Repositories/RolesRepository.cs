@@ -1,4 +1,5 @@
 ﻿using System.Data.Common;
+using kkkkkkaaaaaa.Web.DataTransferObjects;
 using kkkkkkaaaaaa.Web.TableDataGateways;
 
 namespace kkkkkkaaaaaa.Web.Repositories
@@ -8,6 +9,13 @@ namespace kkkkkkaaaaaa.Web.Repositories
     /// </summary>
     public class RolesRepository : KandaRepository
     {
+        public bool Create(RoleEntity entity, DbConnection connection, DbTransaction transaction)
+        {
+            var affected = RolesGateway.Insert(entity, connection, transaction);
+
+            return (affected == 1);
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -16,9 +24,9 @@ namespace kkkkkkaaaaaa.Web.Repositories
         /// <returns></returns>
         public bool Truncate(DbConnection connection, DbTransaction transaction)
         {
-            var result = RolesGateway.Truncate(connection, transaction);
+            var error = RolesGateway.Truncate(connection, transaction);
 
-            return (result == 0);
+            return (error == 0);
         }
 
         /// <summary>

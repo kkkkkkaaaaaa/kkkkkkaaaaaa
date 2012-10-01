@@ -9,8 +9,9 @@
 
 	-- TRUNCATE
 	SET @truncate = 'TRUNCATE TABLE'
-		+ ' ' + CONVERT(NVARCHAR, @tableName)
+		+ ' ' + CONVERT(NVARCHAR(128), @tableName)
 
+	-- EXECUTE
 	EXECUTE (@truncate)
 
 	-- 戻り値

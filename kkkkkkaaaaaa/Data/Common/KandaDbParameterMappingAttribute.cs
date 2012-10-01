@@ -21,9 +21,13 @@ namespace kkkkkkaaaaaa.Data.Common
             get { return this._mappingName; }
         }
 
+        public DbType DbType = default(DbType);
+
+        public int Size = 0;
+
         public ParameterDirection Direction = ParameterDirection.Input;
 
-        public DbType DbType = default(DbType);
+        public object DefaultValue = DBNull.Value;
 
         public string Description = @"";
 

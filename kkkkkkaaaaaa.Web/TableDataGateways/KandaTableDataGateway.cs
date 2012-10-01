@@ -27,7 +27,21 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
             return 0L;
         }
 
-        public static int Truncate(string tableName, DbConnection connection, DbTransaction transaction)
+        public static void SetIdentityInsert(string table, bool on, DbConnection connection, DbTransaction transaction = null)
+        {
+            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
+
+            command.CommandType = CommandType.Text;
+
+            const string SET = @"SET IDENTITY_INSERT {0} {1}";
+            command.CommandText = string.Format(SET, table, (on ? @"ON" : @"OFF"));
+
+            command.ExecuteNonQuery();
+        }
+
+        #region Protected members...
+
+        protected static int Truncate(string tableName, DbConnection connection, DbTransaction transaction)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
 
@@ -43,19 +57,13 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
             return (int)result.Value;
         }
 
-        public static void SetIdentityInsert(string table, bool on, DbConnection connection, DbTransaction transaction = null)
+        /// <summary>
+        /// 何もしません。
+        /// </summary>
+        protected void DoNothing()
         {
-            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
-
-            command.CommandType = CommandType.Text;
-
-            const string SET = @"SET IDENTITY_INSERT {0} {1}";
-            command.CommandText = string.Format(SET, table, (on ? @"ON" : @"OFF"));
-
-            command.ExecuteNonQuery();
+            // 何もしない
         }
-
-        #region Protected members...
 
         /// <summary>
         /// 

@@ -5,24 +5,44 @@
 	, @description	NVARCHAR(MAX)
 	, @enabled		BIT
 	, @createdOn	DATETIME2
+	, @updatedOn	DATETIME2
 ) AS
-
 	-- 変数
 	DECLARE
-		@error	INT
+		@insert		NVARCHAR(MAX)
+		, @into		NVARCHAR(MAX)
+		, @values	NVARCHAR(MAX)
+		, @count	INT
 
-	-- UPDATE
-	UPDATE
-		Roles
-	SET
-		[ID]				= @id
-		, Name				= @name
-		, [Description]		= @description
-		, [Enabled]			= @enabled
-		, CreatedOn			= @createdOn
-		, UpdatedOn			= @createdOn
+	-- INSERT
+	SET @insert = 'INSERT'
+
+	-- INTO
+	SET @into = ' INTO Roles ('
+		+ ' Name'
+		+ ', [Description]'
+		+ ', [Enabled]'
+		+ ', CreatedOn'
+		+ ', UpdatedOn'
+
+	IF (0 < @id)	SET @into = @into + ', ID'
+
+	-- WHERE
+	SET @values = ') VALUES ('
+		+ '''' + CONVERT(VARCHAR(MAX), @name) + ''''
+		+ ', ''' + CONVERT(VARCHAR(MAX), @description) + ''''
+		+ ', ' + CONVERT(VARCHAR(MAX), @enabled) + ''
+		+ ', ''' + CONVERT(VARCHAR(MAX), @createdOn) + ''''
+		+ ', ''' + CONVERT(VARCHAR(MAX), @createdOn) + ''''
+
+	IF (0 < @id)	SET @values = @values + ', ' + CONVERT(NVARCHAR(MAX), @id)
+
+	SET @values = @values + ')'
+
+	-- 実行
+	EXECUTE (@insert + @into + @values)
 
 	-- 戻り値
-	SET @error = @@ERROR
+	SET @count = @@ROWCOUNT
 
-	RETURN @error
+	RETURN @count

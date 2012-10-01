@@ -27,6 +27,8 @@ namespace kkkkkkaaaaaa.Data.Common
 
         public ParameterDirection Direction = ParameterDirection.Input;
 
+        //public bool IsNullable = true;
+
         public object DefaultValue = DBNull.Value;
 
         public string Description = @"";

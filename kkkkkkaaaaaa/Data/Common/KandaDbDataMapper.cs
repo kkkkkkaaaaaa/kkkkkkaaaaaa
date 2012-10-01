@@ -82,6 +82,7 @@ namespace kkkkkkaaaaaa.Data.Common
                     parameter.ParameterName = attribute.MappingName;
                     parameter.DbType = attribute.DbType;
                     parameter.Direction = attribute.Direction;
+                    //parameter.IsNullable = attribute.IsNullable;
                     parameter.Value = ((parameter.Direction == ParameterDirection.Input) ? KandaDataMapper.GetValue(member, obj) : attribute.DefaultValue);
 
                     command.Parameters.Add(parameter);

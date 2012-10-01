@@ -8,6 +8,17 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
 {
     public class RolesGateway : KandaTableDataGateway
     {
+        public static DbDataReader Select(RoleEntity role, DbConnection connection, DbTransaction transaction)
+        {
+            var reader = KandaTableDataGateway._factory.CreateReader(connection, transaction);
+
+            reader.CommandText = @"usp_SelectRoles";
+
+            KandaDbDataMapper.MapToParameters(reader, role);
+
+            return reader.ExecuteReader();
+        }
+
         public static int Insert(RoleEntity entity, DbConnection connection, DbTransaction transaction)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);

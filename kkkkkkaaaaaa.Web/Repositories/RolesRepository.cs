@@ -1,4 +1,6 @@
-﻿using System.Data.Common;
+﻿using System;
+using System.Data.Common;
+using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Web.DataTransferObjects;
 using kkkkkkaaaaaa.Web.TableDataGateways;
 
@@ -9,11 +11,56 @@ namespace kkkkkkaaaaaa.Web.Repositories
     /// </summary>
     public class RolesRepository : KandaRepository
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        public RoleEntity Find(long id, DbConnection connection, DbTransaction transaction)
+        {
+            var reader = default(DbDataReader);
+
+            try
+            {
+                reader = RolesGateway.Select(new RoleEntity() { ID = id, }, connection, transaction);
+                //reader = RolesGateway.Select(new RoleEntity() { ID = id, Name = @"", Description = @"", Enabled = true, }, connection, transaction);
+
+                var entity = KandaDbDataMapper.MapToObject<RoleEntity>(reader);
+                if (reader.Read()) { throw new Exception(string.Format(@"RolesRepository.Find({0})", id)); }
+
+                return entity;
+            }
+            finally
+            {
+                if (reader != null) { reader.Close(); }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Create(RoleEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            var affected = RolesGateway.Insert(entity, connection, transaction);
+            var created = RolesGateway.Insert(entity, connection, transaction);
 
-            return (affected == 1);
+            return (created == 1);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public bool Update(RoleEntity entity, DbConnection connection, DbTransaction transaction)
+        {
+            throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -28,6 +75,7 @@ namespace kkkkkkaaaaaa.Web.Repositories
 
             return (error == 0);
         }
+
 
         /// <summary>
         /// コンストラクタ―。

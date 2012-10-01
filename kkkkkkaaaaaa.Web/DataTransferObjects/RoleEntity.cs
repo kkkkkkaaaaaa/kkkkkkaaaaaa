@@ -6,6 +6,13 @@ namespace kkkkkkaaaaaa.Web.DataTransferObjects
 {
     public class RoleEntity
     {
+        public RoleEntity()
+        {
+            this.Name = @"";
+            this.Description = @"";
+            this.Enabled = true;
+        }
+
         [KandaDbParameterMapping("@id")]
         public long ID { get; set; }
 
@@ -22,6 +29,6 @@ namespace kkkkkkaaaaaa.Web.DataTransferObjects
         public DateTime CreatedOn { get; set; }
 
         [KandaDbParameterMapping("@updatedOn", DbType = DbType.DateTime2)]
-        public DateTime UpdateOn { get; set; }
+        public DateTime UpdatedOn { get; set; }
     }
 }

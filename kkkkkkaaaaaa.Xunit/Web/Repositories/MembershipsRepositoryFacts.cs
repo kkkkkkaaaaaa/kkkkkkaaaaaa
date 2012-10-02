@@ -7,7 +7,7 @@ using kkkkkkaaaaaa.Web.Repositories;
 
 namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 {
-    public class MembershipsRepositoryFacts : KandaRepositoryFacts
+    public class MembershipsRepositoryFacts : KandaXunitRepositoryFacts
     {
         [Fact()]
         public void FindByMembershipFact()

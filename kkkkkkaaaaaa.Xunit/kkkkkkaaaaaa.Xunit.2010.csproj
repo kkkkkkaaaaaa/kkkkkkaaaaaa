@@ -68,8 +68,10 @@
     <Compile Include="Data\Common\KandaProviderFactoryFacts.cs" />
     <Compile Include="Data\KandaXunitProviderFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\Repositories\AuthorizationsRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\KandaRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\KandaXunitRepositoryFacts.cs" />
+    <Compile Include="Web\Repositories\MembershipRolesRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\MembershipsRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\RolesRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\UsersRepositoryFacts.cs" />

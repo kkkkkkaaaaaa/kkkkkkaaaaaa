@@ -1,25 +1,41 @@
 ﻿CREATE PROCEDURE usp_InsertMembershipRoles
-	@membershipId		BIGINT
+	-- パタメーター
+	@id					BIGINT
+	, @membershipId		BIGINT
 	, @roleId			BIGINT
 	, @enabled			BIT
 AS
 	-- 変数
 	DECLARE
-		@error			INT
+		@insert		VARCHAR(MAX)
+		, @into		VARCHAR(MAX)
+		, @values	VARCHAR(MAX)
+		, @count	INT
 
 	-- INSERT
-	INSERT INTO
-		MembershipRoles (
-			MembershipID
-			, RoleID
-			, [Enabled]
-		) VALUES (
-			@membershipId
-			, @roleId
-			, @enabled
-		)
+	SET @insert = 'INSERT'
+
+	-- INTO
+	SET @into = ' INTO MembershipRoles ('
+		+ 'MembershipID'
+		+ ', RoleID'
+		+ ', [Enabled]'
+
+	IF (0 < @id) SET @into = @into + ', ID'
+
+	-- VALUES
+	SET @values = ') VALUES ('
+		+ '' + CONVERT(NVARCHAR(MAX), @membershipId)
+		+ ', ' + CONVERT(NVARCHAR(MAX), @roleId)
+		+ ', ' + CONVERT(NVARCHAR(MAX), @enabled)
+		
+	IF (0 < @id) SET @values = @values + ', ' + CONVERT(NVARCHAR(MAX), @id)
+
+	SET @values = @values + ')'
+
+	EXECUTE (@insert + @into + @values)
 
 	-- 戻り値
-	SET @error = @@ERROR
+	SET @count = @@ROWCOUNT
 
-	RETURN @error
+	RETURN @count

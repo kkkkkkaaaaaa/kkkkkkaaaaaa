@@ -1,6 +1,8 @@
 ﻿CREATE PROCEDURE usp_SelectUserAttributes
 	-- パラメーター
 	@userId		BIGINT
+	, @itemId	INT
+	, @value	NVARCHAR(MAX)
 AS
 	-- 変数
 	DECLARE	

@@ -49,7 +49,7 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                 var repository = new UserAttributesRepository();
 
                 var id = long.MaxValue;
-                Assert.True(repository.Create(new UserAttributeEntity(){ ID = id, UserID = 1, ItemID = 1, Value = @"", }, connection, transaction));
+                Assert.True(repository.Create(new UserAttributeEntity(){ UserID = 1, ItemID = 1, Value = @"", }, connection, transaction));
             }
             finally
             {
@@ -61,7 +61,27 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
         [Fact()]
         public void UpdateFact()
         {
+            var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
 
+            try
+            {
+                connection = this._factory.CreateConnection();
+                connection.Open();
+
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                var repository = new UserAttributesRepository();
+
+                var id = long.MaxValue;
+                Assert.True(repository.Create(new UserAttributeEntity() { UserID = 1, ItemID = 1, Value = @"create", }, connection, transaction));
+                Assert.True(repository.Update(new UserAttributeEntity() { UserID = 1, ItemID = 1, Value = @"update", }, connection, transaction));
+            }
+            finally
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                if (connection != null) { connection.Close(); }
+            }
         }
 
         [Fact()]

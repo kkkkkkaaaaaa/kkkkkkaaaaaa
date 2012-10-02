@@ -1,23 +1,24 @@
 ﻿CREATE PROCEDURE usp_UpdateUserAttributes (
 	-- パラメーター
-	@itemId		INT
+	@userId		BIGINT
+	, @itemId	INT
 	, @value	NVARCHAR(MAX)
-	, @userId	BIGINT
 ) AS
 	-- 変数
 	DECLARE
-		@error	INT
+		@count	INT
 
 	-- UPDATE
 	UPDATE
 		UserAttributes
 	SET
-		ItemID		= @itemId
-		, Value		= @value
+		Value		= @value
 	WHERE
-		UserID = @userId
+		1 = 1
+		AND UserID	= @userId
+		AND ItemID	= @itemId
 
 	-- 戻り値
-	SET @error = @@error
+	SET @count = @@ROWCOUNT
 
-	RETURN @error
+	RETURN @count

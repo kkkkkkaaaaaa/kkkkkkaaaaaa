@@ -35,6 +35,13 @@ namespace kkkkkkaaaaaa.Web.Repositories
             return (count == 1);
         }
 
+        public bool Update(UserAttributeEntity entity, DbConnection connection, DbTransaction transaction)
+        {
+            var count = UserAttributesGateway.Update(entity, connection, transaction);
+
+            return (count == 1);
+        }
+
         public bool Truncate(DbConnection connection, DbTransaction transaction)
         {
             var error = UserAttributesGateway.Truncate(connection, transaction);

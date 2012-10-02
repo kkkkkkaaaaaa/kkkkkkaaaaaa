@@ -19,9 +19,7 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                 connection = this._factory.CreateConnection();
                 connection.Open();
 
-                var repository = new KandaRepository();
-
-                var result = repository.GetUtcDateTime(connection);
+                var result = KandaRepository.GetUtcDateTime(connection);
                 Assert.True(default(DateTime) < result);
 
             }

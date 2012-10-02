@@ -23,6 +23,20 @@ namespace kkkkkkaaaaaa.Web.Repositories
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public bool Update(MembershipRoleEntity entity, DbConnection connection, DbTransaction transaction)
+        {
+            var count = MembershipRolesGateway.Update(entity, connection, transaction);
+
+            return (count == 1);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>

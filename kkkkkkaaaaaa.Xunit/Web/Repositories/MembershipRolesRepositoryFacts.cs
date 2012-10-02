@@ -9,6 +9,32 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 {
     public class MembershipRolesRepositoryFacts : KandaRepositoryFacts
     {
+        [Fact(Skip = @"Not implemented.")]
+        public void SearchFact()
+        {
+            var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
+
+            try
+            {
+                connection = this._factory.CreateConnection();
+                connection.Open();
+
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                var repository = new MembershipRolesRepository();
+
+                var id = long.MaxValue;
+                //Assert.True(repository.Create(new MembershipCriteria() { ID = id, MembershipID = 1, RoleID = 1, Enabled = true, }, connection, transaction));
+                //Assert.True(repository.Create(new RoleCriteria() { ID = id, MembershipID = 1, RoleID = 1, Enabled = true, }, connection, transaction));
+            }
+            finally
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                if (connection != null) { connection.Close(); }
+            }
+        }
+
         [Fact()]
         public void CreateFact()
         {
@@ -26,6 +52,32 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 var id = long.MaxValue;
                 Assert.True(repository.Create(new MembershipRoleEntity(){ ID = id, MembershipID = 1, RoleID = 1, Enabled = true, }, connection, transaction));
+            }
+            finally
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                if (connection != null) { connection.Close(); }
+            }
+        }
+
+        [Fact()]
+        public void UpdateFact()
+        {
+            var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
+
+            try
+            {
+                connection = this._factory.CreateConnection();
+                connection.Open();
+
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                var repository = new MembershipRolesRepository();
+
+                var id = long.MaxValue;
+                Assert.True(repository.Create(new MembershipRoleEntity() { ID = id, MembershipID = 1, RoleID = 1, Enabled = true, }, connection, transaction));
+                Assert.True(repository.Update(new MembershipRoleEntity(){ ID = id, MembershipID = 2, RoleID = 2, Enabled = false, }, connection, transaction));
             }
             finally
             {

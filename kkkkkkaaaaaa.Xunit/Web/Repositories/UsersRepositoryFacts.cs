@@ -57,30 +57,30 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
         [Fact()]
         public void UpdateFact()
         {
-            var connction = default(DbConnection);
+            var connection = default(DbConnection);
             var transaction = default(DbTransaction);
 
             try
             {
-                connction = this._factory.CreateConnection();
-                connction.Open();
+                connection = this._factory.CreateConnection();
+                connection.Open();
 
-                transaction = connction.BeginTransaction(IsolationLevel.Serializable);
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
                 var repository = new UsersRepository();
 
                 var id = long.MaxValue;
                 var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                Assert.True(repository.Create(new UserEntity() { ID = id, FamilyName = @"Fact", GivenName = @"", AdditionalName = @"", Description = @"", Enabled = true, CreatedOn = createdOn }, connction, transaction));
+                Assert.True(repository.Create(new UserEntity() { ID = id, FamilyName = @"Fact", GivenName = @"", AdditionalName = @"", Description = @"", Enabled = true, CreatedOn = createdOn }, connection, transaction));
 
-                var updatedOn = repository.GetUtcDateTime(connction, transaction);
-                Assert.True(repository.Update(new UserEntity() { ID = id, FamilyName = @"Fact", GivenName = @"", AdditionalName = @"", Description = @"", Enabled = true, UpdateOn = updatedOn }, connction, transaction));
-                Assert.True(repository.Find(id, connction, transaction).UpdateOn == updatedOn);
+                var updatedOn = KandaRepository.GetUtcDateTime(connection, transaction);
+                Assert.True(repository.Update(new UserEntity() { ID = id, FamilyName = @"Fact", GivenName = @"", AdditionalName = @"", Description = @"", Enabled = true, UpdateOn = updatedOn }, connection, transaction));
+                Assert.True(repository.Find(id, connection, transaction).UpdateOn == updatedOn);
             }
             finally
             {
                 if (transaction != null) { transaction.Rollback(); }
-                if (connction != null) { connction.Close(); }
+                if (connection != null) { connection.Close(); }
             }
         }
 

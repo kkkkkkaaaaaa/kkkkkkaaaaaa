@@ -85,7 +85,7 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                 var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0);
                 Assert.True(repository.Create(new RoleEntity() { ID = id, Name = @"Fact", Description = @"Description", Enabled = true, CreatedOn = createdOn, }, connection, transaction));
 
-                var updatedOn = repository.GetUtcDateTime(connection, transaction);
+                var updatedOn = KandaRepository.GetUtcDateTime(connection, transaction);
                 Assert.True(repository.Update(new RoleEntity() { ID = id, Name = @"Fact", Description = @"Description", Enabled = true, UpdatedOn = updatedOn, }, connection, transaction));
             }
             finally

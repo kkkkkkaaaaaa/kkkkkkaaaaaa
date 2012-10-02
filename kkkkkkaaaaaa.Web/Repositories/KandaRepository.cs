@@ -54,14 +54,13 @@ namespace kkkkkkaaaaaa.Web.Repositories
 
         // public static UsersAttribtueItemsRepository UserAttibuteItems
 
-
         /// <summary>
         /// システムの現在時刻を取得します。
         /// </summary>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public DateTime GetUtcDateTime(DbConnection connection, DbTransaction transaction = null)
+        public static DateTime GetUtcDateTime(DbConnection connection, DbTransaction transaction = null)
         {
             var utc = KandaTableDataGateway.GetUtcDateTime(connection, transaction);
 

@@ -3,12 +3,11 @@
 	@membershipId	BIGINT
 	, @roleId		BIGINT
 	, @enabled		BIT
-
 	, @id			BIGINT
 ) AS
 	-- 変数
 	DECLARE
-		@error	INT
+		@count	INT
 
 	-- UPDATE
 	UPDATE
@@ -21,6 +20,6 @@
 		ID				= @id
 
 	-- 戻り値
-	SET @error		= @@ERROR
+	SET @count	= @@ROWCOUNT
 
-	RETURN @error
+	RETURN @count

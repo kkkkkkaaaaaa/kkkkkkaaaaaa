@@ -97,30 +97,30 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
         [Fact()]
         public void UpdateFact()
         {
-            var connction = default(DbConnection);
+            var connection = default(DbConnection);
             var transaction = default(DbTransaction);
 
             try
             {
-                connction = this._factory.CreateConnection();
-                connction.Open();
+                connection = this._factory.CreateConnection();
+                connection.Open();
 
-                transaction = connction.BeginTransaction(IsolationLevel.Serializable);
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
                 var repository = new MembershipsRepository();
 
                 var id = long.MaxValue;
                 var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                repository.Create(new MembershipEntity() { ID = id, Name = @"System", Password = @"", Enabled = true, CreatedOn = createdOn, }, connction, transaction);
+                repository.Create(new MembershipEntity() { ID = id, Name = @"System", Password = @"", Enabled = true, CreatedOn = createdOn, }, connection, transaction);
 
-                var updatedOn = repository.GetUtcDateTime(connction, transaction);
-                Assert.True(repository.Update(new MembershipEntity() { ID = id, Name = @"System", Password = @"", Enabled = true, UpdatedOn = updatedOn, }, connction, transaction));
-                Assert.True(createdOn < repository.Find(id, connction, transaction).UpdatedOn);
+                var updatedOn = KandaRepository.GetUtcDateTime(connection, transaction);
+                Assert.True(repository.Update(new MembershipEntity() { ID = id, Name = @"System", Password = @"", Enabled = true, UpdatedOn = updatedOn, }, connection, transaction));
+                Assert.True(createdOn < repository.Find(id, connection, transaction).UpdatedOn);
             }
             finally
             {
                 if (transaction != null) { transaction.Rollback(); }
-                if (connction != null) { connction.Close(); }
+                if (connection != null) { connection.Close(); }
             }
         }
 

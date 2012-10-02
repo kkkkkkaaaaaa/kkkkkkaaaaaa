@@ -24,12 +24,10 @@ namespace kkkkkkaaaaaa.Web.Repositories
             try
             {
                 reader = RolesGateway.Select(new RoleEntity() { ID = id, }, connection, transaction);
-                //reader = RolesGateway.Select(new RoleEntity() { ID = id, Name = @"", Description = @"", Enabled = true, }, connection, transaction);
 
-                var entity = KandaDbDataMapper.MapToObject<RoleEntity>(reader);
-                if (reader.Read()) { throw new Exception(string.Format(@"RolesRepository.Find({0})", id)); }
+                var role = (reader.Read() ? KandaDbDataMapper.MapToObject<RoleEntity>(reader) : default(RoleEntity));
 
-                return entity;
+                return role;
             }
             finally
             {

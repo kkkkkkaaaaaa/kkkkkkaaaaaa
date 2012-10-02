@@ -6,21 +6,29 @@ using kkkkkkaaaaaa.Web.DataTransferObjects;
 
 namespace kkkkkkaaaaaa.Web.TableDataGateways
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class UsersGateway : KandaTableDataGateway
     {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="entity"></param>
         /// <param name="connection"></param>
+        /// <param name="transaction"></param>
         /// <returns></returns>
-        public static DbDataReader Select(long id, DbConnection connection)
+        public static DbDataReader Select(UserEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            var reader = KandaTableDataGateway._factory.CreateReader(connection);
+            var reader = KandaTableDataGateway._factory.CreateReader(connection, transaction);
 
             reader.CommandText = @"usp_SelectUsers";
 
-            reader.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@id", id));
+            KandaDbDataMapper.MapToParameters(reader, entity);
+            //reader.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@id", id));
+
+            var error = KandaTableDataGateway._factory.CreateParameter(@"Result", DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
+            reader.Parameters.Add(error);
 
             reader.ExecuteReader();
 

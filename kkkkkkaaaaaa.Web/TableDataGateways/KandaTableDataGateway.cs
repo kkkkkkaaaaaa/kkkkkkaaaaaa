@@ -8,6 +8,9 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
 {
     public class KandaTableDataGateway
     {
+        public const string RETURN_VALUE = @"ReturnValue";
+
+
         public static DateTime GetUtcDateTime(DbConnection connction, DbTransaction transaction = null)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connction, transaction);
@@ -41,7 +44,7 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
 
         #region Protected members...
 
-        protected static int Truncate(string tableName, DbConnection connection, DbTransaction transaction)
+        public static int Truncate(string tableName, DbConnection connection, DbTransaction transaction)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
 

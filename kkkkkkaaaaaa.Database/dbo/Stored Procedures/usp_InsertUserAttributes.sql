@@ -1,25 +1,41 @@
 ﻿CREATE PROCEDURE usp_InsertUserAttributes (
-	@userId		BIGINT
+	@id			BIGINT
+	, @userId	BIGINT
 	, @itemId	INT
 	, @value	NVARCHAR(MAX)
 ) AS
 	-- 変数
 	DECLARE
-		@error	INT
+		@insert		NVARCHAR(MAX)
+		, @into		NVARCHAR(MAX)
+		, @values	NVARCHAR(MAX)
+		, @count	INT
 
 	-- INSERT
-	INSERT INTO
-		UserAttributes (
-			UserID
-			, ItemID
-			, Value
-		) VALUES (
-			@userId
-			, @itemId
-			, @value
-		)
+	SET @insert = 'INSERT'
+
+	-- INTO
+	SET @into = ' INTO UserAttributes ('
+		+ 'UserID'
+		+ ', ItemID'
+		+ ', Value'
+
+	IF (0 < @id)	SET @into = @into + ', ID'
+	 
+	-- VALUES
+	SET @values = ') VALUES ('
+		+ '' + CONVERT(NVARCHAR(MAX), @userId)
+		+ ', ' + CONVERT(NVARCHAR(MAX), @itemId)
+		+ ', ''' + @value + ''''
+
+	IF (0 < @id)	SET @values = @values + ', ' + CONVERT(NVARCHAR(MAX), @id)
+	
+	SET @values = @values + ')'
+
+	-- 実行
+	EXECUTE (@insert + @into + @values)
 
 	-- 戻り値
-	SET @error = @@error
+	SET @count = @@ROWCOUNT
 
-	RETURN @error
+	RETURN @count

@@ -10,7 +10,7 @@
 		, @from		AS NVARCHAR(MAX)
 		, @where	AS NVARCHAR(MAX)
 		, @orderby	AS NVARCHAR(MAX)
-		, @result	AS INT
+		, @error	AS INT
 
 	-- SELECT
 	SET @select = 'SELECT *'
@@ -20,17 +20,17 @@
 
 	-- WHERE
 	SET @where = ' WHERE 1 = 1'
-	IF @id			IS NOT NULL		SET @where = @where + ' AND ID = ' + CAST(@id AS VARCHAR(MAX))
-	IF @enabled		IS NOT NULL		SET @where = @where + ' AND Enabled = ' + CAST(@enabled AS VARCHAR(1))
+		+ ' AND [Enabled] = ' + CONVERT(VARCHAR(MAX), @enabled)
+
+	IF (0 < @id) SET @where = @where + ' AND ID = ' + CONVERT(VARCHAR(MAX), @id)
 
 	-- ORDER BY
 	SET @orderby = ' ORDER BY UpdatedOn DESC'
 
-	--クエリー
-	SET @select = @select + @from + @where + @orderby
-	
 	-- 実行
-	EXECUTE (@select)
+	EXECUTE (@select + @from + @where + @orderby)
 
 	-- 戻り値
-	RETURN @@ERROR
+	SET @error = @@ERROR
+
+	RETURN @error

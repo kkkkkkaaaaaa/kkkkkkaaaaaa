@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
 using System.Reflection;
@@ -13,12 +14,14 @@ namespace kkkkkkaaaaaa.Data.Common
             var type = obj.GetType();
             if (obj == null) { throw new ArgumentNullException(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
 
-            if (!reader.Read()) { return; } // レコードなし
+            //if (!reader.Read()) { return; } // レコードなし
+
             var schema = reader.GetSchemaTable();
 
             var members = new List<MemberInfo>();
             members.AddRange(type.GetProperties((BindingFlags.Instance | BindingFlags.Public)));
             members.AddRange(type.GetFields((BindingFlags.Instance | BindingFlags.Public)));
+
 
             foreach (var member in members)
             {
@@ -60,6 +63,20 @@ namespace kkkkkkaaaaaa.Data.Common
             KandaDbDataMapper.MapToObject(reader, obj);
 
             return obj;
+        }
+
+        public static IEnumerable<T> MapToEnumerable<T>(DbDataReader reader) where T : new()
+        {
+            var enumerable = new Collection<T>();
+
+            while (reader.Read())
+            {
+                var item = KandaDbDataMapper.MapToObject<T>(reader);
+
+                enumerable.Add(item);
+            }
+
+            return enumerable;
         }
 
         public static void MapToParameters(DbCommand command, object obj)

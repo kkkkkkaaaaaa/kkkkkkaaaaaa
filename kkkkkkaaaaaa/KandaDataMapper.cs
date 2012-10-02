@@ -7,6 +7,7 @@ namespace kkkkkkaaaaaa
 {
     public class KandaDataMapper
     {
+        /*
         public static void MapToObject<T>(object source, T target)
         {
 
@@ -16,6 +17,7 @@ namespace kkkkkkaaaaaa
         {
             return default(IEnumerable<TTarget>);
         }
+        */
 
         #region Protected members...
 

@@ -13,7 +13,7 @@ namespace kkkkkkaaaaaa.Web.Repositories
 
             try
             {
-                reader = UsersGateway.Select(id, connection);
+                reader = UsersGateway.Select(new UserEntity(){ ID = id, }, connection, transaction);
 
                 var user = KandaDbDataMapper.MapToObject<UserEntity>(reader);
 
@@ -27,9 +27,9 @@ namespace kkkkkkaaaaaa.Web.Repositories
 
         public bool Create(UserEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            var affected = UsersGateway.Insert(entity, connection, transaction);
+            var created = UsersGateway.Insert(entity, connection, transaction);
 
-            return (affected == 1);
+            return (created == 1);
         }
 
         public bool Update(UserEntity entity, DbConnection connection, DbTransaction transaction)
@@ -41,7 +41,9 @@ namespace kkkkkkaaaaaa.Web.Repositories
 
         public bool Truncate(DbConnection connection, DbTransaction transaction)
         {
-            return (UsersGateway.Truncate(connection, transaction) == 0);
+            var error = UsersGateway.Truncate(connection, transaction);
+
+            return (error == 0);
         }
 
         /// <summary>

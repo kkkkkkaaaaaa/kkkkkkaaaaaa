@@ -99,6 +99,11 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 var repository = new UsersRepository();
 
+                Assert.True(repository.Truncate(connction, transaction));
+
+                /*
+                var repository = new UsersRepository();
+
                 if (!repository.Truncate(connction, transaction))
                 {
                     transaction.Rollback();
@@ -114,7 +119,7 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                     transaction.Commit();
                     Assert.True(true);
                 }
-
+                */
             }
             catch
             {

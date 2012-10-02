@@ -74,6 +74,7 @@
     <Compile Include="Web\Repositories\MembershipRolesRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\MembershipsRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\RolesRepositoryFacts.cs" />
+    <Compile Include="Web\Repositories\UserAttributesRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\UsersRepositoryFacts.cs" />
   </ItemGroup>
   <ItemGroup>

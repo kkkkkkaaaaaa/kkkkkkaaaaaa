@@ -28,7 +28,7 @@ namespace kkkkkkaaaaaa.Web.Repositories
             {
                 reader = MembershipsGateway.Select(name, password, connection, transaction);
 
-                var membership = KandaDbDataMapper.MapToObject<MembershipEntity>(reader);
+                var membership = (reader.Read() ? KandaDbDataMapper.MapToObject<MembershipEntity>(reader) : default(MembershipEntity));
                 
                 return new KandaMembershipUser(membership);
             }
@@ -52,6 +52,7 @@ namespace kkkkkkaaaaaa.Web.Repositories
             try
             {
                 reader = MembershipsGateway.Select(id, connection, transaction);
+                if (!reader.Read()) { return null; }
                 
                 return KandaDbDataMapper.MapToObject<MembershipEntity>(reader);
             }

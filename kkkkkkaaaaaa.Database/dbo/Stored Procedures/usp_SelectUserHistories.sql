@@ -18,8 +18,8 @@ AS
 		+ ' UserHistories'
 
 	-- WHERE
-	SET @where = ' WHERE'
-		+ ' UserID = ' + CONVERT(NVARCHAR(MAX), @userId)
+	SET @where = ' WHERE 1 = 1'
+		+ ' AND UserID = ' + CONVERT(NVARCHAR(MAX), @userId)
 
 	IF (0 < @revision) SET @where = @where + ' AND Revision = ' + CONVERT(NVARCHAR(MAX), @revision)
 

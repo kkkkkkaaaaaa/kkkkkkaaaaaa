@@ -6,22 +6,11 @@ using kkkkkkaaaaaa.Web.TableDataGateways;
 
 namespace kkkkkkaaaaaa.Web.Repositories
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class UserHistoriesRepository : KandaRepository
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <param name="connection"></param>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        public bool Create(UserHistoryEntity entity, DbConnection connection, DbTransaction transaction)
-        {
-            var created = UserHistoriesGateway.Insert(entity, connection, transaction);
-
-            return (created == 1);
-        }
-
         /// <summary>
         /// 
         /// </summary>
@@ -50,12 +39,26 @@ namespace kkkkkkaaaaaa.Web.Repositories
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public bool Create(UserHistoryEntity entity, DbConnection connection, DbTransaction transaction)
+        {
+            var created = UserHistoriesGateway.Insert(entity, connection, transaction);
+
+            return (created == 1);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
         public bool Truncate(DbConnection connection, DbTransaction transaction)
         {
-            var error = KandaTableDataGateway.Truncate(@"UserHistories", connection, transaction);
+            var error = UserHistoriesGateway.Truncate(connection, transaction);
 
             return (error == 0);
         }

@@ -14,8 +14,8 @@ AS
 	FROM
 		UserAttributes
 	
-	WHERE
-		UserID = @userId
+	WHERE 1 = 1
+		AND UserID = @userId
 	
 	ORDER BY
 		ItemID ASC

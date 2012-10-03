@@ -44,7 +44,7 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
 
         #region Protected members...
 
-        public static int Truncate(string tableName, DbConnection connection, DbTransaction transaction)
+        protected static int Truncate(string tableName, DbConnection connection, DbTransaction transaction)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
 

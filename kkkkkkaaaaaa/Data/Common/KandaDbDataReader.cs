@@ -68,6 +68,15 @@ namespace kkkkkkaaaaaa.Data.Common
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public override bool HasRows
+        {
+            get { return this._reader.HasRows; }
+        }
+
+
+        /// <summary>
         /// DbCommand.Connection に対して DbCommand.CommandText を実行し、CommandBehavior の値の 1 つを使用して DbDataReader を実行します。
         /// </summary>
         /// <param name="behavior"></param>
@@ -301,11 +310,6 @@ namespace kkkkkkaaaaaa.Data.Common
             base.Dispose(disposing);
         }
 
-
-        public override bool HasRows
-        {
-            get { throw new NotImplementedException(); }
-        }
 
         public override int RecordsAffected
         {

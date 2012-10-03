@@ -16,15 +16,12 @@ namespace kkkkkkaaaaaa.Data.Common
             this.Description = this.MappingName;
         }
 
-        public KandaDbParameterMappingAttribute(bool ignore) : this(null)
-        {
-            this.Ignore = ignore;
-        }
 
         public string MappingName
         {
             get { return this._mappingName; }
         }
+
 
         public DbType DbType = default(DbType);
 
@@ -38,12 +35,12 @@ namespace kkkkkkaaaaaa.Data.Common
 
         public bool Ignore = false;
 
-        public string Description = @"";
+        public string Description = string.Empty;
 
+        #region Private members...
 
-        #region Protected members...
-
-        protected readonly string _mappingName;
+        /// <summary>MappingName のバッキングフィールド。</summary>
+        private readonly string _mappingName;
 
         #endregion
 

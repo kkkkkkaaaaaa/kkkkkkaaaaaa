@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.Common;
 using Xunit;
 using kkkkkkaaaaaa.Data.Common;
@@ -20,14 +21,12 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
 
                 reader = this._factory.CreateReader(connection);
 
-                reader.Parameters.Add(this._factory.CreateParameter("@id", 1L));
-                reader.Parameters.Add(this._factory.CreateParameter(@"enabled", DBNull.Value));
+                var result = this._factory.CreateParameter(@"ReturnValue", DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
+                reader.Parameters.Add(result);
 
-                reader.CommandText = @"usp_SelectUsers";
+                reader.CommandText = @"usp_StoredProcedure";
 
-                reader.ExecuteReader();
-
-                Assert.True(reader.Read());
+                Assert.True(reader.ExecuteReader().HasRows);
             }
             finally
             {

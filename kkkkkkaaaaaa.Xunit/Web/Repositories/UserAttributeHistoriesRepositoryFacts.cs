@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Data.Common;
 using Xunit;
+using kkkkkkaaaaaa.Web.DataTransferObjects;
 using kkkkkkaaaaaa.Web.Repositories;
 
 namespace kkkkkkaaaaaa.Xunit.Web.Repositories
@@ -20,8 +21,11 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                //var repository = new Repository();
-                Assert.True(false);
+                var repository = new UserAttributeHistoriesRepository();
+
+                var id = long.MaxValue;
+                var revision = int.MaxValue;
+                Assert.NotNull(repository.Get(new UserAttributeHistoryEntity() { UserID = id, Revision = revision, }, connection, transaction));
             }
             finally
             {
@@ -43,8 +47,11 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                //var repository = new Repository();
-                Assert.True(false);
+                var repository = new UserAttributeHistoriesRepository();
+
+                var userId = long.MaxValue;
+                var revision = int.MaxValue;
+                Assert.True(repository.Create(new UserAttributeHistoryEntity(){ UserID = userId, Revision = revision, }, connection, transaction) >= 0);
             }
             finally
             {
@@ -66,8 +73,8 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                //var repository = new Repository();
-                Assert.True(false);
+                var repository = new UserAttributeHistoriesRepository();
+                Assert.True(repository.Truncate(connection, transaction));
             }
             finally
             {

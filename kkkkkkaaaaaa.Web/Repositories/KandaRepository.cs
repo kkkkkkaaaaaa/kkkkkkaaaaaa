@@ -85,31 +85,6 @@ namespace kkkkkkaaaaaa.Web.Repositories
             return utc;
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="connection"></param>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        // public abstract bool Truncate(DbConnection connection, DbTransaction transaction);
-
-        // public abstract T Find<T>(long id, DbConnection connection, DbTransaction transaction)
-
-        // public abstract IEnumerable<T> Get<T>(T entity DbConnection connection, DbTransaction transaction) where T : Entity, new()
-
-        // public abstract IEnumerable<T> Search<T>(T criteria, DbConnection connection, DbTransaction transaction)
-
-        // public abstract bool Create(entity, DbConnection connection, DbTransaction transaction)
-
-        // public abstract bool Update(entity, DbConnection connection, DbTransaction transaction)
-
-        // public abstract bool Register(entity, DbConnection connection, DbTransaction transaction)
-
-        // public abstract bool Delete(entity, DbConnection connection, DbTransaction transaction)
-
-        // public abstract bool Truncate(entity, DbConnection connection, DbTransaction transaction)
-
         #region Protected members...
 
         /// <summary>

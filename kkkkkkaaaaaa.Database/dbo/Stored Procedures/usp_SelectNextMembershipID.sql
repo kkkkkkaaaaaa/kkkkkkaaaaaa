@@ -9,6 +9,7 @@ AS
 	-- Memberships.ID + 1
 	SELECT
 		(ISNULL(MAX(ID), 0) + 1) AS [NEXT]
+
 	FROM
 		Memberships
 

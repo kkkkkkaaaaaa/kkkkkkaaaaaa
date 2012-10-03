@@ -55,14 +55,9 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
 
             command.CommandText = @"usp_InsertMemberships";
 
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@id", entity.ID));
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@name", entity.Name));
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@password", entity.Password));
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@enabled", entity.Enabled));
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@createdOn", entity.CreatedOn));
-            //command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@createdOn", entity.CreatedOn, DbType.DateTime2));
+            KandaDbDataMapper.MapToParameters(command, entity);
 
-            var result = KandaTableDataGateway._factory.CreateParameter(@"Result", DbType.Int32, 8, ParameterDirection.ReturnValue, DBNull.Value);
+            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);
 
             command.ExecuteNonQuery();
@@ -76,13 +71,9 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
 
             command.CommandText = @"usp_UpdateMemberships";
 
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@password", entity.Password));
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@enabled", entity.Enabled));
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@updatedOn", entity.UpdatedOn, DbType.DateTime2));
+            KandaDbDataMapper.MapToParameters(command, entity);
 
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@id", entity.ID));
-
-            var result = KandaTableDataGateway._factory.CreateParameter(@"Result", DBNull.Value, ParameterDirection.Output);
+            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);
 
             command.ExecuteNonQuery();

@@ -1,13 +1,15 @@
 ﻿CREATE PROCEDURE usp_UpdateMemberships
 	-- パラメーター
-	@password		VARCHAR(128)
+	@name			VARCHAR(1024)
+	, @password		VARCHAR(128)
 	, @enabled		BIT
+	, @createdOn	DATETIME2
 	, @updatedOn	DATETIME2
 	, @id			BIGINT
 AS
 	-- 変数
 	DECLARE
-		@error		INT
+		@count	INT
 
 	-- UPDATE
 	UPDATE
@@ -16,10 +18,11 @@ AS
 		[Password]		= @password
 		, [Enabled]		= @enabled
 		, UpdatedOn		= @updatedOn
+
 	WHERE
 		ID				= @id
 
 	-- 戻り値
-	SET @error = @@ERROR
+	SET @count = @@ROWCOUNT
 
-	RETURN @error
+	RETURN @count

@@ -5,6 +5,7 @@
 	, @password		NVARCHAR(128)
 	, @enabled		BIT
 	, @createdOn	DATETIME2
+	, @updatedOn	DATETIME2
 ) AS
 
 	-- 変数

@@ -115,7 +115,7 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 var updatedOn = KandaRepository.GetUtcDateTime(connection, transaction);
                 Assert.True(repository.Update(new MembershipEntity() { ID = id, Name = @"System", Password = @"", Enabled = true, UpdatedOn = updatedOn, }, connection, transaction));
-                Assert.True(createdOn < repository.Find(id, connection, transaction).UpdatedOn);
+                Assert.Equal(id, repository.Find(id, connection, transaction).ID);
             }
             finally
             {

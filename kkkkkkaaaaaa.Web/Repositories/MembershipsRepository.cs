@@ -83,9 +83,9 @@ namespace kkkkkkaaaaaa.Web.Repositories
         {
             if (entity.ID <= 0) { entity.ID = MembershipsGateway.SelectNextID(connection, transaction); }
 
-            var affected = MembershipsGateway.Insert(entity, connection, transaction);
+            var created = MembershipsGateway.Insert(entity, connection, transaction);
 
-            return (affected == 1);
+            return (created == 1);
         }
 
         /// <summary>
@@ -97,9 +97,9 @@ namespace kkkkkkaaaaaa.Web.Repositories
         /// <returns></returns>
         public bool Update(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            var affected = MembershipsGateway.Update(entity, connection, transaction);
+            var updated = MembershipsGateway.Update(entity, connection, transaction);
 
-            return (affected == 1);
+            return (updated == 1);
         }
 
         /// <summary>

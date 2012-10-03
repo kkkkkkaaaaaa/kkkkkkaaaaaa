@@ -4,9 +4,9 @@ using kkkkkkaaaaaa.Data.Common;
 
 namespace kkkkkkaaaaaa.Web.DataTransferObjects
 {
-    public class UserEntity
+    public class UserHistoryEntity
     {
-        public UserEntity()
+        public UserHistoryEntity()
         {
             this.FamilyName = @"";
             this.GivenName = @"";
@@ -15,28 +15,24 @@ namespace kkkkkkaaaaaa.Web.DataTransferObjects
             this.Enabled = true;
         }
 
-        [KandaDbParameterMapping("@id")]
-        public virtual long ID { get; set; }
+        [KandaDbParameterMapping("@userId")]
+        public virtual long UserID { get; set; }
 
-        [KandaDbParameterMapping("@familyName")]
+        [KandaDbParameterMapping("@revision")]
+        public int Revision { get; set; }
+
         public string FamilyName { get; set; }
 
-        [KandaDbParameterMapping("@givenName")]
         public string GivenName { get; set; }
 
-        [KandaDbParameterMapping("@additionalName")]
         public string AdditionalName { get; set; }
 
-        [KandaDbParameterMapping("@description")]
         public string Description { get; set; }
 
-        [KandaDbParameterMapping("@enabled")]
         public bool Enabled { get; set; }
 
-        [KandaDbParameterMapping("@createdOn", DbType = DbType.DateTime2)]
         public DateTime CreatedOn { get; set; }
 
-        [KandaDbParameterMapping("@updatedOn", DbType = DbType.DateTime2)]
         public DateTime UpdateOn { get; set; }
     }
 }

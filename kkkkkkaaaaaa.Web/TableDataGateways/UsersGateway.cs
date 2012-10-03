@@ -25,10 +25,6 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
             reader.CommandText = @"usp_SelectUsers";
 
             KandaDbDataMapper.MapToParameters(reader, entity);
-            //reader.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@id", id));
-
-            var error = KandaTableDataGateway._factory.CreateParameter(@"Result", DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
-            reader.Parameters.Add(error);
 
             reader.ExecuteReader();
 
@@ -50,7 +46,7 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
 
             KandaDbDataMapper.MapToParameters(command, entity);
 
-            var result = KandaTableDataGateway._factory.CreateParameter(@"Result", DBNull.Value, ParameterDirection.Output);
+            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);
 
             command.ExecuteNonQuery();

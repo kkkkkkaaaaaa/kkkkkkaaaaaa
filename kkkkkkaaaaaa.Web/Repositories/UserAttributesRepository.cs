@@ -28,18 +28,27 @@ namespace kkkkkkaaaaaa.Web.Repositories
             }
         }
 
+        public bool Register(UserAttributeEntity entity, DbConnection connection, DbTransaction transaction)
+        {
+            if (UserAttributesGateway.Update(entity, connection, transaction) == 1) { return true; }
+
+            if (UserAttributesGateway.Insert(entity, connection, transaction) == 1) { return true; }
+
+            return false;
+        }
+
         public bool Create(UserAttributeEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            var count = UserAttributesGateway.Insert(entity, connection, transaction);
+            var created = UserAttributesGateway.Insert(entity, connection, transaction);
 
-            return (count == 1);
+            return (created == 1);
         }
 
         public bool Update(UserAttributeEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            var count = UserAttributesGateway.Update(entity, connection, transaction);
+            var updated = UserAttributesGateway.Update(entity, connection, transaction);
 
-            return (count == 1);
+            return (updated == 1);
         }
 
         public bool Truncate(DbConnection connection, DbTransaction transaction)

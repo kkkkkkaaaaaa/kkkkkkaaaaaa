@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
 using System.Reflection;
 
 namespace kkkkkkaaaaaa.Data.Common
@@ -93,8 +94,11 @@ namespace kkkkkkaaaaaa.Data.Common
             {
                 var attributes = (KandaDbParameterMappingAttribute[])member.GetCustomAttributes(typeof(KandaDbParameterMappingAttribute), true);
                 if (1 < attributes.Length) { throw new Exception(string.Format(@"KandaDbDataMapper.MapToParameters()")); }
+                
                 foreach (KandaDbParameterMappingAttribute attribute in attributes)
                 {
+                    if (attribute.Ignore) { continue; }
+
                     var parameter = command.CreateParameter();
                     parameter.ParameterName = attribute.MappingName;
                     parameter.DbType = attribute.DbType;

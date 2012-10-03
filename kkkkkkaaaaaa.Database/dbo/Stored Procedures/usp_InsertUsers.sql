@@ -14,7 +14,7 @@
 		@insert		VARCHAR(MAX)
 		, @into		VARCHAR(MAX)
 		, @values	VARCHAR(MAX)
-		, @error	INT
+		, @count	INT
 
 	-- INSERT
 	SET @insert = 'INSERT'
@@ -48,6 +48,6 @@
 	EXECUTE (@insert + @into + @values)
 
 	-- 結果
-	SET @error = @@ERROR
+	SET @count = @@ROWCOUNT
 
-	RETURN @error
+	RETURN @count

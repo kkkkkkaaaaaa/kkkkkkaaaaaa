@@ -15,9 +15,9 @@ namespace kkkkkkaaaaaa.Web.Repositories
             {
                 reader = UsersGateway.Select(new UserEntity(){ ID = id, }, connection, transaction);
 
-                var user = KandaDbDataMapper.MapToObject<UserEntity>(reader);
+                var found = reader.Read() ? KandaDbDataMapper.MapToObject<UserEntity>(reader) : default(UserEntity);
 
-                return user;
+                return found;
             }
             finally
             {

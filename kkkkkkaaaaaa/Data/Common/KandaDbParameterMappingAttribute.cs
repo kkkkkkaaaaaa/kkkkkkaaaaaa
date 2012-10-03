@@ -16,6 +16,11 @@ namespace kkkkkkaaaaaa.Data.Common
             this.Description = this.MappingName;
         }
 
+        public KandaDbParameterMappingAttribute(bool ignore) : this(null)
+        {
+            this.Ignore = ignore;
+        }
+
         public string MappingName
         {
             get { return this._mappingName; }
@@ -30,6 +35,8 @@ namespace kkkkkkaaaaaa.Data.Common
         //public bool IsNullable = true;
 
         public object DefaultValue = DBNull.Value;
+
+        public bool Ignore = false;
 
         public string Description = @"";
 

@@ -6,7 +6,7 @@ using kkkkkkaaaaaa.Web.Repositories;
 
 namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 {
-    public class UserAttributesRepositoryFacts : KandaRepositoryFacts
+    public class UserAttributesRepositoryFacts : KandaXunitRepositoryFacts
     {
         [Fact()]
         public void GetFact()
@@ -76,6 +76,33 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                 var id = long.MaxValue;
                 Assert.True(repository.Create(new UserAttributeEntity() { UserID = 1, ItemID = 1, Value = @"create", }, connection, transaction));
                 Assert.True(repository.Update(new UserAttributeEntity() { UserID = 1, ItemID = 1, Value = @"update", }, connection, transaction));
+            }
+            finally
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                if (connection != null) { connection.Close(); }
+            }
+        }
+
+        [Fact()]
+        public void RegisterFact()
+        {
+            var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
+
+            try
+            {
+                connection = this._factory.CreateConnection();
+                connection.Open();
+
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                var repository = new UserAttributesRepository();
+
+                var userID = int.MaxValue;
+                var itemId = int.MaxValue;
+                Assert.True(repository.Register(new UserAttributeEntity() { UserID = userID, ItemID = itemId, Value = @"create", }, connection, transaction)); // Insert
+                Assert.True(repository.Register(new UserAttributeEntity() { UserID = userID, ItemID = itemId, Value = @"update", }, connection, transaction)); // Update
             }
             finally
             {

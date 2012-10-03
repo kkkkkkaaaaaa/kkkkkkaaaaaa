@@ -43,8 +43,7 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                 var repository = new UsersRepository();
 
                 var id = long.MaxValue;
-                var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                Assert.True(repository.Create(new UserEntity() { ID = id, FamilyName = @"Fact", GivenName = @"", AdditionalName = @"", Description = @"", Enabled = true, CreatedOn = createdOn }, connction, transaction));
+                Assert.True(repository.Create(new UserEntity() { ID = id, }, connction, transaction));
                 Assert.Equal(id, repository.Find(id, connction, transaction).ID);
             }
             finally

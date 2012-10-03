@@ -1,16 +1,22 @@
 ﻿CREATE PROCEDURE usp_SelectUsers (
 	-- パラメーター
-	@id			BIGINT
-	, @enabled	BIT
+	@id					BIGINT
+	, @familyName		NVARCHAR(1024)
+	, @givenName		NVARCHAR(1024)
+	, @additionalName	NVARCHAR(1024)
+	, @description		NVARCHAR(MAX)		
+	, @enabled			BIT
+	, @createdOn		DATETIME2
+	, @updatedOn		DATETIME2
 ) AS
 
 	-- ローカル変数
 	DECLARE
-		@select		AS NVARCHAR(MAX)
-		, @from		AS NVARCHAR(MAX)
-		, @where	AS NVARCHAR(MAX)
-		, @orderby	AS NVARCHAR(MAX)
-		, @error	AS INT
+		@select		NVARCHAR(MAX)
+		, @from		NVARCHAR(MAX)
+		, @where	NVARCHAR(MAX)
+		, @orderby	NVARCHAR(MAX)
+		, @error	INT
 
 	-- SELECT
 	SET @select = 'SELECT *'

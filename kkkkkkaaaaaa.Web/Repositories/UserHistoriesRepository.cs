@@ -8,6 +8,13 @@ namespace kkkkkkaaaaaa.Web.Repositories
 {
     public class UserHistoriesRepository : KandaRepository
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Create(UserHistoryEntity entity, DbConnection connection, DbTransaction transaction)
         {
             var created = UserHistoriesGateway.Insert(entity, connection, transaction);
@@ -15,20 +22,42 @@ namespace kkkkkkaaaaaa.Web.Repositories
             return (created == 1);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public IEnumerable<UserHistoryEntity> Get(UserHistoryEntity entity, DbConnection connection, DbTransaction transaction)
+        {
+            var reader = default(DbDataReader);
+            try
+            {
+                reader = UserHistoriesGateway.Select(entity, connection, transaction);
+
+                var entities = KandaDbDataMapper.MapToEnumerable<UserHistoryEntity>(reader);
+
+                return entities;
+
+            }
+            finally
+            {
+                if (reader != null) { reader.Close(); }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Truncate(DbConnection connection, DbTransaction transaction)
         {
             var error = KandaTableDataGateway.Truncate(@"UserHistories", connection, transaction);
 
             return (error == 0);
-        }
-
-        public IEnumerable<UserHistoryEntity> Get(UserHistoryEntity entity, DbConnection connection, DbTransaction transaction)
-        {
-            var reader = UserHistoriesGateway.Select(entity, connection, transaction);
-
-            var entities = KandaDbDataMapper.MapToEnumerable<UserHistoryEntity>(reader);
-
-            return entities;
         }
     }
 }

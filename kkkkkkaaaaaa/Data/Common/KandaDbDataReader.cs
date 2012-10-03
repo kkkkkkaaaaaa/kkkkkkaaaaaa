@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
@@ -66,12 +67,12 @@ namespace kkkkkkaaaaaa.Data.Common
             set { this.InnerCommand.CommandType = value; }
         }
 
-
         /// <summary>
         /// DbCommand.Connection に対して DbCommand.CommandText を実行し、CommandBehavior の値の 1 つを使用して DbDataReader を実行します。
         /// </summary>
         /// <param name="behavior"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public DbDataReader ExecuteReader(CommandBehavior behavior)
         {
             this._reader = this.InnerCommand.ExecuteReader(behavior);
@@ -82,6 +83,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <summary>
         /// DbCommand.Connection に対して DbCommand.CommandText を実行し、CommandBehavior の値の 1 つを使用して DbDataReader を実行します。
         /// </summary>
+        [DebuggerStepThrough()]
         public DbDataReader ExecuteReader()
         {
             return this.ExecuteReader(CommandBehavior.Default);
@@ -212,7 +214,7 @@ namespace kkkkkkaaaaaa.Data.Common
         {
             var ordinal = this.GetOrdinal(name);
 
-            return (this.IsDBNull(ordinal) ? @"" : this.GetString(ordinal));
+            return (this.IsDBNull(ordinal) ? string.Empty : this.GetString(ordinal));
         }
 
 
@@ -292,7 +294,7 @@ namespace kkkkkkaaaaaa.Data.Common
         {
             if (disposing)
             {
-                if (this.InnerCommand != null) { this.InnerCommand.Dispose(); }
+                if (this._command != null) { this._command.Dispose(); }
                 if (this._reader != null) { this._reader.Dispose(); }
             }
 

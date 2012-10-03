@@ -10,7 +10,7 @@ namespace kkkkkkaaaaaa.Web.Repositories
     /// <summary>
     /// 
     /// </summary>
-    public class KandaRepository
+    public abstract class KandaRepository
     {
         /// <summary>
         /// Memberships の Repository を取得します。
@@ -50,9 +50,27 @@ namespace kkkkkkaaaaaa.Web.Repositories
             get { return KandaRepository._users.Value; }
         }
 
-        // public static UsersAttribtuesRepository UserAttibutes
+        public static UserHistoriesRepository UserHistories
+        {
+            get { return KandaRepository._userHistories.Value; }
+        }
 
-        // public static UsersAttribtueItemsRepository UserAttibuteItems
+        public static UserAttributesRepository UserAttributes
+        {
+            get { return KandaRepository._userAttributes.Value; }
+        }
+            
+        public static UserAttributeHistoriesRepository UserAttributeHistories
+        {
+            get { return KandaRepository._userAttributeHistories.Value; }
+        }
+        
+        /*
+        public static UsersAttribtueItemsRepository UserAttibuteItems
+        {
+            get { return KandaRepository._userAttributeItems; }
+        }
+        */
 
         /// <summary>
         /// システムの現在時刻を取得します。
@@ -66,6 +84,31 @@ namespace kkkkkkaaaaaa.Web.Repositories
 
             return utc;
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        // public abstract bool Truncate(DbConnection connection, DbTransaction transaction);
+
+        // public abstract T Find<T>(long id, DbConnection connection, DbTransaction transaction)
+
+        // public abstract IEnumerable<T> Get<T>(T entity DbConnection connection, DbTransaction transaction) where T : Entity, new()
+
+        // public abstract IEnumerable<T> Search<T>(T criteria, DbConnection connection, DbTransaction transaction)
+
+        // public abstract bool Create(entity, DbConnection connection, DbTransaction transaction)
+
+        // public abstract bool Update(entity, DbConnection connection, DbTransaction transaction)
+
+        // public abstract bool Register(entity, DbConnection connection, DbTransaction transaction)
+
+        // public abstract bool Delete(entity, DbConnection connection, DbTransaction transaction)
+
+        // public abstract bool Truncate(entity, DbConnection connection, DbTransaction transaction)
 
         #region Protected members...
 
@@ -97,7 +140,11 @@ namespace kkkkkkaaaaaa.Web.Repositories
         /// <summary></summary>
         private readonly static Lazy<UsersRepository> _users = new Lazy<UsersRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>
-        //private readonly static Lazy<UserAttributesRepository> _userAttributes = new Lazy<UserAttributesRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
+        private readonly static Lazy<UserHistoriesRepository> _userHistories = new Lazy<UserHistoriesRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
+        /// <summary></summary>
+        private readonly static Lazy<UserAttributesRepository> _userAttributes = new Lazy<UserAttributesRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
+        /// <summary></summary>
+        private readonly static Lazy<UserAttributeHistoriesRepository> _userAttributeHistories = new Lazy<UserAttributeHistoriesRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>
         //private readonly static Lazy<UserAttributeItemsRepository> _userAttributeItems = new Lazy<UserAttributeItemsRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
 

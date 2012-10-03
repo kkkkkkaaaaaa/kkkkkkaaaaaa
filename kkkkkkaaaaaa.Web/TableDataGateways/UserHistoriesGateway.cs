@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using kkkkkkaaaaaa.Data.Common;
@@ -22,6 +23,19 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
             command.ExecuteNonQuery();
 
             return (int) result.Value;
+        }
+
+        public static DbDataReader Select(UserHistoryEntity entity, DbConnection connection, DbTransaction transaction)
+        {
+            var reader = KandaTableDataGateway._factory.CreateReader(connection, transaction);
+
+            reader.CommandText = @"usp_SelectUserHistories";
+
+            KandaDbDataMapper.MapToParameters(reader, entity);
+
+            reader.ExecuteReader();
+
+            return reader;
         }
     }
 }

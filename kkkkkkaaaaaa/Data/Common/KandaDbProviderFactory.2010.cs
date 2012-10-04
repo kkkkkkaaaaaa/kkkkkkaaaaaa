@@ -135,6 +135,7 @@ namespace kkkkkkaaaaaa.Data.Common
             var command = this.CreateCommand(connection, transaction);
 
             return new KandaDbDataReader(command);
+            //return new KandaDbDataReader(connection, transaction);
         }
     }
 }

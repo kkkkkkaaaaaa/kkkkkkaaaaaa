@@ -6,8 +6,19 @@ using kkkkkkaaaaaa.Web.DataTransferObjects;
 
 namespace kkkkkkaaaaaa.Web.TableDataGateways
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class MembershipsGateway : KandaTableDataGateway
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public static KandaDbDataReader Select(string name, string password, DbConnection connection, DbTransaction transaction)
         {
             var reader = KandaTableDataGateway._factory.CreateReader(connection, transaction);
@@ -23,6 +34,13 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
             return reader;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public static KandaDbDataReader Select(long id, DbConnection connection, DbTransaction transaction)
         {
             var reader = KandaTableDataGateway._factory.CreateReader(connection, transaction);
@@ -49,6 +67,13 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
             return (long)scalar;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public static int Insert(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
@@ -65,6 +90,13 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
             return (int)result.Value;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public static int Update(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
@@ -81,18 +113,15 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
             return (int)result.Value;
         }
 
-        internal static int Truncate(DbConnection connection, DbTransaction transaction)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public static int Truncate(DbConnection connection, DbTransaction transaction)
         {
-            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
-
-            command.CommandText = @"usp_TruncateMemberships";
-
-            var result = KandaTableDataGateway._factory.CreateParameter(@"Result", DBNull.Value, ParameterDirection.ReturnValue);
-            command.Parameters.Add(result);
-
-            command.ExecuteNonQuery();
-
-            return (int)result.Value;
+            return KandaTableDataGateway.Truncate(@"Memberships", connection, transaction);
         }
     }
 }

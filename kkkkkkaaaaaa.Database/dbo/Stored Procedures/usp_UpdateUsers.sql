@@ -1,13 +1,13 @@
 ﻿CREATE PROCEDURE usp_UpdateUsers (
 	-- パラメーター
-	@familyName		VARCHAR(1024)
-	, @middleName	VARCHAR(1024)
-	, @givenName	VARCHAR(1024)
-	, @description	VARCHAR(MAX)
-	, @enabled		BIT
-	, @createdOn	DateTime2(7)
-	, @updatedOn	DateTime2(7)
-	, @id			VARCHAR(MAX)
+	@familyName			VARCHAR(1024)
+	, @additionalName	VARCHAR(1024)
+	, @givenName		VARCHAR(1024)
+	, @description		VARCHAR(MAX)
+	, @enabled			BIT
+	, @createdOn		DateTime2(7)
+	, @updatedOn		DateTime2(7)
+	, @id				VARCHAR(MAX)
 )
 AS
 	-- 変数
@@ -15,7 +15,7 @@ AS
 		@update		VARCHAR(MAX)
 		, @set		VARCHAR(MAX)
 		, @where	VARCHAR(MAX)
-		, @error	INT
+		, @count	INT
 
 	-- UPDATE
 	SET @update	= 'UPDATE Users'
@@ -25,27 +25,28 @@ AS
 	SET @set = ' SET'
 	IF @id IS NOT NULL BEGIN
 		SET @set = @set
-			+ ' FamilyName		= @familyName'
-			+ ', MiddleName		= @middleName'
-			+ ', GivenName		= @givenName'
-			+ ', Description	= @description'
+			+ ' FamilyName			= ''' + CONVERT(NVARCHAR(MAX), @familyName) + ''''
+			+ ', AdditionalName		= ''' + CONVERT(NVARCHAR(MAX), @additionalName) + ''''
+			+ ', GivenName			= ''' + CONVERT(NVARCHAR(MAX), @givenName) + ''''
+			+ ', Description		= ''' + CONVERT(NVARCHAR(MAX), @description) + ''''
 
 	END ELSE IF @enabled IS NOT NULL BEGIN
 		SET @set = @set
-			+ ', Enabled		= @enabled'
+			+ ', Enabled			= ' + CONVERT(NVARCHAR(MAX), @enabled) + ''
 
 	END
 
 	SET @set = @set
-		+ ', UpdateOn		= @updatedOn'
+		+ ', UpdatedOn				= ''' + CONVERT(NVARCHAR(MAX), @updatedOn) + ''''
 
 	-- WHERE
-	SET @where = ' ID = ' + @id
+	SET @where = ' WHERE 1 = 1'
+		+ ' AND ID = ' + CONVERT(NVARCHAR(MAX), @id) + ''
 
 	-- 実行
 	EXECUTE (@update + @set + @where)
 
 	-- 戻り値
-	SET @error = @@ERROR
+	SET @count = @@ROWCOUNT
 
-	RETURN @error
+	RETURN @count

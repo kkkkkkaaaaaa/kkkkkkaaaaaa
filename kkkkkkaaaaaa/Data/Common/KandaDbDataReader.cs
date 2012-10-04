@@ -20,6 +20,12 @@ namespace kkkkkkaaaaaa.Data.Common
             this._command = command;
         }
 
+        public KandaDbDataReader(DbConnection connection, DbTransaction transaction = null)
+        {
+            this._command = connection.CreateCommand();
+            this._command.Transaction = transaction;
+        }
+
 
         /// <summary>
         /// 指定した列の値を Object のインスタンスとして取得します。
@@ -81,7 +87,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="behavior"></param>
         /// <returns></returns>
-        [DebuggerStepThrough()]
+        //[DebuggerStepThrough()]
         public DbDataReader ExecuteReader(CommandBehavior behavior)
         {
             this._reader = this.InnerCommand.ExecuteReader(behavior);

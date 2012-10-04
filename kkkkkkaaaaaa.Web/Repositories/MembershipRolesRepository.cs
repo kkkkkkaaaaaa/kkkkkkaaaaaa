@@ -47,6 +47,7 @@ namespace kkkkkkaaaaaa.Web.Repositories
             return (error == 0);
         }
 
+
         /// <summary>
         /// コンストラクタ―。
         /// </summary>

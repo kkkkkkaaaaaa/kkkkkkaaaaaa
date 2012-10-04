@@ -8,8 +8,18 @@ using kkkkkkaaaaaa.Web.TableDataGateways;
 
 namespace kkkkkkaaaaaa.Web.Repositories
 {
-    public class UserAttributesRepository
+    /// <summary>
+    /// 
+    /// </summary>
+    public class UserAttributesRepository : KandaRepository
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public IEnumerable<UserAttributeEntity> Get(long userId, DbConnection connection, DbTransaction transaction)
         {
             var reader = default (DbDataReader);
@@ -28,6 +38,13 @@ namespace kkkkkkaaaaaa.Web.Repositories
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Register(UserAttributeEntity entity, DbConnection connection, DbTransaction transaction)
         {
             if (UserAttributesGateway.Update(entity, connection, transaction) == 1) { return true; }
@@ -37,6 +54,13 @@ namespace kkkkkkaaaaaa.Web.Repositories
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Create(UserAttributeEntity entity, DbConnection connection, DbTransaction transaction)
         {
             var created = UserAttributesGateway.Insert(entity, connection, transaction);
@@ -44,6 +68,13 @@ namespace kkkkkkaaaaaa.Web.Repositories
             return (created == 1);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Update(UserAttributeEntity entity, DbConnection connection, DbTransaction transaction)
         {
             var updated = UserAttributesGateway.Update(entity, connection, transaction);
@@ -51,11 +82,26 @@ namespace kkkkkkaaaaaa.Web.Repositories
             return (updated == 1);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Truncate(DbConnection connection, DbTransaction transaction)
         {
             var error = UserAttributesGateway.Truncate(connection, transaction);
 
             return (error == 0);
+        }
+
+
+        /// <summary>
+        /// コンストラクター。
+        /// </summary>
+        internal UserAttributesRepository()
+        {
+            this.DoNothing();
         }
     }
 }

@@ -63,5 +63,14 @@ namespace kkkkkkaaaaaa.Web.Repositories
 
             return (error == 0);
         }
+
+
+        /// <summary>
+        /// コンストラクター。
+        /// </summary>
+        internal UserAttributeHistoriesRepository()
+        {
+            this.DoNothing();
+        }
     }
 }

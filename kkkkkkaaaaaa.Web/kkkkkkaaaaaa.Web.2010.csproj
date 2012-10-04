@@ -48,6 +48,7 @@
     <Compile Include="DataTransferObjects\RoleEntity.cs" />
     <Compile Include="DataTransferObjects\UserAttributeEntity.cs" />
     <Compile Include="DataTransferObjects\UserAttributeHistoryEntity.cs" />
+    <Compile Include="DataTransferObjects\UserAttributeItemEntity.cs" />
     <Compile Include="DataTransferObjects\UserEntity.cs" />
     <Compile Include="DataTransferObjects\UserHistoryEntity.cs" />
     <Compile Include="Data\KandaProviderFactory.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RolesRepository.cs" />
     <Compile Include="Repositories\UserAttributeHistoriesRepository.cs" />
+    <Compile Include="Repositories\UserAttributeItemsRepository.cs" />
     <Compile Include="Repositories\UserAttributesRepository.cs" />
     <Compile Include="Repositories\UserHistoriesRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="TableDataGateways\MembershipsGateway.cs" />
     <Compile Include="TableDataGateways\RolesGateway.cs" />
     <Compile Include="TableDataGateways\UserAttributeHistoriesGateway.cs" />
+    <Compile Include="TableDataGateways\UserAttributeItemsGateway.cs" />
     <Compile Include="TableDataGateways\UserAttributesGateway.cs" />
     <Compile Include="TableDataGateways\UserHistoriesGateway.cs" />
     <Compile Include="TableDataGateways\UsersGateway.cs" />

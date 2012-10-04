@@ -12,12 +12,19 @@ namespace kkkkkkaaaaaa.Web.Repositories
     /// </summary>
     public class AuthorizationsRepository : KandaRepository
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Truncate(DbConnection connection, DbTransaction transaction)
         {
             var error = AuthorizationsGateway.Truncate(connection, transaction);
 
             return (error == 0);
         }
+
 
         /// <summary>
         /// コンストラクタ―。

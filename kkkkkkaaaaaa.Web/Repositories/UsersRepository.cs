@@ -5,8 +5,18 @@ using kkkkkkaaaaaa.Web.TableDataGateways;
 
 namespace kkkkkkaaaaaa.Web.Repositories
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class UsersRepository : KandaRepository
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public UserEntity Find(long id, DbConnection connection, DbTransaction transaction)
         {
             var reader = default(DbDataReader);
@@ -25,6 +35,13 @@ namespace kkkkkkaaaaaa.Web.Repositories
             } 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Create(UserEntity entity, DbConnection connection, DbTransaction transaction)
         {
             var created = UsersGateway.Insert(entity, connection, transaction);
@@ -32,6 +49,13 @@ namespace kkkkkkaaaaaa.Web.Repositories
             return (created == 1);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Update(UserEntity entity, DbConnection connection, DbTransaction transaction)
         {
             var affected = UsersGateway.Update(entity, connection, transaction);
@@ -39,12 +63,19 @@ namespace kkkkkkaaaaaa.Web.Repositories
             return (affected == 1);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public bool Truncate(DbConnection connection, DbTransaction transaction)
         {
             var error = UsersGateway.Truncate(connection, transaction);
 
             return (error == 0);
         }
+
 
         /// <summary>
         /// コンストラクタ―。

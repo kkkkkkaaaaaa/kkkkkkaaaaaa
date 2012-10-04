@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Threading;
 using kkkkkkaaaaaa.Data.Common;
@@ -50,27 +52,38 @@ namespace kkkkkkaaaaaa.Web.Repositories
             get { return KandaRepository._users.Value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static UserHistoriesRepository UserHistories
         {
             get { return KandaRepository._userHistories.Value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static UserAttributesRepository UserAttributes
         {
             get { return KandaRepository._userAttributes.Value; }
         }
-            
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static UserAttributeHistoriesRepository UserAttributeHistories
         {
             get { return KandaRepository._userAttributeHistories.Value; }
         }
         
-        /*
-        public static UsersAttribtueItemsRepository UserAttibuteItems
+        /// <summary>
+        /// 
+        /// </summary>
+        public static UserAttributeItemsRepository UserAttibuteItems
         {
-            get { return KandaRepository._userAttributeItems; }
+            get { return KandaRepository._userAttributeItems.Value; }
         }
-        */
+
 
         /// <summary>
         /// システムの現在時刻を取得します。
@@ -121,9 +134,99 @@ namespace kkkkkkaaaaaa.Web.Repositories
         /// <summary></summary>
         private readonly static Lazy<UserAttributeHistoriesRepository> _userAttributeHistories = new Lazy<UserAttributeHistoriesRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>
-        //private readonly static Lazy<UserAttributeItemsRepository> _userAttributeItems = new Lazy<UserAttributeItemsRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
+        private readonly static Lazy<UserAttributeItemsRepository> _userAttributeItems = new Lazy<UserAttributeItemsRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
 
         #endregion
+
+
+        /*
+        public Entity Find(long id, DbConnection connection, DbTransaction transaction)
+        {
+            var reader = default(DbDataReader);
+
+            try
+            {
+                reader = Gateway.Select(new Entity(){ ID = id, Enabled = true, }, connection, transaction);
+
+                var entity = (reader.Read() ? KandaDbDataMapper.MapToObject<Entity>(reader) : default(Entity));
+            }
+            finally
+            {
+                if (reader != null) { reader.Close(); }
+            }
+        }
+
+        public IEnumerable<Entitiy> Get(Entity entity, DbConnection connection, DbTransaction transaction)
+        {
+            var reader = default(DbDataReader);
+
+            try
+            {
+                reader = KandaTableDataGateway.Select(entity, connection, transaction);
+
+                var entities = KandaDbDataMapper.MapToEnumerable<UserAttributeItemEntitiy>(reader);
+
+                return entity;
+            }
+            finally
+            {
+                if (reader != null) { reader.Close(); }
+            }
+        }
+
+        public IEnumerable<Entitiy> Search(Criteria criteria, DbConnection connection, DbTransaction transaction)
+        {
+            var reader = default(DbDataReader);
+
+            try
+            {
+                reader = KandaTableDataGateway.Select(criteria, connection, transaction);
+
+                var entities = KandaDbDataMapper.MapToEnumerable<UserAttributeItemEntitiy>(reader);
+
+                return entity;
+            }
+            finally
+            {
+                if (reader != null) { reader.Close(); }
+            }
+        }
+
+        public bool Create(Entitiy entity, DbConnection connection, DbTransaction transaction)
+        {
+            var count = Gateway.Insert(entity, connection, transaction);
+
+            return (count == 1);
+        }
+
+        public bool Update(Entitiy entity, DbConnection connection, DbTransaction transaction)
+        {
+            var count = Gateway.Update(entity, connection, transaction);
+
+            return (count == 1);
+        }
+
+        public bool Register(Entitiy entity, DbConnection connection, DbTransaction transaction)
+        {
+            if (Gateway.Udpate(entity, connection, transaction) == 1) { return true; }
+
+            if (Gateway.Insert(entity, connection, transaction) == 1) { return true; }
+
+            return false;
+        }
+
+        public bool Delete(Entitiy entity, DbConnection connection, DbTransaction transaction)
+        {
+            var deleted = Gateway.Delete(entity, connection, transaction);
+
+            return (deleted == 1);
+        }
+
+        public bool Truncate(DbConnection connection, DbTransaction transaction)
+        {
+            return Gateway.Truncate(connection, transaction);
+        }
+        */
     }
 }
 

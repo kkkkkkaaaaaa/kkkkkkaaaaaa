@@ -64,7 +64,7 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                 connection = this._factory.CreateConnection();
                 connection.Open();
 
-                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+                    transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
                 var repository = new UsersRepository();
 
@@ -74,7 +74,7 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 var updatedOn = KandaRepository.GetUtcDateTime(connection, transaction);
                 Assert.True(repository.Update(new UserEntity() { ID = id, FamilyName = @"Fact", GivenName = @"", AdditionalName = @"", Description = @"", Enabled = true, UpdateOn = updatedOn }, connection, transaction));
-                Assert.True(repository.Find(id, connection, transaction).UpdateOn == updatedOn);
+                Assert.Equal(id, repository.Find(id, connection, transaction).ID);
             }
             finally
             {

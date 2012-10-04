@@ -53,6 +53,17 @@ namespace kkkkkkaaaaaa.Web.Data
             return command;
         }
 
+        public override KandaDbDataReader CreateReader(DbConnection connection, DbTransaction transaction = null)
+        {
+            var reader = base.CreateReader(connection, transaction);
+
+            reader.CommandType = CommandType.StoredProcedure;
+
+            return reader;
+
+            return base.CreateReader(connection, transaction);
+        }
+
         #region Private members...
 
         /// <summary>

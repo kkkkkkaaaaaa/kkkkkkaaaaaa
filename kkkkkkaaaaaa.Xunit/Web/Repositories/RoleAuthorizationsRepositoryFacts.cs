@@ -1,19 +1,11 @@
-using kkkkkkaaaaaa.Data.Common;
-using kkkkkkaaaaaa.Web.Data;
+﻿using System.Data;
+using System.Data.Common;
+using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class KandaXunitRepositoryFacts
+    public class RoleAuthorizationsRepositoryFacts : KandaXunitRepositoryFacts
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        protected KandaDbProviderFactory _factory = KandaProviderFactory.Instance;
-
-
         /*
         [Fact()]
         public void FindFact()

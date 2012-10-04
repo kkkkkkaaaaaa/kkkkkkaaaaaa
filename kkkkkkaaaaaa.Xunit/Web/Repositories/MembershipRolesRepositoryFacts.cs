@@ -7,7 +7,7 @@ using kkkkkkaaaaaa.Web.Repositories;
 
 namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 {
-    public class MembershipRolesRepositoryFacts : KandaRepositoryFacts
+    public class MembershipRolesRepositoryFacts : KandaXunitRepositoryFacts
     {
         [Fact(Skip = @"Not implemented.")]
         public void SearchFact()
@@ -22,11 +22,8 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                var repository = new MembershipRolesRepository();
-
-                var id = long.MaxValue;
-                //Assert.True(repository.Create(new MembershipCriteria() { ID = id, MembershipID = 1, RoleID = 1, Enabled = true, }, connection, transaction));
-                //Assert.True(repository.Create(new RoleCriteria() { ID = id, MembershipID = 1, RoleID = 1, Enabled = true, }, connection, transaction));
+                //var repository = new
+                //Assert.NotNull(repository.Search(, connection, transaction))
             }
             finally
             {

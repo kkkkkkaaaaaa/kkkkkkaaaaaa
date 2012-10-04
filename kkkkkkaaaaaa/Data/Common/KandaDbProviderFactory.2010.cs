@@ -132,10 +132,13 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public virtual KandaDbDataReader CreateReader(DbConnection connection, DbTransaction transaction = null)
         {
+            /*
+             * 
             var command = this.CreateCommand(connection, transaction);
 
             return new KandaDbDataReader(command);
-            //return new KandaDbDataReader(connection, transaction);
+            */
+            return new KandaDbDataReader(connection, transaction);
         }
     }
 }

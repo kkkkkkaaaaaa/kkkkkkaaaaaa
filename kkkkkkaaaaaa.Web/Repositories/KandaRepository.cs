@@ -224,7 +224,9 @@ namespace kkkkkkaaaaaa.Web.Repositories
 
         public bool Truncate(DbConnection connection, DbTransaction transaction)
         {
-            return Gateway.Truncate(connection, transaction);
+            var error = Gateway.Truncate(connection, transaction);
+
+            return (error == 0);
         }
         */
     }

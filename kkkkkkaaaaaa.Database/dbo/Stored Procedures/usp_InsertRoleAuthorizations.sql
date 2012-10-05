@@ -5,7 +5,7 @@
 AS
 	-- 変数
 	DECLARE
-		@error			 INT
+		@count	INT
 
 	-- INSERT
 	INSERT INTO
@@ -20,6 +20,6 @@ AS
 		)
 	
 	-- 戻り値
-	SET @error = @@ERROR
+	SET @count = @@ROWCOUNT
 
-	RETURN @error
+	RETURN @count

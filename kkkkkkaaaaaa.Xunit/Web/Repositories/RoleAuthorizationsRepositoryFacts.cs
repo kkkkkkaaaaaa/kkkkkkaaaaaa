@@ -36,6 +36,59 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                 if (connection != null) { connection.Close(); }
             }
         }
+        
+        [Fact()]
+        public void CreateFact()
+        {
+            var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
+
+            try
+            {
+                connection = this._factory.CreateConnection();
+                connection.Open();
+
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                var repository = new RoleAuthorizationsRepository();
+
+                long roleId = long.MaxValue;
+                long authorizationId = long.MaxValue;
+                Assert.True(repository.Create(new RoleAuthorizationEntity() { RoleID = roleId, AuthorizationID = authorizationId, Enabled = false, }, connection, transaction));
+            }
+            finally
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                if (connection != null) { connection.Close(); }
+            }
+        }
+        
+        [Fact()]
+        public void UpdateFact()
+        {
+            var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
+
+            try
+            {
+                connection = this._factory.CreateConnection();
+                connection.Open();
+
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                var repository = new RoleAuthorizationsRepository();
+
+                long roleId = long.MaxValue;
+                long authorizationId = long.MaxValue;
+                Assert.True(repository.Create(new RoleAuthorizationEntity() { RoleID = roleId, AuthorizationID = authorizationId, Enabled = true, }, connection, transaction));
+                Assert.True(repository.Update(new RoleAuthorizationEntity() { RoleID = roleId, AuthorizationID = authorizationId, Enabled = false, }, connection, transaction));
+            }
+            finally
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                if (connection != null) { connection.Close(); }
+            }
+        }
 
         [Fact()]
         public void TruncateFact()

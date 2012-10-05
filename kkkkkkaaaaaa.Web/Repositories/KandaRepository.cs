@@ -22,9 +22,21 @@ namespace kkkkkkaaaaaa.Web.Repositories
             get { return KandaRepository._memberships.Value; }
         }
 
-        //public static MembershipRoleRepository MembershipRoles
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MembershipRolesRepository MembershipRoles
+        {
+            get { return KandaRepository._membershipRoles.Value; }
+        }
 
-        //public static MembershipAuthorizationsRepository MembershipAuthorizations
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MembershipAuthorizationsRepository MembershipAuthorizations
+        {
+            get { return KandaRepository._membershipAuthorizations.Value; }
+        }
 
         /// <summary>
         /// 
@@ -34,7 +46,13 @@ namespace kkkkkkaaaaaa.Web.Repositories
             get { return KandaRepository._roles.Value; }
         }
 
-        // public static RolesAuthorizationsRepository RoleAuthorizations
+        /// <summary>
+        /// 
+        /// </summary>
+        public static RoleAuthorizationsRepository RoleAuthorizations
+        {
+            get { return KandaRepository._roleAuthorizations.Value; }
+        }
 
         /// <summary>
         /// 
@@ -43,6 +61,7 @@ namespace kkkkkkaaaaaa.Web.Repositories
         {
             get { return KandaRepository._authorizations.Value; }
         }
+
 
         /// <summary>
         /// Users ÇÃ Repository ÇéÊìæÇµÇ‹Ç∑ÅB
@@ -98,6 +117,7 @@ namespace kkkkkkaaaaaa.Web.Repositories
             return utc;
         }
 
+
         #region Protected members...
 
         /// <summary>
@@ -115,15 +135,15 @@ namespace kkkkkkaaaaaa.Web.Repositories
         /// <summary></summary>
         private readonly static Lazy<MembershipsRepository> _memberships = new Lazy<MembershipsRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>
-        //private readonly static Lazy<MembershipsAuthorizationsRepository> _membershipAuthorizations = new Lazy<MembershipsAuthorizationsRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
+        private readonly static Lazy<MembershipAuthorizationsRepository> _membershipAuthorizations = new Lazy<MembershipAuthorizationsRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
+        /// <summary></summary>
+        private readonly static Lazy<MembershipRolesRepository> _membershipRoles = new Lazy<MembershipRolesRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>
         private readonly static Lazy<AuthorizationsRepository> _authorizations = new Lazy<AuthorizationsRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>
-        //private readonly static Lazy<AuthorizationRolesRepository> _authorizationRoles = new Lazy<AuthorizationRolesRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
-        /// <summary></summary>
         private readonly static Lazy<RolesRepository> _roles = new Lazy<RolesRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>
-        //private readonly static Lazy<RoleMembershipsRepository> _rolesMemberships = new Lazy<RoleMembershipsRepositoryRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
+        private readonly static Lazy<RoleAuthorizationsRepository> _roleAuthorizations = new Lazy<RoleAuthorizationsRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
 
         /// <summary></summary>
         private readonly static Lazy<UsersRepository> _users = new Lazy<UsersRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
@@ -240,4 +260,3 @@ namespace kkkkkkaaaaaa.Web.Repositories
         */
     }
 }
-

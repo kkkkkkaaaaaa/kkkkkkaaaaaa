@@ -46,6 +46,7 @@
     <Compile Include="DataTransferObjects\MembershipAuthorizationEntity.cs" />
     <Compile Include="DataTransferObjects\MembershipEntity.cs" />
     <Compile Include="DataTransferObjects\MembershipRoleEntity.cs" />
+    <Compile Include="DataTransferObjects\RoleAuthorizationEntity.cs" />
     <Compile Include="DataTransferObjects\RoleEntity.cs" />
     <Compile Include="DataTransferObjects\UserAttributeEntity.cs" />
     <Compile Include="DataTransferObjects\UserAttributeHistoryEntity.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="TableDataGateways\MembershipAuthorizationsGateway.cs" />
     <Compile Include="TableDataGateways\MembershipRolesGateway.cs" />
     <Compile Include="TableDataGateways\MembershipsGateway.cs" />
+    <Compile Include="TableDataGateways\RoleAuthorizationsGateway.cs" />
     <Compile Include="TableDataGateways\RolesGateway.cs" />
     <Compile Include="TableDataGateways\UserAttributeHistoriesGateway.cs" />
     <Compile Include="TableDataGateways\UserAttributeItemsGateway.cs" />

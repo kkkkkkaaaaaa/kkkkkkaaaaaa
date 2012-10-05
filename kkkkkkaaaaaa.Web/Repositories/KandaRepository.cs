@@ -214,14 +214,14 @@ namespace kkkkkkaaaaaa.Web.Repositories
         {
             var created = sGateway.Insert(entity, connection, transaction);
 
-            return (count == 1);
+            return (created == 1);
         }
 
         public bool Update(Entity entity, DbConnection connection, DbTransaction transaction)
         {
             var updated = sGateway.Update(entity, connection, transaction);
 
-            return (count == 1);
+            return (updated == 1);
         }
 
         public bool Delete(Entity entity, DbConnection connection, DbTransaction transaction)

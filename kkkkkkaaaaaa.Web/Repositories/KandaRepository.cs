@@ -155,16 +155,34 @@ namespace kkkkkkaaaaaa.Web.Repositories
                 if (reader != null) { reader.Close(); }
             }
         }
-
-        public IEnumerable<Entitiy> Get(Entity entity, DbConnection connection, DbTransaction transaction)
+        
+        public IEnumerable<Entity> Get(Entity entity, DbConnection connection, DbTransaction transaction)
         {
             var reader = default(DbDataReader);
 
             try
             {
-                reader = KandaTableDataGateway.Select(entity, connection, transaction);
+                reader = sGateway.Select(entity, connection, transaction);
 
-                var entities = KandaDbDataMapper.MapToEnumerable<UserAttributeItemEntitiy>(reader);
+                var entities = KandaDbDataMapper.MapToEnumerable<Entity>(reader);
+
+                return entities;
+            }
+            finally
+            {
+                if (reader != null) { reader.Close(); }
+            }
+        }
+        
+        public IEnumerable<MembershipAuthorizationEntity> Get(Entity entity, DbConnection connection, DbTransaction transaction)
+        {
+            var reader = default(DbDataReader);
+
+            try
+            {
+                reader = sGateway.Select(entity, connection, transaction);
+
+                var entities = KandaDbDataMapper.MapToEnumerable<Entitiy>(reader);
 
                 return entity;
             }
@@ -191,33 +209,24 @@ namespace kkkkkkaaaaaa.Web.Repositories
                 if (reader != null) { reader.Close(); }
             }
         }
-
-        public bool Create(Entitiy entity, DbConnection connection, DbTransaction transaction)
+        
+        public bool Create(Entity entity, DbConnection connection, DbTransaction transaction)
         {
-            var count = Gateway.Insert(entity, connection, transaction);
+            var created = sGateway.Insert(entity, connection, transaction);
 
             return (count == 1);
         }
 
-        public bool Update(Entitiy entity, DbConnection connection, DbTransaction transaction)
+        public bool Update(Entity entity, DbConnection connection, DbTransaction transaction)
         {
-            var count = Gateway.Update(entity, connection, transaction);
+            var updated = sGateway.Update(entity, connection, transaction);
 
             return (count == 1);
         }
 
-        public bool Register(Entitiy entity, DbConnection connection, DbTransaction transaction)
+        public bool Delete(Entity entity, DbConnection connection, DbTransaction transaction)
         {
-            if (Gateway.Udpate(entity, connection, transaction) == 1) { return true; }
-
-            if (Gateway.Insert(entity, connection, transaction) == 1) { return true; }
-
-            return false;
-        }
-
-        public bool Delete(Entitiy entity, DbConnection connection, DbTransaction transaction)
-        {
-            var deleted = Gateway.Delete(entity, connection, transaction);
+            var deleted = sGateway.Delete(entity, connection, transaction);
 
             return (deleted == 1);
         }

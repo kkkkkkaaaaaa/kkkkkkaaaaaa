@@ -169,6 +169,7 @@
     <Build Include="dbo\Stored Procedures\usp_InsertUserAttributeItems.sql" />
     <Build Include="dbo\Stored Procedures\usp_SelectUserAttributeItems.sql" />
     <Build Include="dbo\Views\UserAttributeView.sql" />
+    <Build Include="dbo\Stored Procedures\usp_SelectMembershipAuthorizations.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="kkkkkkaaaaaa.Database.2012.refactorlog" />

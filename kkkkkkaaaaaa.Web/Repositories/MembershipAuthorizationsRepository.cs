@@ -1,11 +1,44 @@
-﻿using System.Data.Common;
+﻿using System.Collections.Generic;
+using System.Data.Common;
+using kkkkkkaaaaaa.Data.Common;
+using kkkkkkaaaaaa.Web.DataTransferObjects;
 using kkkkkkaaaaaa.Web.TableDataGateways;
 
 namespace kkkkkkaaaaaa.Web.Repositories
 {
     public class MembershipAuthorizationsRepository : KandaRepository
     {
+        public IEnumerable<MembershipAuthorizationEntity> Get(MembershipAuthorizationEntity entity, DbConnection connection, DbTransaction transaction)
+        {
+            var reader = default(DbDataReader);
 
+            try
+            {
+                reader = MembershipAuthorizationsGateway.Select(entity, connection, transaction);
+
+                var entities = KandaDbDataMapper.MapToEnumerable<MembershipAuthorizationEntity>(reader);
+
+                return entities;
+            }
+            finally
+            {
+                if (reader != null) { reader.Close(); }
+            }
+        }
+
+        public bool Create(MembershipAuthorizationEntity entity, DbConnection connection, DbTransaction transaction)
+        {
+            var count = MembershipAuthorizationsGateway.Insert(entity, connection, transaction);
+
+            return (count == 1);
+        }
+
+        public bool Update(MembershipAuthorizationEntity entity, DbConnection connection, DbTransaction transaction)
+        {
+            var count = MembershipAuthorizationsGateway.Update(entity, connection, transaction);
+
+            return (count == 1);
+        }
 
         /*
         public Entity Find(long id, DbConnection connection, DbTransaction transaction)
@@ -17,24 +50,6 @@ namespace kkkkkkaaaaaa.Web.Repositories
                 reader = Gateway.Select(new Entity(){ ID = id, Enabled = true, }, connection, transaction);
 
                 var entity = (reader.Read() ? KandaDbDataMapper.MapToObject<Entity>(reader) : default(Entity));
-            }
-            finally
-            {
-                if (reader != null) { reader.Close(); }
-            }
-        }
-
-        public IEnumerable<Entitiy> Get(Entity entity, DbConnection connection, DbTransaction transaction)
-        {
-            var reader = default(DbDataReader);
-
-            try
-            {
-                reader = KandaTableDataGateway.Select(entity, connection, transaction);
-
-                var entities = KandaDbDataMapper.MapToEnumerable<UserAttributeItemEntitiy>(reader);
-
-                return entity;
             }
             finally
             {
@@ -58,20 +73,6 @@ namespace kkkkkkaaaaaa.Web.Repositories
             {
                 if (reader != null) { reader.Close(); }
             }
-        }
-
-        public bool Create(Entitiy entity, DbConnection connection, DbTransaction transaction)
-        {
-            var count = Gateway.Insert(entity, connection, transaction);
-
-            return (count == 1);
-        }
-
-        public bool Update(Entitiy entity, DbConnection connection, DbTransaction transaction)
-        {
-            var count = Gateway.Update(entity, connection, transaction);
-
-            return (count == 1);
         }
 
         public bool Register(Entitiy entity, DbConnection connection, DbTransaction transaction)

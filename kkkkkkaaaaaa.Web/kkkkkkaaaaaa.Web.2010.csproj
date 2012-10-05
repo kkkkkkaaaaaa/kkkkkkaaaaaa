@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataTransferObjects\KandaMembershipUser.cs" />
+    <Compile Include="DataTransferObjects\MembershipAuthorizationEntity.cs" />
     <Compile Include="DataTransferObjects\MembershipEntity.cs" />
     <Compile Include="DataTransferObjects\MembershipRoleEntity.cs" />
     <Compile Include="DataTransferObjects\RoleEntity.cs" />

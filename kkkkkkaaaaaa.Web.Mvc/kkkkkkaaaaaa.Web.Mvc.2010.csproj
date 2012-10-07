@@ -132,6 +132,12 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kkkkkkaaaaaa.kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa.2010.csproj">
+      <Project>{4C2FB222-66B5-4BED-9251-AF9896CFFF44}</Project>
+      <Name>kkkkkkaaaaaa.kkkkkkaaaaaa.2010</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -116,8 +116,14 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Web\Security\" />
+    <Compile Include="Web\Security\KandaMembershipProvider.cs" />
+    <Compile Include="Web\Security\KandaRoleProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

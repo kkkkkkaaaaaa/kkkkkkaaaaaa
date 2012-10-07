@@ -6,12 +6,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D5AC538C-4713-4290-837B-965DECFFE6D9}</ProjectGuid>
+    <ProjectGuid>{9CFFBA44-62EE-4DEB-8326-EA25F34FAD71}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>kkkkkkaaaaaa.Web.UI._2010</RootNamespace>
-    <AssemblyName>kkkkkkaaaaaa.Web.UI.2010</AssemblyName>
+    <RootNamespace>kkkkkkaaaaaa.Web.UI</RootNamespace>
+    <AssemblyName>kkkkkkaaaaaa.Web.UI</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
@@ -25,7 +25,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -70,7 +70,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>64158</DevelopmentServerPort>
+          <DevelopmentServerPort>55118</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

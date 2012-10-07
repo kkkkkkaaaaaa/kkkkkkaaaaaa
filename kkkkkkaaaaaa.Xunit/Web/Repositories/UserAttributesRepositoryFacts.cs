@@ -48,8 +48,9 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 var repository = new UserAttributesRepository();
 
-                var id = long.MaxValue;
-                Assert.True(repository.Create(new UserAttributeEntity(){ UserID = 1, ItemID = 1, Value = @"", }, connection, transaction));
+                var userId = long.MaxValue;
+                var itemId = int.MaxValue;
+                Assert.True(repository.Create(new UserAttributeEntity(){ UserID = userId, ItemID = itemId, Value = @"", }, connection, transaction));
             }
             finally
             {
@@ -73,9 +74,10 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 var repository = new UserAttributesRepository();
 
-                var id = long.MaxValue;
-                Assert.True(repository.Create(new UserAttributeEntity() { UserID = 1, ItemID = 1, Value = @"create", }, connection, transaction));
-                Assert.True(repository.Update(new UserAttributeEntity() { UserID = 1, ItemID = 1, Value = @"update", }, connection, transaction));
+                var userId = long.MaxValue;
+                var itemId = int.MaxValue;
+                Assert.True(repository.Create(new UserAttributeEntity() { UserID = userId, ItemID = itemId, Value = @"create", }, connection, transaction));
+                Assert.True(repository.Update(new UserAttributeEntity() { UserID = userId, ItemID = itemId, Value = @"update", }, connection, transaction));
             }
             finally
             {

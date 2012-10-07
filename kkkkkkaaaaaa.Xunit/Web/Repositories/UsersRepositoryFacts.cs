@@ -13,17 +13,24 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
         public void FindFact()
         {
             var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
 
             try
             {
                 connection = this._factory.CreateConnection();
                 connection.Open();
 
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
                 var repository = new UsersRepository();
+
+                var id = long.MaxValue;
+                Assert.NotNull(repository.Find(id, connection, transaction));
             }
             finally
             {
-                
+                if (transaction != null) { transaction.Rollback(); }
+                if (connection != null) { connection.Close(); }
             }
         }
 

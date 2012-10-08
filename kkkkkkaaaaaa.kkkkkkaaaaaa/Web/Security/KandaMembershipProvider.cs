@@ -1,4 +1,7 @@
 ﻿using System.Web.Security;
+using kkkkkkaaaaaa.DataTransferObjects;
+using kkkkkkaaaaaa.DomainModels;
+using kkkkkkaaaaaa.Repositories;
 
 namespace kkkkkkaaaaaa.Web.Security
 {
@@ -23,7 +26,8 @@ namespace kkkkkkaaaaaa.Web.Security
         /// <param name="status">ユーザーが正常に作成されたかどうかを示す <see cref="T:System.Web.Security.MembershipCreateStatus"/> 列挙値。</param>
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
-            throw new System.NotImplementedException();
+            status = MembershipCreateStatus.InvalidQuestion;
+            return null;
         }
 
         /// <summary>
@@ -36,8 +40,22 @@ namespace kkkkkkaaaaaa.Web.Security
         /// <param name="password">指定したユーザーのパスワード。</param>
         public override bool ValidateUser(string username, string password)
         {
+            //throw new System.NotImplementedException();
+            return Memberships.Validate(username, password);
+        }
+
+        /// <summary>
+        /// メンバーシップ ユーザーの一意の識別子に基づいて、データ ソースからユーザー情報を取得します。ユーザーの最終利用日時スタンプを更新するオプションも提供されます。
+        /// </summary>
+        /// <returns>
+        /// データ ソースから取得された指定のユーザーの情報が格納された <see cref="T:System.Web.Security.MembershipUser"/> オブジェクト。
+        /// </returns>
+        /// <param name="providerUserKey">情報を取得するメンバーシップ ユーザーの一意の識別子。</param><param name="userIsOnline">ユーザーの最終利用日時スタンプを更新する場合は true。ユーザーの最終利用日時スタンプを更新しないでユーザー情報を返す場合は false。</param>
+        public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
+        {
             throw new System.NotImplementedException();
         }
+
 
         #region Not implemented members...
 
@@ -106,18 +124,6 @@ namespace kkkkkkaaaaaa.Web.Security
         /// </returns>
         /// <param name="userName">ロック ステータスを解除するメンバーシップ ユーザー。</param>
         public override bool UnlockUser(string userName)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        /// <summary>
-        /// メンバーシップ ユーザーの一意の識別子に基づいて、データ ソースからユーザー情報を取得します。ユーザーの最終利用日時スタンプを更新するオプションも提供されます。
-        /// </summary>
-        /// <returns>
-        /// データ ソースから取得された指定のユーザーの情報が格納された <see cref="T:System.Web.Security.MembershipUser"/> オブジェクト。
-        /// </returns>
-        /// <param name="providerUserKey">情報を取得するメンバーシップ ユーザーの一意の識別子。</param><param name="userIsOnline">ユーザーの最終利用日時スタンプを更新する場合は true。ユーザーの最終利用日時スタンプを更新しないでユーザー情報を返す場合は false。</param>
-        public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
             throw new System.NotImplementedException();
         }

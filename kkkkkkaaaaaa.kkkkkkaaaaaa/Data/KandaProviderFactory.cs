@@ -4,7 +4,7 @@ using System.Data.Common;
 using System.Threading;
 using kkkkkkaaaaaa.Data.Common;
 
-namespace kkkkkkaaaaaa.Web.Data
+namespace kkkkkkaaaaaa.Data
 {
     /// <summary>
     /// 
@@ -14,7 +14,7 @@ namespace kkkkkkaaaaaa.Web.Data
         /// <summary>
         /// Singleton インスタンス。
         /// </summary>
-        public static KandaDbProviderFactory Instance
+        public static KandaProviderFactory Instance
         {
             get { return KandaProviderFactory._instance.Value; }
         }
@@ -80,7 +80,7 @@ namespace kkkkkkaaaaaa.Web.Data
         }
 
         /// <summary></summary>
-        private static readonly Lazy<KandaDbProviderFactory> _instance = new Lazy<KandaDbProviderFactory>(() => new KandaProviderFactory(), LazyThreadSafetyMode.ExecutionAndPublication);
+        private static readonly Lazy<KandaProviderFactory> _instance = new Lazy<KandaProviderFactory>(() => { return new KandaProviderFactory(); }, LazyThreadSafetyMode.ExecutionAndPublication);
 
         #endregion
     }

@@ -67,6 +67,9 @@
     <Compile Include="Data\KandaXunitDataFacts.cs" />
     <Compile Include="Data\Common\KandaProviderFactoryFacts.cs" />
     <Compile Include="Data\KandaXunitProviderFactory.cs" />
+    <Compile Include="DomainModels\KandaXunitDomainModelFacts.cs" />
+    <Compile Include="DomainModels\MembershipFacts.cs" />
+    <Compile Include="DomainModels\MembershipsFacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\Repositories\AuthorizationsRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\KandaRepositoryFacts.cs" />
@@ -91,6 +94,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\kkkkkkaaaaaa.kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa.2010.csproj">
+      <Project>{4C2FB222-66B5-4BED-9251-AF9896CFFF44}</Project>
+      <Name>kkkkkkaaaaaa.kkkkkkaaaaaa.2010</Name>
+    </ProjectReference>
     <ProjectReference Include="..\kkkkkkaaaaaa.Web\kkkkkkaaaaaa.Web.2010.csproj">
       <Project>{CDA9A6B9-DE6B-4A59-8CAF-8F3CDE68467B}</Project>
       <Name>kkkkkkaaaaaa.Web.2010</Name>

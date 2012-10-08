@@ -116,13 +116,37 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\kkkkkkaaaaaa\kkkkkkaaaaaa.csproj">
+      <Project>{24985E63-0FAF-4F7B-93DD-6764F0E3F6A4}</Project>
+      <Name>kkkkkkaaaaaa</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataTransferObjects\MembershipEntity.cs" />
+    <Compile Include="DataTransferObjects\MembershipsCriteria.cs" />
+    <Compile Include="DataTransferObjects\UserEntity.cs" />
+    <Compile Include="Data\KandaProviderFactory.cs" />
+    <Compile Include="Data\TableDataGateways\UsersGateway.cs" />
+    <Compile Include="DomainModels\Authentications.cs" />
+    <Compile Include="DomainModels\KandaDomainModel.cs" />
+    <Compile Include="DomainModels\Membership.cs" />
+    <Compile Include="DomainModels\Memberships.cs" />
+    <Compile Include="DomainModels\User.cs" />
+    <Compile Include="Repositories\KandaRepository.cs" />
+    <Compile Include="Repositories\MembershipsRepository.cs" />
+    <Compile Include="Data\TableDataGateways\KandaTableDataGateway.cs" />
+    <Compile Include="Data\TableDataGateways\MembershipsGateway.cs" />
+    <Compile Include="Repositories\UsersRepository.cs" />
     <Compile Include="Web\Security\KandaMembershipProvider.cs" />
+    <Compile Include="Web\Security\KandaMembershipUser.cs" />
     <Compile Include="Web\Security\KandaRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

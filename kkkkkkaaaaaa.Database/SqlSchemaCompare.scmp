@@ -9,7 +9,7 @@
   </SourceModelProvider>
   <TargetModelProvider>
     <ConnectionBasedModelProvider>
-      <ConnectionString>Data Source=(localdb)\kkkkkkaaaaaa_2010;Initial Catalog=kkkkkkaaaaaa.Database.2010;Integrated Security=True;Pooling=False;Connect Timeout=30</ConnectionString>
+      <ConnectionString>Data Source=(localdb)\kkkkkkaaaaaa_2010;Initial Catalog=kkkkkkaaaaaa.Database.2010;Integrated Security=True;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=30;Application Name="Microsoft SQL Server Data Tools, Schema Compare"</ConnectionString>
     </ConnectionBasedModelProvider>
   </TargetModelProvider>
   <SchemaCompareSettingsService>

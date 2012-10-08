@@ -21,7 +21,7 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                 connction.Open();
 
                 transaction = connction.BeginTransaction(IsolationLevel.Serializable);
-
+                
                 var repository = new MembershipsRepository();
 
                 var id = long.MaxValue;

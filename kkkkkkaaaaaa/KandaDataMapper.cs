@@ -8,6 +8,11 @@ namespace kkkkkkaaaaaa
     public class KandaDataMapper
     {
         /*
+        public static T MapToObject<T>(object source)
+        {
+
+        }
+
         public static void MapToObject<T>(object source, T target)
         {
 

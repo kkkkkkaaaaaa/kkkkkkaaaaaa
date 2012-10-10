@@ -73,11 +73,11 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        protected static decimal GetIdentCurrent(string tableName, DbConnection connection, DbTransaction transaction = null)
+        protected static decimal IdentCurrent(string tableName, DbConnection connection, DbTransaction transaction = null)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
 
-            command.CommandText = @"GetIdentCurrent";
+            command.CommandText = @"IdentCurrentTable";
 
             command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter(@"tableName", tableName));
 

@@ -76,7 +76,7 @@
     <Compile Include="Web\Repositories\KandaXunitRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\MembershipAuthorizationsRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\MembershipRolesRepositoryFacts.cs" />
-    <Compile Include="Web\Repositories\MembershipsRepositoryFacts.cs" />
+    <Compile Include="Repositories\MembershipsRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\RoleAuthorizationsRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\RolesRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\UserAttributeHistoriesRepositoryFacts.cs" />

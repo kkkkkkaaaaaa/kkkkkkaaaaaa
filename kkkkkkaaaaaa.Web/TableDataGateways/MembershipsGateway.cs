@@ -113,13 +113,37 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
             return (int)result.Value;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        internal static int Delete(long id, DbConnection connection, DbTransaction transaction)
+        {
+            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
+
+            command.CommandText = @"usp_DeleteMemberships";
+
+            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@id", id));
+
+            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
+            command.Parameters.Add(result);
+
+            command.ExecuteNonQuery();
+
+            return (int)result.Value;
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public static int Truncate(DbConnection connection, DbTransaction transaction)
+        internal static int Truncate(DbConnection connection, DbTransaction transaction)
         {
             return KandaTableDataGateway.Truncate(@"Memberships", connection, transaction);
         }

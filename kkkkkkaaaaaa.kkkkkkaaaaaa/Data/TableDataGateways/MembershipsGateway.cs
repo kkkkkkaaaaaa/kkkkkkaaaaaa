@@ -11,6 +11,9 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
     /// </summary>
     internal class MembershipsGateway : KandaTableDataGateway
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public const string TABLE_NAME = @"Memberships";
 
         /// <summary>
@@ -36,35 +39,14 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="password"></param>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public static KandaDbDataReader Select(string name, string password, DbConnection connection, DbTransaction transaction)
+        public static long IdentCurrent(DbConnection connection, DbTransaction transaction)
         {
-            var reader = KandaTableDataGateway._factory.CreateReader(connection, transaction);
+            var current = KandaTableDataGateway.IdentCurrent(MembershipsGateway.TABLE_NAME, connection, transaction);
 
-            reader.CommandText = @"usp_SelectMemberships";
-
-            reader.Parameters.Add(KandaTableDataGateway._factory.CreateParameter(@"id"));
-            reader.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@name", name));
-            reader.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@password", password));
-
-            reader.ExecuteReader();
-
-            return reader;
-        }
-
-        public static long SelectNextID(DbConnection connection, DbTransaction transaction)
-        {
-            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
-
-            command.CommandText = @"usp_SelectNextMembershipID";
-
-            var scalar = command.ExecuteScalar();
-
-            return (long)scalar;
+            return decimal.ToInt64(current);
         }
 
         /// <summary>
@@ -119,9 +101,20 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public static int Truncate(DbConnection connection, DbTransaction transaction)
+        public static int Delete(long id, DbConnection connection, DbTransaction transaction)
         {
-            return KandaTableDataGateway.Truncate(MembershipsGateway.TABLE_NAME, connection, transaction);
+            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
+
+            command.CommandText = @"usp_DeleteMemberships";
+
+            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("id", id));
+
+            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
+            command.Parameters.Add(result);
+
+            command.ExecuteNonQuery();
+
+            return (int)result.Value;
         }
 
         /// <summary>
@@ -130,11 +123,9 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public static long GetIdentCurrent(DbConnection connection, DbTransaction transaction)
+        public static int Truncate(DbConnection connection, DbTransaction transaction)
         {
-            var current = KandaTableDataGateway.GetIdentCurrent(MembershipsGateway.TABLE_NAME, connection, transaction);
-
-            return decimal.ToInt64(current);
+            return KandaTableDataGateway.Truncate(MembershipsGateway.TABLE_NAME, connection, transaction);
         }
     }
 }

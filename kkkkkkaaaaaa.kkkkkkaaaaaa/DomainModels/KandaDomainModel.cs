@@ -8,9 +8,17 @@ namespace kkkkkkaaaaaa.DomainModels
     /// <summary>
     /// 
     /// </summary>
-    public class KandaDomainModel
+    public abstract class KandaDomainModel
     {
         #region Protected members...
+
+        /// <summary>
+        /// もしません。
+        /// </summary>
+        protected void DoNothing()
+        {
+            // もしない
+        }
 
         /// <summary></summary>
         protected readonly KandaProviderFactory _factory = KandaProviderFactory.Instance;

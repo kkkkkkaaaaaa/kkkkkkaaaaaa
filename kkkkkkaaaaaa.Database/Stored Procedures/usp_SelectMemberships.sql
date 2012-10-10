@@ -15,7 +15,12 @@
 
 	-- SELECT
 	SET @select = 'SELECT'
-		+ ' *'
+		+ ' ID'
+		+ ', Name'
+		+ ', '''' AS [Password]' -- + ', Password'
+		+ ', [Enabled]'
+		+ ', CreatedOn'
+		+ ', UpdatedOn'
 
 	-- FROM
 	SET @from = ' FROM'
@@ -32,27 +37,14 @@
 		SET @where = @where
 			+ ' AND Name = ''' + @name + ''''
 			+ ' AND [Password] = ''' + @password + ''''
-
+			+ ' AND [Enabled] = ' + CONVERT(NVARCHAR(MAX), @enabled)
 	END
-	
-	SET @where = @where + ' AND [Enabled] = ' + CONVERT(NVARCHAR(MAX), @enabled)
 
+	-- ORDER BY
 	SET @orderBy = ' ORDER BY UpdatedOn DESC'
 
 	-- 実行
 	EXECUTE (@select + @from + @where + @orderBy)
-
-	/*
-	SELECT
-		*
-	FROM
-		Memberships
-	WHERE
-		1 = 1
-		AND (Name		= @name OR Name = @name)
-		AND [Password]	= @password
-		AND [Enabled]	= CONVERT(BIT, 'True')
-	*/
 
 	-- 戻り値
 	SET @error = @@ERROR

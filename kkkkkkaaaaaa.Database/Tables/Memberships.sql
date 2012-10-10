@@ -5,6 +5,11 @@
     [Enabled]  BIT             NOT NULL,
     [CreatedOn] DATETIME2 NOT NULL , 
     [UpdatedOn] DATETIME2 NOT NULL, 
-    CONSTRAINT [PK_Authentications] PRIMARY KEY CLUSTERED ([ID] ASC)
+    CONSTRAINT [PK_Memberships] PRIMARY KEY ([ID]) 
 );
 
+
+GO
+
+
+CREATE UNIQUE INDEX [IX_Memberships_Name] ON [dbo].[Memberships] ([Name])

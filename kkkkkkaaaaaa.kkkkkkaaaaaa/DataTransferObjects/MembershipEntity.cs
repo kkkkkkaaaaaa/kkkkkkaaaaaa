@@ -12,7 +12,7 @@ namespace kkkkkkaaaaaa.DataTransferObjects
         public string Name { get; set; }
 
         [KandaDbParameterMapping("@password")]
-        public object Password { get; set; }
+        public string Password { get; set; }
 
         [KandaDbParameterMapping("@enabled")]
         public bool Enabled { get; set; }

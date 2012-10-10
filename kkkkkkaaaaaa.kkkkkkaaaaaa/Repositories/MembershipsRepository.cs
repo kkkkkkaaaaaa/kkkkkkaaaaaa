@@ -17,32 +17,6 @@ namespace kkkkkkaaaaaa.Repositories
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="password"></param>
-        /// <param name="connection"></param>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        public MembershipUser Find(string name, string password, DbConnection connection, DbTransaction transaction)
-        {
-            var reader = default(KandaDbDataReader);
-
-            try
-            {
-                reader = MembershipsGateway.Select(name, password, connection, transaction);
-
-                var membership = (reader.Read() ? KandaDbDataMapper.MapToObject<MembershipEntity>(reader) : default(MembershipEntity));
-                
-                return new KandaMembershipUser(membership);
-            }
-            finally
-            {
-                if (reader != null) { reader.Close(); }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="id"></param>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
@@ -54,9 +28,36 @@ namespace kkkkkkaaaaaa.Repositories
             try
             {
                 reader = MembershipsGateway.Select(new MembershipsCriteria(id), connection, transaction);
-                if (!reader.Read()) { return null; }
+
+                var found = (reader.Read() ? KandaDbDataMapper.MapToObject<MembershipEntity>(reader) : default(MembershipEntity));
                 
-                return KandaDbDataMapper.MapToObject<MembershipEntity>(reader);
+                return found;
+            }
+            finally
+            {
+                if (reader != null) { reader.Close(); }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public MembershipEntity Find(string name, string password, DbConnection connection, DbTransaction transaction)
+        {
+            var reader = default(KandaDbDataReader);
+
+            try
+            {
+                reader = MembershipsGateway.Select(new MembershipsCriteria() { Name = name, Password = password, Enabled = true, }, connection, transaction);
+
+                var found = (reader.Read() ? KandaDbDataMapper.MapToObject<MembershipEntity>(reader) : default(MembershipEntity));
+
+                return found;
             }
             finally
             {
@@ -122,19 +123,12 @@ namespace kkkkkkaaaaaa.Repositories
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="connction"></param>
+        /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public bool Truncate(DbConnection connction, DbTransaction transaction)
+        public long IdentCurrent(DbConnection connection, DbTransaction transaction)
         {
-            var error = MembershipsGateway.Truncate(connction, transaction);
-
-            return (error == 0);
-        }
-
-        public long GetIdentCurrent(DbConnection connection, DbTransaction transaction)
-        {
-            return MembershipsGateway.GetIdentCurrent(connection, transaction);
+            return MembershipsGateway.IdentCurrent(connection, transaction);
         }
 
 
@@ -144,6 +138,33 @@ namespace kkkkkkaaaaaa.Repositories
         internal MembershipsRepository()
         {
             this.DoNothing();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        internal bool Delete(long id, DbConnection connection, DbTransaction transaction)
+        {
+            var deleted = MembershipsGateway.Delete(id, connection, transaction);
+
+            return (deleted == 1);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connction"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        internal bool Truncate(DbConnection connction, DbTransaction transaction)
+        {
+            var error = MembershipsGateway.Truncate(connction, transaction);
+
+            return (error == 0);
         }
     }
 }

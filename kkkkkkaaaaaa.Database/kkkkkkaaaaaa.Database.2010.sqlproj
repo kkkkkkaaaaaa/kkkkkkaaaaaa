@@ -69,6 +69,7 @@
     <Build Include="Tables\MembershipUsers.sql" />
     <Build Include="Tables\Users.sql" />
     <Build Include="Functions\GetUTCDateTime.sql" />
-    <Build Include="Functions\SelectIdentCurrent.sql" />
+    <Build Include="Stored Procedures\usp_DeleteMemberships.sql" />
+    <Build Include="Functions\IdentCurrentTable.sql" />
   </ItemGroup>
 </Project>

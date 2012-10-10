@@ -15,8 +15,6 @@ namespace kkkkkkaaaaaa.Data.Common
             var type = obj.GetType();
             if (obj == null) { throw new ArgumentNullException(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
 
-            //if (!reader.Read()) { return; } // レコードなし
-
             var schema = reader.GetSchemaTable();
 
             var members = new List<MemberInfo>();

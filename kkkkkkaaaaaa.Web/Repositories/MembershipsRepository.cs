@@ -102,19 +102,6 @@ namespace kkkkkkaaaaaa.Web.Repositories
             return (updated == 1);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="connction"></param>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        public bool Truncate(DbConnection connction, DbTransaction transaction)
-        {
-            var error = MembershipsGateway.Truncate(connction, transaction);
-
-            return (error == 0);
-        }
-
 
         /// <summary>
         /// コンストラクタ―。
@@ -122,6 +109,33 @@ namespace kkkkkkaaaaaa.Web.Repositories
         internal MembershipsRepository()
         {
             this.DoNothing();
+        }
+
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        internal bool Delete(long id, DbConnection connection, DbTransaction transaction)
+        {
+            var deleted = MembershipsGateway.Delete(id, connection, transaction);
+
+            return (deleted == 1);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connction"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        internal bool Truncate(DbConnection connction, DbTransaction transaction)
+        {
+            var error = MembershipsGateway.Truncate(connction, transaction);
+
+            return (error == 0);
         }
     }
 }

@@ -5,9 +5,8 @@ using System.Web.Security;
 using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.TableDataGateways;
 using kkkkkkaaaaaa.DataTransferObjects;
-using kkkkkkaaaaaa.Web.Security;
 
-namespace kkkkkkaaaaaa.Repositories
+namespace kkkkkkaaaaaa.Data.Repositories
 {
     /// <summary>
     /// Memberships の Repository です。
@@ -29,7 +28,7 @@ namespace kkkkkkaaaaaa.Repositories
             {
                 reader = MembershipsGateway.Select(new MembershipsCriteria(id), connection, transaction);
 
-                var found = (reader.Read() ? KandaDbDataMapper.MapToObject<MembershipEntity>(reader) : default(MembershipEntity));
+                var found = (reader.Read() ? KandaDbDataMapper.MapToObject<MembershipEntity>(reader) : new MembershipEntity());
                 
                 return found;
             }
@@ -99,8 +98,6 @@ namespace kkkkkkaaaaaa.Repositories
         /// <returns></returns>
         public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            //if (entity.ID <= 0) { entity.ID = MembershipsGateway.SelectNextID(connection, transaction); }
-
             var created = MembershipsGateway.Insert(entity, connection, transaction);
 
             return (created == 1);

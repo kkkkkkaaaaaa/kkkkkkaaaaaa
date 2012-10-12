@@ -2,8 +2,8 @@
 using System.Data;
 using System.Data.Common;
 using Xunit;
+using kkkkkkaaaaaa.Data.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
-using kkkkkkaaaaaa.Repositories;
 using kkkkkkaaaaaa.Xunit.Web.Repositories;
 
 namespace kkkkkkaaaaaa.Xunit.Repositories

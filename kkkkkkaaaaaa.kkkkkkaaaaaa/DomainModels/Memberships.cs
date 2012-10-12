@@ -3,15 +3,15 @@ using System.Data.Common;
 using System.Linq;
 using System.Security;
 using kkkkkkaaaaaa.Data;
+using kkkkkkaaaaaa.Data.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
-using kkkkkkaaaaaa.Repositories;
 
 namespace kkkkkkaaaaaa.DomainModels
 {
     /// <summary>
     /// 
     /// </summary>
-    public class Memberships : KandaDomainModel
+    public class Memberships //: KandaDomainModel
     {
         /// <summary>
         /// 

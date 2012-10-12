@@ -71,5 +71,8 @@
     <Build Include="Functions\GetUTCDateTime.sql" />
     <Build Include="Stored Procedures\usp_DeleteMemberships.sql" />
     <Build Include="Functions\IdentCurrentTable.sql" />
+    <Build Include="Stored Procedures\usp_TruncateTable.sql" />
+    <Build Include="Stored Procedures\usp_InsertUsers.sql" />
+    <Build Include="Stored Procedures\usp_DeleteUsers.sql" />
   </ItemGroup>
 </Project>

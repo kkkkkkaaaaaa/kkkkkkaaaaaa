@@ -1,7 +1,11 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Data.Common;
+using System.Threading;
+using kkkkkkaaaaaa.Data.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
-using kkkkkkaaaaaa.Repositories;
 
 namespace kkkkkkaaaaaa.DomainModels
 {
@@ -14,20 +18,47 @@ namespace kkkkkkaaaaaa.DomainModels
         /// 
         /// </summary>
         /// <param name="entity"></param>
-        public Membership(MembershipEntity entity) : base()
+        public Membership(MembershipEntity entity)
         {
             this._entity = entity;
+            if (this._entity.ID < 1) { return; }
+
+            /*
+            var connection = default
+
+            try
+            {
+
+            }
+            finally
+            {
+                
+            }
+            */
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override long ID
+        {
+            get { return this._entity.ID; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Collection<User> Users
+        {
+            get { return this._users.Value; }
         }
 
 
         /// <summary>
         /// 
         /// </summary>
-        public bool Exists
-        {
-            get { return (0 < this._entity.ID); }
-        }
-
+        /// <param name="found"></param>
+        /// <returns></returns>
         public Membership Find(out MembershipEntity found)
         {
             found = this._entity;
@@ -46,6 +77,7 @@ namespace kkkkkkaaaaaa.DomainModels
                              ? KandaRepository.Memberships.Find(this._entity.ID, connection, transaction)
                              : KandaRepository.Memberships.Find(this._entity.Name, this._entity.Password, connection, transaction));
 
+                //KandaRepository.MembershipUsers.Get(new MembershipUsersCriteria() { MembershipID = this._entity.ID }, connection, transaction);
 
                 transaction.Commit();
                 return new Membership(found);
@@ -118,6 +150,11 @@ namespace kkkkkkaaaaaa.DomainModels
                 this._entity.UpdatedOn = KandaRepository.GetUtcDateTime(connection, transaction);
                 if (!KandaRepository.Memberships.Update(this._entity, connection, transaction))
                 {
+                    foreach (var user in this.Users)
+                    {
+                        //KandaRepository.MembershipUsers.Register(new MembershipUserEntity() { this._entity.ID, user.ID, }, connection, transaction);
+                    }
+
                     transaction.Commit();
                 }
                 else { transaction.Rollback(); }
@@ -134,6 +171,7 @@ namespace kkkkkkaaaaaa.DomainModels
                 if (connection != null) { connection.Close(); }
             }
         }
+
 
         /// <summary>
         /// 
@@ -171,7 +209,13 @@ namespace kkkkkkaaaaaa.DomainModels
             }
         }
 
+        #region Private members...
+
         /// <summary></summary>
         private readonly MembershipEntity _entity;
+        /// <summary></summary>
+        private readonly Lazy<Collection<User>> _users = new Lazy<Collection<User>>(LazyThreadSafetyMode.PublicationOnly);
+
+        #endregion
     }
 }

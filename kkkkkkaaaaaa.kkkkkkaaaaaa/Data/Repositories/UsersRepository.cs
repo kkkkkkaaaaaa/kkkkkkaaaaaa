@@ -3,7 +3,7 @@ using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.TableDataGateways;
 using kkkkkkaaaaaa.DataTransferObjects;
 
-namespace kkkkkkaaaaaa.Repositories
+namespace kkkkkkaaaaaa.Data.Repositories
 {
     /// <summary>
     /// 
@@ -83,6 +83,31 @@ namespace kkkkkkaaaaaa.Repositories
         internal UsersRepository()
         {
             this.DoNothing();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        internal long IdentCurrent(DbConnection connection, DbTransaction transaction)
+        {
+            return UsersGateway.IdentCurrent(connection, transaction);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        internal bool Delete(long id, DbConnection connection, DbTransaction transaction)
+        {
+            var deleted = UsersGateway.Delete(id, connection, transaction);
+
+            return (deleted == 1);
         }
     }
 }

@@ -26,6 +26,28 @@ namespace kkkkkkaaaaaa
 
         #region Protected members...
 
+
+        protected static object GetValue(MemberInfo member, object obj)
+        {
+            var value = default(object);
+
+            if (member is PropertyInfo)
+            {
+                // プロパティ
+                value = ((PropertyInfo)member).GetValue(obj, BindingFlags.Default, null, null, null);
+            }
+            else if (member is FieldInfo)
+            {
+                // フィールド
+                value = ((FieldInfo)member).GetValue(obj);
+            }
+            else
+            {
+                throw new ArgumentNullException(string.Format(@"KandaDbDataMapper.MapToParameters()"));
+            }
+            return value;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -46,31 +68,10 @@ namespace kkkkkkaaaaaa
             }
             else
             {
-                throw new Exception(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", obj.GetType().FullName));
+                throw new Exception(string.Format(@"KandaDataMapper.MapToObject<{0}>()", obj.GetType().FullName));
             }
         }
 
         #endregion
-
-        protected static object GetValue(MemberInfo member, object obj)
-        {
-            var value = default(object);
-
-            if (member is PropertyInfo)
-            {
-                // プロパティ
-                value = ((PropertyInfo) member).GetValue(obj, BindingFlags.Default, null, null, null);
-            }
-            else if (member is FieldInfo)
-            {
-                // フィールド
-                value = ((FieldInfo) member).GetValue(obj);
-            }
-            else
-            {
-                throw new ArgumentNullException(string.Format(@"KandaDbDataMapper.MapToParameters()"));
-            }
-            return value;
-        }
     }
 }

@@ -11,6 +11,8 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
     /// </summary>
     internal class UsersGateway : KandaTableDataGateway
     {
+        private const string TABLE_NAME = @"Users";
+
         /// <summary>
         /// 
         /// </summary>
@@ -68,6 +70,42 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
             command.CommandText = @"usp_UpdateUsers";
 
             KandaDbDataMapper.MapToParameters(command, entity);
+
+            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
+            command.Parameters.Add(result);
+
+            command.ExecuteNonQuery();
+
+            return (int)result.Value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public static long IdentCurrent(DbConnection connection, DbTransaction transaction)
+        {
+            var current = decimal.ToInt64(KandaTableDataGateway.IdentCurrent(UsersGateway.TABLE_NAME, connection, transaction));
+
+            return current;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public static int Delete(long id, DbConnection connection, DbTransaction transaction)
+        {
+            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
+
+            command.CommandText = @"usp_DeleteUsers";
+
+            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter(@"id", id));
 
             var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);

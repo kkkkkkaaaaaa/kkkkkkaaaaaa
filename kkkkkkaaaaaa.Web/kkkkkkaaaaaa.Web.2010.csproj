@@ -81,7 +81,6 @@
     <Compile Include="TableDataGateways\UsersGateway.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DomainModels\" />
     <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>

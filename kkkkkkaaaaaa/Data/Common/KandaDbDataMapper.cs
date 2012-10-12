@@ -36,9 +36,7 @@ namespace kkkkkkaaaaaa.Data.Common
                         if (attribute.Ignore) { break; } // 無視
                         if (attribute.MappingName != name) { continue; } // マッピング一致なし
 
-                        if (member is PropertyInfo) { ((PropertyInfo)member).SetValue(obj, reader[name], BindingFlags.Default, null, null, null); } // プロパティ
-                        else if (member is FieldInfo) { ((FieldInfo)member).SetValue(obj, reader[name], BindingFlags.Default, null, null); } // フィールド
-                        else { throw new Exception(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
+                        KandaDataMapper.SetValue(member, obj, value);
                         break;
                     }
 
@@ -46,10 +44,6 @@ namespace kkkkkkaaaaaa.Data.Common
                     if (member.Name != name) { continue; } // メンバー名一致なし
 
                     KandaDataMapper.SetValue(member, obj, value);
-
-                    if (member is PropertyInfo) { ((PropertyInfo)member).SetValue(obj, reader[name], BindingFlags.Default, null, null, null); } // プロパティ
-                    else if (member is FieldInfo) { ((FieldInfo)member).SetValue(obj, reader[name], BindingFlags.Default, null, null); } // フィールド
-                    else { throw new Exception(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
                     break;
                 }
             }

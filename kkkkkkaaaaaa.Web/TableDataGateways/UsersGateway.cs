@@ -11,6 +11,8 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
     /// </summary>
     public class UsersGateway : KandaTableDataGateway
     {
+        public const string TABLE_NAME = @"Users";
+
         /// <summary>
         /// 
         /// </summary>
@@ -85,7 +87,7 @@ namespace kkkkkkaaaaaa.Web.TableDataGateways
         /// <returns></returns>
         public static int Truncate(DbConnection connection, DbTransaction transaction)
         {
-            return KandaTableDataGateway.Truncate(@"Users", connection, transaction);
+            return KandaTableDataGateway.Truncate(UsersGateway.TABLE_NAME, connection, transaction);
         }
     }
 }

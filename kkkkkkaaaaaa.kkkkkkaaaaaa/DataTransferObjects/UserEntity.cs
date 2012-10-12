@@ -4,7 +4,7 @@ using kkkkkkaaaaaa.Data.Common;
 
 namespace kkkkkkaaaaaa.DataTransferObjects
 {
-    public class UserEntity
+    public class UserEntity : KandaEntity<long>
     {
         public UserEntity()
         {
@@ -16,7 +16,7 @@ namespace kkkkkkaaaaaa.DataTransferObjects
         }
 
         [KandaDbParameterMapping("@id")]
-        public virtual long ID { get; set; }
+        public override long ID { get; set; }
 
         [KandaDbParameterMapping("@familyName")]
         public string FamilyName { get; set; }
@@ -30,7 +30,7 @@ namespace kkkkkkaaaaaa.DataTransferObjects
         [KandaDbParameterMapping("@description")]
         public string Description { get; set; }
 
-        [KandaDbParameterMapping("@enabled")]
+        //[KandaDbParameterMapping("@enabled")]
         public bool Enabled { get; set; }
 
         [KandaDbParameterMapping("@createdOn", DbType = DbType.DateTime2)]

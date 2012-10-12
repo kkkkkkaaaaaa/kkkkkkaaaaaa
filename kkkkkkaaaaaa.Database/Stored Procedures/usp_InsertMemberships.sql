@@ -3,7 +3,7 @@
 	@id				BIGINT
 	, @name			NVARCHAR(1024)
 	, @password		NVARCHAR(128)
-	, @enabled		BIT
+	--, @enabled		BIT
 	, @createdOn	DATETIME2
 	, @updatedOn	DATETIME2
 ) AS
@@ -25,24 +25,28 @@
 		+ ', [Enabled]'
 		+ ', CreatedOn'
 		+ ', UpdatedOn'
-
 	IF (0 < @id)	SET @into = @into + ', ID'
 
 	-- VALUES
 	SET @values = ') VALUES ('
 		+ '''' + @name + ''''
 		+ ', ''' + @password + ''''
-		+ ', ' + CONVERT(NVARCHAR, CONVERT(BIT, 'TRUE'))
-		+ ', ''' + CONVERT(NVARCHAR, @createdOn, 121) + ''''
-		+ ', ''' + CONVERT(NVARCHAR, @createdOn, 121) + ''''
-		
-	IF (0 < @id)	SET @values = @values + ', ' + CONVERT(NVARCHAR, @id)
+		+ ', ' + CAST(CAST('TRUE' AS BIT) AS NCHAR(1))
+		+ ', ''' + CONVERT(NVARCHAR(MAX), @createdOn, 121) + ''''
+		+ ', ''' + CONVERT(NVARCHAR(MAX), @createdOn, 121) + ''''
+	IF (0 < @id)	SET @values = @values + ', ' + CAST(@id AS NVARCHAR(MAX))
 
 	SET @values = @values + ')'
 
+	-- SET IDENTITY_INSERT
+	IF (0 < @id) SET IDENTITY_INSERT Memberships ON
+
+	-- 実行
 	EXECUTE (@insert + @into + @values)
 
 	-- 戻り値
 	SET @count = @@ROWCOUNT
+
+	IF (0 < @id) SET IDENTITY_INSERT Memberships OFF
 
 	RETURN @count

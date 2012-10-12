@@ -106,26 +106,6 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                 var repository = new UsersRepository();
 
                 Assert.True(repository.Truncate(connction, transaction));
-
-                /*
-                var repository = new UsersRepository();
-
-                if (!repository.Truncate(connction, transaction))
-                {
-                    transaction.Rollback();
-                    Assert.False(false);
-                }
-                else
-                {
-                    var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                    Assert.True(repository.Create(new UserEntity() { ID = 1, FamilyName = @"System", GivenName = @"", AdditionalName = @"", Description = @"", Enabled = true, CreatedOn = createdOn }, connction, transaction));
-                    Assert.True(repository.Create(new UserEntity() { ID = 2, FamilyName = @"Administrator", GivenName = @"", AdditionalName = @"", Description = @"", Enabled = true, CreatedOn = createdOn }, connction, transaction));
-                    Assert.True(repository.Create(new UserEntity() { ID = 3, FamilyName = @"User", GivenName = @"", AdditionalName = @"", Description = @"", Enabled = true, CreatedOn = createdOn }, connction, transaction));
-
-                    transaction.Commit();
-                    Assert.True(true);
-                }
-                */
             }
             catch
             {

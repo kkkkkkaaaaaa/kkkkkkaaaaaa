@@ -3,7 +3,7 @@ using System.Data.Common;
 using System.Threading;
 using kkkkkkaaaaaa.Data.TableDataGateways;
 
-namespace kkkkkkaaaaaa.Repositories
+namespace kkkkkkaaaaaa.Data.Repositories
 {
     /// <summary>
     /// 
@@ -16,6 +16,14 @@ namespace kkkkkkaaaaaa.Repositories
         public static MembershipsRepository Memberships
         {
             get { return KandaRepository._memberships.Value; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MembershipUsersRepository MembershipUsers
+        {
+            get { return KandaRepository._membershipUsers.Value; }
         }
 
         /*
@@ -68,6 +76,7 @@ namespace kkkkkkaaaaaa.Repositories
         {
             get { return KandaRepository._users.Value; }
         }
+
         /*
         /// <summary>
         /// 
@@ -132,7 +141,9 @@ namespace kkkkkkaaaaaa.Repositories
         #region Private members...
 
         /// <summary></summary>
-        private readonly static Lazy<MembershipsRepository> _memberships = new Lazy<MembershipsRepository>(() => { return new MembershipsRepository(); }, LazyThreadSafetyMode.ExecutionAndPublication);
+        private static readonly Lazy<MembershipsRepository> _memberships = new Lazy<MembershipsRepository>(() => new MembershipsRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
+        /// <summary></summary>
+        private static readonly Lazy<MembershipUsersRepository> _membershipUsers = new Lazy<MembershipUsersRepository>(() => new MembershipUsersRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
         /*
         /// <summary></summary>
         private readonly static Lazy<MembershipAuthorizationsRepository> _membershipAuthorizations = new Lazy<MembershipAuthorizationsRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
@@ -145,8 +156,9 @@ namespace kkkkkkaaaaaa.Repositories
         /// <summary></summary>
         private readonly static Lazy<RoleAuthorizationsRepository> _roleAuthorizations = new Lazy<RoleAuthorizationsRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
         */
+
         /// <summary></summary>
-        private readonly static Lazy<UsersRepository> _users = new Lazy<UsersRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
+        private static readonly Lazy<UsersRepository> _users = new Lazy<UsersRepository>(() => new UsersRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
         /*
         /// <summary></summary>
         private readonly static Lazy<UserHistoriesRepository> _userHistories = new Lazy<UserHistoriesRepository>(LazyThreadSafetyMode.ExecutionAndPublication);

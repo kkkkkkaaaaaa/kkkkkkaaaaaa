@@ -70,6 +70,8 @@
     <Compile Include="DomainModels\KandaXunitDomainModelFacts.cs" />
     <Compile Include="DomainModels\MembershipFacts.cs" />
     <Compile Include="DomainModels\MembershipsFacts.cs" />
+    <Compile Include="DomainModels\KandaDomainModelFacts.cs" />
+    <Compile Include="DomainModels\UserFacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\Repositories\AuthorizationsRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\KandaRepositoryFacts.cs" />
@@ -83,7 +85,7 @@
     <Compile Include="Web\Repositories\UserAttributeItemsRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\UserAttributesRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\UserHistoriesRepositoryFacts.cs" />
-    <Compile Include="Web\Repositories\UsersRepositoryFacts.cs" />
+    <Compile Include="Repositories\UsersRepositoryFacts.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

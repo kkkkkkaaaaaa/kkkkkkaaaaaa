@@ -14,7 +14,7 @@ namespace kkkkkkaaaaaa.DataTransferObjects
         [KandaDbParameterMapping("@password")]
         public string Password { get; set; }
 
-        [KandaDbParameterMapping("@enabled")]
+        //[KandaDbParameterMapping("@enabled")]
         public bool Enabled { get; set; }
 
         [KandaDbParameterMapping("@createdOn")]

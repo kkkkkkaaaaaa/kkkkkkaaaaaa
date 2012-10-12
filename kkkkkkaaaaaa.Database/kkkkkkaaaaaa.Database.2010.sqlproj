@@ -74,5 +74,9 @@
     <Build Include="Stored Procedures\usp_TruncateTable.sql" />
     <Build Include="Stored Procedures\usp_InsertUsers.sql" />
     <Build Include="Stored Procedures\usp_DeleteUsers.sql" />
+    <Build Include="Stored Procedures\usp_SelectMembershipUsers.sql" />
+    <Build Include="Stored Procedures\usp_InsertMembershipUsers.sql" />
+    <Build Include="Stored Procedures\usp_SelectUsers.sql" />
+    <Build Include="Stored Procedures\usp_DeleteMembershipUsers.sql" />
   </ItemGroup>
 </Project>

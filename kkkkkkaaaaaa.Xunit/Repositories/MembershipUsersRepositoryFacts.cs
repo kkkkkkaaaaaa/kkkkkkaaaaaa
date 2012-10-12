@@ -1,16 +1,16 @@
 ﻿using System.Data;
 using System.Data.Common;
 using Xunit;
-using kkkkkkaaaaaa.Web.DataTransferObjects;
-using kkkkkkaaaaaa.Web.Repositories;
-using kkkkkkaaaaaa.Xunit.Repositories;
+using kkkkkkaaaaaa.Data.Repositories;
+using kkkkkkaaaaaa.DataTransferObjects;
+using kkkkkkaaaaaa.DomainModels;
 
-namespace kkkkkkaaaaaa.Xunit.Web.Repositories
+namespace kkkkkkaaaaaa.Xunit.Repositories
 {
     /// <summary>
     /// 
     /// </summary>
-    public class MembershipAuthorizationsRepositoryFacts : KandaXunitRepositoryFacts
+    public class MembershipUsersRepositoryFacts : KandaXunitRepositoryFacts
     {
         [Fact()]
         public void GetFact()
@@ -25,17 +25,30 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                var repository = new MembershipAuthorizationsRepository();
+                var repository = new MembershipUsersRepository();
 
-                var id = long.MaxValue;
-                Assert.NotNull(repository.Get(new MembershipAuthorizationEntity() { ID = id, MembershipID = 1, AuthorizationID = 1, Enabled = true, }, connection, transaction));
+                var membershipId = long.MaxValue;
+                var userId = long.MaxValue;
+                if (!repository.Create(new MembershipUserEntity() { MembershipID = membershipId, UserID = userId, }, connection, transaction)) { Assert.True(false); }
+                else
+                {
+                    var gotten = repository.Get(new MembershipUsersCriteria() { MembershipID = membershipId, }, connection, transaction);
+                    foreach (var entity in gotten)
+                    {
+                        var user = new User(new UserEntity() { ID = entity.UserID, });
+
+                        var found = default(UserEntity);
+                        user.Find(out found);
+                        Assert.True(0 < found.ID);
+                    }
+                }
             }
             finally
             {
                 if (transaction != null) { transaction.Rollback(); }
                 if (connection != null) { connection.Close(); }
             }
-        }
+        } 
 
         [Fact()]
         public void CreateFact()
@@ -50,10 +63,11 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                var repository = new MembershipAuthorizationsRepository();
+                var repository = new MembershipUsersRepository();
 
-                var id = int.MaxValue;
-                Assert.True(repository.Create(new MembershipAuthorizationEntity() { ID = id, MembershipID = 1, AuthorizationID = 1, Enabled = true, }, connection, transaction));
+                long membershipId = long.MaxValue;
+                long userId = long.MaxValue;
+                Assert.True(repository.Create(new MembershipUserEntity() { MembershipID = membershipId, UserID = userId, }, connection, transaction));
             }
             finally
             {
@@ -63,7 +77,7 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
         }
 
         [Fact()]
-        public void UpdateFact()
+        public void DeleteFact()
         {
             var connection = default(DbConnection);
             var transaction = default(DbTransaction);
@@ -75,12 +89,14 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                var repository = new MembershipAuthorizationsRepository();
+                var repository = new MembershipUsersRepository();
 
-                var id = int.MaxValue;
-                Assert.True(repository.Create(new MembershipAuthorizationEntity() { ID = id, MembershipID = 1, AuthorizationID = 1, Enabled = true, }, connection, transaction));
+                long membershipId = long.MaxValue;
+                long userId = long.MaxValue;
+                if (!repository.Create(new MembershipUserEntity() { MembershipID = membershipId, UserID = userId, }, connection, transaction)) { Assert.True(false); }
 
-                Assert.True(repository.Update(new MembershipAuthorizationEntity() { ID = id, MembershipID = 1, AuthorizationID = 1, Enabled = false, }, connection, transaction));
+                Assert.True(repository.Delete(new MembershipUserEntity() { MembershipID = membershipId, }, connection, transaction));
+                //Assert.True(repository.Delete(new MembershipUserEntity() { MembershipID = membershipId, UserID = userId, }, connection, transaction));
             }
             finally
             {
@@ -88,9 +104,9 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                 if (connection != null) { connection.Close(); }
             }
         }
-        
+
         [Fact()]
-        public void TruncateFact()
+        public void TrucnateFact()
         {
             var connection = default(DbConnection);
             var transaction = default(DbTransaction);
@@ -102,7 +118,8 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                var repository = new MembershipAuthorizationsRepository();
+                var repository = new MembershipUsersRepository();
+
                 Assert.True(repository.Truncate(connection, transaction));
             }
             finally

@@ -178,10 +178,10 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
                 }
                 else
                 {
-                    var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                    Assert.True(repository.Create(new MembershipEntity() { ID = 1, Name = @"System", Password = @"", Enabled = true, CreatedOn = createdOn, }, connction, transaction));
-                    Assert.True(repository.Create(new MembershipEntity() { ID = 2, Name = @"Administrator", Password = @"", Enabled = true, CreatedOn = createdOn, }, connction, transaction));
-                    Assert.True(repository.Create(new MembershipEntity() { ID = 3, Name = @"User", Password = @"", Enabled = true, CreatedOn = createdOn, }, connction, transaction));
+                    //var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                    //Assert.True(repository.Create(new MembershipEntity() { ID = 1, Name = @"System", Password = @"", Enabled = true, CreatedOn = createdOn, }, connction, transaction));
+                    //Assert.True(repository.Create(new MembershipEntity() { ID = 2, Name = @"Administrator", Password = @"", Enabled = true, CreatedOn = createdOn, }, connction, transaction));
+                    //Assert.True(repository.Create(new MembershipEntity() { ID = 3, Name = @"User", Password = @"", Enabled = true, CreatedOn = createdOn, }, connction, transaction));
 
                     transaction.Commit();
                     Assert.True(true);

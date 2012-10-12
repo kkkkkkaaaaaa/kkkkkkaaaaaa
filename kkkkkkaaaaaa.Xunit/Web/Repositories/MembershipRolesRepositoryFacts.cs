@@ -4,6 +4,7 @@ using System.Data.Odbc;
 using Xunit;
 using kkkkkkaaaaaa.Web.DataTransferObjects;
 using kkkkkkaaaaaa.Web.Repositories;
+using kkkkkkaaaaaa.Xunit.Repositories;
 
 namespace kkkkkkaaaaaa.Xunit.Web.Repositories
 {

@@ -1,7 +1,7 @@
 using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Web.Data;
 
-namespace kkkkkkaaaaaa.Xunit.Web.Repositories
+namespace kkkkkkaaaaaa.Xunit.Repositories
 {
     /// <summary>
     /// 

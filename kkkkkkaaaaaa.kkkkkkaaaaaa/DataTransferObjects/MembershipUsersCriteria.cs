@@ -2,16 +2,11 @@
 
 namespace kkkkkkaaaaaa.DataTransferObjects
 {
-    public class MembershipUserEntity
+    public struct MembershipUsersCriteria
     {
         [KandaDbParameterMapping("@membershipId")]
         public long MembershipID { get; set; }
 
-        [KandaDbParameterMapping("@userId")]
         public long UserID { get; set; }
-
-        //[KandaDbParameterMapping("@enabled")]
-        //public bool Enabled { get; set; }
-
     }
 }

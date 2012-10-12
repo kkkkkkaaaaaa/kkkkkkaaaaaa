@@ -27,7 +27,9 @@ namespace kkkkkkaaaaaa.DomainModels
 
                 var result = false;
                 if (!KandaDomainModel.resetMemberships(connection, transaction)) { transaction.Rollback(); }
-                //else if (!KandaDomainModel.resetMemberships(connection, transaction)) { transaction.Rollback(); }
+                else if (!KandaDomainModel.resetUsers(connection, transaction)) { transaction.Rollback(); }
+                else if (!KandaDomainModel.resetMembershipUsers(connection, transaction)) { transaction.Rollback(); }
+                //else if (!KandaDomainModel.reset(connection, transaction)) { transaction.Rollback(); }
                 else
                 {
                     transaction.Commit();
@@ -44,6 +46,20 @@ namespace kkkkkkaaaaaa.DomainModels
             {
                 if (connection != null) { connection.Close(); }
             }
+        }
+
+        private static bool resetMembershipUsers(DbConnection connection, DbTransaction transaction)
+        {
+            if (!KandaRepository.MembershipUsers.Truncate(connection, transaction)) { return false; }
+
+            return true;
+        }
+
+        private static bool resetUsers(DbConnection connection, DbTransaction transaction)
+        {
+            if (!KandaRepository.Users.Truncate(connection, transaction)) { return false; }
+
+            return true;
         }
 
         public abstract long ID { get; }

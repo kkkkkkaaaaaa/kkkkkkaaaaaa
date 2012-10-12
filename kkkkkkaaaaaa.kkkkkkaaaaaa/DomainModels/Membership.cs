@@ -23,18 +23,34 @@ namespace kkkkkkaaaaaa.DomainModels
             this._entity = entity;
             if (this._entity.ID < 1) { return; }
 
-            /*
-            var connection = default
+            var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
 
             try
             {
+                connection = this._factory.CreateConnection();
+                connection.Open();
 
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                var users = KandaRepository.MembershipUsers.Get(new MembershipUsersCriteria() { MembershipID = this._entity.ID, }, connection, transaction);
+                foreach (var user in users) { this.Users.Add(new User(new UserEntity() { ID = user.UserID, })); }
+
+                //var roles 
+
+                //var authorizations
+
+                transaction.Commit();
+            }
+            catch
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                throw;
             }
             finally
             {
-                
+                if (connection != null) { connection.Close(); }
             }
-            */
         }
 
         /// <summary>
@@ -77,9 +93,8 @@ namespace kkkkkkaaaaaa.DomainModels
                              ? KandaRepository.Memberships.Find(this._entity.ID, connection, transaction)
                              : KandaRepository.Memberships.Find(this._entity.Name, this._entity.Password, connection, transaction));
 
-                //KandaRepository.MembershipUsers.Get(new MembershipUsersCriteria() { MembershipID = this._entity.ID }, connection, transaction);
-
                 transaction.Commit();
+
                 return new Membership(found);
             }
             catch
@@ -172,13 +187,13 @@ namespace kkkkkkaaaaaa.DomainModels
             }
         }
 
-
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         internal Membership Delete()
         {
+            var result = this;
             var connection = default(DbConnection);
             var transaction = default(DbTransaction);
 
@@ -188,14 +203,26 @@ namespace kkkkkkaaaaaa.DomainModels
                 connection.Open();
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
-
-                var result = this;
-                if (!KandaRepository.Memberships.Delete(this._entity.ID, connection, transaction)) { transaction.Rollback(); }
-                else
+                
+                foreach (var user in this.Users)
                 {
-                    transaction.Commit();
-                    result = new Membership(new MembershipEntity());
+                    if (KandaRepository.MembershipUsers.Delete(new MembershipUserEntity() { MembershipID = this.ID, UserID = user.ID, }, connection, transaction))
+                    {
+                        if (user.Delete().ID < 1) { continue; }
+                    } 
+
+                    transaction.Rollback();
+                    return result;
                 }
+
+
+                if (!KandaRepository.Memberships.Delete(this.ID, connection, transaction))
+                {
+                    transaction.Rollback();
+                    return result;
+                }
+
+                transaction.Rollback();
                 return result;
             }
             catch
@@ -215,6 +242,10 @@ namespace kkkkkkaaaaaa.DomainModels
         private readonly MembershipEntity _entity;
         /// <summary></summary>
         private readonly Lazy<Collection<User>> _users = new Lazy<Collection<User>>(LazyThreadSafetyMode.PublicationOnly);
+
+        //private readonly IEnumerable<long> _users;
+        //private readonly IEnumerable<long> _roles;
+        //private readonly IEnumerable<long> _authorizations;
 
         #endregion
     }

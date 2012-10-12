@@ -126,10 +126,12 @@
     <Compile Include="DataTransferObjects\KandaEntity.cs" />
     <Compile Include="DataTransferObjects\MembershipEntity.cs" />
     <Compile Include="DataTransferObjects\MembershipsCriteria.cs" />
+    <Compile Include="DataTransferObjects\MembershipUsersCriteria.cs" />
     <Compile Include="DataTransferObjects\UserEntity.cs" />
     <Compile Include="Data\KandaProviderFactory.cs" />
     <Compile Include="DataTransferObjects\MembershipUserEntity.cs" />
     <Compile Include="Data\Repositories\MembershipUsersRepository.cs" />
+    <Compile Include="Data\TableDataGateways\MembershipUsersGateway.cs" />
     <Compile Include="Data\TableDataGateways\UsersGateway.cs" />
     <Compile Include="DomainModels\Authentications.cs" />
     <Compile Include="DomainModels\KandaDomainModel.cs" />

@@ -45,6 +45,37 @@ namespace kkkkkkaaaaaa.DomainModels
             get { return (0 < this._entity.ID); }
         }
 
+        public User Find(out UserEntity found)
+        {
+            found = this._entity;
+
+            var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
+
+            try
+            {
+                connection = this._factory.CreateConnection();
+                connection.Open();
+
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                found = KandaRepository.Users.Find(this._entity.ID, connection, transaction);
+
+                transaction.Commit();
+
+                return new User(found);
+            }
+            catch
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                throw;
+            }
+            finally
+            {
+                if (connection != null) { connection.Close(); }
+            }
+        }
+
 
         /// <summary>
         /// 

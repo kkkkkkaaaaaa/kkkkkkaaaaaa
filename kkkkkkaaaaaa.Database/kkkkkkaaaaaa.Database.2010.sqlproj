@@ -78,5 +78,21 @@
     <Build Include="Stored Procedures\usp_InsertMembershipUsers.sql" />
     <Build Include="Stored Procedures\usp_SelectUsers.sql" />
     <Build Include="Stored Procedures\usp_DeleteMembershipUsers.sql" />
+    <Build Include="Stored Procedures\usp_DeleteMembershipRoles.sql" />
+    <Build Include="Stored Procedures\usp_DeleteMembershipAuthorizations.sql" />
+    <Build Include="Tables\MembershipRoles.sql" />
+    <Build Include="Tables\MembershipAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_SelectMembershipRoles.sql" />
+    <Build Include="Stored Procedures\usp_SelectMembershipAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_InsertMembershipRoles.sql" />
+    <Build Include="Stored Procedures\usp_InsertMembershipAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_DeleteRoleAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_InsertRoles.sql" />
+    <Build Include="Tables\Roles.sql" />
+    <Build Include="Stored Procedures\usp_SelectRoles.sql" />
+    <Build Include="Stored Procedures\usp_SelectRoleAuthorizations.sql" />
+    <Build Include="Tables\RoleAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_DeleteRoles.sql" />
+    <Build Include="Stored Procedures\usp_UpdateRoles.sql" />
   </ItemGroup>
 </Project>

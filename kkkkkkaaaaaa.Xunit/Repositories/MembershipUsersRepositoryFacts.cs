@@ -32,6 +32,7 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
                 if (!repository.Create(new MembershipUserEntity() { MembershipID = membershipId, UserID = userId, }, connection, transaction)) { Assert.True(false); }
                 else
                 {
+                    /*
                     var gotten = repository.Get(new MembershipUsersCriteria() { MembershipID = membershipId, }, connection, transaction);
                     foreach (var entity in gotten)
                     {
@@ -41,6 +42,7 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
                         user.Find(out found);
                         Assert.True(0 < found.ID);
                     }
+                    */
                 }
             }
             finally
@@ -95,7 +97,7 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
                 long userId = long.MaxValue;
                 if (!repository.Create(new MembershipUserEntity() { MembershipID = membershipId, UserID = userId, }, connection, transaction)) { Assert.True(false); }
 
-                Assert.True(repository.Delete(new MembershipUserEntity() { MembershipID = membershipId, }, connection, transaction));
+                Assert.True(repository.Delete(new MembershipUsersCriteria() { MembershipID = membershipId, }, connection, transaction));
                 //Assert.True(repository.Delete(new MembershipUserEntity() { MembershipID = membershipId, UserID = userId, }, connection, transaction));
             }
             finally

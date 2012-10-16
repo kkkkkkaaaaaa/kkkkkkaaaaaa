@@ -79,7 +79,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
 
             command.CommandText = @"IdentCurrentTable";
 
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter(@"tableName", tableName));
+            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@tableName", tableName));
 
             var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Decimal, sizeof(decimal), ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);

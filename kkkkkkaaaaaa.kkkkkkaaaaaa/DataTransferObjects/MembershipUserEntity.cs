@@ -9,9 +9,5 @@ namespace kkkkkkaaaaaa.DataTransferObjects
 
         [KandaDbParameterMapping("@userId")]
         public long UserID { get; set; }
-
-        //[KandaDbParameterMapping("@enabled")]
-        //public bool Enabled { get; set; }
-
     }
 }

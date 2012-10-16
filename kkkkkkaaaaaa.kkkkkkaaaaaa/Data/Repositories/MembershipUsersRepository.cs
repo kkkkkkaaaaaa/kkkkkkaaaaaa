@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Common;
 using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.TableDataGateways;
@@ -18,15 +19,16 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public IEnumerable<MembershipUserEntity> Get(MembershipUsersCriteria criteria, DbConnection connection, DbTransaction transaction)
+        public ICollection<long> Get(MembershipUsersCriteria criteria, DbConnection connection, DbTransaction transaction)
         {
-            var reader = default(DbDataReader);
+            var reader = default(KandaDbDataReader);
 
             try
             {
                 reader = MembershipUsersGateway.Select(criteria, connection, transaction);
 
-                var gotten = KandaDbDataMapper.MapToEnumerable<MembershipUserEntity>(reader);
+                var gotten = new Collection<long>();
+                while (reader.Read()) { gotten.Add(reader.GetInt64(@"UserID")); }
 
                 return gotten;
             }
@@ -81,9 +83,9 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public bool Delete(MembershipUserEntity entity, DbConnection connection, DbTransaction transaction)
+        public bool Delete(MembershipUsersCriteria criteria, DbConnection connection, DbTransaction transaction)
         {
-            var deleted = MembershipUsersGateway.Delete(entity, connection, transaction);
+            var deleted = MembershipUsersGateway.Delete(criteria, connection, transaction);
 
             return (0 < deleted);
         }

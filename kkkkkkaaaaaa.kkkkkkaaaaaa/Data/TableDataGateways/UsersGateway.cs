@@ -85,11 +85,9 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public static long IdentCurrent(DbConnection connection, DbTransaction transaction)
+        public static decimal IdentCurrent(DbConnection connection, DbTransaction transaction)
         {
-            var current = decimal.ToInt64(KandaTableDataGateway.IdentCurrent(UsersGateway.TABLE_NAME, connection, transaction));
-
-            return current;
+            return KandaTableDataGateway.IdentCurrent(UsersGateway.TABLE_NAME, connection, transaction);
         }
 
         /// <summary>

@@ -20,6 +20,7 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
                 connection = this._factory.CreateConnection();
                 connection.Open();
 
+                /*
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
                 var user = new User(new UserEntity()
@@ -33,9 +34,9 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
                 membership = new Membership(new MembershipEntity() { Name = @"CreateFactName", Password = @"CreateFactPassword", }).Create();
                 membership.Users.Add(user);
                 membership.Update();
+                */
 
-                var found = default(MembershipEntity);
-                Assert.True(0 < membership.Find(out found).ID);
+                Assert.True(0 < membership.Find().ID);
             }
             finally
             {

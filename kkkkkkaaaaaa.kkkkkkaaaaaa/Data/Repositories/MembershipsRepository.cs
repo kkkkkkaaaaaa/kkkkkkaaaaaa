@@ -125,7 +125,9 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public long IdentCurrent(DbConnection connection, DbTransaction transaction)
         {
-            return MembershipsGateway.IdentCurrent(connection, transaction);
+            var current = MembershipsGateway.IdentCurrent(connection, transaction);
+
+            return decimal.ToInt64(current);
         }
 
 

@@ -42,11 +42,9 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public static long IdentCurrent(DbConnection connection, DbTransaction transaction)
+        public static decimal IdentCurrent(DbConnection connection, DbTransaction transaction)
         {
-            var current = KandaTableDataGateway.IdentCurrent(MembershipsGateway.TABLE_NAME, connection, transaction);
-
-            return decimal.ToInt64(current);
+            return KandaTableDataGateway.IdentCurrent(MembershipsGateway.TABLE_NAME, connection, transaction);
         }
 
         /// <summary>

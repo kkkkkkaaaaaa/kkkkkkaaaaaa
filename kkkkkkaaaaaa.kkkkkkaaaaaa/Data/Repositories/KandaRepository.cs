@@ -26,7 +26,6 @@ namespace kkkkkkaaaaaa.Data.Repositories
             get { return KandaRepository._membershipUsers.Value; }
         }
 
-        /*
         /// <summary>
         /// 
         /// </summary>
@@ -54,19 +53,18 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
-        public static RoleAuthorizationsRepository RoleAuthorizations
+        public static AuthorizationsRepository Authorizations
         {
-            get { return KandaRepository._roleAuthorizations.Value; }
+            get { return KandaRepository._authorizations.Value; }
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static AuthorizationsRepository Authorization
+        public static RoleAuthorizationsRepository RoleAuthorizations
         {
-            get { return KandaRepository._authorizations.Value; }
+            get { return KandaRepository._roleAuthorizations.Value; }
         }
-        */
 
 
         /// <summary>
@@ -89,6 +87,14 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
+        public static UserAttributeItemsRepository UserAttibuteItems
+        {
+            get { return KandaRepository._userAttributeItems.Value; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static UserAttributesRepository UserAttributes
         {
             get { return KandaRepository._userAttributes.Value; }
@@ -100,14 +106,6 @@ namespace kkkkkkaaaaaa.Data.Repositories
         public static UserAttributeHistoriesRepository UserAttributeHistories
         {
             get { return KandaRepository._userAttributeHistories.Value; }
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public static UserAttributeItemsRepository UserAttibuteItems
-        {
-            get { return KandaRepository._userAttributeItems.Value; }
         }
         */
 
@@ -144,18 +142,16 @@ namespace kkkkkkaaaaaa.Data.Repositories
         private static readonly Lazy<MembershipsRepository> _memberships = new Lazy<MembershipsRepository>(() => new MembershipsRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>
         private static readonly Lazy<MembershipUsersRepository> _membershipUsers = new Lazy<MembershipUsersRepository>(() => new MembershipUsersRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
-        /*
         /// <summary></summary>
-        private readonly static Lazy<MembershipAuthorizationsRepository> _membershipAuthorizations = new Lazy<MembershipAuthorizationsRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
+        private readonly static Lazy<MembershipRolesRepository> _membershipRoles = new Lazy<MembershipRolesRepository>(() => new MembershipRolesRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>
-        private readonly static Lazy<MembershipRolesRepository> _membershipRoles = new Lazy<MembershipRolesRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
+        private readonly static Lazy<MembershipAuthorizationsRepository> _membershipAuthorizations = new Lazy<MembershipAuthorizationsRepository>(() => new MembershipAuthorizationsRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>
-        private readonly static Lazy<AuthorizationsRepository> _authorizations = new Lazy<AuthorizationsRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
+        private readonly static Lazy<AuthorizationsRepository> _authorizations = new Lazy<AuthorizationsRepository>(() => new AuthorizationsRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>
-        private readonly static Lazy<RolesRepository> _roles = new Lazy<RolesRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
+        private readonly static Lazy<RolesRepository> _roles = new Lazy<RolesRepository>(() => new RolesRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>
-        private readonly static Lazy<RoleAuthorizationsRepository> _roleAuthorizations = new Lazy<RoleAuthorizationsRepository>(LazyThreadSafetyMode.ExecutionAndPublication);
-        */
+        private readonly static Lazy<RoleAuthorizationsRepository> _roleAuthorizations = new Lazy<RoleAuthorizationsRepository>(() => new RoleAuthorizationsRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
 
         /// <summary></summary>
         private static readonly Lazy<UsersRepository> _users = new Lazy<UsersRepository>(() => new UsersRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
@@ -171,7 +167,6 @@ namespace kkkkkkaaaaaa.Data.Repositories
         */
 
         #endregion
-
 
         /*
         public Entity Find(long id, DbConnection connection, DbTransaction transaction)

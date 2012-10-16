@@ -7,6 +7,7 @@ namespace kkkkkkaaaaaa.DataTransferObjects
         [KandaDbParameterMapping("@membershipId")]
         public long MembershipID { get; set; }
 
+        [KandaDbParameterMapping("@userId")]
         public long UserID { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -7,23 +9,58 @@ namespace kkkkkkaaaaaa
 {
     public class KandaDataMapper
     {
+        public static T MapToObject<T>(object source) where T : new()
+        {
+            var target = new T();
+
+            KandaDataMapper.MapToObject(source, target);
+
+            return target;
+        }
+
+        public static void MapToObject(object source, object target)
+        {
+            /*
+            var members = new List<MemberInfo>();
+            members.AddRange(target.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance));
+            members.AddRange(target.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance));
+
+            foreach (var member in members)
+            {
+                var attributes = member.GetCustomAttributes(typeof (KandaDataMappingAttribute), true);
+                foreach (var attribute in attributes)
+                {
+                    if (member.Name != attribute.Name) { continue; }
+
+                    KandaDataMapper.SetValue(member, target, value);
+                    break;
+                }
+
+                if ()
+            }
+            */
+        }
+
+
+
+
+        protected IEnumerable<MemberInfo> GetMembers(object obj)
+        {
+            var type = obj.GetType();
+
+            var members = new List<MemberInfo>();
+            members.AddRange(type.GetProperties(BindingFlags.Public | BindingFlags.Instance));
+            members.AddRange(type.GetFields(BindingFlags.Public | BindingFlags.Instance));
+
+            return members;
+        }
+
         /*
-        public static T MapToObject<T>(object source)
-        {
-
-        }
-
-        public static void MapToObject<T>(object source, T target)
-        {
-
-        }
-
         public static IEnumerable<TTarget> MapToEnumarable<TSource, TTarget>(IEnumerable<TSource> source)
         {
             return default(IEnumerable<TTarget>);
         }
         */
-
         #region Protected members...
 
 
@@ -54,7 +91,7 @@ namespace kkkkkkaaaaaa
         /// <param name="member"></param>
         /// <param name="obj"></param>
         /// <param name="value"></param>
-        protected static void SetValue(_MemberInfo member, object obj, object value)
+        protected static void SetValue(MemberInfo member, object obj, object value)
         {
             if (member is PropertyInfo)
             {

@@ -13,6 +13,10 @@ namespace kkkkkkaaaaaa.DomainModels
     /// </summary>
     public abstract class KandaDomainModel
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static bool Reset()
         {
             var connection = default(DbConnection);
@@ -26,15 +30,18 @@ namespace kkkkkkaaaaaa.DomainModels
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
                 var result = false;
-                if (!KandaDomainModel.resetMemberships(connection, transaction)) { transaction.Rollback(); }
-                else if (!KandaDomainModel.resetUsers(connection, transaction)) { transaction.Rollback(); }
-                else if (!KandaDomainModel.resetMembershipUsers(connection, transaction)) { transaction.Rollback(); }
-                //else if (!KandaDomainModel.reset(connection, transaction)) { transaction.Rollback(); }
+                if (!KandaDomainModel.truncateTables(connection, transaction)) { transaction.Rollback(); }
+                // else if (!KandaDomainModel.resetSystem()) { transaction.Rollback(); }
+                // else if (!KandaDomainModel.resetAdministrator()) { transaction.Rollback(); }
+                // else if (!KandaDomainModel.resetUser()) { transaction.Rollback(); }
+                // else if (!KandaDomainModel.resetTester()) { transaction.Rollback(); }
+                // else if (!KandaDomainModel.resetDeveloper()) { transaction.Rollback(); }
                 else
                 {
                     transaction.Commit();
                     result = true;
                 }
+
                 return result;
             }
             catch
@@ -48,22 +55,11 @@ namespace kkkkkkaaaaaa.DomainModels
             }
         }
 
-        private static bool resetMembershipUsers(DbConnection connection, DbTransaction transaction)
-        {
-            if (!KandaRepository.MembershipUsers.Truncate(connection, transaction)) { return false; }
-
-            return true;
-        }
-
-        private static bool resetUsers(DbConnection connection, DbTransaction transaction)
-        {
-            if (!KandaRepository.Users.Truncate(connection, transaction)) { return false; }
-
-            return true;
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public abstract long ID { get; }
-
+        
         #region Protected members...
 
         /// <summary>
@@ -81,6 +77,31 @@ namespace kkkkkkaaaaaa.DomainModels
 
         #region Private members...
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        private static bool truncateTables(DbConnection connection, DbTransaction transaction)
+        {
+            if (!KandaRepository.MembershipRoles.Truncate(connection, transaction)) { return false; }
+            if (!KandaRepository.MembershipUsers.Truncate(connection, transaction)) { return false; }
+            if (!KandaRepository.MembershipRoles.Truncate(connection, transaction)) { return false; }
+            if (!KandaRepository.MembershipAuthorizations.Truncate(connection, transaction)) { return false; }
+            if (!KandaRepository.Users.Truncate(connection, transaction)) { return false; }
+            if (!KandaRepository.Roles.Truncate(connection, transaction)) { return false; }
+            if (!KandaRepository.Authorizations.Truncate(connection, transaction)) { return false; }
+
+            return true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         private static bool resetMemberships(DbConnection connection, DbTransaction transaction)
         {
             if (!KandaRepository.Memberships.Truncate(connection, transaction)) { return false; }

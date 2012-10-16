@@ -1,5 +1,4 @@
 ﻿using Xunit;
-using kkkkkkaaaaaa.DomainModels;
 
 namespace kkkkkkaaaaaa.Xunit.DomainModels
 {

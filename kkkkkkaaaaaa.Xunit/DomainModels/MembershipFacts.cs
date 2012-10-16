@@ -1,4 +1,6 @@
-﻿using Xunit;
+﻿using System;
+using System.Globalization;
+using Xunit;
 using kkkkkkaaaaaa.DataTransferObjects;
 using kkkkkkaaaaaa.DomainModels;
 
@@ -16,12 +18,19 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
 
             try
             {
-                membership = new Membership(new MembershipEntity() { Name = @"", Password = @"", Enabled = true, });
+                var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
+                membership = new Membership(new MembershipEntity() { Name = name, Password = @"", Enabled = true, });
+                membership.Found += (sender, e) => Assert.True(0 < e.ID);
+
+                membership.Users.Add(new User(new UserEntity() { GivenName = name }).Create().ID);
+                membership.Roles.Add(new Role(new RoleEntity() { Name = name, }).Create().ID);
+                membership.Authorizations.Add(new Authorization(new AuthorizationEntity() { Name = name, }).Create().ID);
+
                 membership.Create();
                 Assert.True(0 < membership.ID);
 
-                MembershipEntity found;
-                Assert.True(0 < membership.Find(out found).ID);
+                membership.Find();
+                Assert.True(0 < membership.Find().ID);
             }
             finally
             {
@@ -41,9 +50,7 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
                 Assert.True(0 < membership.ID);
 
                 membership = new Membership(new MembershipEntity() { Name = @"name", Password = @"pppp", Enabled = true, });
-                MembershipEntity found;
-                membership.Find(out found);
-                Assert.True(0 < membership.ID);
+                Assert.True(0 < membership.Find().ID);
             }
             finally
             {
@@ -65,8 +72,8 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             try
             {
                 membership = new Membership(new MembershipEntity() { Name = @"name", Password = @"password", Enabled = true, });
-                membership.Users.Add(new User(new UserEntity() { FamilyName = @"MembershipFacts", GivenName = @"1" }));
-                membership.Users.Add(new User(new UserEntity() { FamilyName = @"MembershipFacts", GivenName = @"2" }));
+                //membership.Users.Add(new User(new UserEntity() { FamilyName = @"MembershipFacts", GivenName = @"1" }));
+                //membership.Users.Add(new User(new UserEntity() { FamilyName = @"MembershipFacts", GivenName = @"2" }));
 
                 membership.Create();
 

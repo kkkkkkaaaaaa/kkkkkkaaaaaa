@@ -23,7 +23,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public static DbDataReader Select(MembershipUsersCriteria criteria, DbConnection connection, DbTransaction transaction)
+        public static KandaDbDataReader Select(MembershipUsersCriteria criteria, DbConnection connection, DbTransaction transaction)
         {
             var reader = KandaTableDataGateway._factory.CreateReader(connection, transaction);
 
@@ -89,13 +89,13 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public static int Delete(MembershipUserEntity entity, DbConnection connection, DbTransaction transaction)
+        public static int Delete(MembershipUsersCriteria criteria, DbConnection connection, DbTransaction transaction)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
 
             command.CommandText = @"usp_DeleteMembershipUsers";
 
-            KandaDbDataMapper.MapToParameters(command, entity);
+            KandaDbDataMapper.MapToParameters(command, criteria);
 
             var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);

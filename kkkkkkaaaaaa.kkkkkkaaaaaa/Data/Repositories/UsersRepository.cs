@@ -93,7 +93,9 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         internal long IdentCurrent(DbConnection connection, DbTransaction transaction)
         {
-            return UsersGateway.IdentCurrent(connection, transaction);
+            var current= UsersGateway.IdentCurrent(connection, transaction);
+
+            return decimal.ToInt64(current);
         }
 
         /// <summary>

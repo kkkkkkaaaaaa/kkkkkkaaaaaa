@@ -21,7 +21,6 @@ namespace kkkkkkaaaaaa.Data.Common
             members.AddRange(type.GetProperties((BindingFlags.Instance | BindingFlags.Public)));
             members.AddRange(type.GetFields((BindingFlags.Instance | BindingFlags.Public)));
 
-
             foreach (var member in members)
             {
                 foreach (DataRow row in schema.Rows)

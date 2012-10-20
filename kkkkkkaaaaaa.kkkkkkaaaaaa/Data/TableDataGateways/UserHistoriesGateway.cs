@@ -9,10 +9,8 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
     /// <summary>
     /// 
     /// </summary>
-    internal class UsersGateway : KandaTableDataGateway
+    internal class UserHistoriesGateway : KandaTableDataGateway
     {
-        private const string TABLE_NAME = @"Users";
-
         /// <summary>
         /// 
         /// </summary>
@@ -20,11 +18,11 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public static DbDataReader Select(UsersCriteria criteria, DbConnection connection, DbTransaction transaction)
+        public static KandaDbDataReader Select(UserHistoriesCriteria criteria, DbConnection connection, DbTransaction transaction)
         {
             var reader = KandaTableDataGateway._factory.CreateReader(connection, transaction);
 
-            reader.CommandText = @"usp_SelectUsers";
+            reader.CommandText = @"usp_SelectUserHistories";
 
             KandaDbDataMapper.MapToParameters(reader, criteria);
 
@@ -40,11 +38,11 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public static int Insert(UserEntity entity, DbConnection connection, DbTransaction transaction)
+        public static int InsertSelect(UserHistoryEntity entity, DbConnection connection, DbTransaction transaction, out int revision)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
 
-            command.CommandText = @"usp_InsertUsers";
+            command.CommandText = @"usp_InsertSelectUserHistories";
 
             KandaDbDataMapper.MapToParameters(command, entity);
 
@@ -52,6 +50,8 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
             command.Parameters.Add(result);
 
             command.ExecuteNonQuery();
+
+            revision = (int)command.Parameters["@revision"].Value;
 
             return (int)result.Value;
         }
@@ -63,11 +63,11 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public static int Update(UserEntity entity, DbConnection connection, DbTransaction transaction)
+        public static int Insert(UserHistoryEntity entity, DbConnection connection, DbTransaction transaction)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
 
-            command.CommandText = @"usp_UpdateUsers";
+            command.CommandText = @"usp_InsertUserHistories";
 
             KandaDbDataMapper.MapToParameters(command, entity);
 
@@ -76,52 +76,18 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
 
             command.ExecuteNonQuery();
 
-            return (int)result.Value;
+            return (int) result.Value;
         }
 
         /// <summary>
         /// 
-        /// </summary>
-        /// <param name="connection"></param>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        public static decimal IdentCurrent(DbConnection connection, DbTransaction transaction)
-        {
-            return KandaTableDataGateway.IdentCurrent(UsersGateway.TABLE_NAME, connection, transaction);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="connection"></param>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        public static int Delete(long id, DbConnection connection, DbTransaction transaction)
-        {
-            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
-
-            command.CommandText = @"usp_DeleteUsers";
-
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@id", id));
-
-            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
-            command.Parameters.Add(result);
-
-            command.ExecuteNonQuery();
-
-            return (int)result.Value;
-        }
-
-        /// <summary>
-        /// Truncate。
         /// </summary>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
         public static int Truncate(DbConnection connection, DbTransaction transaction)
         {
-            return KandaTableDataGateway.Truncate(@"Users", connection, transaction);
+            return KandaTableDataGateway.Truncate(@"UserHistories", connection, transaction);
         }
     }
 }

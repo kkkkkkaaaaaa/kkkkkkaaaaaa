@@ -13,7 +13,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
     {
         public const string TABLE_NAME = @"Authorizations";
 
-        public static DbDataReader Select(AuthorizationsCriteria criteria, DbConnection connection, DbTransaction transaction)
+        public static KandaDbDataReader Select(AuthorizationsCriteria criteria, DbConnection connection, DbTransaction transaction)
         {
             var reader = KandaTableDataGateway._factory.CreateReader(connection, transaction);
 

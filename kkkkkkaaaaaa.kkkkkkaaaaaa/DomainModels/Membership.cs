@@ -37,7 +37,7 @@ namespace kkkkkkaaaaaa.DomainModels
         /// <summary>
         /// 
         /// </summary>
-        public override long ID
+        public long ID
         {
             get { return this._entity.ID; }
         }

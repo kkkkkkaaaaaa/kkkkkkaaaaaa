@@ -4,11 +4,9 @@ using kkkkkkaaaaaa.Data.Common;
 
 namespace kkkkkkaaaaaa.DataTransferObjects
 {
-    public class UserEntity : KandaEntity<long>
+    public class UserHistoryEntity
     {
-        public readonly static UserEntity Empty = new UserEntity() { ID = -1, };
-
-        public UserEntity()
+        public UserHistoryEntity()
         {
             this.FamilyName = @"";
             this.GivenName = @"";
@@ -17,28 +15,24 @@ namespace kkkkkkaaaaaa.DataTransferObjects
             this.Enabled = true;
         }
 
-        [KandaDbParameterMapping("@id")]
-        public override long ID { get; set; }
+        [KandaDbParameterMapping("@userId")]
+        public virtual long UserID { get; set; }
 
-        [KandaDbParameterMapping("@familyName")]
+        [KandaDbParameterMapping("@revision", DbType = DbType.Int32, Size = sizeof(int), Direction = ParameterDirection.InputOutput)]
+        public int Revision { get; set; }
+
         public string FamilyName { get; set; }
 
-        [KandaDbParameterMapping("@givenName")]
         public string GivenName { get; set; }
 
-        [KandaDbParameterMapping("@additionalName")]
         public string AdditionalName { get; set; }
 
-        [KandaDbParameterMapping("@description")]
         public string Description { get; set; }
 
-        [KandaDbParameterMapping("@enabled")]
         public bool Enabled { get; set; }
 
-        [KandaDbParameterMapping("@createdOn", DbType = DbType.DateTime2)]
         public DateTime CreatedOn { get; set; }
 
-        [KandaDbParameterMapping("@updatedOn", DbType = DbType.DateTime2)]
         public DateTime UpdateOn { get; set; }
     }
 }

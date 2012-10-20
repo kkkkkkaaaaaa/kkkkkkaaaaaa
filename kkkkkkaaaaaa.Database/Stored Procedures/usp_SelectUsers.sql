@@ -1,13 +1,13 @@
 ﻿CREATE PROCEDURE usp_SelectUsers (
 	-- パラメーター
 	@id					BIGINT
-	, @familyName		NVARCHAR(1024)
-	, @givenName		NVARCHAR(1024)
-	, @additionalName	NVARCHAR(1024)
-	, @description		NVARCHAR(MAX)		
+	--, @familyName		NVARCHAR(1024)
+	--, @givenName		NVARCHAR(1024)
+	--, @additionalName	NVARCHAR(1024)
+	--, @description		NVARCHAR(MAX)		
 	, @enabled			BIT
-	, @createdOn		DATETIME2
-	, @updatedOn		DATETIME2
+	--, @createdOn		DATETIME2
+	--, @updatedOn		DATETIME2
 ) AS
 
 	-- ローカル変数
@@ -27,7 +27,6 @@
 	-- WHERE
 	SET @where = ' WHERE 1 = 1'
 		+ ' AND [Enabled] = ' + CONVERT(VARCHAR(MAX), @enabled)
-
 	IF (0 < @id) SET @where = @where + ' AND ID = ' + CONVERT(VARCHAR(MAX), @id)
 
 	-- ORDER BY

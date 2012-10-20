@@ -32,7 +32,7 @@ namespace kkkkkkaaaaaa.DomainModels
         /// <summary>
         /// 
         /// </summary>
-        public override long ID
+        public long ID
         {
             get { return this._entity.ID; }
         }
@@ -70,9 +70,9 @@ namespace kkkkkkaaaaaa.DomainModels
                 this.Memberships = KandaRepository.MembershipRoles.Get(new MembershipRolesCriteria() { RoleID = this.ID, }, connection, transaction);
                 this.Authorizations = KandaRepository.RoleAuthorizations.Get(new RoleAuthorizationsCriteria() { RoleID = this.ID, }, connection, transaction);
 
-                if (this.Found != null) { this.Found(this, this._entity); }
-
                 transaction.Commit();
+
+                if (this.Found != null) { this.Found(this, this._entity); }
 
                 return this;
             }

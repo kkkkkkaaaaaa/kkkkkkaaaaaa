@@ -5,7 +5,7 @@
 	, @givenName		NVARCHAR(1024)
 	, @additionalName	NVARCHAR(1024)
 	, @description		NVARCHAR(MAX)
-	--, @enabled			BIT
+	, @enabled			BIT
 	, @createdOn		DATETIME2(7)
 	, @updatedOn		DATETIME2(7)
 ) AS

@@ -1,4 +1,5 @@
 ﻿using System.Data.Common;
+using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.TableDataGateways;
 using kkkkkkaaaaaa.DataTransferObjects;
 
@@ -12,6 +13,31 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="id"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public AuthorizationEntity Find(long id, DbConnection connection, DbTransaction transaction)
+        {
+            var reader = default(KandaDbDataReader);
+
+            try
+            {
+                reader = AuthorizationsGateway.Select(new AuthorizationsCriteria() {ID = id,}, connection, transaction);
+
+                var found = KandaDbDataMapper.MapToObject<AuthorizationEntity>(reader);
+
+                return found;
+            }
+            finally
+            {
+                if (reader != null) { reader.Close();   }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="entity"></param>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
@@ -21,6 +47,20 @@ namespace kkkkkkaaaaaa.Data.Repositories
             var created = AuthorizationsGateway.Insert(entity, connection, transaction);
 
             return (created == 1);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public bool Update(AuthorizationEntity entity, DbConnection connection, DbTransaction transaction)
+        {
+            var updated = AuthorizationsGateway.Update(entity, connection, transaction);
+
+            return (updated == 1);
         }
 
         /// <summary>

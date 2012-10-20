@@ -92,7 +92,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <summary>
         /// 何もしません。
         /// </summary>
-        protected void DoNothing()
+        protected static void DoNothing()
         {
             // 何もしない
         }

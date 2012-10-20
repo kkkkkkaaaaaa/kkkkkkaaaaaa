@@ -94,5 +94,15 @@
     <Build Include="Tables\RoleAuthorizations.sql" />
     <Build Include="Stored Procedures\usp_DeleteRoles.sql" />
     <Build Include="Stored Procedures\usp_UpdateRoles.sql" />
+    <Build Include="Tables\UserAttributes.sql" />
+    <Build Include="Tables\UserHistories.sql" />
+    <Build Include="Stored Procedures\usp_InsertSelectUserHistories.sql" />
+    <Build Include="Tables\UserHistoryAttributes.sql" />
+    <Build Include="Stored Procedures\usp_InsertSelectUserHistoryAttributes.sql" />
+    <Build Include="Stored Procedures\usp_SelectUserHistories.sql" />
+    <Build Include="Stored Procedures\usp_SelectUserAttributes.sql" />
+    <Build Include="Stored Procedures\usp_SelectUserHistoryAttributes.sql" />
+    <Build Include="Stored Procedures\usp_DeleteUserAttributes.sql" />
+    <Build Include="Stored Procedures\usp_UpdateUsers.sql" />
   </ItemGroup>
 </Project>

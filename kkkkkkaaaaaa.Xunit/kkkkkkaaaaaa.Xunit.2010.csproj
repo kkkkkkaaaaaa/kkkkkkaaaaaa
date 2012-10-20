@@ -68,6 +68,7 @@
     <Compile Include="Data\KandaXunitDataFacts.cs" />
     <Compile Include="Data\Common\KandaProviderFactoryFacts.cs" />
     <Compile Include="Data\KandaXunitProviderFactory.cs" />
+    <Compile Include="DomainModels\AuthorizationFacts.cs" />
     <Compile Include="DomainModels\KandaXunitDomainModelFacts.cs" />
     <Compile Include="DomainModels\MembershipFacts.cs" />
     <Compile Include="DomainModels\MembershipsFacts.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="DomainModels\MembershipUsersFacts.cs" />
     <Compile Include="DomainModels\RoleFacts.cs" />
     <Compile Include="DomainModels\UserFacts.cs" />
+    <Compile Include="DomainModels\UserHistoryFacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\MembershipUsersRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\AuthorizationsRepositoryFacts.cs" />
@@ -86,7 +88,6 @@
     <Compile Include="Web\Repositories\RoleAuthorizationsRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\RolesRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\UserAttributeHistoriesRepositoryFacts.cs" />
-    <Compile Include="Web\Repositories\UserAttributeItemsRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\UserAttributesRepositoryFacts.cs" />
     <Compile Include="Web\Repositories\UserHistoriesRepositoryFacts.cs" />
     <Compile Include="Repositories\UsersRepositoryFacts.cs" />

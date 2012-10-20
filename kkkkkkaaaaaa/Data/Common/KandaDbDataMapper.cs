@@ -39,7 +39,7 @@ namespace kkkkkkaaaaaa.Data.Common
                         break;
                     }
 
-                    if (attributes.Length > 0) { continue; } // MappingAttribute あり
+                    if (0 < attributes.Length) { continue; } // MappingAttribute あり
                     if (member.Name != name) { continue; } // メンバー名一致なし
 
                     KandaDataMapper.SetValue(member, obj, value);
@@ -57,18 +57,23 @@ namespace kkkkkkaaaaaa.Data.Common
             return obj;
         }
 
-        public static IEnumerable<T> MapToEnumerable<T>(DbDataReader reader) where T : new()
+        public static ICollection<T> MapToCollection<T>(DbDataReader reader) where T : new()
         {
-            var enumerable = new Collection<T>();
+            var collection = new Collection<T>();
 
-            while (reader.Read())
+            while(reader.Read())
             {
                 var item = KandaDbDataMapper.MapToObject<T>(reader);
-
-                enumerable.Add(item);
+                collection.Add(item);
             }
 
-            return enumerable;
+            return collection;
+
+        }
+
+        public static IEnumerable<T> MapToEnumerable<T>(DbDataReader reader) where T : new()
+        {
+            return KandaDbDataMapper.MapToCollection<T>(reader);
         }
 
         public static void MapToParameters(DbCommand command, object obj)

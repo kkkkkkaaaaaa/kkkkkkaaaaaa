@@ -1,19 +1,12 @@
 ﻿using System;
 using kkkkkkaaaaaa.Data.Common;
 
-namespace kkkkkkaaaaaa.DataTransferObjects
+namespace kkkkkkaaaaaa.Web.DataTransferObjects
 {
-    public class RoleEntity
+    public class UserAttributeItemEntity
     {
-        public readonly static RoleEntity Empty = new RoleEntity() { ID = -1, };
-
-        public RoleEntity()
-        {
-            this.Description = @"";
-        }
-
         [KandaDbParameterMapping("@id")]
-        public long ID { get; set; }
+        public int ID { get; set; }
 
         [KandaDbParameterMapping("@name")]
         public string Name { get; set; }
@@ -24,10 +17,10 @@ namespace kkkkkkaaaaaa.DataTransferObjects
         [KandaDbParameterMapping("@enabled")]
         public bool Enabled { get; set; }
 
-        [KandaDbParameterMapping("@createdOn")]
+        [KandaDbParameterMapping("@createdOn", Ignore = true)]
         public DateTime CreatedOn { get; set; }
 
-        [KandaDbParameterMapping("@", Ignore = true)]
+        [KandaDbParameterMapping("@updatedOn", Ignore = true)]
         public DateTime UpdatedOn { get; set; }
     }
 }

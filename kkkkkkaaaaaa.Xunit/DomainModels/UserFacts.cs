@@ -1,4 +1,6 @@
-﻿using Xunit;
+﻿using System;
+using System.Globalization;
+using Xunit;
 using kkkkkkaaaaaa.DataTransferObjects;
 using kkkkkkaaaaaa.DomainModels;
 
@@ -20,9 +22,10 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             try
             {
                 user = new User(new UserEntity());
-                user = user.Create();
+                user.Found += (sender, e) => Assert.True(0 < e.ID);
 
-                Assert.True(user.Exists);
+                user.Create();
+                user.Find();
             }
             finally
             {
@@ -41,9 +44,10 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             try
             {
                 user = new User(new UserEntity() { FamilyName = @"", GivenName = @"", AdditionalName = @"", Enabled = true, });
-                user = user.Create();
+                user.Found += (sender, e) => Assert.True(0 < e.ID);
 
-                Assert.True(user.Exists);
+                user = user.Create();
+                user.Find();
             }
             finally
             {
@@ -57,7 +61,28 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
         [Fact()]
         public void UpdateFact()
         {
+            var created = default(User);
 
+            try
+            {
+                var familyName = new Random().Next().ToString(CultureInfo.InvariantCulture);
+
+                created = new User(new UserEntity() { FamilyName = familyName, });
+                created.Create();
+                Assert.True(0 < created.ID);
+
+                var updated = new User(new UserEntity() {ID = created.ID});
+                updated.Found += (sernder, e) => Assert.True(new DateTime() < e.UpdateOn);
+                updated.Update();
+                updated.Find();
+
+                Assert.Equal(created.ID, updated.ID);
+
+            }
+            finally
+            {
+                if (created != null) { created.Delete(); }
+            }
         }
 
         /// <summary>
@@ -71,10 +96,11 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             try
             {
                 user = new User(new UserEntity());
-                user = user.Create();
+                user.Found += (sender, e) => Assert.True(e.ID == 0);
 
+                user = user.Create();
                 user = user.Delete();
-                Assert.False(user.Exists);
+                user.Find();
             }
             finally
             {

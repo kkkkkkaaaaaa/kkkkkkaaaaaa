@@ -50,7 +50,9 @@
     <Compile Include="DataTransferObjects\RoleEntity.cs" />
     <Compile Include="DataTransferObjects\UserAttributeEntity.cs" />
     <Compile Include="DataTransferObjects\UserAttributeHistoryEntity.cs" />
-    <Compile Include="DataTransferObjects\UserAttributeItemEntity.cs" />
+    <Compile Include="DataTransferObjects\UserAttributeItemEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DataTransferObjects\UserEntity.cs" />
     <Compile Include="DataTransferObjects\UserHistoryEntity.cs" />
     <Compile Include="Data\KandaProviderFactory.cs" />

@@ -58,7 +58,7 @@ namespace kkkkkkaaaaaa.DomainModels
         /// <summary>
         /// 
         /// </summary>
-        public abstract long ID { get; }
+        //public abstract long ID { get; }
         
         #region Protected members...
 

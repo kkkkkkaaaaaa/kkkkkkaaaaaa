@@ -58,10 +58,12 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             {
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
                 role = new Role(new RoleEntity() { Name = name, });
+
+                var updated = default(Role);
                 role.Found += (sender, e) =>
                     {
                         e.Name = new Random().Next().ToString(CultureInfo.InvariantCulture);
-                        var updated = new Role(e);
+                        updated = new Role(e);
                         updated.Found += (sender2, e2) => Assert.Equal(e.Name, e2.Name);
 
                         updated.Update();
@@ -69,7 +71,6 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
                     };
 
                 role.Create();
-                role.Update();
                 role.Find();
             }
             finally

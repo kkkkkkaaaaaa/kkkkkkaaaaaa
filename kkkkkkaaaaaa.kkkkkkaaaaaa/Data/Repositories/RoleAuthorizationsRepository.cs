@@ -7,6 +7,9 @@ using kkkkkkaaaaaa.DataTransferObjects;
 
 namespace kkkkkkaaaaaa.Data.Repositories
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class RoleAuthorizationsRepository : KandaRepository
     {
         /// <summary>

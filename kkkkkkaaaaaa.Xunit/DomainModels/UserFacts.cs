@@ -6,14 +6,8 @@ using kkkkkkaaaaaa.DomainModels;
 
 namespace kkkkkkaaaaaa.Xunit.DomainModels
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public class UserFacts
     {
-        /// <summary>
-        /// 
-        /// </summary>
         [Fact()]
         public void FindFact()
         {
@@ -23,7 +17,6 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             {
                 user = new User(new UserEntity());
                 user.Found += (sender, e) => Assert.True(0 < e.ID);
-
                 user.Create();
                 user.Find();
             }
@@ -33,9 +26,6 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         [Fact()]
         public void CreateFact()
         {
@@ -43,11 +33,12 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
 
             try
             {
-                user = new User(new UserEntity() { FamilyName = @"", GivenName = @"", AdditionalName = @"", Enabled = true, });
-                user.Found += (sender, e) => Assert.True(0 < e.ID);
-
-                user = user.Create();
+                user = new User(new UserEntity());
+                user.Create();
                 user.Find();
+
+                Assert.True(0 < user.ID);
+                
             }
             finally
             {
@@ -55,57 +46,38 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         [Fact()]
         public void UpdateFact()
-        {
-            var created = default(User);
-
-            try
-            {
-                var familyName = new Random().Next().ToString(CultureInfo.InvariantCulture);
-
-                created = new User(new UserEntity() { FamilyName = familyName, });
-                created.Create();
-                Assert.True(0 < created.ID);
-
-                var updated = new User(new UserEntity() {ID = created.ID});
-                updated.Found += (sernder, e) => Assert.True(new DateTime() < e.UpdateOn);
-                updated.Update();
-                updated.Find();
-
-                Assert.Equal(created.ID, updated.ID);
-
-            }
-            finally
-            {
-                if (created != null) { created.Delete(); }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [Fact()]
-        public void DeleteFact()
         {
             var user = default(User);
 
             try
             {
                 user = new User(new UserEntity());
-                user.Found += (sender, e) => Assert.True(e.ID == 0);
+                user.Found += (sernder, e) => Assert.True(e.CreatedOn < e.UpdatedOn);
 
-                user = user.Create();
-                user = user.Delete();
+                user.Create();
+                user.Update();
                 user.Find();
+
+                Assert.Equal(user.ID, user.ID);
+
             }
             finally
             {
                 if (user != null) { user.Delete(); }
             }
+        }
+
+        [Fact()]
+        public void DeleteFact()
+        {
+            var user = new User(new UserEntity());
+            user.Found += (sender, e) => Assert.True(e.ID < 1);
+
+            user = user.Create();
+            user = user.Delete();
+            user.Find();
         }
     }
 }

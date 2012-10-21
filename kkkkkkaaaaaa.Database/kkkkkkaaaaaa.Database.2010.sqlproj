@@ -104,5 +104,7 @@
     <Build Include="Stored Procedures\usp_SelectUserHistoryAttributes.sql" />
     <Build Include="Stored Procedures\usp_DeleteUserAttributes.sql" />
     <Build Include="Stored Procedures\usp_UpdateUsers.sql" />
+    <Build Include="Stored Procedures\usp_UpdateAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_InsertAuthorizations.sql" />
   </ItemGroup>
 </Project>

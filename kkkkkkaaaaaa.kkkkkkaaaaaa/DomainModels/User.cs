@@ -83,7 +83,7 @@ namespace kkkkkkaaaaaa.DomainModels
 
                 if (this.Found != null) { this.Found(this, this._entity); }
 
-                return new User(found);
+                return this;
             }
             catch
             {
@@ -151,7 +151,7 @@ namespace kkkkkkaaaaaa.DomainModels
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                this._entity.UpdateOn = KandaRepository.GetUtcDateTime(connection, transaction);
+                this._entity.UpdatedOn = KandaRepository.GetUtcDateTime(connection, transaction);
                 if (!KandaRepository.Users.Update(this._entity, connection, transaction)) { transaction.Rollback(); }
                 else if (!this.createAttributes(connection, transaction)) { transaction.Rollback(); }
                 else if (!this.createHistory(connection, transaction)) { transaction.Rollback(); }

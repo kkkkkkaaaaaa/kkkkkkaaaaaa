@@ -15,8 +15,8 @@ namespace kkkkkkaaaaaa.DataTransferObjects
     /// 「値オブジェクト（VALUE OBJECTS）」pp95-102
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class KandaEntity<T>
+    public abstract class KandaEntity//<T>
     {
-        public abstract T ID { get; set; }
+        //public abstract T ID { get; set; }
     }
 }

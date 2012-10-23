@@ -21,11 +21,14 @@
 	-- WHERE
 	SET @where = ' WHERE 1 = 1'
 		+ ' AND UserID = ' + CAST(@userId AS NVARCHAR(MAX))
-	IF (1 < @revision)	SET @where = @where + ' AND Revision = ' + CAST(@revision AS NVARCHAR(MAX))
+	IF (0 < @revision) SET @where = @where + ' AND Revision = ' + CAST(@revision AS NVARCHAR(MAX))
 
 	-- ORDER BY
 	SET @orderBy = ' ORDER BY'
 		+ ' Revision DESC'
+
+	-- 実行
+	EXECUTE (@select + @from + @where + @orderBy)
 
 	-- 戻り値
 	SET @error = @@ERROR

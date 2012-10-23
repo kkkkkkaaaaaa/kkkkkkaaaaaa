@@ -8,7 +8,7 @@ AS
 		@count	INT
 
 	-- UserHistories.Revision
-	SELECT @revision = (ISNULL(MAX(Revision), 0) + 1) FROM UserHistories
+	SELECT @revision = (ISNULL(MAX(Revision), 0) + 1) FROM UserHistories WHERE UserID = @userId
 
 	-- INSERT
 	INSERT

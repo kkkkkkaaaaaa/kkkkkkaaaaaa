@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System.Linq;
+using Xunit;
 using kkkkkkaaaaaa.DataTransferObjects;
 using kkkkkkaaaaaa.DomainModels;
 
@@ -7,16 +8,16 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
     public class UserHistoryFacts : KandaDomainModelFacts
     {
         [Fact()]
-        public void CreateFact()
+        public void FindFact()
         {
             var user = default(User);
 
             try
             {
-                user = new User(new UserEntity(){ });
+                user = new User(new UserEntity());
+                user.Found += (sender, e) => Assert.True(user.Histories.Any());
                 user.Create();
-
-                Assert.True(0 < user.ID);
+                user.Find();
             }
             finally
             {
@@ -25,19 +26,17 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
         }
 
         [Fact()]
-        public void FindFact()
+        public void CreateFact()
         {
             var user = default(User);
 
             try
             {
                 user = new User(new UserEntity());
-                user.Found += (sender, e) => Assert.True(0 < e.ID);
-
                 user.Create();
                 user.Find();
 
-                Assert.True(0 < user.ID);
+                Assert.True(user.Histories.Any());
             }
             finally
             {

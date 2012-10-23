@@ -4,6 +4,12 @@ namespace kkkkkkaaaaaa.DataTransferObjects
 {
     public class UserAttributeEntity
     {
+        public UserAttributeEntity()
+        {
+            this.Value = @"";
+        }
+
+
         [KandaDbParameterMapping("@userId")]
         public long UserID { get; set; }
 

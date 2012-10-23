@@ -51,20 +51,6 @@ namespace kkkkkkaaaaaa.Data.Repositories
             return (created == 1);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <param name="connection"></param>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        public bool Update(UserAttributeEntity entity, DbConnection connection, DbTransaction transaction)
-        {
-            var updated = UserAttributesGateway.Update(entity, connection, transaction);
-
-            return (updated == 1);
-        }
-
 
         /// <summary>
         /// コンストラクター。

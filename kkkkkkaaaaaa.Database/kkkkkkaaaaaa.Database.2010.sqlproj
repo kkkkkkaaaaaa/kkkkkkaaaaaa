@@ -106,5 +106,21 @@
     <Build Include="Stored Procedures\usp_UpdateUsers.sql" />
     <Build Include="Stored Procedures\usp_UpdateAuthorizations.sql" />
     <Build Include="Stored Procedures\usp_InsertAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_DeleteUserHistories.sql" />
+    <Build Include="Stored Procedures\usp_InsertUserAttributes.sql" />
+    <Build Include="Stored Procedures\usp_DeleteUserHistoryAttributes.sql" />
+    <Build Include="Tables\Authorizations.sql" />
+    <Build Include="Tables\UserAuthorizations.sql" />
+    <Build Include="Tables\UserRoles.sql" />
+    <Build Include="Tables\Objects.sql" />
+    <Build Include="Tables\ObjectTypes.sql" />
+    <Build Include="Tables\ISO_639-1.sql" />
+    <Build Include="Tables\ISO_3166-1.sql" />
+    <Build Include="Tables\UserAttributeItems.sql" />
+    <Build Include="Tables\PredicateTypes.sql" />
+    <Build Include="Tables\Predicates.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="kkkkkkaaaaaa.Database.2010.refactorlog" />
   </ItemGroup>
 </Project>

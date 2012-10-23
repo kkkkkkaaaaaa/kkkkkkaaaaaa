@@ -20,7 +20,7 @@
 	-- WHERE
 	SET @where = ' WHERE 1 = 1'
 		+ ' AND UserID = ' + CAST(@userId AS NVARCHAR(MAX))
-	IF (0 < @itemId)	SET @where = @where + ' AND ItemID = ' + CAST(@itemId AS NCHAR(1))
+	IF (0 < @itemId)	SET @where = @where + ' AND ItemID = ' + CAST(@itemId AS NVARCHAR(MAX))
 
 	-- 
 	EXECUTE (@delete + @from + @where)

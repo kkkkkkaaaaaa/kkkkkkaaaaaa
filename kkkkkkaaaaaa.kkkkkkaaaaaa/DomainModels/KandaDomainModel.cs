@@ -31,11 +31,12 @@ namespace kkkkkkaaaaaa.DomainModels
 
                 var result = false;
                 if (!KandaDomainModel.truncateTables(connection, transaction)) { transaction.Rollback(); }
-                // else if (!KandaDomainModel.resetSystem()) { transaction.Rollback(); }
-                // else if (!KandaDomainModel.resetAdministrator()) { transaction.Rollback(); }
-                // else if (!KandaDomainModel.resetUser()) { transaction.Rollback(); }
-                // else if (!KandaDomainModel.resetTester()) { transaction.Rollback(); }
-                // else if (!KandaDomainModel.resetDeveloper()) { transaction.Rollback(); }
+                /*
+                else if (!KandaDomainModel.createSystem(connection, transaction)) { transaction.Rollback(); }
+                else if (!KandaDomainModel.createAdministrator()) { transaction.Rollback(); }
+                else if (!KandaDomainModel.createUser(connection, transaction)) { transaction.Rollback(); }
+                else if (!KandaDomainModel.createVisitor(connection, transaction)) { transaction.Rollback(); }
+                */
                 else
                 {
                     transaction.Commit();
@@ -85,11 +86,14 @@ namespace kkkkkkaaaaaa.DomainModels
         /// <returns></returns>
         private static bool truncateTables(DbConnection connection, DbTransaction transaction)
         {
-            if (!KandaRepository.MembershipRoles.Truncate(connection, transaction)) { return false; }
+            if (!KandaRepository.Memberships.Truncate(connection, transaction)) { return false; }
             if (!KandaRepository.MembershipUsers.Truncate(connection, transaction)) { return false; }
             if (!KandaRepository.MembershipRoles.Truncate(connection, transaction)) { return false; }
             if (!KandaRepository.MembershipAuthorizations.Truncate(connection, transaction)) { return false; }
             if (!KandaRepository.Users.Truncate(connection, transaction)) { return false; }
+            if (!KandaRepository.UserAttributes.Truncate(connection, transaction)) { return false; }
+            if (!KandaRepository.UserHistories.Truncate(connection, transaction)) { return false; }
+            if (!KandaRepository.UserHistoryAttributes.Truncate(connection, transaction)) { return false; }
             if (!KandaRepository.Roles.Truncate(connection, transaction)) { return false; }
             if (!KandaRepository.Authorizations.Truncate(connection, transaction)) { return false; }
 

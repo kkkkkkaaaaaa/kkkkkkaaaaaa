@@ -9,5 +9,8 @@ namespace kkkkkkaaaaaa.DataTransferObjects
 
         [KandaDbParameterMapping("@revision")]
         public int Revision { get; set; }
+
+        [KandaDbParameterMapping("@itemId")]
+        public int ItemID { get; set; }
     }
 }

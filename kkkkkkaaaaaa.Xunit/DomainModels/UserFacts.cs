@@ -1,6 +1,4 @@
-﻿using System;
-using System.Globalization;
-using Xunit;
+﻿using Xunit;
 using kkkkkkaaaaaa.DataTransferObjects;
 using kkkkkkaaaaaa.DomainModels;
 
@@ -16,9 +14,11 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             try
             {
                 user = new User(new UserEntity());
-                user.Found += (sender, e) => Assert.True(0 < e.ID);
+                user.Found += (sender, e) => Assert.Equal(sender.ID, e.ID);
                 user.Create();
                 user.Find();
+
+                Assert.True(0 < user.ID);
             }
             finally
             {
@@ -35,10 +35,8 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             {
                 user = new User(new UserEntity());
                 user.Create();
-                user.Find();
 
                 Assert.True(0 < user.ID);
-                
             }
             finally
             {
@@ -54,7 +52,7 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             try
             {
                 user = new User(new UserEntity());
-                user.Found += (sernder, e) => Assert.True(e.CreatedOn < e.UpdatedOn);
+                user.Found += (sernder, e) => Assert.True(e.CreatedOn <= e.UpdatedOn);
 
                 user.Create();
                 user.Update();

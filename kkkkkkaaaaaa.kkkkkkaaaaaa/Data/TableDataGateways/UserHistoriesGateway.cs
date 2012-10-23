@@ -82,6 +82,30 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="criteria"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public static int Delete(UserHistoriesCriteria criteria, DbConnection connection, DbTransaction transaction)
+        {
+            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
+
+            command.CommandText = @"usp_DeleteUserHistories";
+
+            KandaDbDataMapper.MapToParameters(command, criteria);
+
+            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
+            command.Parameters.Add(result);
+
+            command.ExecuteNonQuery();
+
+            return (int)result.Value;
+            //return (int)command.Parameters[KandaTableDataGateway.RETURN_VALUE].Value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>

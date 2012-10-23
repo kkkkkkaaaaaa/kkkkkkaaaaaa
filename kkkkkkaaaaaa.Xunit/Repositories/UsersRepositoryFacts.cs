@@ -105,8 +105,10 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                 transaction = connction.BeginTransaction(IsolationLevel.Serializable);
 
                 var repository = new UsersRepository();
-
+                
                 Assert.True(repository.Truncate(connction, transaction));
+
+                transaction.Commit();
             }
             catch
             {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
 using kkkkkkaaaaaa.Data.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
 
@@ -188,7 +189,10 @@ namespace kkkkkkaaaaaa.DomainModels
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                if (!KandaRepository.Users.Delete(this._entity.ID, connection, transaction)) { transaction.Rollback(); }
+                if (!KandaRepository.UserHistoryAttributes.Delete(this.ID, connection, transaction)) { transaction.Rollback(); }
+                else if (!KandaRepository.UserHistories.Delete(this.ID, connection, transaction)) { transaction.Rollback(); }
+                else if (!KandaRepository.UserAttributes.Delete(this.ID, connection, transaction)) { transaction.Rollback(); }
+                else if (!KandaRepository.Users.Delete(this.ID, connection, transaction)) { transaction.Rollback(); }
                 else { transaction.Commit(); }
 
                 return this;

@@ -101,19 +101,6 @@ namespace kkkkkkaaaaaa.Data.Repositories
             return (created == 1);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="connection"></param>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        public bool Truncate(DbConnection connection, DbTransaction transaction)
-        {
-            var error = UserHistoriesGateway.Truncate(connection, transaction);
-
-            return (error == 0);
-        }
-
 
         /// <summary>
         /// コンストラクター。
@@ -121,6 +108,33 @@ namespace kkkkkkaaaaaa.Data.Repositories
         internal UserHistoriesRepository()
         {
             this.DoNothing();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        internal bool Truncate(DbConnection connection, DbTransaction transaction)
+        {
+            var error = UserHistoriesGateway.Truncate(connection, transaction);
+
+            return (error == 0);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        internal bool Delete(long userId, DbConnection connection, DbTransaction transaction)
+        {
+            var deleted = UserHistoriesGateway.Delete(new UserHistoriesCriteria() { UserID = userId, }, connection, transaction);
+
+            return (deleted == 1);
         }
     }
 }

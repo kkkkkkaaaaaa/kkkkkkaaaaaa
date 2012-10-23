@@ -154,7 +154,7 @@
     <Compile Include="Data\Repositories\MembershipUsersRepository.cs" />
     <Compile Include="Data\Repositories\RoleAuthorizationsRepository.cs" />
     <Compile Include="Data\Repositories\RolesRepository.cs" />
-    <Compile Include="Data\Repositories\UserAttributeHistoriesRepository.cs" />
+    <Compile Include="Data\Repositories\UserHistoryAttributesRepository.cs" />
     <Compile Include="Data\Repositories\UserAttributesRepository.cs" />
     <Compile Include="Data\Repositories\UserHistoriesRepository.cs" />
     <Compile Include="Data\TableDataGateways\AuthorizationsGateway.cs" />

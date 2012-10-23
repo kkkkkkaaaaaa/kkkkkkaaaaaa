@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[UserHistories]
 (
     [UserID] BIGINT NOT NULL, 
-    [Revision] BIGINT NOT NULL, 
+    [Revision] INT NOT NULL, 
     [FamilyName] NVARCHAR(1024) NOT NULL, 
     [GivenName] NVARCHAR(1024) NOT NULL, 
     [AdditionalName] NVARCHAR(1024) NOT NULL, 

@@ -85,17 +85,6 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="connection"></param>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        public static int Truncate(DbConnection connection, DbTransaction transaction)
-        {
-            return KandaTableDataGateway.Truncate(UserAttributesGateway.TABLE_NAME, connection, transaction);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="criteria"></param>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
@@ -114,6 +103,17 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
             command.ExecuteNonQuery();
 
             return (int)result.Value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public static int Truncate(DbConnection connection, DbTransaction transaction)
+        {
+            return KandaTableDataGateway.Truncate(UserAttributesGateway.TABLE_NAME, connection, transaction);
         }
     }
 }

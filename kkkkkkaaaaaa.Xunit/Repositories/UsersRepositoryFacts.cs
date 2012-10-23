@@ -2,11 +2,10 @@
 using System.Data;
 using System.Data.Common;
 using Xunit;
-using kkkkkkaaaaaa.Web.DataTransferObjects;
-using kkkkkkaaaaaa.Web.Repositories;
-using kkkkkkaaaaaa.Xunit.Repositories;
+using kkkkkkaaaaaa.Data.Repositories;
+using kkkkkkaaaaaa.DataTransferObjects;
 
-namespace kkkkkkaaaaaa.Xunit.Web.Repositories
+namespace kkkkkkaaaaaa.Xunit.Repositories
 {
     public class UsersRepositoryFacts : KandaXunitRepositoryFacts
     {
@@ -81,7 +80,7 @@ namespace kkkkkkaaaaaa.Xunit.Web.Repositories
                 Assert.True(repository.Create(new UserEntity() { ID = id, FamilyName = @"Fact", GivenName = @"", AdditionalName = @"", Description = @"", Enabled = true, CreatedOn = createdOn }, connection, transaction));
 
                 var updatedOn = KandaRepository.GetUtcDateTime(connection, transaction);
-                Assert.True(repository.Update(new UserEntity() { ID = id, FamilyName = @"Fact", GivenName = @"", AdditionalName = @"", Description = @"", Enabled = true, UpdateOn = updatedOn }, connection, transaction));
+                Assert.True(repository.Update(new UserEntity() { ID = id, FamilyName = @"Fact", GivenName = @"", AdditionalName = @"", Description = @"", Enabled = true, UpdatedOn = updatedOn }, connection, transaction));
                 Assert.Equal(id, repository.Find(id, connection, transaction).ID);
             }
             finally

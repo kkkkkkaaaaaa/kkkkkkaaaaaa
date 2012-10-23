@@ -1,49 +1,16 @@
+using kkkkkkaaaaaa.Data;
 using kkkkkkaaaaaa.Data.Common;
-using kkkkkkaaaaaa.Web.Data;
 
 namespace kkkkkkaaaaaa.Xunit.Repositories
 {
     /// <summary>
-    /// 
+    /// Kanda.Xunit.Repositories の基底クラスです。
     /// </summary>
-    public class KandaXunitRepositoryFacts
+    public abstract class KandaXunitRepositoryFacts
     {
         /// <summary>
-        /// 
+        /// このアプリケーションのデータプロバイダーのクラスのインスタンスを生成して返す、Factory Mathod を提供します。
         /// </summary>
         protected KandaDbProviderFactory _factory = KandaProviderFactory.Instance;
-
-
-        /*
-        [Fact()]
-        public void FindFact()
-        public void GetFact()
-        public void SearchFact()
-        public void CreateFact()
-        public void UpdateFact()
-        public void RegisterFact()
-        public void DeleteFact()
-        public void TruncateFact()
-        {
-            var connection = default(DbConnection);
-            var transaction = default(DbTransaction);
-
-            try
-            {
-                connection = this._factory.CreateConnection();
-                connection.Open();
-
-                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
-
-                //var repository = new
-                //Assert.True(repository(, connection, transaction));
-            }
-            finally
-            {
-                if (transaction != null) { transaction.Rollback(); }
-                if (connection != null) { connection.Close(); }
-            }
-        }
-        */
     }
 }

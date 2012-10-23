@@ -4,7 +4,6 @@ using System.Data.Common;
 using Xunit;
 using kkkkkkaaaaaa.Data.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
-using kkkkkkaaaaaa.Xunit.Web.Repositories;
 
 namespace kkkkkkaaaaaa.Xunit.Repositories
 {

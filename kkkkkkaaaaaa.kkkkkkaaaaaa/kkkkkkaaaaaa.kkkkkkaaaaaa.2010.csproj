@@ -117,9 +117,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\kkkkkkaaaaaa\kkkkkkaaaaaa.csproj">
+    <ProjectReference Include="..\kkkkkkaaaaaa\kkkkkkaaaaaa.2010.csproj">
       <Project>{24985E63-0FAF-4F7B-93DD-6764F0E3F6A4}</Project>
-      <Name>kkkkkkaaaaaa</Name>
+      <Name>kkkkkkaaaaaa.2010</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

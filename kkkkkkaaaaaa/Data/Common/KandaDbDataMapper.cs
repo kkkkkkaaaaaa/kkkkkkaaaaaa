@@ -64,6 +64,7 @@ namespace kkkkkkaaaaaa.Data.Common
             while(reader.Read())
             {
                 var item = KandaDbDataMapper.MapToObject<T>(reader);
+
                 collection.Add(item);
             }
 
@@ -100,7 +101,8 @@ namespace kkkkkkaaaaaa.Data.Common
                     parameter.DbType = attribute.DbType;
                     parameter.Direction = attribute.Direction;
                     //parameter.IsNullable = attribute.IsNullable;
-                    parameter.Value = ((parameter.Direction == ParameterDirection.Input) ? KandaDataMapper.GetValue(member, obj, DBNull.Value) : attribute.DefaultValue);
+                    //parameter.Value = ((parameter.Direction == ParameterDirection.Input) ? KandaDataMapper.GetValue(member, obj, DBNull.Value) : attribute.DefaultValue);
+                    parameter.Value = KandaDataMapper.GetValue(member, obj, attribute.DefaultValue);
 
                     command.Parameters.Add(parameter);
                 }

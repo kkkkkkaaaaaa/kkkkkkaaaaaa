@@ -81,7 +81,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <Compile Include="KandaDataMapper.2008.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Common\KandaDbDataReader.cs" />
@@ -93,6 +92,9 @@
     </Compile>
     <Compile Include="Data\Common\KandaDbProviderFactory.cs" />
     <Compile Include="Data\KandaParameterMappingAttribute.cs" />
+    <Compile Include="KandaDataMapper.2010.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="KandaDataMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\Cryptography\KandaHashAlgorithm.cs" />

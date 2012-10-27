@@ -7,6 +7,15 @@ namespace kkkkkkaaaaaa.DataTransferObjects
     {
         public readonly static MembershipEntity Empty = new MembershipEntity() { ID = -1, };
 
+        /// <summary>
+        /// コンストラクター。
+        /// </summary>
+        public MembershipEntity()
+        {
+            this.ID = 0;
+            this.Enabled = true;
+        }
+
         [KandaDbParameterMapping("@id")]
         public long ID { get; set; }
 
@@ -16,7 +25,7 @@ namespace kkkkkkaaaaaa.DataTransferObjects
         [KandaDbParameterMapping("@password")]
         public string Password { get; set; }
 
-        //[KandaDbParameterMapping("@enabled")]
+        [KandaDbParameterMapping("@enabled")]
         public bool Enabled { get; set; }
 
         [KandaDbParameterMapping("@createdOn")]

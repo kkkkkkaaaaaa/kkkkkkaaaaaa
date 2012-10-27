@@ -11,7 +11,7 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
     public class MembershipsRepositoryFacts : KandaXunitRepositoryFacts
     {
         [Fact()]
-        public void FindByUserIDFact()
+        public void FindByIDFact()
         {
             var connection = default(DbConnection);
             var transaction = default(DbTransaction);
@@ -24,11 +24,42 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
                 var repository = new MembershipsRepository();
+
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
                 repository.Create(new MembershipEntity() { Name = name, Password = @"", Enabled = true, }, connection, transaction);
 
                 var id = repository.IdentCurrent(connection, transaction);
                 var found = repository.Find(id, connection, transaction);
+
+                Assert.NotSame(MembershipEntity.Empty, found);
+                Assert.NotEqual(MembershipEntity.Empty, found);
+            }
+            finally
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                if (connection != null) { connection.Close(); }
+            }
+        }
+
+        [Fact()]
+        public void FindByNameFact()
+        {
+            var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
+
+            try
+            {
+                connection = this._factory.CreateConnection();
+                connection.Open();
+
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                var repository = new MembershipsRepository();
+
+                var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
+                repository.Create(new MembershipEntity() { Name = name, Password = @"", Enabled = false, }, connection, transaction);
+
+                var found = repository.Find(name, connection, transaction);
 
                 Assert.NotSame(MembershipEntity.Empty, found);
                 Assert.NotEqual(MembershipEntity.Empty, found);
@@ -55,42 +86,14 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
                 
                 var repository = new MembershipsRepository();
 
-                var name = @"MembershipsRepositoryFacts.FindByNameAndPasswordFact()";
-                var password = @"MembershipsRepositoryFacts.FindByNameAndPasswordFact()";
+                var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
+                var password = new Random().Next().ToString(CultureInfo.InvariantCulture);
                 repository.Create(new MembershipEntity() { Name = name, Password = password, Enabled = true, }, connction, transaction);
 
                 var found = repository.Find(name, password, connction, transaction);
-                Assert.True(0 < found.ID);
-            }
-            finally
-            {
-                if (transaction != null) { transaction.Rollback(); }
-                if (connction != null) { connction.Close(); }
-            }
-        }
 
-        [Fact()]
-        public void FindByIDFact()
-        {
-            var connction = default(DbConnection);
-            var transaction = default(DbTransaction);
-
-            try
-            {
-                connction = this._factory.CreateConnection();
-                connction.Open();
-
-                transaction = connction.BeginTransaction(IsolationLevel.Serializable);
-
-                var repository = new MembershipsRepository();
-
-                var name = @"MembershipsRepositoryFacts.FindByIDFact()";
-                var password = @"MembershipsRepositoryFacts.FindByIDFact()";
-                repository.Create(new MembershipEntity() { Name = name, Password = password, Enabled = true, }, connction, transaction);
-
-                var id = repository.IdentCurrent(connction, transaction);
-                var found = repository.Find(id, connction, transaction);
-                Assert.True(0 < found.ID);
+                Assert.NotSame(MembershipEntity.Empty, found);
+                Assert.NotEqual(MembershipEntity.Empty, found);
             }
             finally
             {
@@ -114,8 +117,8 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
 
                 var repository = new MembershipsRepository();
 
-                var name = @"MembershipsRepositoryFacts.FindByIDFact()";
-                var password = @"MembershipsRepositoryFacts.FindByIDFact()";
+                var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
+                var password = new Random().Next().ToString(CultureInfo.InvariantCulture);
                 repository.Create(new MembershipEntity() { Name = name, Password = password, Enabled = true, }, connction, transaction);
 
                 var id = repository.IdentCurrent(connction, transaction);
@@ -157,7 +160,6 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
                 if (connection != null) { connection.Close(); }
             }
         }
-
 
         [Fact()]
         public void DeleteFact()

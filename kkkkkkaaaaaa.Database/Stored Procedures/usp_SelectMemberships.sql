@@ -16,7 +16,7 @@
 	SET @select = 'SELECT'
 		+ ' ID'
 		+ ', Name'
-		+ ', '''' AS [Password]' -- + ', Password'
+		+ ', '''' AS [Password]' -- + ', [Password]'
 		+ ', [Enabled]'
 		+ ', CreatedOn'
 		+ ', UpdatedOn'
@@ -28,8 +28,6 @@
 	-- WHERE
 	SET @where = ' WHERE 1 = 1'
 
-	IF (@enabled IS NOT NULL)	SET @where = @where + ' AND [Enabled] = ' + CAST(@enabled AS NCHAR(1))
-
 	IF (0 < @id) BEGIN
 		SET @where = @where + ' AND ID = ' + CAST(@id AS NVARCHAR(MAX))
 
@@ -38,6 +36,8 @@
 		SET @where = @where + ' AND [Password] = ''' + @password + ''''
 
 	END
+
+	IF (@enabled IS NOT NULL)	SET @where = @where + ' AND [Enabled] = ' + CAST(@enabled AS NCHAR(1))
 
 	-- 実行
 	EXECUTE (@select + @from + @where)

@@ -3,7 +3,7 @@
 	@id				BIGINT
 	, @name			NVARCHAR(1024)
 	, @password		NVARCHAR(128)
-	--, @enabled		BIT
+	, @enabled		BIT
 	, @createdOn	DATETIME2
 	, @updatedOn	DATETIME2
 ) AS
@@ -31,15 +31,14 @@
 	SET @values = ') VALUES ('
 		+ '''' + @name + ''''
 		+ ', ''' + @password + ''''
-		+ ', ' + CAST(CAST('TRUE' AS BIT) AS NCHAR(1))
-		+ ', ''' + CONVERT(NVARCHAR(MAX), @createdOn, 121) + ''''
-		+ ', ''' + CONVERT(NVARCHAR(MAX), @createdOn, 121) + ''''
+		+ ', ' + CAST(@enabled AS NCHAR(1)) -- + ', ' + CAST(CAST('TRUE' AS BIT) AS NCHAR(1))
+		+ ', ''' + CAST(@createdOn AS NVARCHAR(27)) + ''''
+		+ ', ''' + CAST(@createdOn AS NVARCHAR(27)) + '''' -- + ', ''' + CAST(@updatedOn AS NVARCHAR(27)) + ''''
 	IF (0 < @id)	SET @values = @values + ', ' + CAST(@id AS NVARCHAR(MAX))
-
 	SET @values = @values + ')'
 
 	-- SET IDENTITY_INSERT
-	IF (0 < @id) SET IDENTITY_INSERT Memberships ON
+	IF (0 < @id)	SET IDENTITY_INSERT Memberships ON
 
 	-- 実行
 	EXECUTE (@insert + @into + @values)

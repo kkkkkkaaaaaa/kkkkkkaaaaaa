@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
+using System.Security;
 using System.Web.Security;
 using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.TableDataGateways;
 using kkkkkkaaaaaa.DataTransferObjects;
+using kkkkkkaaaaaa.Web.Security;
 
 namespace kkkkkkaaaaaa.Data.Repositories
 {
@@ -13,6 +15,13 @@ namespace kkkkkkaaaaaa.Data.Repositories
     /// </summary>
     public class MembershipsRepository : KandaRepository
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public MembershipEntity Find(MembershipsCriteria criteria, DbConnection connection, DbTransaction transaction)
         {
             var reader = default(KandaDbDataReader);
@@ -31,22 +40,6 @@ namespace kkkkkkaaaaaa.Data.Repositories
             }
         }
 
-        public MembershipEntity Find(long id, DbConnection connection, DbTransaction transaction)
-        {
-            return this.Find(new MembershipsCriteria() { ID = id, Name = @"", Password = @"", }, connection, transaction);
-            //return this.Find(new MembershipsCriteria() { ID = id, Name = @"", Password = @"", Enabled = false, }, connection, transaction);
-        }
-
-        public MembershipEntity Find(string name, DbConnection connection, DbTransaction transaction)
-        {
-            return this.Find(new MembershipsCriteria() { Name = name, }, connection, transaction);
-        }
-
-        //public MembershipEntity Find(long id, DbConnection connection, DbTransaction transaction) {  }
-        //public MembershipEntity Find(long id, string password, DbConnection connection, DbTransaction transaction) {  }
-        //public MembershipEntity Find(long id, string password, bool , DbConnection connection, DbTransaction transaction) {  }
-
-        /*
         /// <summary>
         /// 
         /// </summary>
@@ -56,22 +49,21 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public MembershipEntity Find(long id, DbConnection connection, DbTransaction transaction)
         {
-            var reader = default(KandaDbDataReader);
-
-            try
-            {
-                reader = MembershipsGateway.Select(new MembershipsCriteria(id), connection, transaction);
-
-                var found = (reader.Read() ? KandaDbDataMapper.MapToObject<MembershipEntity>(reader) : new MembershipEntity());
-                
-                return found;
-            }
-            finally
-            {
-                if (reader != null) { reader.Close(); }
-            }
+            return this.Find(new MembershipsCriteria() { ID = id, Name = @"", Password = @"", }, connection, transaction);
+            //return this.Find(new MembershipsCriteria() { ID = id, Name = @"", Password = @"", Enabled = false, }, connection, transaction);
         }
-        */
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public MembershipEntity Find(string name, DbConnection connection, DbTransaction transaction)
+        {
+            return this.Find(new MembershipsCriteria() { Name = name, Enabled = null, }, connection, transaction);
+        }
 
         /// <summary>
         /// 
@@ -83,45 +75,34 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public MembershipEntity Find(string name, string password, DbConnection connection, DbTransaction transaction)
         {
-            var reader = default(KandaDbDataReader);
+            return this.Find(new MembershipsCriteria() { Name = name, Password = password, Enabled = true, }, connection, transaction);
+        }
 
-            try
-            {
-                reader = MembershipsGateway.Select(new MembershipsCriteria() { Name = name, Password = password, Enabled = true, }, connection, transaction);
-
-                var found = (reader.Read() ? KandaDbDataMapper.MapToObject<MembershipEntity>(reader) : default(MembershipEntity));
-
-                return found;
-            }
-            finally
-            {
-                if (reader != null) { reader.Close(); }
-            }
+        public MembershipEntity Find(string name, SecureString password, DbConnection connection, DbTransaction transaction)
+        {
+            return this.Find(new MembershipsCriteria() { Name = name, Password = password, Enabled = true, }, connection, transaction);
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<MembershipUser> Get(MembershipsCriteria criteria, DbConnection connection, DbTransaction transaction = null)
+        public IEnumerable<MembershipEntity> Get(MembershipsCriteria criteria, DbConnection connection, DbTransaction transaction)
         {
             var reader = default(DbDataReader);
 
             try
             {
                 reader = MembershipsGateway.Select(criteria, connection, transaction);
+
                 var memberships = KandaDbDataMapper.MapToEnumerable<MembershipEntity>(reader);
 
-                var b = (memberships.Count() == 1);
+                return memberships;
             }
             finally
             {
                 if (reader != null) { reader.Close(); }
             }
-
-
-            return default(IEnumerable<MembershipUser>);
-            //return new MembershipUserCollection();
         }
 
         /// <summary>

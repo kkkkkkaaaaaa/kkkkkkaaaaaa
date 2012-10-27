@@ -3,6 +3,9 @@ using System.Reflection;
 
 namespace kkkkkkaaaaaa
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class KandaDataMapper
     {
         /// <summary>

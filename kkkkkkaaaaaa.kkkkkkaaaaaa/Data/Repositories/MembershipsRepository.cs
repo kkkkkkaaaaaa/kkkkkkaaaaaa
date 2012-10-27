@@ -13,6 +13,40 @@ namespace kkkkkkaaaaaa.Data.Repositories
     /// </summary>
     public class MembershipsRepository : KandaRepository
     {
+        public MembershipEntity Find(MembershipsCriteria criteria, DbConnection connection, DbTransaction transaction)
+        {
+            var reader = default(KandaDbDataReader);
+
+            try
+            {
+                reader = MembershipsGateway.Select(criteria, connection, transaction);
+
+                var found = (reader.Read() ? KandaDbDataMapper.MapToObject<MembershipEntity>(reader) : MembershipEntity.Empty);
+
+                return found;
+            }
+            finally
+            {
+                if (reader != null) { reader.Close(); }
+            }
+        }
+
+        public MembershipEntity Find(long id, DbConnection connection, DbTransaction transaction)
+        {
+            return this.Find(new MembershipsCriteria() { ID = id, Name = @"", Password = @"", }, connection, transaction);
+            //return this.Find(new MembershipsCriteria() { ID = id, Name = @"", Password = @"", Enabled = false, }, connection, transaction);
+        }
+
+        public MembershipEntity Find(string name, DbConnection connection, DbTransaction transaction)
+        {
+            return this.Find(new MembershipsCriteria() { Name = name, }, connection, transaction);
+        }
+
+        //public MembershipEntity Find(long id, DbConnection connection, DbTransaction transaction) {  }
+        //public MembershipEntity Find(long id, string password, DbConnection connection, DbTransaction transaction) {  }
+        //public MembershipEntity Find(long id, string password, bool , DbConnection connection, DbTransaction transaction) {  }
+
+        /*
         /// <summary>
         /// 
         /// </summary>
@@ -37,6 +71,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
                 if (reader != null) { reader.Close(); }
             }
         }
+        */
 
         /// <summary>
         /// 

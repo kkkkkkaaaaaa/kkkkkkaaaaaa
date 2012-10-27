@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.Common;
+using System.Globalization;
 using Xunit;
 using kkkkkkaaaaaa.Data.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
@@ -9,6 +10,36 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
 {
     public class MembershipsRepositoryFacts : KandaXunitRepositoryFacts
     {
+        [Fact()]
+        public void FindByUserIDFact()
+        {
+            var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
+
+            try
+            {
+                connection = this._factory.CreateConnection();
+                connection.Open();
+
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                var repository = new MembershipsRepository();
+                var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
+                repository.Create(new MembershipEntity() { Name = name, Password = @"", Enabled = true, }, connection, transaction);
+
+                var id = repository.IdentCurrent(connection, transaction);
+                var found = repository.Find(id, connection, transaction);
+
+                Assert.NotSame(MembershipEntity.Empty, found);
+                Assert.NotEqual(MembershipEntity.Empty, found);
+            }
+            finally
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                if (connection != null) { connection.Close(); }
+            }
+        }
+
         [Fact()]
         public void FindByNameAndPasswordFact()
         {

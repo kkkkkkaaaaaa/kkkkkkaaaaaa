@@ -10,9 +10,8 @@
 		@select		VARCHAR(MAX)
 		, @from		VARCHAR(MAX)
 		, @where	VARCHAR(MAX)
-		, @orderBy	VARCHAR(MAX)
 		, @error	INT
-
+		
 	-- SELECT
 	SET @select = 'SELECT'
 		+ ' ID'
@@ -21,7 +20,7 @@
 		+ ', [Enabled]'
 		+ ', CreatedOn'
 		+ ', UpdatedOn'
-
+		
 	-- FROM
 	SET @from = ' FROM'
 		+ ' Memberships'
@@ -29,22 +28,19 @@
 	-- WHERE
 	SET @where = ' WHERE 1 = 1'
 
-	IF (@id > 0) BEGIN
-		SET @where = @where
-			+ ' AND ID = ' + CONVERT(NVARCHAR(MAX), @id)
+	IF (@enabled IS NOT NULL)	SET @where = @where + ' AND [Enabled] = ' + CAST(@enabled AS NCHAR(1))
+
+	IF (0 < @id) BEGIN
+		SET @where = @where + ' AND ID = ' + CAST(@id AS NVARCHAR(MAX))
 
 	END ELSE BEGIN
-		SET @where = @where
-			+ ' AND Name = ''' + @name + ''''
-			+ ' AND [Password] = ''' + @password + ''''
-			+ ' AND [Enabled] = ' + CONVERT(NVARCHAR(MAX), @enabled)
+		SET @where = @where + ' AND Name = ''' + @name + ''''
+		SET @where = @where + ' AND [Password] = ''' + @password + ''''
+
 	END
 
-	-- ORDER BY
-	SET @orderBy = ' ORDER BY UpdatedOn DESC'
-
 	-- 実行
-	EXECUTE (@select + @from + @where + @orderBy)
+	EXECUTE (@select + @from + @where)
 
 	-- 戻り値
 	SET @error = @@ERROR

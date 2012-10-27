@@ -81,6 +81,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <Compile Include="KandaDataMapper.2008.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Common\KandaDbDataReader.cs" />

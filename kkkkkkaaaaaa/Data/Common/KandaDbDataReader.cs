@@ -126,6 +126,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// リーダーを結果セットの次のレコードに進めます。
         /// </summary>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override bool Read()
         {
             return this._reader.Read();

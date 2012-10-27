@@ -94,13 +94,13 @@ namespace kkkkkkaaaaaa.Data.Common
                 foreach (KandaDbParameterMappingAttribute attribute in attributes)
                 {
                     if (attribute.Ignore) { continue; }
-
+                    var m = member.GetType();
                     var parameter = command.CreateParameter();
                     parameter.ParameterName = attribute.MappingName;
                     parameter.DbType = attribute.DbType;
                     parameter.Direction = attribute.Direction;
                     //parameter.IsNullable = attribute.IsNullable;
-                    parameter.Value = ((parameter.Direction == ParameterDirection.Input) ? KandaDataMapper.GetValue(member, obj) : attribute.DefaultValue);
+                    parameter.Value = ((parameter.Direction == ParameterDirection.Input) ? KandaDataMapper.GetValue(member, obj, DBNull.Value) : attribute.DefaultValue);
 
                     command.Parameters.Add(parameter);
                 }

@@ -11,7 +11,7 @@ namespace kkkkkkaaaaaa
     /// <summary>
     /// 
     /// </summary>
-    public class KandaDataMapper
+    public partial class KandaDataMapper
     {
         /// <summary>
         /// 
@@ -85,26 +85,24 @@ namespace kkkkkkaaaaaa
         /// </summary>
         /// <param name="member"></param>
         /// <param name="obj"></param>
-        /// <returns></returns>
-        protected static object GetValue(MemberInfo member, object obj)
+        /// <param name="value"></param>
+        /// <param name="nullValue"></param>
+        protected static void SetValue(MemberInfo member, object obj, object value, object nullValue)
         {
-            var value = default(object);
-
             if (member is PropertyInfo)
             {
                 // プロパティ
-                value = ((PropertyInfo)member).GetValue(obj, BindingFlags.Default, null, null, null);
+                ((PropertyInfo)member).SetValue(obj, (value ?? nullValue) , BindingFlags.Default, null, null, null);
             }
             else if (member is FieldInfo)
             {
                 // フィールド
-                value = ((FieldInfo)member).GetValue(obj);
+                ((FieldInfo)member).SetValue(obj, (value ?? nullValue), BindingFlags.Default, null, null);
             }
             else
             {
-                throw new ArgumentNullException(string.Format(@"KandaDbDataMapper.MapToParameters()"));
+                throw new Exception(string.Format(@"KandaDataMapper.MapToObject<{0}>()", obj.GetType().FullName));
             }
-            return value;
         }
 
         /// <summary>
@@ -115,20 +113,7 @@ namespace kkkkkkaaaaaa
         /// <param name="value"></param>
         protected static void SetValue(MemberInfo member, object obj, object value)
         {
-            if (member is PropertyInfo)
-            {
-                // プロパティ
-                ((PropertyInfo)member).SetValue(obj, value, BindingFlags.Default, null, null, null);
-            }
-            else if (member is FieldInfo)
-            {
-                // フィールド
-                ((FieldInfo)member).SetValue(obj, value, BindingFlags.Default, null, null);
-            }
-            else
-            {
-                throw new Exception(string.Format(@"KandaDataMapper.MapToObject<{0}>()", obj.GetType().FullName));
-            }
+            KandaDataMapper.SetValue(member, obj, value, value);
         }
 
         #endregion

@@ -119,6 +119,7 @@
     <Build Include="Tables\UserAttributeItems.sql" />
     <Build Include="Tables\PredicateTypes.sql" />
     <Build Include="Tables\Predicates.sql" />
+    <Build Include="Stored Procedures\usp_UpdateMemberships.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="kkkkkkaaaaaa.Database.2010.refactorlog" />

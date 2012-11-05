@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
@@ -22,6 +23,16 @@ namespace kkkkkkaaaaaa.Data.Common
             return command;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="dbType"></param>
+        /// <param name="size"></param>
+        /// <param name="direction"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        [DebuggerStepThrough()]
         public DbParameter CreateParameter(string name, DbType dbType, int size, ParameterDirection direction, object value)
         {
             var parameter = this.CreateParameter();
@@ -36,93 +47,16 @@ namespace kkkkkkaaaaaa.Data.Common
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        /// <param name="type"></param>
-        /// <param name="direction"></param>
-        /// <returns></returns>
-        public DbParameter CreateParameter(string name, object value, DbType type, int size, ParameterDirection direction)
-        {
-            var parameter = this.CreateParameter();
-
-            parameter.ParameterName = name;
-            parameter.Value = value;
-            parameter.DbType = type;
-            parameter.Size = size;
-            parameter.Direction = direction;
-
-            return parameter;
-        }
-
-        /// <summary>
         /// DbParameter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <param name="name"></param>
         /// <param name="value"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public DbParameter CreateParameter(string name, object value)
         {
-            return this.CreateParameter(name, value, default(DbType), default(int), ParameterDirection.Input);
+            return this.CreateParameter(name, default(DbType), 0, ParameterDirection.Input, value);
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        /// <param name="direction"></param>
-        /// <returns></returns>
-        public DbParameter CreateParameter(string name, object value, ParameterDirection direction)
-        {
-            return this.CreateParameter(name, value, default(DbType), default(int), direction);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        public DbParameter CreateParameter(string name, object value, DbType type)
-        {
-            return this.CreateParameter(name, value, type, default(int), ParameterDirection.Input);
-        }
-
-        /// <summary>
-        /// DbParameter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public DbParameter CreateParameter(string name)
-        {
-            return this.CreateParameter(name, DBNull.Value, default(DbType), default(int), ParameterDirection.Input);
-        }
-
-        /*
-        /// <summary>
-        /// DbParameter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        /// <param name="type"></param>
-        /// <param name="direction"></param>
-        /// <returns></returns>
-        public DbParameter CreateParameter(string name, object value, DbType type = DbType.Object, ParameterDirection direction = ParameterDirection.Input)
-        {
-
-            var parameter = this.CreateParameter();
-
-            parameter.ParameterName = name;
-            parameter.Value = value;
-            parameter.DbType = type;
-            parameter.Direction = direction;
-
-            return parameter;
-        }
-        */
 
         /// <summary>
         /// DbDataReader クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
@@ -132,12 +66,6 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public virtual KandaDbDataReader CreateReader(DbConnection connection, DbTransaction transaction = null)
         {
-            /*
-             * 
-            var command = this.CreateCommand(connection, transaction);
-
-            return new KandaDbDataReader(command);
-            */
             return new KandaDbDataReader(connection, transaction);
         }
     }

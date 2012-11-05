@@ -49,8 +49,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public MembershipEntity Find(long id, DbConnection connection, DbTransaction transaction)
         {
-            return this.Find(new MembershipsCriteria() { ID = id, Name = @"", Password = @"", }, connection, transaction);
-            //return this.Find(new MembershipsCriteria() { ID = id, Name = @"", Password = @"", Enabled = false, }, connection, transaction);
+            return this.Find(new MembershipsCriteria() { ID = id, }, connection, transaction);
         }
 
         /// <summary>
@@ -62,7 +61,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public MembershipEntity Find(string name, DbConnection connection, DbTransaction transaction)
         {
-            return this.Find(new MembershipsCriteria() { Name = name, Enabled = null, }, connection, transaction);
+            return this.Find(new MembershipsCriteria() { Name = name, Password = null, Enabled = null, }, connection, transaction);
         }
 
         /// <summary>
@@ -78,6 +77,14 @@ namespace kkkkkkaaaaaa.Data.Repositories
             return this.Find(new MembershipsCriteria() { Name = name, Password = password, Enabled = true, }, connection, transaction);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public MembershipEntity Find(string name, SecureString password, DbConnection connection, DbTransaction transaction)
         {
             return this.Find(new MembershipsCriteria() { Name = name, Password = password, Enabled = true, }, connection, transaction);

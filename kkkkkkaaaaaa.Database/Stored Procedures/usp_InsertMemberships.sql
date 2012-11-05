@@ -30,7 +30,7 @@
 	-- VALUES
 	SET @values = ') VALUES ('
 		+ '''' + @name + ''''
-		+ ', ''' + @password + ''''
+		+ ', ''' + ISNULL(@password, '') + ''''
 		+ ', ' + CAST(@enabled AS NCHAR(1)) -- + ', ' + CAST(CAST('TRUE' AS BIT) AS NCHAR(1))
 		+ ', ''' + CAST(@createdOn AS NVARCHAR(27)) + ''''
 		+ ', ''' + CAST(@createdOn AS NVARCHAR(27)) + '''' -- + ', ''' + CAST(@updatedOn AS NVARCHAR(27)) + ''''

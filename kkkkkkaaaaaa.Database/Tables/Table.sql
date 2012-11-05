@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[Table]
+(
+	[ID] BIGINT NOT NULL PRIMARY KEY
+)

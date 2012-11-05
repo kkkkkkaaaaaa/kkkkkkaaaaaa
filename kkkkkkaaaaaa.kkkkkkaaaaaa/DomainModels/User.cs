@@ -76,8 +76,8 @@ namespace kkkkkkaaaaaa.DomainModels
                 var found = KandaRepository.Users.Find(this.ID, connection, transaction);
                 KandaDataMapper.MapToObject(found, this._entity);
 
+                this.MembershipID = KandaRepository.MembershipUsers.Find(this.ID, connection, transaction);
                 this.Attributes = KandaRepository.UserAttributes.Get(this.ID, connection, transaction);
-
                 this.Histories = KandaRepository.UserHistories.Get(this.ID, connection, transaction);
 
                 transaction.Commit();
@@ -178,7 +178,6 @@ namespace kkkkkkaaaaaa.DomainModels
         /// <returns></returns>
         internal User Delete()
         {
-            var result = this;
             var connection = default(DbConnection);
             var transaction = default(DbTransaction);
 
@@ -189,7 +188,9 @@ namespace kkkkkkaaaaaa.DomainModels
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                if (!KandaRepository.UserHistoryAttributes.Delete(this.ID, connection, transaction)) { transaction.Rollback(); }
+                
+                if (!KandaRepository.MembershipUsers.Delete(new MembershipUsersCriteria() { UserID = this.ID, }, connection, transaction)) { transaction.Rollback(); }
+                else if (!KandaRepository.UserHistoryAttributes.Delete(this.ID, connection, transaction)) { transaction.Rollback(); }
                 else if (!KandaRepository.UserHistories.Delete(this.ID, connection, transaction)) { transaction.Rollback(); }
                 else if (!KandaRepository.UserAttributes.Delete(this.ID, connection, transaction)) { transaction.Rollback(); }
                 else if (!KandaRepository.Users.Delete(this.ID, connection, transaction)) { transaction.Rollback(); }

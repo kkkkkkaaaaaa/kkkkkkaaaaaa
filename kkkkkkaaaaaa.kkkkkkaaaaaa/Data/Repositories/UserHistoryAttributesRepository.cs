@@ -14,7 +14,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="criteria"></param>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>

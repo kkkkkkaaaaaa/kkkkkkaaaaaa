@@ -3,8 +3,8 @@
 	@roleId				BIGINT
 	, @authorizationId	BIGINT
 ) AS
-	-- 条件なし
-	IF ((@roleId <= 0) AND (@authorizationId <= 0))		RETURN -1
+	-- 事前条件
+	IF ((@roleId < 1) AND (@authorizationId < 1))	RETURN -1
 
 	-- 変数
 	DECLARE

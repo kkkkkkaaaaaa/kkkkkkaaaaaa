@@ -33,11 +33,11 @@
 
 	END ELSE BEGIN
 		SET @where = @where + ' AND Name = ''' + @name + ''''
-		SET @where = @where + ' AND [Password] = ''' + @password + ''''
+		
+		IF (@password IS NOT NULL)	SET @where = @where + ' AND [Password] = ''' + @password + ''''
+		IF (@enabled IS NOT NULL)	SET @where = @where + ' AND [Enabled] = ' + CAST(@enabled AS NCHAR(1))
 
 	END
-
-	IF (@enabled IS NOT NULL)	SET @where = @where + ' AND [Enabled] = ' + CAST(@enabled AS NCHAR(1))
 
 	-- 実行
 	EXECUTE (@select + @from + @where)

@@ -1,5 +1,7 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.Common;
+using System.Globalization;
 using Xunit;
 using kkkkkkaaaaaa.DataTransferObjects;
 using kkkkkkaaaaaa.DomainModels;
@@ -11,38 +13,29 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
         [Fact()]
         public void CreateFact()
         {
-            var connection = default(DbConnection);
-            var transaction = default(DbTransaction);
             var membership = default(Membership);
+            var user = default(User);
 
             try
             {
-                connection = this._factory.CreateConnection();
-                connection.Open();
+                user = new User(new UserEntity());
+                user.Create();
 
-                /*
-                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+                var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
+                membership = new Membership(new MembershipEntity() { Name = name, });
+                membership.Users.Add(user.ID);
+                membership.Create();
+                membership.Find();
 
-                var user = new User(new UserEntity()
-                {
-                    FamilyName = @"CreateFactFamilyName",
-                    GivenName = @"CreateFactGivenName",
-                    AdditionalName = @"CreateFactAdditionalName",
-                    Description = @"CreateFactDescription",
-                }).Create();
+                user.Find();
 
-                membership = new Membership(new MembershipEntity() { Name = @"CreateFactName", Password = @"CreateFactPassword", }).Create();
-                membership.Users.Add(user);
-                membership.Update();
-                */
-
-                Assert.True(0 < membership.Find().ID);
+                Assert.Equal(membership.ID, user.MembershipID);
+                Assert.Contains(user.ID, membership.Users);
             }
             finally
             {
+                if (user != null) { user.Delete(); }
                 if (membership != null) { membership.Delete(); }
-                if (transaction != null) { transaction.Rollback(); }
-                if (connection != null) { connection.Close(); }
             }
         }
     }

@@ -12,7 +12,7 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
         public void ExecuteReaderFact()
         {
             var connection = default(DbConnection);
-            var reader = default (KandaDbDataReader);
+            var reader = default(KandaDbDataReader);
 
             try
             {
@@ -21,12 +21,37 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
 
                 reader = this._factory.CreateReader(connection);
 
-                var result = this._factory.CreateParameter(@"ReturnValue", DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
-                reader.Parameters.Add(result);
+                reader.CommandText = @"usp_StoredProcedure";
+
+                reader.ExecuteReader();
+                Assert.True(true);
+            }
+            finally
+            {
+                if (reader != null) { reader.Close(); }
+                if (connection != null) { connection.Close(); }
+            }
+        }
+
+        [Fact()]
+        public void GetSchemaTableFact()
+        {
+            var connection = default(DbConnection);
+            var reader = default(KandaDbDataReader);
+
+            try
+            {
+                connection = this._factory.CreateConnection();
+                connection.Open();
+
+                reader = this._factory.CreateReader(connection);
 
                 reader.CommandText = @"usp_StoredProcedure";
 
-                Assert.True(reader.ExecuteReader().HasRows);
+                reader.ExecuteReader();
+
+                var schema = reader.GetSchemaTable();
+                Assert.NotNull(schema);
             }
             finally
             {

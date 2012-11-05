@@ -56,7 +56,50 @@ namespace kkkkkkaaaaaa.DomainModels
         /// 
         /// </summary>
         public ICollection<long> Authorizations { get; private set; }
-        
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static bool Exists(string name)
+        {
+            var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
+
+            try
+            {
+                connection = KandaProviderFactory.Instance.CreateConnection();
+                connection.Open();
+
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                var found = KandaRepository.Memberships.Find(name, connection, transaction);
+
+                transaction.Commit();
+
+                return (0 < found.ID);
+            }
+            catch
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                throw;
+            }
+            finally
+            {
+                if (connection != null) { connection.Close(); }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool Exists()
+        {
+            return Membership.Exists(this._entity.Name);
+        }
 
         /// <summary>
         /// 
@@ -75,15 +118,15 @@ namespace kkkkkkaaaaaa.DomainModels
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                var found = ((0 < this._entity.ID)
-                             ? KandaRepository.Memberships.Find(this._entity.ID, connection, transaction)
+                var found = ((0 < this.ID)
+                             ? KandaRepository.Memberships.Find(this.ID, connection, transaction)
                              : KandaRepository.Memberships.Find(this._entity.Name, this._entity.Password, connection, transaction));
 
                 KandaDataMapper.MapToObject(found, this._entity);
 
-                this.Users = KandaRepository.MembershipUsers.Get(new MembershipUsersCriteria() { MembershipID = this._entity.ID, }, connection, transaction);
-                this.Roles = KandaRepository.MembershipRoles.Get(new MembershipRolesCriteria() { MembershipID = this._entity.ID, }, connection, transaction);
-                this.Authorizations = KandaRepository.MembershipAuthorizations.Get(new MembershipAuthorizationsCriteria() { MembershipID = this._entity.ID, }, connection, transaction);
+                this.Users = KandaRepository.MembershipUsers.Get(this.ID, connection, transaction);
+                this.Roles = KandaRepository.MembershipRoles.Get(new MembershipRolesCriteria() { MembershipID = this.ID, }, connection, transaction);
+                this.Authorizations = KandaRepository.MembershipAuthorizations.Get(new MembershipAuthorizationsCriteria() { MembershipID = this.ID, }, connection, transaction);
 
                 transaction.Commit();
 
@@ -117,13 +160,14 @@ namespace kkkkkkaaaaaa.DomainModels
                 connection.Open();
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
-                
+
+                this._entity.Enabled = true;
                 this._entity.CreatedOn = KandaRepository.GetUtcDateTime(connection, transaction);
                 if (!KandaRepository.Memberships.Create(this._entity, connection, transaction)) { transaction.Rollback(); }
                 else
                 {
                     this._entity.ID = KandaRepository.Memberships.IdentCurrent(connection, transaction);
-                    if (this._entity.ID < 1) { transaction.Rollback(); }
+                    if (this.ID < 1) { transaction.Rollback(); }
                     else if (!this.createUsers(connection, transaction)) { transaction.Rollback(); }
                     else if (!this.createRoles(connection, transaction)) { transaction.Rollback(); }
                     else if (!this.createAuthorization(connection, transaction)) { transaction.Rollback(); }
@@ -160,8 +204,7 @@ namespace kkkkkkaaaaaa.DomainModels
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
                 this._entity.UpdatedOn = KandaRepository.GetUtcDateTime(connection, transaction);
-
-                if (!this.updateMemberships(connection, transaction)) { transaction.Rollback(); }
+                if (!KandaRepository.Memberships.Update(this._entity, connection, transaction)) { transaction.Rollback(); }
                 else if (!this.updateUsers(connection, transaction)) { transaction.Rollback(); }
                 else if (!this.updateRoles(connection, transaction)) { transaction.Rollback(); }
                 else if (!this.updateAuthorizations(connection, transaction)) { transaction.Rollback(); }
@@ -179,7 +222,6 @@ namespace kkkkkkaaaaaa.DomainModels
                 if (connection != null) { connection.Close(); }
             }
         }
-
 
         /// <summary>
         /// 
@@ -253,7 +295,7 @@ namespace kkkkkkaaaaaa.DomainModels
         {
             foreach (var role in this.Roles)
             {
-                if (KandaRepository.MembershipRoles.Create(new MembershipRoleEntity() { MembershipID = this.ID, RoleID = role, }, connection ,transction)) { continue; }
+                if (KandaRepository.MembershipRoles.Create(new MembershipRoleEntity() { MembershipID = this.ID, RoleID = role, }, connection, transction)) { continue; }
 
                 return false;
             }
@@ -303,9 +345,7 @@ namespace kkkkkkaaaaaa.DomainModels
 
             foreach (var user in this.Users)
             {
-                if (KandaRepository.MembershipUsers.Create(new MembershipUserEntity() { MembershipID = this.ID, UserID = user, }, connection, transaction)) { continue; }
-
-                return false;
+                if (!KandaRepository.MembershipUsers.Create(new MembershipUserEntity() { MembershipID = this.ID, UserID = user, }, connection, transaction)) { return false; }
             }
 
             // return this.Users.All(user => KandaRepository.MembershipUsers.Create(new MembershipUserEntity() { MembershipID = this.ID, UserID = user, }, connection, transaction));
@@ -324,9 +364,7 @@ namespace kkkkkkaaaaaa.DomainModels
 
             foreach (var role in this.Roles)
             {
-                if (KandaRepository.MembershipRoles.Create(new MembershipRoleEntity() { MembershipID = this.ID, RoleID = role, }, connection, transaction)) { continue; }
-
-                return false;
+                if (!KandaRepository.MembershipRoles.Create(new MembershipRoleEntity() { MembershipID = this.ID, RoleID = role, }, connection, transaction)) { return false; }
             }
 
             //return this.Roles.All(role => KandaRepository.MembershipRoles.Create(new MembershipRoleEntity() { MembershipID = this.ID, RoleID = role, }, connection, transaction));
@@ -345,9 +383,7 @@ namespace kkkkkkaaaaaa.DomainModels
 
             foreach (var authorization in this.Authorizations)
             {
-                if (KandaRepository.MembershipAuthorizations.Create(new MembershipAuthorizationEntity() { MembershipID = this.ID, AuthorizationID = authorization, }, connection, transaction)) { continue; }
-
-                return false;
+                if (!KandaRepository.MembershipAuthorizations.Create(new MembershipAuthorizationEntity() { MembershipID = this.ID, AuthorizationID = authorization, }, connection, transaction)) { return false; }
             }
 
             // return this.Authorizations.All(authorization => KandaRepository.MembershipAuthorizations.Create(new MembershipAuthorizationEntity() { MembershipID = this.ID, AuthorizationID = authorization, }, connection, transaction));
@@ -365,7 +401,7 @@ namespace kkkkkkaaaaaa.DomainModels
             foreach (var user in this.Users)
             {
                 //if (!KandaRepository.Users.Delete(user, connection, transaction)) { return false; }
-                if (!KandaRepository.MembershipUsers.Delete(new MembershipUsersCriteria() { MembershipID = this._entity.ID, UserID = user, }, connection, transaction)) { return false; }
+                if (!KandaRepository.MembershipUsers.Delete(new MembershipUsersCriteria() { MembershipID = this.ID, UserID = user, }, connection, transaction)) { return false; }
             }
 
             this.Users.Clear();
@@ -384,7 +420,7 @@ namespace kkkkkkaaaaaa.DomainModels
             foreach (var role in this.Roles)
             {
                 //if (!KandaRepository.Roles.Delete(role, connection, transaction)) { return false; }
-                if (!KandaRepository.MembershipRoles.Delete(new MembershipRolesCriteria() { MembershipID = this._entity.ID, RoleID = role, }, connection, transaction)) { return false; }
+                if (!KandaRepository.MembershipRoles.Delete(new MembershipRolesCriteria() { MembershipID = this.ID, RoleID = role, }, connection, transaction)) { return false; }
             }
 
             this.Roles.Clear();
@@ -403,7 +439,7 @@ namespace kkkkkkaaaaaa.DomainModels
             foreach (var authorization in this.Authorizations)
             {
                 //if (!KandaRepository.Authorizations.Delete(authorization, connection, transaction)) { return false; }
-                if (!KandaRepository.MembershipAuthorizations.Delete(new MembershipAuthorizationsCriteria() { MembershipID = this._entity.ID, AuthorizationID = authorization, }, connection, transaction)) { return false; }
+                if (!KandaRepository.MembershipAuthorizations.Delete(new MembershipAuthorizationsCriteria() { MembershipID = this.ID, AuthorizationID = authorization, }, connection, transaction)) { return false; }
             }
 
             this.Authorizations.Clear();

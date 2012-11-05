@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.Common;
+using System.Runtime.InteropServices;
 using kkkkkkaaaaaa.Data.Common;
 
 namespace kkkkkkaaaaaa.Data.TableDataGateways
@@ -25,7 +26,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connction, transaction);
 
-            var result = KandaTableDataGateway._factory.CreateParameter("Result", DBNull.Value, ParameterDirection.ReturnValue);
+            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.DateTime2, 8, ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);
 
             command.CommandText = @"GetUTCDateTime";

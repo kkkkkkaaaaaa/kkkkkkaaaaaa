@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 using System.Security;
 using System.Security.Permissions;
 
@@ -45,6 +46,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// DbConnection クラスをを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override DbConnection CreateConnection()
         {
             return this._factory.CreateConnection();
@@ -54,6 +56,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// DbCommand クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override DbCommand CreateCommand()
         {
             return this._factory.CreateCommand();
@@ -63,6 +66,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// DbParameter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override DbParameter CreateParameter()
         {
             return this._factory.CreateParameter();
@@ -101,6 +105,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
+        //[DebuggerStepThrough()]
         public virtual KandaDbDataReader CreateReader(DbCommand command)
         {
             return new KandaDbDataReader(command);
@@ -124,6 +129,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <summary>
         /// 何もしません。
         /// </summary>
+        [DebuggerStepThrough()]
         protected void DoNothing()
         {
             // 何もしない

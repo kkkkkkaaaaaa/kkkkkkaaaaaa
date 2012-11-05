@@ -29,7 +29,10 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
 
             reader.CommandText = @"usp_SelectMembershipUsers";
 
-            reader.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@membershipId", criteria.MembershipID));
+            KandaDbDataMapper.MapToParameters(reader, criteria);
+
+            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
+            reader.Parameters.Add(result);
 
             reader.ExecuteReader();
 

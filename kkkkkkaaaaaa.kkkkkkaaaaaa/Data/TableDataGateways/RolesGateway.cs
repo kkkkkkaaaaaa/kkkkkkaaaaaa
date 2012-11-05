@@ -52,7 +52,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
 
             KandaDbDataMapper.MapToParameters(command, entity);
 
-            var result = KandaTableDataGateway._factory.CreateParameter(@"Result", DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
+            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);
 
             command.ExecuteNonQuery();

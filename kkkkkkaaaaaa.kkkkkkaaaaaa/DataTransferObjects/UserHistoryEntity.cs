@@ -6,6 +6,8 @@ namespace kkkkkkaaaaaa.DataTransferObjects
 {
     public class UserHistoryEntity
     {
+        public readonly static UserHistoryEntity Empty = new UserHistoryEntity() { UserID = -1, Revision = -1, };
+
         public UserHistoryEntity()
         {
             this.FamilyName = @"";

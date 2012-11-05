@@ -12,25 +12,67 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
     public class MembershipFacts
     {
         [Fact()]
-        public void FindByIDFact()
+        public void ExistsFact()
         {
             var membership = default(Membership);
 
             try
             {
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
-                membership = new Membership(new MembershipEntity() { Name = name, Password = @"", Enabled = true, });
-                membership.Found += (sender, e) => Assert.True(0 < e.ID);
+                membership = new Membership(new MembershipEntity() { Name = name, });
+                membership.Create();
 
-                membership.Users.Add(new User(new UserEntity() { GivenName = name }).Create().ID);
-                membership.Roles.Add(new Role(new RoleEntity() { Name = name, }).Create().ID);
-                membership.Authorizations.Add(new Authorization(new AuthorizationEntity() { Name = name, }).Create().ID);
+                Assert.True(Membership.Exists(name));
+                Assert.True(membership.Exists());
+            }
+            finally
+            {
+                if (membership != null) { membership.Delete(); }
+            }
+        }
 
+        [Fact()]
+        public void FindByNameFact()
+        {
+            var membership = default(Membership);
+
+            try
+            {
+                var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
+                membership = new Membership(new MembershipEntity() { Name = name, Password = @"", });
+                membership.Found += (sender, e) =>
+                {
+                    var actual = new Membership(new MembershipEntity() { Name = e.Name, Password = null, }).Find();
+                    Assert.True(0 < actual.ID);
+                };
+                membership.Create();
+                membership.Find();
+            }
+            finally
+            {
+                if (membership != null) { membership.Delete(); }
+            }
+
+            new Membership(new MembershipEntity() { Name = @"" });
+        }
+
+        [Fact()]
+        public void FindByIDFact()
+        {
+            var membership = default(Membership);
+
+            try
+            {
+                membership = new Membership(new MembershipEntity());
+
+                var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
+                membership = new Membership(new MembershipEntity() { Name = name, });
+                membership.Found += (sender, e) => Assert.NotEqual(MembershipEntity.Empty, e);
                 membership.Create();
                 Assert.True(0 < membership.ID);
 
                 membership.Find();
-                Assert.True(0 < membership.Find().ID);
+                Assert.True(membership.Exists());
             }
             finally
             {
@@ -45,23 +87,19 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
 
             try
             {
-                membership = new Membership(new MembershipEntity() { Name = @"name", Password = @"pppp", Enabled = true, });
-                membership.Create();
-                Assert.True(0 < membership.ID);
+                var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
+                var password = new Random().Next().ToString(CultureInfo.InvariantCulture);
+                new Membership(new MembershipEntity() { Name = name, Password = password, }).Create();
 
-                membership = new Membership(new MembershipEntity() { Name = @"name", Password = @"pppp", Enabled = true, });
-                Assert.True(0 < membership.Find().ID);
+                membership = new Membership(new MembershipEntity() { Name = name, Password = password, });
+                membership.Found += (sender, e) => Assert.NotEqual(MembershipEntity.Empty, e);
+                membership.Find();
+                Assert.True(membership.Exists());
             }
             finally
             {
                 if (membership != null) { membership.Delete(); }
             }
-        }
-
-        [Fact()]
-        public void ValidateFact()
-        {
-            //
         }
 
         [Fact()]
@@ -71,13 +109,37 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
 
             try
             {
-                membership = new Membership(new MembershipEntity() { Name = @"name", Password = @"password", Enabled = true, });
-                //membership.Users.Add(new User(new UserEntity() { FamilyName = @"MembershipFacts", GivenName = @"1" }));
-                //membership.Users.Add(new User(new UserEntity() { FamilyName = @"MembershipFacts", GivenName = @"2" }));
-
+                var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
+                membership = new Membership(new MembershipEntity() { Name = name, });
                 membership.Create();
 
                 Assert.True(0 < membership.ID);
+                Assert.True(membership.Exists());
+            }
+            finally
+            {
+                if (membership != null) { membership.Delete(); }
+            }
+        }
+
+        [Fact()]
+        public void UpdateFact()
+        {
+            var membership = default(Membership);
+
+            try
+            {
+                var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
+                membership = new Membership(new MembershipEntity() {Name = name,}).Create();
+                membership.Found += (sender, e) =>
+                                        {
+                                            e.Enabled = false;
+                                            var updated = new Membership(e);
+                                            updated.Found += (_, __) => Assert.False(__.Enabled);
+                                            updated.Update();
+                                            updated.Find();
+                                        };
+                membership.Find();
             }
             finally
             {

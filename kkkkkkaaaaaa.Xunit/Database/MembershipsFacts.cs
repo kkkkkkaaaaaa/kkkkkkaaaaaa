@@ -31,12 +31,13 @@ namespace kkkkkkaaaaaa.Xunit.Database
                 command.Parameters.Add(this._factory.CreateParameter("@password", @"password"));
                 command.Parameters.Add(this._factory.CreateParameter("@enabled", true));
                 command.Parameters.Add(this._factory.CreateParameter("@createdOn", DateTime.Now));
+                command.Parameters.Add(this._factory.CreateParameter("@updatedOn", DBNull.Value));
 
-                var result = this._factory.CreateParameter("@result", DBNull.Value, ParameterDirection.ReturnValue);
+                var result = this._factory.CreateParameter("@result", DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
                 command.Parameters.Add(result);
 
                 var affected = command.ExecuteNonQuery();
-                Assert.Equal(0, result.Value);
+                Assert.Equal(1, result.Value);
                 Assert.Equal(1, affected);
             }
             finally
@@ -61,20 +62,29 @@ namespace kkkkkkaaaaaa.Xunit.Database
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
                 command = this._factory.CreateCommand(connection, transaction);
-
-                command.CommandText = @"usp_UpdateMemberships";
-
+                command.CommandText = @"usp_InsertMemberships";
                 command.Parameters.Add(this._factory.CreateParameter("@id", 1));
                 command.Parameters.Add(this._factory.CreateParameter("@name", @"neme"));
                 command.Parameters.Add(this._factory.CreateParameter("@password", @"password"));
                 command.Parameters.Add(this._factory.CreateParameter("@enabled", true));
                 command.Parameters.Add(this._factory.CreateParameter("@createdOn", DateTime.Now));
+                command.Parameters.Add(this._factory.CreateParameter("@updatedOn", DBNull.Value));
+                command.ExecuteNonQuery();
 
-                var result = this._factory.CreateParameter("@result", DBNull.Value, ParameterDirection.ReturnValue);
+                command = this._factory.CreateCommand(connection, transaction);
+                command.CommandText = @"usp_UpdateMemberships";
+                command.Parameters.Add(this._factory.CreateParameter("@id", 1));
+                command.Parameters.Add(this._factory.CreateParameter("@name", @"neme"));
+                command.Parameters.Add(this._factory.CreateParameter("@password", @"password"));
+                command.Parameters.Add(this._factory.CreateParameter("@enabled", true));
+                command.Parameters.Add(this._factory.CreateParameter("@createdOn", DBNull.Value));
+                command.Parameters.Add(this._factory.CreateParameter("@updatedOn", DateTime.Now));
+                var result = this._factory.CreateParameter("@result", DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
                 command.Parameters.Add(result);
 
                 var affected = command.ExecuteNonQuery();
-                Assert.Equal(0, result.Value);
+
+                Assert.Equal(1, result.Value);
                 Assert.Equal(1, affected);
             }
             finally

@@ -10,6 +10,7 @@ namespace kkkkkkaaaaaa.DataTransferObjects
         public RoleEntity()
         {
             this.Description = @"";
+            this.Enabled = true;
         }
 
         [KandaDbParameterMapping("@id")]
@@ -27,7 +28,7 @@ namespace kkkkkkaaaaaa.DataTransferObjects
         [KandaDbParameterMapping("@createdOn")]
         public DateTime CreatedOn { get; set; }
 
-        [KandaDbParameterMapping("@", Ignore = true)]
+        [KandaDbParameterMapping("@updatedOn")]
         public DateTime UpdatedOn { get; set; }
     }
 }

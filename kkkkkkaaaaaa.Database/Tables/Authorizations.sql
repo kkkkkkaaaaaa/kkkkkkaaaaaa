@@ -2,6 +2,7 @@
     [ID]          BIGINT          NOT NULL IDENTITY(1, 1),
     [PredicateID] BIGINT NOT NULL, 
     [ObjectID] BIGINT NOT NULL, 
+    [Name] NVARCHAR(1024) NOT NULL, 
     [Description] NVARCHAR (MAX)  NOT NULL,
     [Enabled]     BIT             NOT NULL,
     [CreatedOn] DATETIME2 NOT NULL, 

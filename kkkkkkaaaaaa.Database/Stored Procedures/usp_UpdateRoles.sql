@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE usp_UpdateRoles (
 	-- パラメーター
-	@name			NVARCHAR(1024)
-	, @description	NVARCHAR(MAX) = ''
+	@id				BIGINT
+	, @name			NVARCHAR(1024)
+	, @description	NVARCHAR(MAX)
 	, @enabled		BIT
-	, @createdOn	DATETIME2 = '0001-01-01 00:00:00.0000000'
-	, @updatedOn	DATETIME2 = '0001-01-01 00:00:00.0000000'
-	, @id			BIGINT
+	, @createdOn	DATETIME2
+	, @updatedOn	DATETIME2
 ) AS
 	-- 変数
 	DECLARE
@@ -15,18 +15,17 @@
 		, @count	INT
 
 	-- UPDATE
-	SET @update = 'UPDATE Roles'
+	UPDATE
+		Roles
 
-	-- SET
-	SET @set = ' SET'
-		+ ' Name			= ''' + @name + ''''
-		+ ', [Description]	= ''' + @description + ''''
-		+ ', [Enabled]		= ' + CONVERT(VARCHAR(MAX), @enabled) + ''
-		+ ', UpdatedOn		= ''' + CONVERT(VARCHAR(MAX), @updatedOn) + ''''
+	SET
+		Name				= @name
+		, [Description]		= @description
+		, [Enabled]			= @enabled
+		, UpdatedOn			= @updatedOn
 
-	-- WHERE
-	SET @where = ' WHERE'
-		+ ' ID				= ' + CONVERT(VARCHAR(MAX), @id)
+	WHERE 1 = 1
+		AND ID	= @id
 
 	-- 実行
 	EXECUTE (@update + @set + @where)

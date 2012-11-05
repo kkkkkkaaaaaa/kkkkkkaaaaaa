@@ -3,10 +3,10 @@
 	@membershipId	BIGINT
 	, @roleId		BIGINT
 ) AS
-	-- ID なし
-	IF ((@membershipId <= 1) AND (@roleId <= 1))	RETURN -1
+	-- 事前条件
+	IF ((@membershipId < 1) AND (@roleId < 1))	RETURN -1
 
-	-- 
+	-- 変数
 	DECLARE
 		@delete		NVARCHAR(MAX)
 		, @from		NVARCHAR(MAX)

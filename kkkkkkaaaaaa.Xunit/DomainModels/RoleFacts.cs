@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Threading;
 using Xunit;
 using kkkkkkaaaaaa.DataTransferObjects;
 using kkkkkkaaaaaa.DomainModels;
@@ -58,14 +59,12 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             {
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
                 role = new Role(new RoleEntity() { Name = name, });
-
-                var updated = default(Role);
                 role.Found += (sender, e) =>
                     {
-                        e.Name = new Random().Next().ToString(CultureInfo.InvariantCulture);
-                        updated = new Role(e);
-                        updated.Found += (sender2, e2) => Assert.Equal(e.Name, e2.Name);
+                        var updated = new Role(e);
+                        updated.Found += (sender2, e2) => Assert.True(e2.CreatedOn < e2.UpdatedOn);
 
+                        Thread.Sleep(1000);
                         updated.Update();
                         updated.Find();
                     };

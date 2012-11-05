@@ -26,7 +26,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
             {
                 reader = UserHistoriesGateway.Select(criteria, connection, transaction);
 
-                var found = KandaDbDataMapper.MapToObject<UserHistoryEntity>(reader);
+                var found = reader.Read() ? KandaDbDataMapper.MapToObject<UserHistoryEntity>(reader) : UserHistoryEntity.Empty;
 
                 return found;
             }

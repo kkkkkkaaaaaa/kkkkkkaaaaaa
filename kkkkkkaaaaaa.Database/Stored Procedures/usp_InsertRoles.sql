@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE usp_InsertRoles (
 	-- パラメーター
 	@id				BIGINT
-	, @name			NVARCHAR(MAX) = ''
-	, @description	NVARCHAR(MAX) = ''
+	, @name			NVARCHAR(MAX)
+	, @description	NVARCHAR(MAX)
 	, @enabled		BIT
-	, @createdOn	DATETIME2 = '0001-01-01 00:00:00.0000000'
-	, @updatedOn	DATETIME2 = '0001-01-01 00:00:00.0000000'
+	, @createdOn	DATETIME2
+	, @updatedOn	DATETIME2
 ) AS
 	-- 変数
 	DECLARE

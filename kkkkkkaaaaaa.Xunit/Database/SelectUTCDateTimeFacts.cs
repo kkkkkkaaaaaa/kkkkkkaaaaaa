@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.Common;
+using System.Runtime.InteropServices;
 using Xunit;
 using kkkkkkaaaaaa.Xunit.Data;
 
@@ -21,8 +22,9 @@ namespace kkkkkkaaaaaa.Xunit.Database
 
                 command = this._factory.CreateCommand(connection);
                 command.CommandText = @"GetUTCDateTime";
-
-                var result = this._factory.CreateParameter("Result", default(DateTime), ParameterDirection.ReturnValue);
+                
+                //var result = this._factory.CreateParameter("Result", DbType.DateTime2, Marshal.SizeOf(new DateTime()), ParameterDirection.ReturnValue, DBNull.Value);
+                var result = this._factory.CreateParameter("Result", DbType.DateTime2, 8, ParameterDirection.ReturnValue, DBNull.Value);
                 command.Parameters.Add(result);
 
                 command.ExecuteNonQuery();

@@ -24,7 +24,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         {
             var reader = KandaTableDataGateway._factory.CreateReader(connection, transaction);
 
-            reader.CommandText = @"usp_SelectUserAttributeHistories";
+            reader.CommandText = @"usp_SelectUserHistoryAttributes";
 
             KandaDbDataMapper.MapToParameters(reader, criteria);
 

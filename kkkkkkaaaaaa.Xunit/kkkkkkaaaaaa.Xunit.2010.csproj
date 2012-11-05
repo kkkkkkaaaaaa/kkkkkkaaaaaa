@@ -71,7 +71,6 @@
     <Compile Include="DomainModels\AuthorizationFacts.cs" />
     <Compile Include="DomainModels\KandaXunitDomainModelFacts.cs" />
     <Compile Include="DomainModels\MembershipFacts.cs" />
-    <Compile Include="DomainModels\MembershipsFacts.cs" />
     <Compile Include="DomainModels\KandaDomainModelFacts.cs" />
     <Compile Include="DomainModels\MembershipUsersFacts.cs" />
     <Compile Include="DomainModels\RoleFacts.cs" />
@@ -89,6 +88,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml" />
     <Reference Include="xunit">
       <HintPath>..\Externals\Xunit\xunit.dll</HintPath>
     </Reference>

@@ -13,7 +13,7 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
 
             try
             {
-                user = new User(new UserEntity());
+                user = new User(new UserEntity() {  });
                 user.Found += (sender, e) => Assert.Equal(sender.ID, e.ID);
                 user.Create();
                 user.Find();

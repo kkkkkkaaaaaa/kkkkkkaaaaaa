@@ -1,10 +1,13 @@
 ﻿using System;
 using kkkkkkaaaaaa.Data.Common;
 
-namespace kkkkkkaaaaaa.Web.DataTransferObjects
+namespace kkkkkkaaaaaa.DataTransferObjects
 {
     public class UserAttributeItemEntity
     {
+        public readonly static UserAttributeItemEntity Empty = new UserAttributeItemEntity() { ID = -1, };
+
+
         [KandaDbParameterMapping("@id")]
         public int ID { get; set; }
 

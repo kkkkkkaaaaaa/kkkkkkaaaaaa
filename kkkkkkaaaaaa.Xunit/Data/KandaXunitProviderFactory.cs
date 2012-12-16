@@ -26,7 +26,6 @@ namespace kkkkkkaaaaaa.Xunit.Data
         public override DbConnection CreateConnection()
         {
             var builder = base.CreateConnectionStringBuilder();
-            //builder.ConnectionString = @"Data Source=(localdb)\kkkkkkaaaaaa_2010;Initial Catalog=kkkkkkaaaaaa.Database.2012;Integrated Security=True;Pooling=False;Connect Timeout=30";
             builder.Add(@"Data Source", @"(localdb)\kkkkkkaaaaaa_2010");
             builder.Add(@"Initial Catalog", @"kkkkkkaaaaaa.Database.2010");
             builder.Add(@"Integrated Security", @"True");

@@ -138,6 +138,7 @@
     <Compile Include="DataTransferObjects\RoleEntity.cs" />
     <Compile Include="DataTransferObjects\RolesCriteria.cs" />
     <Compile Include="DataTransferObjects\UserAttributeEntity.cs" />
+    <Compile Include="DataTransferObjects\UserAttributeItemsCriteria.cs" />
     <Compile Include="DataTransferObjects\UserHistoriesCriteria.cs" />
     <Compile Include="DataTransferObjects\UserHistoryAttributeEntity.cs" />
     <Compile Include="DataTransferObjects\UserAttributeItemEntity.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="Data\Repositories\MembershipUsersRepository.cs" />
     <Compile Include="Data\Repositories\RoleAuthorizationsRepository.cs" />
     <Compile Include="Data\Repositories\RolesRepository.cs" />
+    <Compile Include="Data\Repositories\UserAttributeItemsRepository.cs" />
     <Compile Include="Data\Repositories\UserHistoryAttributesRepository.cs" />
     <Compile Include="Data\Repositories\UserAttributesRepository.cs" />
     <Compile Include="Data\Repositories\UserHistoriesRepository.cs" />
@@ -163,6 +165,7 @@
     <Compile Include="Data\TableDataGateways\MembershipUsersGateway.cs" />
     <Compile Include="Data\TableDataGateways\RoleAuthorizationsGateway.cs" />
     <Compile Include="Data\TableDataGateways\RolesGateway.cs" />
+    <Compile Include="Data\TableDataGateways\UserAttributeItemsGateway.cs" />
     <Compile Include="Data\TableDataGateways\UserHistoryAttributesGateway.cs" />
     <Compile Include="Data\TableDataGateways\UserAttributesGateway.cs" />
     <Compile Include="Data\TableDataGateways\UserHistoriesGateway.cs" />

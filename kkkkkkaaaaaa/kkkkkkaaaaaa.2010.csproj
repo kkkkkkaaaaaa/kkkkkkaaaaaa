@@ -92,6 +92,8 @@
     </Compile>
     <Compile Include="Data\Common\KandaDbProviderFactory.cs" />
     <Compile Include="Data\KandaParameterMappingAttribute.cs" />
+    <Compile Include="Runtime\InteropServices\SYSTEM_INFO.cs" />
+    <Compile Include="Runtime\InteropServices\Kernel32.cs" />
     <Compile Include="KandaDataMapper.2010.cs">
       <SubType>Code</SubType>
     </Compile>

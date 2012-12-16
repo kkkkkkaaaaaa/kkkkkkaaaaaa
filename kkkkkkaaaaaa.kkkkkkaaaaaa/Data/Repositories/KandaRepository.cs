@@ -151,7 +151,6 @@ namespace kkkkkkaaaaaa.Data.Repositories
         private readonly static Lazy<RolesRepository> _roles = new Lazy<RolesRepository>(() => new RolesRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>
         private readonly static Lazy<RoleAuthorizationsRepository> _roleAuthorizations = new Lazy<RoleAuthorizationsRepository>(() => new RoleAuthorizationsRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
-
         /// <summary></summary>
         private readonly static Lazy<UsersRepository> _users = new Lazy<UsersRepository>(() => new UsersRepository(), LazyThreadSafetyMode.ExecutionAndPublication);
         /// <summary></summary>

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Data;
-using System.Data.Common;
+﻿using System.Data;
 using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Data.Common
 {
-    public class KandaProviderFactoryFacts : KandaXunitDataFacts
+    public class KandaXunitProviderFactoryFacts : KandaXunitDataFacts
     {
         [Fact()]
         public void CreataConnectionFact()

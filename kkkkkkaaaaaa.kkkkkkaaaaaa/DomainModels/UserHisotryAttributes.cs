@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using kkkkkkaaaaaa.DataTransferObjects;
-using kkkkkkaaaaaa.Web.DataTransferObjects;
 
 namespace kkkkkkaaaaaa.DomainModels
 {

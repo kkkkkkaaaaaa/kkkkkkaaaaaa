@@ -93,7 +93,7 @@
     <Compile Include="Data\Common\KandaDbProviderFactory.cs" />
     <Compile Include="Data\KandaParameterMappingAttribute.cs" />
     <Compile Include="Runtime\InteropServices\PROCESSOR_ARCHITECTURE.cs" />
-    <Compile Include="Runtime\InteropServices\SYSTEM_INFO.cs" />
+    <Compile Include="Runtime\InteropServices\_SYSTEM_INFO.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32.cs" />
     <Compile Include="KandaDataMapper.2010.cs">
       <SubType>Code</SubType>
@@ -103,6 +103,7 @@
     <Compile Include="Runtime\InteropServices\WinBase.cs" />
     <Compile Include="Runtime\InteropServices\WinDef.cs" />
     <Compile Include="Runtime\InteropServices\Windows.cs" />
+    <Compile Include="Runtime\InteropServices\WinError.cs" />
     <Compile Include="Runtime\InteropServices\WinNT.cs" />
     <Compile Include="Security\Cryptography\KandaHashAlgorithm.cs" />
     <Compile Include="Security\Cryptography\KandaSHA256CryptoServiceProvider.cs" />

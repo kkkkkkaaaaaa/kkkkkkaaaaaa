@@ -26,15 +26,45 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
     [StructLayout(LayoutKind.Sequential)]
     public struct _SYSTEM_INFO
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public _DUMMYUNIONNAME DUMMYUNIONNAME;
+        /// <summary>
+        /// 
+        /// </summary>
         public uint dwPageSize;
+        /// <summary>
+        /// 
+        /// </summary>
         public IntPtr lpMinimumApplicationAddress;
+        /// <summary>
+        /// 
+        /// </summary>
         public IntPtr lpMaximumApplicationAddress;
+        /// <summary>
+        /// 
+        /// </summary>
         public uint dwActiveProcessorMask;
+        /// <summary>
+        /// 
+        /// </summary>
         public uint dwNumberOfProcessors;
+        /// <summary>
+        /// 
+        /// </summary>
         public uint dwProcessorType;
+        /// <summary>
+        /// 
+        /// </summary>
         public uint dsAllocationGranularity;
+        /// <summary>
+        /// 
+        /// </summary>
         public ushort wProcessorLevel;
+        /// <summary>
+        /// 
+        /// </summary>
         public ushort wProcessorRevision;
 
         /// <summary>
@@ -49,9 +79,15 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         [StructLayout(LayoutKind.Explicit)]
         public struct _DUMMYUNIONNAME
         {
+            /// <summary>
+            /// 
+            /// </summary>
             [Obsolete(@"Obsolete field...do not use")]
             [FieldOffset(0)]
             public uint dwOemId;
+            /// <summary>
+            /// 
+            /// </summary>
             [FieldOffset(0)]
             public _DUMMYSTRUCTNAME DUMMYSTRUCTNAME;
 
@@ -64,7 +100,13 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
             [StructLayout(LayoutKind.Sequential)]
             public struct _DUMMYSTRUCTNAME
             {
+                /// <summary>
+                /// 
+                /// </summary>
                 public ushort wProcessorArchitecture;
+                /// <summary>
+                /// 
+                /// </summary>
                 public ushort wReserved;
             }
         }

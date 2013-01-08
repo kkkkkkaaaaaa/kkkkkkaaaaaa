@@ -87,6 +87,7 @@
     <Compile Include="Repositories\MembershipsRepositoryFacts.cs" />
     <Compile Include="Repositories\UsersRepositoryFacts.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32Facts.cs" />
+    <Compile Include="SystemFacts.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

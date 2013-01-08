@@ -11,22 +11,6 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
         [Fact()]
         public void GetSystemInfoFact()
         {
-            /*
-            var info = default(SYSTEM_INFO);
-            Kernel32.GetSystemInfo(ref info);
-
-            Assert.NotEqual(default(SYSTEM_INFO), info);
-
-            var architecture = Enum.GetName(typeof(PROCESSOR_ARCHITECTURE), info.wProcessorArchitecture);
-            Assert.NotNull(architecture);
-
-            var mask = info.dwActiveProcessorMask;
-            */
-        }
-
-        [Fact()]
-        public void GetSystemInfoOemIdFact()
-        {
             var info = default(_SYSTEM_INFO);
             Kernel32.GetSystemInfo(out info);
 
@@ -50,10 +34,9 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
         {
             var info = default(_SYSTEM_INFO);
 
-            Kernel32.GetNativeSystemInfo(ref info);
+            Kernel32.GetNativeSystemInfo(out info);
 
             Assert.NotEqual(default(_SYSTEM_INFO), info);
-            //Assert.NotEqual(PROCESSOR_ARCHITECTURE.UNKNOWN, info.wProcessorArchitecture);
         }
 
         [Fact()]
@@ -85,6 +68,25 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
         }
 
         [Fact()]
+        public void LoadLibraryExFact()
+        {
+            var fileName = @"kernel32.dll";
+            //var fileName = new long(Uri);
+
+            var module = IntPtr.Zero;
+
+            try
+            {
+                module = Kernel32.LoadLibraryEx(fileName, IntPtr.Zero, WinBase.LOAD_LIBRARY_AS_DATAFILE);
+                Assert.NotEqual(IntPtr.Zero, module);
+            }
+            finally
+            {
+                if (module != IntPtr.Zero) { var freed = Kernel32.FreeLibrary(module); }
+            }
+        }
+
+        [Fact()]
         public void FreeLibraryFact()
         {
             var fileName = new Uri(this._testData, @"./kkkkkkaaaaaa.testdata.library/kkkkkkaaaaaa.testdata.library.dll");
@@ -104,18 +106,20 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
 
             try
             {
-                //module = Kernel32.LoadLibrary(@"kernel32.dll");
-                module = Kernel32.LoadLibrary(fileName.LocalPath);
+                module = Kernel32.LoadLibrary(@"kernel32.dll");
+                //module = Kernel32.LoadLibrary(fileName.LocalPath);
 
-                var api = Kernel32.GetProcAddress(module, @"Function");
+                var api = Kernel32.GetProcAddress(module, @"GetNativeSystemInfo");
+                Assert.NotEqual(IntPtr.Zero, api);
 
-                if (api == IntPtr.Zero) { var error = Marshal.GetLastWin32Error(); }
+                var d = (GetNativeSystemInfo)Marshal.GetDelegateForFunctionPointer(api, typeof(GetNativeSystemInfo));
+                var info = default(_SYSTEM_INFO);
+                d.Invoke(ref info);
             }
             finally
             {
                 if (module != IntPtr.Zero) { var freed = Kernel32.FreeLibrary(module); }
             }
-
         }
 
         #region Private members...

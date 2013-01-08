@@ -6,6 +6,12 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
     /// <summary>
     /// 
     /// </summary>
+    /// <param name="info"></param>
+    public delegate void GetNativeSystemInfo(ref _SYSTEM_INFO info);
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class Kernel32
     {
         /// <summary>
@@ -16,17 +22,14 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         public static extern void GetSystemInfo(out _SYSTEM_INFO lpSystemInfo);
 
         /// <summary>
-        /// uGetNativeSystemInfo function (Windows)v
-        /// http://msdn.microsoft.com/en-us/library/windows/desktop/ms724340.aspx
-        /// void WINAPI GetNativeSystemInfo(_Out_  LPSYSTEM_INFO lpSystemInfo);
-        /// 
         /// #if _WIN32_WINNT >= 0x0501
         /// WINBASEAPI VOID WINAPI GetNativeSystemInfo(__out LPSYSTEM_INFO lpSystemInfo);
         /// #endif
         /// </summary>
         /// <param name="lpSystemInfo"></param>
+
         [DllImport(Kernel32.DLL_NAME, SetLastError = true, BestFitMapping = true)]
-        public static extern void GetNativeSystemInfo(ref _SYSTEM_INFO lpSystemInfo);
+        public static extern void GetNativeSystemInfo(out _SYSTEM_INFO lpSystemInfo);
 
         //[DllImport(Kernel32.DLL_NAME, SetLastError = true, BestFitMapping = true)]
         //public static extern uint GetLogicalProcessorInfomatiuon();
@@ -62,7 +65,7 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         /// <param name="dwFlags"></param>
         /// <returns></returns>
         [DllImport(Kernel32.DLL_NAME, CharSet = CharSet.Auto)]
-        public static extern IntPtr LoadLibraryEx(string lpLibFileName, IntPtr hFile, ushort dwFlags);
+        public static extern IntPtr LoadLibraryEx(string lpLibFileName, IntPtr hFile, uint dwFlags);
 
         /// <summary>
         /// WINBASEAPI BOOL WINAPI FreeLibrary (__in HMODULE hLibModule);
@@ -71,6 +74,14 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         /// <returns></returns>
         [DllImport(Kernel32.DLL_NAME)]
         public static extern int FreeLibrary(IntPtr hLibModule);
+
+        /// <summary>
+        /// WINBASEAPI DECLSPEC_NORETURN VOID WINAPI FreeLibraryAndExitThread (__in HMODULE hLibModule, __in DWORD dwExitCode);
+        /// </summary>
+        /// <param name="hLibModule"></param>
+        /// <param name="dwExitCode"></param>
+        [DllImport(Kernel32.DLL_NAME)]
+        public static extern void FreeLibraryAndExitThread(IntPtr hLibModule, uint dwExitCode);
 
         /// <summary>
         /// WINBASEAPI FARPROC WINAPI GetProcAddress (__in HMODULE hModule, __in LPCSTR lpProcName);

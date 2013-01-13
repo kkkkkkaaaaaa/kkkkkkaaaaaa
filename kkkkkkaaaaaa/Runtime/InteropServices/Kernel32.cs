@@ -1,18 +1,13 @@
 using System;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace kkkkkkaaaaaa.Runtime.InteropServices
 {
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="info"></param>
-    public delegate void GetNativeSystemInfo(ref _SYSTEM_INFO info);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public class Kernel32
+    public static class Kernel32
     {
         /// <summary>
         /// WINBASEAPI VOID WINAPI GetSystemInfo(__out LPSYSTEM_INFO lpSystemInfo);
@@ -27,21 +22,20 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         /// #endif
         /// </summary>
         /// <param name="lpSystemInfo"></param>
-
         [DllImport(Kernel32.DLL_NAME, SetLastError = true, BestFitMapping = true)]
         public static extern void GetNativeSystemInfo(out _SYSTEM_INFO lpSystemInfo);
 
+        /// <summary>
+        /// WINBASEAPI BOOL WINAPI GetLogicalProcessorInformation(__out_bcount_part_opt(*ReturnedLength, *ReturnedLength) PSYSTEM_LOGICAL_PROCESSOR_INFORMATION Buffer, __inout PDWORD ReturnedLength);
+        /// </summary>
+        /// <returns></returns>
         //[DllImport(Kernel32.DLL_NAME, SetLastError = true, BestFitMapping = true)]
         //public static extern uint GetLogicalProcessorInfomatiuon();
 
         /// <summary>
-        /// uIsWow64Process function (Windows)v
-        /// http://msdn.microsoft.com/en-us/library/windows/desktop/ms684139.aspx
-        /// 
-        /// BOOL WINAPI IsWow64Process(
-        ///     _In_    HANDLE hProcess,
-        ///     _Out_   PBOOL Wow64Process
-        /// );
+        /// #if _WIN32_WINNT >= 0x0501
+        /// WINBASEAPI BOOL WINAPI IsWow64Process(__in  HANDLE hProcess, __out PBOOL Wow64Process);
+        /// #endif // (_WIN32_WINNT >= 0x0501)
         /// </summary>
         /// <param name="hProcess"></param>
         /// <param name="Wow64Process"></param>
@@ -68,12 +62,52 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         public static extern IntPtr LoadLibraryEx(string lpLibFileName, IntPtr hFile, uint dwFlags);
 
         /// <summary>
+        /// WINBASEAPI __out_opt HMODULE WINAPI GetModuleHandleW(__in_opt LPCWSTR lpModuleName);
+        /// </summary>
+        /// <param name="lpModuleName"></param>
+        /// <returns></returns>
+        [DllImport(Kernel32.DLL_NAME)]
+        public static extern IntPtr GetModuleHandle(string lpModuleName);
+
+        /// <summary>
+        /// WINBASEAPI DWORD WINAPI GetModuleFileNameW(__in_opt HMODULE hModule, __out_ecount_part(nSize, return + 1) LPWSTR lpFilename, __in DWORD nSize);
+        /// </summary>
+        /// <returns></returns>
+        [DllImport(Kernel32.DLL_NAME)]
+        public static extern uint GetModuleFileName(IntPtr hModule, StringBuilder lpFilename, uint nSize);
+
+        /// <summary>
         /// WINBASEAPI BOOL WINAPI FreeLibrary (__in HMODULE hLibModule);
         /// </summary>
         /// <param name="hLibModule"></param>
         /// <returns></returns>
         [DllImport(Kernel32.DLL_NAME)]
         public static extern int FreeLibrary(IntPtr hLibModule);
+
+        /// <summary>
+        /// WINBASEAPI DECLSPEC_NORETURN VOID WINAPI ExitThread(__in DWORD dwExitCode);
+        /// </summary>
+        [DllImport(Kernel32.DLL_NAME)]
+        public static extern void ExitThread(uint dwExitCode);
+
+        /*
+        WINBASEAPI
+        BOOL
+        WINAPI
+        TerminateThread(
+            __in HANDLE hThread,
+            __in DWORD dwExitCode
+            );
+
+        WINBASEAPI
+        __success(return != 0)
+        BOOL
+        WINAPI
+        GetExitCodeThread(
+            __in  HANDLE hThread,
+            __out LPDWORD lpExitCode
+            );
+         */
 
         /// <summary>
         /// WINBASEAPI DECLSPEC_NORETURN VOID WINAPI FreeLibraryAndExitThread (__in HMODULE hLibModule, __in DWORD dwExitCode);

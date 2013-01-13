@@ -15,6 +15,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             var lastWin32Error = Marshal.GetLastWin32Error();
             var lastError = Kernel32.GetLastError();
             Assert.Equal((uint)lastWin32Error, lastError);
+            Assert.True(true, string.Format(@"Kernel32.GetLastError() == {0}", lastError));
         }
 
         [Fact()]

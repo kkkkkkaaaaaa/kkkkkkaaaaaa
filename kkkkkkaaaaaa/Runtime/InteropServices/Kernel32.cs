@@ -41,7 +41,8 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         /// <param name="Wow64Process"></param>
         /// <returns></returns>
         [DllImport(Kernel32.DLL_NAME, SetLastError = true)]
-        public static extern int IsWow64Process(IntPtr hProcess, out IntPtr Wow64Process);
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool IsWow64Process([In()]IntPtr hProcess, [MarshalAs(UnmanagedType.Bool)]out bool Wow64Process);
 
         /// <summary>
         /// 
@@ -82,7 +83,8 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         /// <param name="hLibModule"></param>
         /// <returns></returns>
         [DllImport(Kernel32.DLL_NAME)]
-        public static extern int FreeLibrary(IntPtr hLibModule);
+        [return : MarshalAs(UnmanagedType.Bool)]
+        public static extern bool FreeLibrary(IntPtr hLibModule);
 
         /// <summary>
         /// WINBASEAPI DECLSPEC_NORETURN VOID WINAPI ExitThread(__in DWORD dwExitCode);
@@ -90,24 +92,25 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         [DllImport(Kernel32.DLL_NAME)]
         public static extern void ExitThread(uint dwExitCode);
 
-        /*
-        WINBASEAPI
-        BOOL
-        WINAPI
-        TerminateThread(
-            __in HANDLE hThread,
-            __in DWORD dwExitCode
-            );
+        /// <summary>
+        /// WINBASEAPI __success(return != 0) BOOL WINAPI GetExitCodeThread(__in  HANDLE hThread, __out LPDWORD lpExitCode);
+        /// </summary>
+        /// <param name="hThread"></param>
+        /// <param name="lpExitCode"></param>
+        /// <returns></returns>
+        [DllImport(Kernel32.DLL_NAME)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetExitCodeThread(IntPtr hThread, out uint lpExitCode);
 
-        WINBASEAPI
-        __success(return != 0)
-        BOOL
-        WINAPI
-        GetExitCodeThread(
-            __in  HANDLE hThread,
-            __out LPDWORD lpExitCode
-            );
-         */
+        /// <summary>
+        /// WINBASEAPI BOOL WINAPI TerminateThread(__in HANDLE hThread, __in DWORD dwExitCode);
+        /// </summary>
+        /// <param name="hThread"></param>
+        /// <param name="dwExitCode"></param>
+        /// <returns></returns>
+        [DllImport(Kernel32.DLL_NAME)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool TerminateThread(IntPtr hThread, uint dwExitCode);
 
         /// <summary>
         /// WINBASEAPI DECLSPEC_NORETURN VOID WINAPI FreeLibraryAndExitThread (__in HMODULE hLibModule, __in DWORD dwExitCode);
@@ -143,6 +146,21 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         /// <returns></returns>
         [DllImport(Kernel32.DLL_NAME, SetLastError = false)]
         public static extern uint GetLastError();
+
+        /// <summary>
+        /// WINBASEAPI DWORD WINAPI FormatMessageW(__in DWORD dwFlags, __in_opt LPCVOID lpSource, __in DWORD dwMessageId, __in DWORD dwLanguageId, __out LPWSTR lpBuffer, __in DWORD nSize, __in_opt va_list *Arguments);
+        /// </summary>
+        /// <param name="dwFlags"></param>
+        /// <param name="lpSource"></param>
+        /// <param name="dwMessageId"></param>
+        /// <param name="dwLanguageId"></param>
+        /// <param name="lpBuffer"></param>
+        /// <param name="nSize"></param>
+        /// <param name="Arguments"></param>
+        /// <returns></returns>
+        [DllImport(Kernel32.DLL_NAME)]
+        public static extern uint FormatMessage(uint dwFlags, IntPtr lpSource, uint dwMessageId, uint dwLanguageId, out IntPtr lpBuffer, uint nSize, string[] Arguments);
+
 
         #region Private members...
 

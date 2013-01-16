@@ -22,50 +22,12 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
         public void FormatMessage()
         {
             var messageId = Kernel32.GetLastError();
-            //var languageId = WinNT.MAKELANGID(WinNT.LANG_INVARIANT, WinNT.SUBLANG_NEUTRAL);
             var languageId = WinNT.MAKELANGID(WinNT.LANG_NEUTRAL, WinNT.SUBLANG_DEFAULT);
             var buffer = default(IntPtr);
+
             var length = Kernel32.FormatMessage((WinBase.FORMAT_MESSAGE_ALLOCATE_BUFFER | WinBase.FORMAT_MESSAGE_FROM_SYSTEM | WinBase.FORMAT_MESSAGE_IGNORE_INSERTS), IntPtr.Zero, messageId, languageId, out buffer, 0, null);
-
             var message = Marshal.PtrToStringAnsi(buffer, (int)length);
-            //var message = buffer.ToString();
-
-            // LANG_NEUTRAL          SUBLANG_DEFAULT
-
-            /*
-            LPVOID lpMsgBuf;
-
-            FormatMessage(
-
-                FORMAT_MESSAGE_ALLOCATE_BUFFER |
-
-                FORMAT_MESSAGE_FROM_SYSTEM |
-
-                FORMAT_MESSAGE_IGNORE_INSERTS,
-
-                NULL,
-
-                GetLastError(),
-
-                MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), // 既定の言語
-
-                (LPTSTR) &lpMsgBuf,
-
-                0,
-
-                NULL
-
-            );
-
-            // lpMsgBuf 内のすべての挿入シーケンスを処理する。
-            // ...
-
-            // 文字列を表示する。
-            MessageBox(NULL, (LPCTSTR)lpMsgBuf, "Error", MB_OK | MB_ICONINFORMATION);
-
-            // バッファを解放する。
-            LocalFree(lpMsgBuf);
-            */
+            Assert.False(length <= 0, message);
         }
 
         [Fact()]

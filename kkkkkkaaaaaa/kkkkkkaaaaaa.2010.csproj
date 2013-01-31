@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="Data\Common\KandaDbProviderFactory.cs" />
     <Compile Include="Data\KandaParameterMappingAttribute.cs" />
+    <Compile Include="Runtime\InteropServices\AdvApi32.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32.delegates.cs" />
     <Compile Include="Runtime\InteropServices\_SYSTEM_INFO.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32.cs" />

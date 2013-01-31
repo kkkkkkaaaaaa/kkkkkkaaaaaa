@@ -145,18 +145,14 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
 
             try
             {
-                //module = Kernel32.LoadLibrary(@"kernel32.dll");
                 module = Kernel32.LoadLibrary(fileName.LocalPath);
 
-                //var api = Kernel32.GetProcAddress(module, @"GetNativeSystemInfo");
                 var api = Kernel32.GetProcAddress(module, @"Function");
                 Assert.NotEqual(IntPtr.Zero, api);
 
-                //var d = (GetNativeSystemInfo)Marshal.GetDelegateForFunctionPointer(api, typeof(GetNativeSystemInfo));
                 var d = (Function)Marshal.GetDelegateForFunctionPointer(api, typeof(Function));
                 var info = default(_SYSTEM_INFO);
                 d.Invoke();
-                //d.Invoke(out info);
             }
             finally
             {
@@ -164,42 +160,10 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             }
         }
 
-        private delegate void Function();
-
-
-        /*
-         * C:\csvn\bin\
-         * ;C:\csvn\Python25\
-         * ;%SystemRoot%\system32
-         * ;%SystemRoot%;%SystemRoot%\System32\Wbem
-         * ;C:\Program Files\Justsystems\JSLIB32
-         * ;C:\Program Files\Common Files\Roxio Shared\10.0\DLLShared\
-         * ;C:\Program Files\Common Files\Roxio Shared\DLLShared\
-         * ;C:\Program Files\Common Files\Roxio Shared\DLLShared\
-         * ;C:\Program Files\Common Files\Roxio Shared\10.0\DLLShared\
-         * ;\C:\Program Files\Sony\VAIO One Touch Startup Tool
-         * ;C:\Program Files\Intel\WiFi\bin\
-         * ;c:\Program Files\Microsoft SQL Server\90\Tools\binn\
-         * ;C:\Program Files\Microsoft SQL Server\80\Tools\Binn\
-         * ;C:\Program Files\Microsoft SQL Server\90\DTS\Binn\
-         * ;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\
-         * ;C:\Program Files\Apache\Ant\1.8.2\bin\
-         * ;C:\Program Files\Microsoft Windows Performance Toolkit\
-         * ;C:\Program Files\Adobe\Adobe Flash CS4
-         * ;C:\Program Files\EmEditor
-         * ;c:\Program Files\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\
-         * ;C:\Program Files\TortoiseSVN\bin
-         * ;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\
-         * ;c:\Program Files\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\
-         * ;c:\Program Files\Microsoft SQL Server\110\DTS\Binn\
-         * ;C:\Program Files\Microsoft\Web Platform Installer\
-         * ;C:\Program Files\QuickTime\QTSystem\
-         * ;C:\Program Files\TortoiseGit\bin
-         * ;C:\Program Files\Git\cmd
-         */
-
         #region Private members...
 
+        /// <summary></summary>
+        private delegate void Function();
         /// <summary></summary>
         private readonly Uri _testData = new Uri(new Uri(AppDomain.CurrentDomain.BaseDirectory), @"../../TestData/");
 

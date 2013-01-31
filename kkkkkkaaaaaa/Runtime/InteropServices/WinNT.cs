@@ -35,15 +35,27 @@
     // http://msdn.microsoft.com/ja-jp/library/e765dyyy%28v=vs.90%29.aspx
     public static class WinNT
     {
-        // 
-
         /// <summary>
-        /// #define MAKELANGID(p, s) ((((WORD)(s)) &lt;&lt; 10) | (WORD)(p))
+        /// #define MAKELANGID(p, s)    ((((WORD)(s)) &lt;&lt; 10) | (WORD)(p))
         /// </summary>
         /// <param name="p"></param>
         /// <param name="s"></param>
         /// <returns></returns>
         public static uint MAKELANGID(uint p, uint s) { return ((s << 10) | (p)); }
+        
+        /// <summary>
+        /// PRIMARYLANGID(lgid)     ((WORD)(lgid) & 0x3ff)
+        /// </summary>
+        /// <param name="lgid"></param>
+        /// <returns></returns>
+        public static uint PRIMARYLANGID(uint lgid) { return (lgid & 0x3ff); }
+
+        /// <summary>
+        /// SUBLANGID(lgid)     ((WORD)(lgid) >> 10)
+        /// </summary>
+        /// <param name="lgid"></param>
+        /// <returns></returns>
+        public static uint SUBLANGID(uint lgid) { return (lgid >> 10); }
 
 
         //
@@ -502,5 +514,22 @@
         public const uint FILE_ATTRIBUTE_NOT_CONTENT_INDEXED    = 0x00002000;
         public const uint FILE_ATTRIBUTE_ENCRYPTED              = 0x00004000;
         public const uint FILE_ATTRIBUTE_VIRTUAL                = 0x00010000;
+
+        public const int IS_TEXT_UNICODE_ASCII16                = 0x0001;
+        public const int IS_TEXT_UNICODE_REVERSE_ASCII16        = 0x0010;
+        public const int IS_TEXT_UNICODE_STATISTICS             = 0x0002;
+        public const int IS_TEXT_UNICODE_REVERSE_STATISTICS     = 0x0020;
+        public const int IS_TEXT_UNICODE_CONTROLS               = 0x0004;
+        public const int IS_TEXT_UNICODE_REVERSE_CONTROLS       = 0x0040;
+        public const int IS_TEXT_UNICODE_SIGNATURE              = 0x0008;
+        public const int IS_TEXT_UNICODE_REVERSE_SIGNATURE      = 0x0080;
+        public const int IS_TEXT_UNICODE_ILLEGAL_CHARS          = 0x0100;
+        public const int IS_TEXT_UNICODE_ODD_LENGTH             = 0x0200;
+        public const int IS_TEXT_UNICODE_DBCS_LEADBYTE          = 0x0400;
+        public const int IS_TEXT_UNICODE_NULL_BYTES             = 0x1000;
+        public const int IS_TEXT_UNICODE_UNICODE_MASK           = 0x000F;
+        public const int IS_TEXT_UNICODE_REVERSE_MASK           = 0x00F0;
+        public const int IS_TEXT_UNICODE_NOT_UNICODE_MASK       = 0x0F00;
+        public const int IS_TEXT_UNICODE_NOT_ASCII_MASK         = 0xF000;
     }
 }

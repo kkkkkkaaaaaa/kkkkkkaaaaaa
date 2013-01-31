@@ -86,6 +86,7 @@
     <Compile Include="Repositories\KandaXunitRepositoryFacts.cs" />
     <Compile Include="Repositories\MembershipsRepositoryFacts.cs" />
     <Compile Include="Repositories\UsersRepositoryFacts.cs" />
+    <Compile Include="Runtime\InteropServices\AdvApi32Facts.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32Facts.cs" />
     <Compile Include="Runtime\InteropServices\MarshalFacts.cs" />
     <Compile Include="SystemFacts.cs" />

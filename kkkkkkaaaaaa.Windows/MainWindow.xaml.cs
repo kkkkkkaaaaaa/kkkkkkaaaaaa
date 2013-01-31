@@ -23,5 +23,10 @@ namespace kkkkkkaaaaaa.Windows
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            throw new Exception(@"MainWindow.button1_Click()");
+        }
     }
 }

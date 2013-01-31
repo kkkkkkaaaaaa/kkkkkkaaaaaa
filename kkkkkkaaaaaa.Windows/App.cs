@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace kkkkkkaaaaaa.Windows
 {
@@ -34,7 +35,7 @@ namespace kkkkkkaaaaaa.Windows
             // 終了
             mutex.ReleaseMutex();
 
-            return run;
+            return 0;
         }
 
         #region Private members...
@@ -70,7 +71,24 @@ namespace kkkkkkaaaaaa.Windows
 
             // イベント
             App._app.Startup += App._app_Startup;
+            App._app.DispatcherUnhandledException += App._app_DispatcherUnhandledException;
             App._app.Exit += App._app_Exit;
+            AppDomain.CurrentDomain.UnhandledException += App.CurrentDomain_UnhandledException;
+        }
+
+        private static void _app_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            //
+            var exception = e.Exception;
+
+            //e.Handled = true;
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            //
+
+            var exception = e.ExceptionObject;
         }
 
         /// <summary></summary>

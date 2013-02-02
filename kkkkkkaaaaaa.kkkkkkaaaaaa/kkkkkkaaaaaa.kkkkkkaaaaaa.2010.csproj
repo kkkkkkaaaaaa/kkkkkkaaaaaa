@@ -186,6 +186,7 @@
     <Compile Include="Data\TableDataGateways\KandaTableDataGateway.cs" />
     <Compile Include="Data\TableDataGateways\MembershipsGateway.cs" />
     <Compile Include="Data\Repositories\UsersRepository.cs" />
+    <Compile Include="Web\Mvc\KandaRazorViewEngine.cs" />
     <Compile Include="Web\Security\KandaMembershipProvider.cs" />
     <Compile Include="Web\Security\KandaMembershipUser.cs" />
     <Compile Include="Web\Security\KandaRoleProvider.cs" />
@@ -196,9 +197,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Web\Mvc\" />
     <Folder Include="Web\Routing\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

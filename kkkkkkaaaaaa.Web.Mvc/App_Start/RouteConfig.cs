@@ -13,11 +13,17 @@ namespace kkkkkkaaaaaa.Web.Mvc
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(@"Default", @"", new {controller = @"Default", action = @"Default"});
+            routes.MapRoute(@"Default2", @"Default", new {controller = @"Default", action = @"Default"});
+            routes.MapRoute(@"Default3", @"Default/Default", new {controller = @"Default", action = @"Default"});
+
+            /*
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            */
         }
     }
 }

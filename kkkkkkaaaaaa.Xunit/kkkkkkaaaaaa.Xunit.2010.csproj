@@ -89,6 +89,7 @@
     <Compile Include="Runtime\InteropServices\AdvApi32Facts.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32Facts.cs" />
     <Compile Include="Runtime\InteropServices\MarshalFacts.cs" />
+    <Compile Include="Security\KandaSecureStringFacts.cs" />
     <Compile Include="SystemFacts.cs" />
   </ItemGroup>
   <ItemGroup>

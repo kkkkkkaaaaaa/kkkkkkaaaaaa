@@ -110,7 +110,6 @@
     <Compile Include="Security\Cryptography\KandaHashAlgorithm.cs" />
     <Compile Include="Security\Cryptography\KandaSHA256CryptoServiceProvider.cs" />
     <Compile Include="Security\KandaSecureString.2008.cs" />
-    <Compile Include="Security\KandaSecureString.2005.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

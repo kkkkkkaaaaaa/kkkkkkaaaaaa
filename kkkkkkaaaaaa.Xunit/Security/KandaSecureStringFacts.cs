@@ -11,8 +11,13 @@ namespace kkkkkkaaaaaa.Xunit.Security
         [Fact()]
         public void AppendStringFact()
         {
-            var secure = new SecureString();
-            secure.AppendChars(@"a");
+            const string S = @"朧";
+            var secureString = new SecureString();
+            secureString.AppendChars(S);
+
+            var s = secureString.GetString();
+
+            Assert.Equal(S, s);
         }
     }
 }

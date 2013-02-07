@@ -20,13 +20,17 @@ namespace kkkkkkaaaaaa.Security
             return secureString;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="secureString"></param>
+        /// <returns></returns>
         public static string GetString(this SecureString secureString)
         {
             var source = default(IntPtr);
 
             try
             {
-                //source = Marshal.SecureStringToCoTaskMemUnicode(secureString);
                 source = Marshal.SecureStringToGlobalAllocUnicode(secureString);
 
                 var destination = new char[secureString.Length];
@@ -37,7 +41,6 @@ namespace kkkkkkaaaaaa.Security
             finally
             {
                 if (source != IntPtr.Zero) { Marshal.ZeroFreeGlobalAllocUnicode(source); }
-                //if (source != IntPtr.Zero) { Marshal.ZeroFreeCoTaskMemUnicode(source); }
             }
         }
     }

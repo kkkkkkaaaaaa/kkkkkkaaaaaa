@@ -116,6 +116,24 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
             return (int)result.Value;
         }
 
+        public static int Delete(DbConnection connection, DbTransaction transaction)
+        {
+            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
+
+            command.CommandText = @"usp_DeleteMemberships";
+
+            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("id", DBNull.Value));
+
+            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
+            command.Parameters.Add(result);
+
+            var affected = command.ExecuteNonQuery();
+
+            return affected;
+
+            return (int)result.Value;
+        }
+
         /// <summary>
         /// 
         /// </summary>

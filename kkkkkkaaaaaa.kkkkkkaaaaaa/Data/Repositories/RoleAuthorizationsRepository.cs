@@ -65,5 +65,12 @@ namespace kkkkkkaaaaaa.Data.Repositories
 
             return (0 <= deleted);
         }
+
+        internal bool Truncate(DbConnection connection, DbTransaction transaction)
+        {
+            var error = RoleAuthorizationsGateway.Truncate(connection, transaction);
+
+            return (error == 0);
+        }
     }
 }

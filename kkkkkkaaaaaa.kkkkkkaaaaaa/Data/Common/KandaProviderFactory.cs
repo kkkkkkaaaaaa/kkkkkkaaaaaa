@@ -2,9 +2,8 @@
 using System.Data;
 using System.Data.Common;
 using System.Threading;
-using kkkkkkaaaaaa.Data.Common;
 
-namespace kkkkkkaaaaaa.Data
+namespace kkkkkkaaaaaa.Data.Common
 {
     /// <summary>
     /// 

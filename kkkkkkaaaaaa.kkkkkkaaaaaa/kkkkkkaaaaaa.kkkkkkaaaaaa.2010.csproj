@@ -147,7 +147,7 @@
     <Compile Include="DataTransferObjects\UserHistoryAttributesCriteria.cs" />
     <Compile Include="DataTransferObjects\UserHistoryEntity.cs" />
     <Compile Include="DataTransferObjects\UsersCriteria.cs" />
-    <Compile Include="Data\KandaProviderFactory.cs" />
+    <Compile Include="Data\Common\KandaProviderFactory.cs" />
     <Compile Include="DataTransferObjects\MembershipUserEntity.cs" />
     <Compile Include="Data\Repositories\AuthorizationsRepository.cs" />
     <Compile Include="Data\Repositories\MembershipAuthorizationsRepository.cs" />
@@ -200,6 +200,11 @@
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="TextTemplates\Database\" />
+    <Folder Include="TextTemplates\DataTransferObjects\" />
+    <Folder Include="TextTemplates\Data\Repositories\" />
+    <Folder Include="TextTemplates\Data\TableDataGateway\" />
+    <Folder Include="TextTemplates\DomainModels\" />
     <Folder Include="Web\Routing\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

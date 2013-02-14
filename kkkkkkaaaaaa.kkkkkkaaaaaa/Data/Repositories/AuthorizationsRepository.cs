@@ -99,6 +99,13 @@ namespace kkkkkkaaaaaa.Data.Repositories
             return (deleted == 1);
         }
 
+        internal bool Delete(DbConnection connection, DbTransaction transaction)
+        {
+            var error = AuthorizationsGateway.Delete(connection, transaction);
+
+            return (error == 0);
+        }
+
         /// <summary>
         /// 
         /// </summary>

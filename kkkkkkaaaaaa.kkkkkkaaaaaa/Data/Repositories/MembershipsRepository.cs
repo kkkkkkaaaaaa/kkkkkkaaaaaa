@@ -179,6 +179,19 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        internal bool Delete(DbConnection connection, DbTransaction transaction)
+        {
+            var deleted = MembershipsGateway.Delete(connection, transaction);
+
+            return (0 <= deleted);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="connction"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>

@@ -13,6 +13,7 @@
 		@insert		VARCHAR(MAX)
 		, @into		VARCHAR(MAX)
 		, @values	VARCHAR(MAX)
+		, @identity	NUMERIC(38, 0)
 		, @count	INT
 
 	-- INSERT
@@ -43,9 +44,10 @@
 	-- 実行
 	EXECUTE (@insert + @into + @values)
 
-	-- 戻り値
-	SET @count = @@ROWCOUNT
-
 	IF (0 < @id) SET IDENTITY_INSERT Memberships OFF
+	
+	-- 戻り値
+	SET @identity = SCOPE_IDENTITY()
+	SET @identity = IDENT_CURRENT(N'Memberships')
 
-	RETURN @count
+	RETURN @identity

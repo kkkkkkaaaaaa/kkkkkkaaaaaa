@@ -44,9 +44,10 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public bool Create(UserEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            var created = UsersGateway.Insert(entity, connection, transaction);
+            int affected;
+            var error = UsersGateway.Insert(entity, connection, transaction, out affected);
 
-            return (created == 1);
+            return (affected == 1);
         }
 
         /// <summary>

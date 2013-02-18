@@ -15,7 +15,8 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
         //[Fact(Skip = @"KandaDomainModelFacts.ResetFact()")]
         public void ResetFact()
         {
-            Assert.True(KandaDomainModel.Reset());
+            var reset = KandaDomainModel.Reset();
+            Assert.True(reset);
         }
     }
 }

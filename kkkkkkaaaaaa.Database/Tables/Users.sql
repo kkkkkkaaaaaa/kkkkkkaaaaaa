@@ -6,6 +6,6 @@
     [Description] NVARCHAR (MAX)  NOT NULL,
     [Enabled]     BIT             NOT NULL,
     [CreatedOn]   DATETIME2 (7)   NOT NULL,
-    [UpdatedOn]   DATETIME2 (7)   NOT NULL,
-    CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([ID] ASC)
+    [UpdatedOn]   DATETIME2 (7)   NOT NULL, 
+    CONSTRAINT [PK_Users] PRIMARY KEY ([ID])
 );

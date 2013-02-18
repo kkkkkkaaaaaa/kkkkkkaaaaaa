@@ -18,7 +18,7 @@ namespace kkkkkkaaaaaa.Security.Cryptography
             var buffer = encoding.GetBytes(s);
             var hash = algorithm.ComputeHash(buffer, 0, buffer.Length);
 
-            return Convert.ToString(hash);
+            return encoding.GetString(hash, 0, hash.Length);
         }
     }
 }

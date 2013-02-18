@@ -122,8 +122,17 @@
     <Build Include="Stored Procedures\usp_UpdateMemberships.sql" />
     <Build Include="Stored Procedures\usp_StoredProcedure.sql" />
     <Build Include="Tables\Table.sql" />
+    <Build Include="Stored Procedures\usp_DeleteAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_InsertTable.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="kkkkkkaaaaaa.Database.2010.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="..\..\..\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\SQLDB\Extensions\SqlServer\110\SqlSchemas\master.dacpac">
+      <HintPath>..\..\..\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\SQLDB\Extensions\SqlServer\110\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
   </ItemGroup>
 </Project>

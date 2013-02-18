@@ -2,10 +2,13 @@
 using System.Data.Common;
 using System.Linq;
 using System.Security;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.Security;
 using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.TableDataGateways;
 using kkkkkkaaaaaa.DataTransferObjects;
+using kkkkkkaaaaaa.Security.Cryptography;
 using kkkkkkaaaaaa.Web.Security;
 
 namespace kkkkkkaaaaaa.Data.Repositories
@@ -121,9 +124,12 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            var created = MembershipsGateway.Insert(entity, connection, transaction);
+            var hash = KandaSHA5126CryptoServiceProvider.ComputeHash(entity.Password, Encoding.Unicode);
+            entity.Password = hash;
 
-            return (created == 1);
+            var error = MembershipsGateway.Insert(entity, connection, transaction);
+
+            return (error == 0);
         }
 
         /// <summary>

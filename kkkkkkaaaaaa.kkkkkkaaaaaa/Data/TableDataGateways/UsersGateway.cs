@@ -39,8 +39,9 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <param name="entity"></param>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
+        /// <param name="affected"></param>
         /// <returns></returns>
-        public static int Insert(UserEntity entity, DbConnection connection, DbTransaction transaction)
+        public static int Insert(UserEntity entity, DbConnection connection, DbTransaction transaction, out int affected)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
 
@@ -48,11 +49,14 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
 
             KandaDbDataMapper.MapToParameters(command, entity);
 
+            var identity = KandaTableDataGateway._factory.CreateParameter("@identity", DbType.Decimal, sizeof(decimal), ParameterDirection.InputOutput, DBNull.Value);
+            command.Parameters.Add(identity);
+
             var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);
 
-            command.ExecuteNonQuery();
-
+            affected = command.ExecuteNonQuery();
+            
             return (int)result.Value;
         }
 

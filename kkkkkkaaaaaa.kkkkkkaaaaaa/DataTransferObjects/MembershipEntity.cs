@@ -12,7 +12,6 @@ namespace kkkkkkaaaaaa.DataTransferObjects
         /// </summary>
         public MembershipEntity()
         {
-            this.ID = 0;
             this.Enabled = true;
         }
 

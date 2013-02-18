@@ -49,4 +49,74 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="3e31e829-80a9-4bab-9c23-499f2bf84f53" ChangeDateTime="02/13/2013 05:03:50">
+    <Property Name="ElementName" Value="[dbo].[FK_MembershipAuthorizations_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[MembershipAuthorizations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_MembershipAuthorizations_Memberships]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a9da2c9c-f226-4ce0-8570-53476cfe2d75" ChangeDateTime="02/13/2013 05:03:58">
+    <Property Name="ElementName" Value="[dbo].[FK_MembershipAuthorizations_ToTable_1]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[MembershipAuthorizations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_MembershipAuthorizations_Authorizations]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="29b1df74-75e5-4cdc-ab35-2ffaf726d932" ChangeDateTime="02/13/2013 05:05:42">
+    <Property Name="ElementName" Value="[dbo].[FK_RoleAuthorizations_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[RoleAuthorizations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_RoleAuthorizations_Roles]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="28614626-4984-4d0b-8a9e-250d0873a7ab" ChangeDateTime="02/13/2013 05:06:00">
+    <Property Name="ElementName" Value="[dbo].[FK_RoleAuthorizations_ToTable_1]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[RoleAuthorizations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_RoleAuthorizations_Authorizations]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5cc76cf9-cd97-43f3-98d5-c256978fee94" ChangeDateTime="02/13/2013 06:44:21">
+    <Property Name="ElementName" Value="[dbo].[FK_UserHistoryAttributes_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[UserHistoryAttributes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_UserHistoryAttributes_UserHistories]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e7818eb9-d9da-43b4-abeb-09af70bf8799" ChangeDateTime="02/16/2013 09:00:36">
+    <Property Name="ElementName" Value="[dbo].[Table].[VarBinary]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Table]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="VARBINARY" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="517a0cdb-4df0-4356-b883-4c73e2ac662f" ChangeDateTime="02/16/2013 09:00:42">
+    <Property Name="ElementName" Value="[dbo].[Table].[DateTime]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Table]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DATETIME" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a2fc35f8-3d63-46f8-8093-f782a61c9ae7" ChangeDateTime="02/16/2013 09:00:44">
+    <Property Name="ElementName" Value="[dbo].[Table].[numeric]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Table]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NUMERIC" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8ace2d52-0f16-4831-a029-b1dab1fe3731" ChangeDateTime="02/16/2013 12:29:57">
+    <Property Name="ElementName" Value="[dbo].[Table].[DATETIME]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Table]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DATETIME2" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a1fcc37f-cdb5-43fa-8078-d5c8df816229" ChangeDateTime="02/16/2013 12:30:40">
+    <Property Name="ElementName" Value="[dbo].[Table].[INT]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Table]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BIT" />
+  </Operation>
 </Operations>

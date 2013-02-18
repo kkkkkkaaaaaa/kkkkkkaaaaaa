@@ -23,7 +23,7 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             }
             finally
             {
-                
+                if (authorization != null) { authorization.Delete(); }
             }
         }
     }

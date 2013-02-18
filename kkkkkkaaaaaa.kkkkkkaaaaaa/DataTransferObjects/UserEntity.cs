@@ -41,5 +41,8 @@ namespace kkkkkkaaaaaa.DataTransferObjects
 
         [KandaDbParameterMapping("@updatedOn")]//, DbType = DbType.DateTime2)]
         public DateTime UpdatedOn { get; set; }
+
+        //[KandaDbParameterMapping("@identity", Direction = ParameterDirection.Output)]
+        //public decimal Identity { get; set; }
     }
 }

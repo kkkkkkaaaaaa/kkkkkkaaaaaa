@@ -53,8 +53,9 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <param name="entity"></param>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
+        /// <param name="identity"></param>
         /// <returns></returns>
-        public static int Insert(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
+        public static int Insert(MembershipEntity entity, DbConnection connection, DbTransaction transaction/*, out decimal identity*/)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
 
@@ -62,12 +63,17 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
 
             KandaDbDataMapper.MapToParameters(command, entity);
 
-            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
-            command.Parameters.Add(result);
+            var identity = KandaTableDataGateway._factory.CreateParameter("@identity", DbType.Decimal, sizeof(decimal), ParameterDirection.Output, DBNull.Value);
+            command.Parameters.Add(identity);
 
-            command.ExecuteNonQuery();
-            
-            return (int)result.Value;
+            var error = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
+            command.Parameters.Add(error);
+
+            var affected = command.ExecuteNonQuery();
+
+            entity.ID = decimal.ToInt64((decimal)identity.Value);
+
+            return (int)error.Value;
         }
 
         /// <summary>
@@ -111,7 +117,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
             var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);
 
-            command.ExecuteNonQuery();
+            var affected = command.ExecuteNonQuery();
 
             return (int)result.Value;
         }

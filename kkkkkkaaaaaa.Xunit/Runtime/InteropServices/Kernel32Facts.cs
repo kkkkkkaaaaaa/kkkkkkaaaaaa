@@ -7,7 +7,7 @@ using kkkkkkaaaaaa.Runtime.InteropServices;
 
 namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
 {
-    public class Kernel32Facts
+    public class Kernel32Facts : KandaXunitFacts
     {
         [Fact()]
         public void GetLastErrorFact()
@@ -74,7 +74,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
         [Fact()]
         public void LoadLibraryFact()
         {
-            var fileName = new Uri(this._testData, @"./kkkkkkaaaaaa.testdata.library/kkkkkkaaaaaa.testdata.library.dll");
+            var fileName = new Uri(this.TestData, @"./kkkkkkaaaaaa.testdata.library/kkkkkkaaaaaa.testdata.library.dll");
 
             var module = IntPtr.Zero;
 
@@ -111,7 +111,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
         [Fact()]
         public void FreeLibraryFact()
         {
-            var fileName = new Uri(this._testData, @"./kkkkkkaaaaaa.testdata.library/kkkkkkaaaaaa.testdata.library.dll");
+            var fileName = new Uri(this.TestData, @"./kkkkkkaaaaaa.testdata.library/kkkkkkaaaaaa.testdata.library.dll");
             var module = Kernel32.LoadLibrary(fileName.LocalPath);
 
             var result = Kernel32.FreeLibrary(module);
@@ -139,7 +139,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
         [Fact()]
         public void GetProcAddressFact()
         {
-            var fileName = new Uri(this._testData, @"./kkkkkkaaaaaa.testdata.library/kkkkkkaaaaaa.testdata.library.dll");
+            var fileName = new Uri(this.TestData, @"./kkkkkkaaaaaa.testdata.library/kkkkkkaaaaaa.testdata.library.dll");
 
             var module = IntPtr.Zero;
 
@@ -164,8 +164,6 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
 
         /// <summary></summary>
         private delegate void Function();
-        /// <summary></summary>
-        private readonly Uri _testData = new Uri(new Uri(AppDomain.CurrentDomain.BaseDirectory), @"../../TestData/");
 
         #endregion
     }

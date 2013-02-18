@@ -1,19 +1,19 @@
-﻿CREATE PROCEDURE usp_DeleteMemberships
+﻿CREATE PROCEDURE usp_DeleteAuthorizations
 	-- パラメーター
-	@id		BIGINT
+	@id		BIGINT	= -1
 AS
 	-- 変数
 	DECLARE
 		@delete		NVARCHAR(MAX)
 		, @from		NVARCHAR(MAX)
 		, @where	NVARCHAR(MAX)
-		, @count	INT
+		, @error	INT
 
 	-- DELETE
 	SET @delete = N'DELETE'
 
 	-- FROM
-	SET @from = N' FROM Memberships'
+	SET @from = N' FROM Authorizations'
 
 	-- WHERE
 	SET @where = N''
@@ -26,15 +26,7 @@ AS
 	-- 実行
 	EXECUTE (@delete + @from + @where)
 
-	/*
-	-- DELETE
-	DELETE
-		Memberships
-	WHERE
-		ID = @id
-	*/
+	-- エラー
+	SET @error = @@ERROR
 
-	-- 結果
-	SET @count = @@ROWCOUNT
-
-	RETURN @count
+	RETURN @error

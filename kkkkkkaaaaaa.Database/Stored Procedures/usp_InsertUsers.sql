@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE usp_InsertUsers (
-	-- パラメーター
+	-- 入力パラメーター
 	@id					BIGINT
 	, @familyName		NVARCHAR(1024)
 	, @givenName		NVARCHAR(1024)
@@ -8,7 +8,7 @@
 	, @enabled			BIT
 	, @createdOn		DATETIME2(7)
 	, @updatedOn		DATETIME2(7)
-	-- 出力
+	-- 出力パラメーター
 	, @identity			NUMERIC(38, 0) = -1	OUTPUT
 ) AS
 	-- 変数
@@ -16,7 +16,9 @@
 		@insert			VARCHAR(MAX)
 		, @into			VARCHAR(MAX)
 		, @values		VARCHAR(MAX)
-		, @output		VARCHAR(MAX)
+		, @stmt			VARCHAR(MAX)
+		, @params		VARCHAR(MAX)
+		, @result		VARCHAR(MAX)
 		, @error		INT
 
 	-- INSERT
@@ -44,19 +46,26 @@
 		+ N', ''' + CAST(@createdOn AS NVARCHAR(27)) + ''''
 		+ N', ''' + CAST(@createdOn AS NVARCHAR(27)) + ''''
 	IF (0 < @id)	SET @values = @values + ', ' + CAST(@id AS NVARCHAR)
-	SET @values = @values + N')'
+	SET @values = @values + N');'
+	
+	-- 宣言
+	SET @stmt = N' SET @identity = SCOPE_IDENTITY();'
+	SET @stmt = (@insert + @into + @values) + @stmt
 
-	SET @output = N'; SELECT SCOPE_IDENTITY();'
-
+	-- パラメーター
+	SET @params = N'@id BIGINT, @familyName NVARCHAR(1024), @givenName NVARCHAR(1024), @additionalName NVARCHAR(1024) , @description NVARCHAR(MAX), '
+		+ N'@enabled BIT, @createdOn DATETIME2(7), @updatedOn DATETIME2(7) , @identity NUMERIC(38, 0) = -1 OUTPUT'
+		
 	-- 実行
 	IF (0 < @id)	SET IDENTITY_INSERT Users ON
-	EXECUTE (@insert + @into + @values)
-	SELECT SCOPE_IDENTITY()
+
+	EXECUTE @result = sp_executesql
+		@stmt
+		, @params
+		, @id = @id, @familyName = @familyName, @givenName = @givenName, @additionalName = @additionalName, @description = @description
+		, @enabled = @enabled, @createdOn = @createdOn, @updatedOn = @createdOn, @identity = @identity OUTPUT
+
 	IF (0 < @id)	SET IDENTITY_INSERT Users OFF
-
-	--IF (0 < @id)	SET @identity = @id
-	--ELSE			SET @identity = SCOPE_IDENTITY()
-
 
 	-- 結果
 	SET @error = @@ERROR

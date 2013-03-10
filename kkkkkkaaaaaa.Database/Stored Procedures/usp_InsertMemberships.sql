@@ -44,8 +44,8 @@
 	SET @values = @values + N');'
 
 	-- 宣言
-	SET @stmt = N'SET @identity = SCOPE_IDENTITY();'
-	SET @stmt = (@insert + @into + @values) + @stmt
+	SET @stmt = (@insert + @into + @values) + dbo.NL()
+		+ N'SET @identity = SCOPE_IDENTITY();'
 
 	-- パラメーター
 	SET @params = N'@id BIGINT, @name NVARCHAR(1024), @password NVARCHAR(128), @enabled BIT, @createdOn	DATETIME2, @updatedOn DATETIME2, @identity NUMERIC(38, 0) OUTPUT'
@@ -56,7 +56,7 @@
 		@stmt
 		, @params
 		, @id = @id, @name = @name, @password = @password, @enabled = @enabled, @createdOn = @createdOn, @updatedOn = @createdOn, @identity = @identity OUTPUT
-	IF (0 < @id) SET IDENTITY_INSERT Memberships OFF
+	IF (0 < @id)	SET IDENTITY_INSERT Memberships OFF
 	
 	-- 戻り値
 	SET @error = @@ERROR

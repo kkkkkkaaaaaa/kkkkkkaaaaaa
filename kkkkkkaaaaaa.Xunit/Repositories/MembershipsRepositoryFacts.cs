@@ -24,13 +24,13 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
+                var entity = new MembershipEntity() {Name = new Random().Next().ToString(), Password = @"", Enabled = true,};
+
                 var repository = new MembershipsRepository();
 
-                var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
-                repository.Create(new MembershipEntity() { Name = name, Password = @"", Enabled = true, }, connection, transaction);
+                repository.Create(entity, connection, transaction);
 
-                var id = repository.IdentCurrent(connection, transaction);
-                var found = repository.Find(id, connection, transaction);
+                var found = repository.Find(entity.ID, connection, transaction);
 
                 Assert.NotSame(MembershipEntity.Empty, found);
                 Assert.NotEqual(MembershipEntity.Empty, found);

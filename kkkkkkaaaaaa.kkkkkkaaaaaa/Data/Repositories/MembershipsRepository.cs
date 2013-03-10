@@ -77,7 +77,9 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public MembershipEntity Find(string name, string password, DbConnection connection, DbTransaction transaction)
         {
-            return this.Find(new MembershipsCriteria() { Name = name, Password = password, Enabled = true, }, connection, transaction);
+            var hash = KandaSHA5126CryptoServiceProvider.ComputeHash(password, Encoding.Unicode);
+
+            return this.Find(new MembershipsCriteria() { Name = name, Password = hash, Enabled = true, }, connection, transaction);
         }
 
         /// <summary>
@@ -129,7 +131,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
 
             var error = MembershipsGateway.Insert(entity, connection, transaction);
 
-            return (error == 0);
+            return (error == KandaTableDataGateway.NO_ERRORS);
         }
 
         /// <summary>

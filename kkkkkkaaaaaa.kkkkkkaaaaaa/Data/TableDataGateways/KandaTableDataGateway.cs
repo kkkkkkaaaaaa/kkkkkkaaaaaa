@@ -19,6 +19,11 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <summary>
         /// 
         /// </summary>
+        public const int NO_ERRORS = 0;
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="connction"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
@@ -34,6 +39,51 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
             command.ExecuteNonQuery();
 
             return (DateTime)result.Value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="count"></param>
+        /// <param name="connection"></param>
+        /// <returns></returns>
+        internal static string NewLine(int count, DbConnection connection)
+        {
+            var command = KandaTableDataGateway._factory.CreateCommand(connection);
+
+            // パラメーター
+            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@count", DbType.Int32, sizeof(int), ParameterDirection.Input, count));
+
+            // 戻り値
+            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.String, 0, ParameterDirection.ReturnValue, DBNull.Value);
+            command.Parameters.Add(result);
+
+            command.CommandText = @"NewLine";
+
+            command.ExecuteNonQuery();
+
+            return (string)result.Value;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <returns></returns>
+        internal static string NewLine(DbConnection connection)
+        {
+            var command = KandaTableDataGateway._factory.CreateCommand(connection);
+
+            // 戻り値
+            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.String, 0, ParameterDirection.ReturnValue, DBNull.Value);
+            command.Parameters.Add(result);
+
+            command.CommandText = @"NewLine";
+
+            command.ExecuteNonQuery();
+
+            return (string)result.Value;
         }
 
         #region Protected members...

@@ -24,7 +24,7 @@
     <DefaultCollation>Japanese_BIN2</DefaultCollation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>C:\Projects\kkkkkkaaaaaa\bin\kkkkkkaaaaaa.Database\Release\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <DebugType>none</DebugType>
@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>C:\Projects\kkkkkkaaaaaa\bin\kkkkkkaaaaaa.Database\Debug\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DebugSymbols>true</DebugSymbols>
@@ -55,60 +55,30 @@
     <Folder Include="Properties" />
     <Folder Include="Functions" />
     <Folder Include="Views" />
-    <Folder Include="Stored Procedures" />
     <Folder Include="Tables" />
+    <Folder Include="Stored Procedures" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SqlSchemaCompare.scmp" />
+    <None Include="Scripts\DropObjects.sql" />
+    <None Include="Scripts\ExecuteInsertEntities.sql" />
+    <None Include="Scripts\ExecuteBasicInsertEntities.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Memberships.sql" />
-    <Build Include="Stored Procedures\usp_InsertMemberships.sql" />
-    <Build Include="Stored Procedures\usp_SelectMemberships.sql" />
-    <Build Include="Views\MembershipView.sql" />
+    <Build Include="Views\MembershipsView.sql" />
     <Build Include="Tables\MembershipUsers.sql" />
     <Build Include="Tables\Users.sql" />
     <Build Include="Functions\GetUTCDateTime.sql" />
-    <Build Include="Stored Procedures\usp_DeleteMemberships.sql" />
     <Build Include="Functions\IdentCurrentTable.sql" />
-    <Build Include="Stored Procedures\usp_TruncateTable.sql" />
-    <Build Include="Stored Procedures\usp_InsertUsers.sql" />
-    <Build Include="Stored Procedures\usp_DeleteUsers.sql" />
-    <Build Include="Stored Procedures\usp_SelectMembershipUsers.sql" />
-    <Build Include="Stored Procedures\usp_InsertMembershipUsers.sql" />
-    <Build Include="Stored Procedures\usp_SelectUsers.sql" />
-    <Build Include="Stored Procedures\usp_DeleteMembershipUsers.sql" />
-    <Build Include="Stored Procedures\usp_DeleteMembershipRoles.sql" />
-    <Build Include="Stored Procedures\usp_DeleteMembershipAuthorizations.sql" />
     <Build Include="Tables\MembershipRoles.sql" />
     <Build Include="Tables\MembershipAuthorizations.sql" />
-    <Build Include="Stored Procedures\usp_SelectMembershipRoles.sql" />
-    <Build Include="Stored Procedures\usp_SelectMembershipAuthorizations.sql" />
-    <Build Include="Stored Procedures\usp_InsertMembershipRoles.sql" />
-    <Build Include="Stored Procedures\usp_InsertMembershipAuthorizations.sql" />
-    <Build Include="Stored Procedures\usp_DeleteRoleAuthorizations.sql" />
-    <Build Include="Stored Procedures\usp_InsertRoles.sql" />
     <Build Include="Tables\Roles.sql" />
-    <Build Include="Stored Procedures\usp_SelectRoles.sql" />
-    <Build Include="Stored Procedures\usp_SelectRoleAuthorizations.sql" />
     <Build Include="Tables\RoleAuthorizations.sql" />
-    <Build Include="Stored Procedures\usp_DeleteRoles.sql" />
-    <Build Include="Stored Procedures\usp_UpdateRoles.sql" />
     <Build Include="Tables\UserAttributes.sql" />
     <Build Include="Tables\UserHistories.sql" />
-    <Build Include="Stored Procedures\usp_InsertSelectUserHistories.sql" />
     <Build Include="Tables\UserHistoryAttributes.sql" />
-    <Build Include="Stored Procedures\usp_InsertSelectUserHistoryAttributes.sql" />
-    <Build Include="Stored Procedures\usp_SelectUserHistories.sql" />
-    <Build Include="Stored Procedures\usp_SelectUserAttributes.sql" />
-    <Build Include="Stored Procedures\usp_SelectUserHistoryAttributes.sql" />
-    <Build Include="Stored Procedures\usp_DeleteUserAttributes.sql" />
-    <Build Include="Stored Procedures\usp_UpdateUsers.sql" />
-    <Build Include="Stored Procedures\usp_UpdateAuthorizations.sql" />
-    <Build Include="Stored Procedures\usp_InsertAuthorizations.sql" />
-    <Build Include="Stored Procedures\usp_DeleteUserHistories.sql" />
-    <Build Include="Stored Procedures\usp_InsertUserAttributes.sql" />
-    <Build Include="Stored Procedures\usp_DeleteUserHistoryAttributes.sql" />
     <Build Include="Tables\Authorizations.sql" />
     <Build Include="Tables\UserAuthorizations.sql" />
     <Build Include="Tables\UserRoles.sql" />
@@ -119,11 +89,53 @@
     <Build Include="Tables\UserAttributeItems.sql" />
     <Build Include="Tables\PredicateTypes.sql" />
     <Build Include="Tables\Predicates.sql" />
-    <Build Include="Stored Procedures\usp_UpdateMemberships.sql" />
-    <Build Include="Stored Procedures\usp_StoredProcedure.sql" />
     <Build Include="Tables\Table.sql" />
     <Build Include="Stored Procedures\usp_DeleteAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_DeleteMembershipAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_DeleteMembershipRoles.sql" />
+    <Build Include="Stored Procedures\usp_DeleteMemberships.sql" />
+    <Build Include="Stored Procedures\usp_DeleteMembershipUsers.sql" />
+    <Build Include="Stored Procedures\usp_DeleteRoleAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_DeleteRoles.sql" />
+    <Build Include="Stored Procedures\usp_DeleteUserAttributes.sql" />
+    <Build Include="Stored Procedures\usp_DeleteUserHistories.sql" />
+    <Build Include="Stored Procedures\usp_DeleteUserHistoryAttributes.sql" />
+    <Build Include="Stored Procedures\usp_DeleteUsers.sql" />
+    <Build Include="Stored Procedures\usp_InsertAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_InsertMembershipAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_InsertMembershipRoles.sql" />
+    <Build Include="Stored Procedures\usp_InsertMemberships.sql" />
+    <Build Include="Stored Procedures\usp_InsertMembershipUsers.sql" />
+    <Build Include="Stored Procedures\usp_InsertRoles.sql" />
+    <Build Include="Stored Procedures\usp_InsertSelectUserHistories.sql" />
+    <Build Include="Stored Procedures\usp_InsertSelectUserHistoryAttributes.sql" />
     <Build Include="Stored Procedures\usp_InsertTable.sql" />
+    <Build Include="Stored Procedures\usp_InsertUserAttributes.sql" />
+    <Build Include="Stored Procedures\usp_InsertUsers.sql" />
+    <Build Include="Stored Procedures\usp_SelectMembershipAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_SelectMembershipRoles.sql" />
+    <Build Include="Stored Procedures\usp_SelectMemberships.sql" />
+    <Build Include="Stored Procedures\usp_SelectMembershipUsers.sql" />
+    <Build Include="Stored Procedures\usp_SelectRoleAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_SelectRoles.sql" />
+    <Build Include="Stored Procedures\usp_SelectUserAttributes.sql" />
+    <Build Include="Stored Procedures\usp_SelectUserHistories.sql" />
+    <Build Include="Stored Procedures\usp_SelectUserHistoryAttributes.sql" />
+    <Build Include="Stored Procedures\usp_SelectUsers.sql" />
+    <Build Include="Stored Procedures\usp_StoredProcedure.sql" />
+    <Build Include="Stored Procedures\usp_TruncateTable.sql" />
+    <Build Include="Stored Procedures\usp_UpdateAuthorizations.sql" />
+    <Build Include="Stored Procedures\usp_UpdateMemberships.sql" />
+    <Build Include="Stored Procedures\usp_UpdateRoles.sql" />
+    <Build Include="Stored Procedures\usp_UpdateUsers.sql" />
+    <Build Include="Tables\Entities.sql" />
+    <Build Include="Stored Procedures\usp_BasicInsertEntities.sql" />
+    <Build Include="Stored Procedures\usp_AdvancedInsertEntities.sql" />
+    <None Include="Scripts\ExecuteAdvancedInsertEntities.sql" />
+    <Build Include="Functions\NewLine.sql" />
+    <Build Include="Functions\NL.sql" />
+    <Build Include="Stored Procedures\usp_SelectMembershipsView.sql" />
+    <Build Include="Functions\SelectMembershipsViewCount.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="kkkkkkaaaaaa.Database.2010.refactorlog" />

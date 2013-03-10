@@ -7,5 +7,6 @@
     [Enabled]     BIT             NOT NULL,
     [CreatedOn]   DATETIME2 (7)   NOT NULL,
     [UpdatedOn]   DATETIME2 (7)   NOT NULL, 
-    CONSTRAINT [PK_Users] PRIMARY KEY ([ID])
+    CONSTRAINT [PK_Users] PRIMARY KEY ([ID]), 
+    CONSTRAINT [CK_Users_ID] CHECK (0 < [ID]) 
 );

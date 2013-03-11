@@ -167,6 +167,7 @@
     <Compile Include="Data\TableDataGateways\AuthorizationsGateway.cs" />
     <Compile Include="Data\TableDataGateways\MembershipAuthorizationsGateway.cs" />
     <Compile Include="Data\TableDataGateways\MembershipRolesGateway.cs" />
+    <Compile Include="Data\TableDataGateways\MembershipsViewGateway.cs" />
     <Compile Include="Data\TableDataGateways\MembershipUsersGateway.cs" />
     <Compile Include="Data\TableDataGateways\RoleAuthorizationsGateway.cs" />
     <Compile Include="Data\TableDataGateways\RolesGateway.cs" />
@@ -197,7 +198,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>usp_InsertTable.tt</DependentUpon>
     </Compile>
+    <Compile Include="Web\Mvc\FilterConfig.cs" />
     <Compile Include="Web\Mvc\KandaRazorViewEngine.cs" />
+    <Compile Include="Web\Mvc\RouteConfig.cs" />
+    <Compile Include="Web\Mvc\WebApiConfig.cs" />
     <Compile Include="Web\Security\KandaMembershipProvider.cs" />
     <Compile Include="Web\Security\KandaMembershipUser.cs" />
     <Compile Include="Web\Security\KandaRoleProvider.cs" />
@@ -206,8 +210,10 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>

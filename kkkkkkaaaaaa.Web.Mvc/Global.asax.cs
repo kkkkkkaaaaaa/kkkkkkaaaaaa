@@ -14,6 +14,9 @@ namespace kkkkkkaaaaaa.Web.Mvc._2010
     {
         protected void Application_Start()
         {
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new KandaRazorViewEngine());
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

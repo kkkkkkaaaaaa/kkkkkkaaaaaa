@@ -14,7 +14,9 @@ namespace kkkkkkaaaaaa.Web.Mvc
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(@"Index0", @"", new { controller = @"Index", action = @"Index", id = UrlParameter.Optional });
-            routes.MapRoute(@"Index1", @"Index", new { controller = @"Index", action = @"Index", id = UrlParameter.Optional });
+            routes.MapRoute(@"Index1", @"Index", new { controller = @"Home", action = @"Home", id = UrlParameter.Optional });
+
+            routes.MapRoute(@"Error", @"Error", new { controller = @"Stub", action="Error", });
 
             routes.MapRoute(
                 name: "Default",

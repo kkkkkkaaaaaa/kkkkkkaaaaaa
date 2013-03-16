@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 
 namespace kkkkkkaaaaaa.Web.Mvc.Controllers
 {
@@ -6,6 +7,7 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
     {
         public ViewResult Index()
         {
+            throw new Exception(@"From Index");
             return this.View();
         }
     }

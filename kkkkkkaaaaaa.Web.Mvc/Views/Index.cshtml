@@ -1,12 +1,21 @@
-﻿<!DOCTYPE html>
-
+﻿@model kkkkkkaaaaaa.DataTransferObjects.MembershipEntity
+@{
+    this.Layout = null;
+}<!DOCTYPE html>
 <html>
     <head>
-        <title>title</title>
+        <title>Title</title>
     </head>
+
     <body>
         <div>
-              
+            @Html.ActionLink("signin", "DoNothing", "Membership")
+            @using (Html.BeginForm("SignIn", "Membership", FormMethod.Post))
+            {
+                @Html.TextBox(@"name", @"aaaaa")
+                @Html.TextBox(@"password", @"bbbbb")
+                <input id="btnSignin" type="submit" value="Sign in"  />
+            }
         </div>
     </body>
 </html>

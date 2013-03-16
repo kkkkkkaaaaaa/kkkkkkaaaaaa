@@ -71,7 +71,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
 
             var affected = command.ExecuteNonQuery();
 
-            entity.ID = decimal.ToInt64((decimal)identity.Value);
+            entity.ID = Convert.ToInt64(identity.Value);
 
             return (int)error.Value;
         }
@@ -112,7 +112,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
 
             command.CommandText = @"usp_DeleteMemberships";
 
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("id", id));
+            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@id", id));
 
             var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);
@@ -148,7 +148,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <returns></returns>
         public static int Truncate(DbConnection connection, DbTransaction transaction)
         {
-            return KandaTableDataGateway.Truncate(MembershipsGateway.TABLE_NAME, connection, transaction);
+            throw new NotSupportedException(@"MembershipsGateway.Truncate()");
         }
     }
 }

@@ -44,10 +44,9 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public bool Create(UserEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            int affected;
-            var error = UsersGateway.Insert(entity, connection, transaction, out affected);
+            var error = UsersGateway.Insert(entity, connection, transaction);
 
-            return (affected == 1);
+            return (error == KandaTableDataGateway.NO_ERRORS);
         }
 
         /// <summary>

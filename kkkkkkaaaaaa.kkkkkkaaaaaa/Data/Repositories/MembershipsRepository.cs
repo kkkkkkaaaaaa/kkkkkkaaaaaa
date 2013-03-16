@@ -8,6 +8,7 @@ using System.Web.Security;
 using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.TableDataGateways;
 using kkkkkkaaaaaa.DataTransferObjects;
+using kkkkkkaaaaaa.Security;
 using kkkkkkaaaaaa.Security.Cryptography;
 using kkkkkkaaaaaa.Web.Security;
 
@@ -27,6 +28,17 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public MembershipEntity Find(MembershipsCriteria criteria, DbConnection connection, DbTransaction transaction)
         {
+            var password = criteria.Password;
+            if (password == null) { this.DoNothing(); }
+            else
+            {
+                if (criteria.Password is SecureString) { password = KandaSecureString.GetString((SecureString) criteria.Password); }
+
+                var hash = KandaSHA5126CryptoServiceProvider.ComputeHash((string)password, Encoding.Unicode);
+                password = hash;
+            }
+            criteria.Password = password;
+
             var reader = default(KandaDbDataReader);
 
             try
@@ -77,9 +89,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public MembershipEntity Find(string name, string password, DbConnection connection, DbTransaction transaction)
         {
-            var hash = KandaSHA5126CryptoServiceProvider.ComputeHash(password, Encoding.Unicode);
-
-            return this.Find(new MembershipsCriteria() { Name = name, Password = hash, Enabled = true, }, connection, transaction);
+            return this.Find(new MembershipsCriteria() { Name = name, Password = password, Enabled = true, }, connection, transaction);
         }
 
         /// <summary>
@@ -181,7 +191,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
         {
             var deleted = MembershipsGateway.Delete(id, connection, transaction);
 
-            return (deleted == 1);
+            return (deleted == KandaTableDataGateway.NO_ERRORS);
         }
 
         /// <summary>

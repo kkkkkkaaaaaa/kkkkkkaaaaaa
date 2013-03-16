@@ -54,12 +54,12 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
 
             KandaDbDataMapper.MapToParameters(command, entity);
 
-            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
-            command.Parameters.Add(result);
+            var error = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
+            command.Parameters.Add(error);
 
-            command.ExecuteNonQuery();
+            var affected = command.ExecuteNonQuery();
 
-            return (int)result.Value;
+            return (int)error.Value;
         }
 
         /// <summary>

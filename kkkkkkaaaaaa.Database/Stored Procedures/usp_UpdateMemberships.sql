@@ -6,24 +6,43 @@
 	, @enabled		BIT
 	, @createdOn	DATETIME2
 	, @updatedOn	DATETIME2
-) AS
+
+) AS BEGIN
+
 	-- 変数
 	DECLARE
-		@count	INT
+		@update		NVARCHAR(MAX)
+		, @set		NVARCHAR(MAX)
+		, @where	NVARCHAR(MAX)
+		, @stmt		NVARCHAR(MAX)
+		, @params	NVARCHAR(MAX)
+		, @result	INT
+		, @error	INT
 
 	-- UPDATE
-	UPDATE
-		Memberships
+	SET @update = N'UPDATE'
+		+ N' Memberships'
 
-	SET
-		[Password]		= @password
-		, [Enabled]		= @enabled
-		, UpdatedOn		= @updatedOn
+	-- SET
+	SET @set = N' SET'
+		+ N' [Password] = @password'
+		+ N', [Enabled] = @enabled'
+		+ N', UpdatedOn = @updatedOn'
 
-	WHERE 1 = 1
-		AND ID	= @id
+	-- WHERE
+	SET @where = N' WHERE'
+		+ N' ID = @id'
+
+	-- 実行
+	SET @stmt = (@update + @set + @where)
+	SET @params = N'@id BIGINT'
+	EXECUTE @result =  sp_executesql
+		@stmt
+		, @params
+		, @id = @id
 
 	-- 戻り値
-	SET @count = @@ROWCOUNT
+	SET @error = @@ERROR
 
-	RETURN @count
+	RETURN @error
+END

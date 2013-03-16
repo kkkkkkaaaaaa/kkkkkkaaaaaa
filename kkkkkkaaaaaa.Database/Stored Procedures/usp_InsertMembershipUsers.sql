@@ -1,11 +1,12 @@
 ﻿CREATE PROCEDURE [dbo].[usp_InsertMembershipUsers]
-	-- 
+	-- パラメーター
 	@membershipId	BIGINT
 	, @userId		BIGINT
 AS
-	-- 
+	-- 変数
 	DECLARE
-		@count	INT
+		@result		INT
+		, @error	INT
 
 	-- INSERT
 	INSERT
@@ -17,8 +18,8 @@ AS
 			, @userId
 		)
 
-	--
-	SET @count = @@ROWCOUNT
+	-- 結果
+	SET @error = @@ERROR
 
-	RETURN @count
+	RETURN @error
 

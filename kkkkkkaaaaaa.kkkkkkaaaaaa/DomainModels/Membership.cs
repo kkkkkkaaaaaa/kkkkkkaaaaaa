@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
-using System.Linq;
-using System.Threading;
-using kkkkkkaaaaaa.Data;
 using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
@@ -119,9 +116,10 @@ namespace kkkkkkaaaaaa.DomainModels
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                var found = ((0 < this.ID)
-                             ? KandaRepository.Memberships.Find(this.ID, connection, transaction)
-                             : KandaRepository.Memberships.Find(this._entity.Name, this._entity.Password, connection, transaction));
+                var found = default(MembershipEntity);
+                if (0 < this.ID) { found = KandaRepository.Memberships.Find(this.ID, connection, transaction); } // ID で 取得
+                else if (this._entity.Password == null) { found = KandaRepository.Memberships.Find(this._entity.Name, connection, transaction); } // 名前で取得
+                else { found = KandaRepository.Memberships.Find(this._entity.Name, this._entity.Password, connection, transaction); } // ログイン
 
                 KandaDataMapper.MapToObject(found, this._entity);
 

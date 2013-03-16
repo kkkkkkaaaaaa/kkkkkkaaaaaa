@@ -19,7 +19,7 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             try
             {
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
-                membership = new Membership(new MembershipEntity() { Name = name, });
+                membership = new Membership(new MembershipEntity() { Name = name, Password = @"", });
                 membership.Create();
 
                 Assert.True(Membership.Exists(name));
@@ -41,10 +41,11 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
                 membership = new Membership(new MembershipEntity() { Name = name, Password = @"", });
                 membership.Found += (sender, e) =>
-                {
-                    var actual = new Membership(new MembershipEntity() { Name = e.Name, Password = null, }).Find();
-                    Assert.True(0 < actual.ID);
-                };
+                                        {
+                                            var actual = new Membership(new MembershipEntity() { Name = e.Name, Password = null, })
+                                                    .Find();
+                                            Assert.True(0 < actual.ID);
+                                        };
                 membership.Create();
                 membership.Find();
             }
@@ -52,8 +53,6 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             {
                 if (membership != null) { membership.Delete(); }
             }
-
-            new Membership(new MembershipEntity() { Name = @"" });
         }
 
         [Fact()]
@@ -66,7 +65,7 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
                 membership = new Membership(new MembershipEntity());
 
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
-                membership = new Membership(new MembershipEntity() { Name = name, });
+                membership = new Membership(new MembershipEntity() { Name = name, Password = @"", });
                 membership.Found += (sender, e) => Assert.NotEqual(MembershipEntity.Empty, e);
                 membership.Create();
                 Assert.True(0 < membership.ID);
@@ -110,11 +109,16 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             try
             {
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
-                membership = new Membership(new MembershipEntity() { Name = name, });
+                membership = new Membership(new MembershipEntity() { Name = name, Password = @"", });
+                membership.Found += (_, __) =>
+                                        {
+                                            Assert.Equal(membership.ID, __.ID);
+                                        };
                 membership.Create();
-
                 Assert.True(0 < membership.ID);
+
                 Assert.True(membership.Exists());
+                membership.Find();
             }
             finally
             {
@@ -130,7 +134,8 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             try
             {
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
-                membership = new Membership(new MembershipEntity() {Name = name,}).Create();
+                membership = new Membership(new MembershipEntity() { Name = name, Password = @"", })
+                    .Create();
                 membership.Found += (sender, e) =>
                                         {
                                             e.Enabled = false;

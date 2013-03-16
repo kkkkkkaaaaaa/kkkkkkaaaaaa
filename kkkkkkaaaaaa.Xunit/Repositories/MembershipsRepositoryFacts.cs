@@ -120,6 +120,8 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
 
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
                 var password = new Random().Next().ToString(CultureInfo.InvariantCulture);
+
+
                 repository.Create(new MembershipEntity() { Name = name, Password = password, Enabled = true, CreatedOn = DateTime.Now, }, connection, transaction);
 
                 var id = repository.IdentCurrent(connection, transaction);
@@ -211,8 +213,11 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
 
                 transaction = connction.BeginTransaction(IsolationLevel.Serializable);
 
-                var repository = new MembershipsRepository();
-                Assert.True(repository.Truncate(connction, transaction));
+                Assert.Throws<NotSupportedException>(() =>
+                                                         {
+                                                             var repository = new MembershipsRepository();
+                                                             repository.Truncate(connction, transaction);
+                                                         });
             }
             finally
             {

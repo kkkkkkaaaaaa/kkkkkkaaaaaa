@@ -7,34 +7,31 @@ AS
 		@delete		NVARCHAR(MAX)
 		, @from		NVARCHAR(MAX)
 		, @where	NVARCHAR(MAX)
-		, @count	INT
+		, @stmt		NVARCHAR(MAX)
+		, @params	NVARCHAR(MAX)
+		, @result	INT
+		, @error	INT
 
 	-- DELETE
 	SET @delete = N'DELETE'
 
 	-- FROM
-	SET @from = N' FROM Memberships'
+	SET @from = N' FROM'
+		+ N' Memberships'
 
 	-- WHERE
-	SET @where = N''
-	IF (0 < @id) BEGIN
-		SET @where = @where + N' WHERE'
-		SET @where = @where + N' ID = ' + CAST(@id AS NVARCHAR(MAX))
-
-	END
+	SET @where = N' WHERE'
+		+ N' ID = @id'
 
 	-- 実行
-	EXECUTE (@delete + @from + @where)
-
-	/*
-	-- DELETE
-	DELETE
-		Memberships
-	WHERE
-		ID = @id
-	*/
+	SET @stmt = (@delete + @from + @where)
+	SET @params = N'@id BIGINT'
+	EXECUTE @result = sp_executesql
+		@stmt
+		, @params
+		, @id = @id
 
 	-- 結果
-	SET @count = @@ROWCOUNT
+	SET @error = @@ERROR
 
-	RETURN @count
+	RETURN

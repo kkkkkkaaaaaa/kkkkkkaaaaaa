@@ -153,7 +153,7 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
                 if (!memberships.Create(membership , connection, transaction)) { Assert.True(!true); }
 
                 // Users
-                var user = new UserEntity() { /*ID = @"", FamilyName = @"family name", GivenName = @"given name", AdditionalName = @"additional name", Description = @"description",*/ CreatedOn = membership.CreatedOn, };
+                var user = new UserEntity() { /*ID = @"",*/ FamilyName = @"family name", GivenName = @"given name", AdditionalName = @"additional name", Description = @"description", CreatedOn = membership.CreatedOn, Enabled = true, };
                 var users = new UsersRepository();
                 if (!users.Create(user, connection, transaction)) { Assert.True(!true); }
 

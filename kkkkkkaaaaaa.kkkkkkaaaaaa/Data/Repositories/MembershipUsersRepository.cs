@@ -74,7 +74,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
         {
             var error = MembershipUsersGateway.Insert(entity, connection, transaction);
 
-            return (error == 1);
+            return (error == KandaTableDataGateway.NO_ERRORS);
         }
 
 

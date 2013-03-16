@@ -9,7 +9,7 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
     public class TableRepositoryFacts : KandaXunitRepositoryFacts
     {
          [Fact()]
-        public void Fact()
+        public void InsertFact()
          {
              var connection = default(DbConnection);
              var transaction = default(DbTransaction);

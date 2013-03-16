@@ -36,6 +36,7 @@ namespace kkkkkkaaaaaa.DomainModels
                 else if (!KandaDomainModel.createSystem(connection, transaction)) { transaction.Rollback(); }
                 else if (!KandaDomainModel.createAdministrator()) { transaction.Rollback(); }
                 else if (!KandaDomainModel.createUser(connection, transaction)) { transaction.Rollback(); }
+                else if (!KandaDomainModel.createTemporaryUser(connection, transaction)) { transaction.Rollback(); }
                 else if (!KandaDomainModel.createVisitor(connection, transaction)) { transaction.Rollback(); }
                 */
                 else
@@ -79,6 +80,11 @@ namespace kkkkkkaaaaaa.DomainModels
 
         #region Private members...
 
+        private static bool createSystem(DbConnection conn, DbTransaction transaction)
+        {
+            return true;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -118,15 +124,20 @@ namespace kkkkkkaaaaaa.DomainModels
         {
             if (!KandaRepository.Memberships.Truncate(connection, transaction)) { return false; }
 
-            var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 1, Name = @"System", Password = @"", CreatedOn = createdOn, }, connection, transaction)) { return false; }
-            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 2, Name = @"Administrator", Password = @"", CreatedOn = createdOn, }, connection, transaction)) { return false; }
-            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 3, Name = @"User", Password = @"", CreatedOn = createdOn, }, connection, transaction)) { return false; }
-            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 4, Name = @"Tester", Password = @"", CreatedOn = createdOn, }, connection, transaction)) { return false; }
+            //var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            var createdOn = new DateTime(1753, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            //var createdOn = new DateTime(1900, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 1, Name = @"System", Password = @"", CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
+            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 2, Name = @"Administrator", Password = @"", CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
+            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 3, Name = @"User", Password = @"", CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
+            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 4, Name = @"TemporaryUser", Password = @"", CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
+            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 5, Name = @"Guest", Password = @"", CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
+            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 6, Name = @"Tester", Password = @"", CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
 
             return true;
         }
 
+        protected readonly static DateTime PresetCreatedOn = new DateTime(1753, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
         /*
         private static bool reset(DbConnection connection, DbTransaction transaction)
         {

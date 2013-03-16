@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using Xunit;
@@ -20,7 +21,8 @@ namespace kkkkkkaaaaaa.Xunit.Security.Cryptgraphy
                 stream = new MemoryStream();
                 byte[] key;
                 byte[] iv;
-                encrypto = KandaSymmetricAlgorithm.Encrypt(KandaRijndaelManaged.ALG_NAME, PLAIN_TEXT, Encoding.Unicode, stream, out key, out iv);
+                encrypto = KandaSymmetricAlgorithm.Encrypt(typeof(Rijndael).FullName, PLAIN_TEXT, Encoding.Unicode, stream, out key, out iv);
+                //encrypto = KandaSymmetricAlgorithm.Encrypt(KandaRijndaelManaged.ALG_NAME, PLAIN_TEXT, Encoding.Unicode, stream, out key, out iv);
                 Assert.True(0 < stream.Length);
             }
             finally
@@ -42,14 +44,13 @@ namespace kkkkkkaaaaaa.Xunit.Security.Cryptgraphy
                 stream = new MemoryStream();
                 byte[] key;
                 byte[] iv;
-                encrypto = KandaSymmetricAlgorithm.Encrypt(KandaRijndaelManaged.ALG_NAME, PLAIN_TEXT, Encoding.Unicode, stream, out key, out iv);
-
-                var reader = new StreamReader(stream);
+                encrypto = KandaSymmetricAlgorithm.Encrypt(typeof(Rijndael).FullName, PLAIN_TEXT, Encoding.Unicode, stream, out key, out iv);
 
                 var encrypted = stream.ToArray();
 
-                var decrypted = KandaSymmetricAlgorithm.Decrypt(KandaRijndaelManaged.ALG_NAME, encrypted, Encoding.Unicode, key, iv);
-
+                var decrypted = KandaSymmetricAlgorithm.Decrypt(typeof(Rijndael).FullName, encrypted, Encoding.Unicode, key, iv);
+                
+                Assert.Equal(decrypted, PLAIN_TEXT);
                 Assert.True(0 < stream.Length);
             }
             finally

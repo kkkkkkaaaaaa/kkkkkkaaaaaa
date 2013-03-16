@@ -46,6 +46,15 @@ namespace kkkkkkaaaaaa.Security.Cryptography
             return crypto;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="algName"></param>
+        /// <param name="encrypted"></param>
+        /// <param name="encoding"></param>
+        /// <param name="key"></param>
+        /// <param name="iv"></param>
+        /// <returns></returns>
         public static string Decrypt(string algName, byte[] encrypted, Encoding encoding, byte[] key, byte[] iv)
         {
             // 復号
@@ -76,5 +85,12 @@ namespace kkkkkkaaaaaa.Security.Cryptography
                 if (stream != null) { stream.Close(); }
             }
         }
+
+        #region Protected members...
+
+        /// <summary>文字エンコーディング。</summary>
+        protected readonly static Encoding _encoding = Encoding.Unicode;
+
+        #endregion
     }
 }

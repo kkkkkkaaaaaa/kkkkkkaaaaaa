@@ -4,7 +4,7 @@ using System.Text;
 
 namespace kkkkkkaaaaaa.Security.Cryptography
 {
-    public static class KandaSHA5126CryptoServiceProvider
+    public class KandaSHA5126CryptoServiceProvider : KandaHashAlgorithm
     {
         /// <summary>
         /// 
@@ -14,7 +14,7 @@ namespace kkkkkkaaaaaa.Security.Cryptography
         /// <returns></returns>
         public static string ComputeHash(string s, Encoding encoding)
         {
-            var algorithm = HashAlgorithm.Create(typeof (SHA512).FullName);
+            var algorithm = HashAlgorithm.Create(typeof (SHA512CryptoServiceProvider).FullName);
             var buffer = encoding.GetBytes(s);
             var hash = algorithm.ComputeHash(buffer, 0, buffer.Length);
 

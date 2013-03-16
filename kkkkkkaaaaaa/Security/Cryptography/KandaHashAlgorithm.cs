@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -10,7 +11,7 @@ namespace kkkkkkaaaaaa.Security.Cryptography
     public class KandaHashAlgorithm
     {
         /// <summary>
-        /// 
+        /// 指定された文字列のハッシュ値を計算します。
         /// </summary>
         /// <param name="hashName"></param>
         /// <param name="s"></param>
@@ -22,7 +23,18 @@ namespace kkkkkkaaaaaa.Security.Cryptography
             var buffer = encoding.GetBytes(s);
             var hash = algorithm.ComputeHash(buffer, 0, buffer.Length);
 
-            return Convert.ToString(hash);
+            return BitConverter.ToString(hash, 0, buffer.Length);
+        }
+
+        /// <summary>
+        /// 指定された文字列のハッシュ値を計算します。
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        [DebuggerStepThrough()]
+        public static string ComputeHash(string s)
+        {
+            return KandaHashAlgorithm.ComputeHash(typeof(SHA1Managed).FullName, s, Encoding.Unicode);
         }
     }
 }

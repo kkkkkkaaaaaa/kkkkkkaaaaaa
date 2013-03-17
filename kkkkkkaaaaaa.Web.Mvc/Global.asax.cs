@@ -4,7 +4,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace kkkkkkaaaaaa.Web.Mvc._2010
+namespace kkkkkkaaaaaa.Web.Mvc
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801

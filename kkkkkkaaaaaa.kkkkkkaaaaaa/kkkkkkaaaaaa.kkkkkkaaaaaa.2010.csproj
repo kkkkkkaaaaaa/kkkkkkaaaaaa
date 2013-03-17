@@ -93,10 +93,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="TextTemplates\Database\Stored Procedures\usp_InsertTable.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>usp_InsertTable.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -193,11 +189,7 @@
     <Compile Include="Data\TableDataGateways\KandaTableDataGateway.cs" />
     <Compile Include="Data\TableDataGateways\MembershipsGateway.cs" />
     <Compile Include="Data\Repositories\UsersRepository.cs" />
-    <Compile Include="TextTemplates\Database\Stored Procedures\usp_InsertTable.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>usp_InsertTable.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Web\Mvc\EngineConfig.cs" />
     <Compile Include="Web\Mvc\FilterConfig.cs" />
     <Compile Include="Web\Mvc\KandaRazorViewEngine.cs" />
     <Compile Include="Web\Mvc\RouteConfig.cs" />
@@ -218,6 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\SqlClient\" />
+    <Folder Include="TextTemplates\Database\Stored Procedures\" />
     <Folder Include="TextTemplates\DataTransferObjects\" />
     <Folder Include="TextTemplates\Data\Repositories\" />
     <Folder Include="TextTemplates\Data\TableDataGateway\" />

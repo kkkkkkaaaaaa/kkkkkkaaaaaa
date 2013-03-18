@@ -1,8 +1,8 @@
-﻿<Window x:Class="kkkkkkaaaaaa.Windows.MainWindow"
+﻿<Window x:Class="kkkkkkaaaaaa.Windows._2010.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button Content="Throw Exception" Height="23" HorizontalAlignment="Left" Margin="72,108,0,0" Name="button1" VerticalAlignment="Top" Width="105" Click="button1_Click" />
+        
     </Grid>
 </Window>

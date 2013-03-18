@@ -12,8 +12,6 @@ namespace kkkkkkaaaaaa.Web.Mvc
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
-
             EngineConfig.RegisterViewEngines(ViewEngines.Engines);
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

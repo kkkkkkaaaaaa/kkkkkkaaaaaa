@@ -6,16 +6,24 @@ namespace kkkkkkaaaaaa.Web.Mvc
     {
         public KandaRazorViewEngine()
         {
+            // {0} : view、{1} : controller、{2} : area
+
             this.MasterLocationFormats = new[]
                                              {
-                                                 @"~/Views/Shared/{0}.cshtml",
+                                                 @"~/Views/Shared/{0}.cshtml", 
                                              };
 
-            // {0} : controller, {1} : action
-            this.ViewLocationFormats = new []
+            this.PartialViewLocationFormats = new[]
+                                                  {
+                                                      @"~/Views/Partial/{0}.cshtml",  
+                                                      @"~/Views/Shared/{0}.cshtml", 
+                                                      @"~/Views/Shared/Partial/{0}.cshtml", 
+                                                  };
+
+            this.ViewLocationFormats = new[]
                                            {
                                                @"~/Views/{1}.cshtml", 
-                                               @"~/Views/{0}/{1}.cshtml", 
+                                               @"~/Views/{1}/{0}.cshtml", 
                                            };
         }
     }

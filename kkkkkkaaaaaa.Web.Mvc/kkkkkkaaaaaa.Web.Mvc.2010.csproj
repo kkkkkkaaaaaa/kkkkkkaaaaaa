@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\normalize.css" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -117,14 +118,23 @@
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Signin.cshtml" />
+    <Content Include="Views\Default.cshtml" />
+    <Content Include="Views\Partial\RightPane.cshtml" />
+    <Content Include="Views\Partial\LeftPane.cshtml" />
+    <Content Include="Views\Partial\TopPane.cshtml" />
+    <Content Include="Views\Partial\BottomPane.cshtml" />
+    <Content Include="Views\HttpStatus.cshtml" />
+    <Content Include="Views\SignUp.cshtml" />
+    <Content Include="Views\SignOut.cshtml" />
+    <Content Include="Views\Membership.cshtml" />
+    <Content Include="Views\Partial\MembershipStatus.cshtml" />
+    <Content Include="Views\Shared\_PanesLayout.cshtml" />
+    <Content Include="Views\Shared\Partial\_Head.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

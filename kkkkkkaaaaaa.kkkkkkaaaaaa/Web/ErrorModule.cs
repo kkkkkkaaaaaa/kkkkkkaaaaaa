@@ -23,8 +23,8 @@ namespace kkkkkkaaaaaa.Web
         private void context_Error(object sender, EventArgs e)
         {
             var context = ((HttpApplication) sender);
-            context.Response.Redirect(@"~/Error", true);
-
+            var error = context.Server.GetLastError();
+            context.Response.RedirectToRoutePermanent(@"DefaultError");
         }
 
         #endregion

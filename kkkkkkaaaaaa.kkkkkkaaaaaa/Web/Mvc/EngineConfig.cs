@@ -7,6 +7,8 @@ namespace kkkkkkaaaaaa.Web.Mvc
         public static void RegisterViewEngines(ViewEngineCollection engines)
         {
             engines.Add(new KandaRazorViewEngine());
+
+            AreaRegistration.RegisterAllAreas();
         }
     }
 }

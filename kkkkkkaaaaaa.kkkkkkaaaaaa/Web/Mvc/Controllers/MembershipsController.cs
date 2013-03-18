@@ -1,28 +1,31 @@
 ﻿using System.Web.Mvc;
-using kkkkkkaaaaaa.DataTransferObjects;
 
 namespace kkkkkkaaaaaa.Web.Mvc.Controllers
 {
-    public class MembershipController : Controller
+    public class MembershipsController : Controller
     {
         public ActionResult Find()
         {
             return this.View();
         }
 
-        public ActionResult SignIn()
+        public ActionResult Get()
         {
             return this.View();
         }
 
-        public ActionResult SignOut()
+        public ActionResult Update()
         {
             return this.View();
         }
 
-        public ActionResult SignUp()
+        public ActionResult Delete()
         {
             return this.View();
         }
+
+        // Display
+
+        // Editor
     }
 }

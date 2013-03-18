@@ -52,7 +52,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\bin\kkkkkkaaaaaa\Debug\</OutputPath>
+    <OutputPath>..\bin\kkkkkkaaaaaa.kkkkkkaaaaaa\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -62,7 +62,7 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\bin\kkkkkkaaaaaa.kkkkkkaaaaaa\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -189,6 +189,13 @@
     <Compile Include="Data\TableDataGateways\KandaTableDataGateway.cs" />
     <Compile Include="Data\TableDataGateways\MembershipsGateway.cs" />
     <Compile Include="Data\Repositories\UsersRepository.cs" />
+    <Compile Include="Web\ErrorModule.cs" />
+    <Compile Include="Web\Mvc\Controllers\AuthorizationsController.cs" />
+    <Compile Include="Web\Mvc\Controllers\Default.cs" />
+    <Compile Include="Web\Mvc\Controllers\MembershipController.cs" />
+    <Compile Include="Web\Mvc\Controllers\MembershipsController.cs" />
+    <Compile Include="Web\Mvc\Controllers\RolesController.cs" />
+    <Compile Include="Web\Mvc\Controllers\UsersController.cs" />
     <Compile Include="Web\Mvc\EngineConfig.cs" />
     <Compile Include="Web\Mvc\FilterConfig.cs" />
     <Compile Include="Web\Mvc\KandaRazorViewEngine.cs" />

@@ -1,26 +1,25 @@
 ﻿using System.Web.Mvc;
-using kkkkkkaaaaaa.DataTransferObjects;
 
 namespace kkkkkkaaaaaa.Web.Mvc.Controllers
 {
-    public class MembershipController : Controller
+    public class DefaultController : Controller
     {
-        public ActionResult Find()
+        public ActionResult Default()
         {
             return this.View();
         }
 
-        public ActionResult SignIn()
+        public ActionResult Error()
         {
             return this.View();
         }
 
-        public ActionResult SignOut()
+        public ActionResult Status()
         {
             return this.View();
         }
 
-        public ActionResult SignUp()
+        public ActionResult DoNothing()
         {
             return this.View();
         }

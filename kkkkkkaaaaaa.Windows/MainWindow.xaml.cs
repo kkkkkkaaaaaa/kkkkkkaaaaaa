@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace kkkkkkaaaaaa.Windows._2010
+namespace kkkkkkaaaaaa.Windows
 {
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
@@ -22,6 +22,11 @@ namespace kkkkkkaaaaaa.Windows._2010
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            throw new Exception(@"MainWindow.button1_Click()");
         }
     }
 }

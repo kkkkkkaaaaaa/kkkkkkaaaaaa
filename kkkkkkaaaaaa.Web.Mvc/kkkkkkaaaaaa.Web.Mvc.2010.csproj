@@ -43,6 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\layout.css" />
     <Content Include="Content\normalize.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -122,7 +123,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\Signin.cshtml" />
     <Content Include="Views\Default.cshtml" />
     <Content Include="Views\Partial\RightPane.cshtml" />
     <Content Include="Views\Partial\LeftPane.cshtml" />
@@ -135,6 +135,11 @@
     <Content Include="Views\Partial\MembershipStatus.cshtml" />
     <Content Include="Views\Shared\_PanesLayout.cshtml" />
     <Content Include="Views\Shared\Partial\_Head.cshtml" />
+    <Content Include="Views\SignIn.cshtml" />
+    <Content Include="Views\Shared\Partial\_TopPane.cshtml" />
+    <Content Include="Views\Shared\Partial\_BottomPane.cshtml" />
+    <Content Include="Views\Shared\Partial\_LeftPane.cshtml" />
+    <Content Include="Views\Shared\Partial\_RightPane.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

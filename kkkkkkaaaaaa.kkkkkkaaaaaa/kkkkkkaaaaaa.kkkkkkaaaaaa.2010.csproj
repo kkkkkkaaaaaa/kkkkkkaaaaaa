@@ -198,6 +198,7 @@
     <Compile Include="Web\Mvc\Controllers\UsersController.cs" />
     <Compile Include="Web\Mvc\EngineConfig.cs" />
     <Compile Include="Web\Mvc\FilterConfig.cs" />
+    <Compile Include="Web\Mvc\KandaController.cs" />
     <Compile Include="Web\Mvc\KandaRazorViewEngine.cs" />
     <Compile Include="Web\Mvc\RouteConfig.cs" />
     <Compile Include="Web\Mvc\WebApiConfig.cs" />
@@ -223,7 +224,6 @@
     <Folder Include="TextTemplates\Data\TableDataGateway\" />
     <Folder Include="TextTemplates\DomainModels\" />
     <Folder Include="VisualStudio\TextTemplating\" />
-    <Folder Include="Web\Routing\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -127,12 +127,12 @@ namespace kkkkkkaaaaaa.DomainModels
             //var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             var createdOn = new DateTime(1753, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             //var createdOn = new DateTime(1900, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 1, Name = @"System", Password = @"", CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
-            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 2, Name = @"Administrator", Password = @"", CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
-            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 3, Name = @"User", Password = @"", CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
-            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 4, Name = @"TemporaryUser", Password = @"", CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
-            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 5, Name = @"Guest", Password = @"", CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
-            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 6, Name = @"Tester", Password = @"", CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
+            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 1, Name = @"System", Password = null, CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
+            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 2, Name = @"Administrator", Password = null, CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
+            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 3, Name = @"User", Password = null, CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
+            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 4, Name = @"TemporaryUser", Password = null, CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
+            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 5, Name = @"Anonymous", Password = null, CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
+            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 6, Name = @"Tester", Password = null, CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
 
             return true;
         }

@@ -13,7 +13,7 @@ namespace kkkkkkaaaaaa.Xunit.Security
         {
             const string S = @"朧";
             var secureString = new SecureString();
-            secureString.AppendChars(S);
+            secureString.AppendString(S);
 
             var s = secureString.GetString();
 

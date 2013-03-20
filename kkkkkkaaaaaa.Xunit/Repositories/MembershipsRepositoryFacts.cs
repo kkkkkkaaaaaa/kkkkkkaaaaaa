@@ -24,7 +24,7 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
 
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
-                var entity = new MembershipEntity() {Name = new Random().Next().ToString(), Password = @"", Enabled = true,};
+                var entity = new MembershipEntity() {Name = new Random().Next().ToString(), Password = null, Enabled = true,};
 
                 var repository = new MembershipsRepository();
 

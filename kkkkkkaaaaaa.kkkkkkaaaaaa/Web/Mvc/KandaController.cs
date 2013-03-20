@@ -2,11 +2,21 @@
 
 namespace kkkkkkaaaaaa.Web.Mvc
 {
-    public class KandaController : Controller
+    public abstract class KandaController : Controller
     {
-        public ActionResult DoNothing()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public abstract ActionResult Default();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public virtual ActionResult DoNothing(string viewName = null)
         {
-            return this.View();
+            return this.View(viewName);
         }
     }
 }

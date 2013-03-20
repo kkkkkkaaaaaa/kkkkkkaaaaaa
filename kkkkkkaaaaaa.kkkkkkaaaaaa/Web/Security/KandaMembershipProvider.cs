@@ -1,6 +1,10 @@
-﻿using System.Web.Security;
+﻿using System.Security;
+using System.Web.Security;
 using kkkkkkaaaaaa.DataTransferObjects;
 using kkkkkkaaaaaa.DomainModels;
+using kkkkkkaaaaaa.Security;
+using DomainModels = kkkkkkaaaaaa.DomainModels;
+using Membership = System.Web.Security.Membership;
 
 namespace kkkkkkaaaaaa.Web.Security
 {
@@ -39,8 +43,20 @@ namespace kkkkkkaaaaaa.Web.Security
         /// <param name="password">指定したユーザーのパスワード。</param>
         public override bool ValidateUser(string username, string password)
         {
-            //throw new System.NotImplementedException();
-            return Memberships.Validate(username, password);
+            // 文字列の保護
+            var secure = new SecureString();
+            secure.AppendString(password);
+
+            // Name、Password 検証
+            var entity = new MembershipEntity
+                             {
+                                 Name = username,
+                                 Password = secure,
+                             };
+            var membership = new DomainModels.Membership(entity);
+            membership.Find();
+
+            return (0 < membership.ID);
         }
 
         /// <summary>

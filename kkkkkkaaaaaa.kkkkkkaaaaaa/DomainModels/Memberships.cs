@@ -14,6 +14,8 @@ namespace kkkkkkaaaaaa.DomainModels
     /// </summary>
     public class Memberships //: KandaDomainModel
     {
+        public const long ANONYMOUS = 5L;
+
         /// <summary>
         /// 
         /// </summary>

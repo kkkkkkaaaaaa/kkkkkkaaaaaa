@@ -4,11 +4,35 @@
 }
 
 body {
-	width: 100%
+	width: 100%;
+}
+
+p {
+	
+}
+
+a {
+		
+}
+
+blockquote {
+	
+}
+
+q {
+	
+}
+
+div.content {
+	
+}
+
+div.article {
+	
 }
 
 #divLayout {
-	width:750px;
+	width:1024px;
 	position:relative;
 	margin:0 auto;
 }
@@ -28,6 +52,7 @@ body {
 #divCenter {
 	margin:0 10em;
 	padding: 0;
+	height: 40em;
 }
 
 #divRight {

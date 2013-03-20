@@ -22,6 +22,7 @@ namespace kkkkkkaaaaaa.Web.Mvc
 
             this.ViewLocationFormats = new[]
                                            {
+                                               @"~/Views/{0}.cshtml", 
                                                @"~/Views/{1}.cshtml", 
                                                @"~/Views/{1}/{0}.cshtml", 
                                            };

@@ -128,6 +128,9 @@
     <Compile Include="DataTransferObjects\KandaEntity.cs" />
     <Compile Include="DataTransferObjects\MembershipAuthorizationEntity.cs" />
     <Compile Include="DataTransferObjects\MembershipAuthorizationsCriteria.cs" />
+    <Compile Include="DataTransferObjects\MembershipEntity.2010.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DataTransferObjects\MembershipEntity.cs" />
     <Compile Include="DataTransferObjects\MembershipRoleEntity.cs" />
     <Compile Include="DataTransferObjects\MembershipRolesCriteria.cs" />
@@ -191,7 +194,7 @@
     <Compile Include="Data\Repositories\UsersRepository.cs" />
     <Compile Include="Web\ErrorModule.cs" />
     <Compile Include="Web\Mvc\Controllers\AuthorizationsController.cs" />
-    <Compile Include="Web\Mvc\Controllers\Default.cs" />
+    <Compile Include="Web\Mvc\Controllers\DefaultController.cs" />
     <Compile Include="Web\Mvc\Controllers\MembershipController.cs" />
     <Compile Include="Web\Mvc\Controllers\MembershipsController.cs" />
     <Compile Include="Web\Mvc\Controllers\RolesController.cs" />
@@ -202,11 +205,13 @@
     <Compile Include="Web\Mvc\KandaRazorViewEngine.cs" />
     <Compile Include="Web\Mvc\RouteConfig.cs" />
     <Compile Include="Web\Mvc\WebApiConfig.cs" />
+    <Compile Include="Web\PostAuthenticateRequestModule.cs" />
     <Compile Include="Web\Security\KandaMembershipProvider.cs" />
     <Compile Include="Web\Security\KandaMembershipUser.cs" />
     <Compile Include="Web\Security\KandaRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />

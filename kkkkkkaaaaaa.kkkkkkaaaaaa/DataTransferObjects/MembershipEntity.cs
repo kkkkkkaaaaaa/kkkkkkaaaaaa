@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Security;
 using kkkkkkaaaaaa.Data.Common;
 
 namespace kkkkkkaaaaaa.DataTransferObjects
 {
-    public class MembershipEntity
+    public partial class MembershipEntity
     {
         public readonly static MembershipEntity Empty = new MembershipEntity() { ID = -1, };
 
@@ -21,8 +22,10 @@ namespace kkkkkkaaaaaa.DataTransferObjects
         [KandaDbParameterMapping("@name")]
         public string Name { get; set; }
 
+        /*
         [KandaDbParameterMapping("@password")]
-        public string Password { get; set; }
+        public String Password { get; set; }
+        */
 
         [KandaDbParameterMapping("@enabled")]
         public bool Enabled { get; set; }

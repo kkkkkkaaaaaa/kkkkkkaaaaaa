@@ -100,7 +100,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public MembershipEntity Find(string name, SecureString password, DbConnection connection, DbTransaction transaction)
+        public MembershipEntity Find(string name, object password, DbConnection connection, DbTransaction transaction)
         {
             return this.Find(new MembershipsCriteria() { Name = name, Password = password, Enabled = true, }, connection, transaction);
         }
@@ -136,9 +136,6 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
-            var hash = KandaSHA5126CryptoServiceProvider.ComputeHash(entity.Password, Encoding.Unicode);
-            entity.Password = hash;
-
             var error = MembershipsGateway.Insert(entity, connection, transaction);
 
             return (error == KandaTableDataGateway.NO_ERRORS);

@@ -31,12 +31,12 @@ namespace kkkkkkaaaaaa.Web.Mvc
 
             // 共通
             routes.MapRoute(@"Default", @"", new { controller = @"Default", action = @"Default", });
-            //routes.MapRoute(@"DefaultDefault", @"default", new { controller = @"Default", action = @"Default", });
+            routes.MapRoute(@"DefaultDefault", @"default", new { controller = @"Default", action = @"Default", });
             routes.MapRoute(@"DefaultError", @"error", new { controller = @"Default", action = "Error", });
-            //routes.MapRoute(@"DefaultHttpStatus", @"HttpStatus/{status}", new { controller = @"Default", action = "Status", status = 404, });
+            routes.MapRoute(@"DefaultHttpStatus", @"status", new { controller = @"Default", action = "Status", status = 404, });
 
             // 認証
-            routes.MapRoute(@"DefaultSignIn", @"signin", new { controller = @"Membership", action = @"DoNothing", });
+            routes.MapRoute(@"DefaultSignIn", @"signin", new { controller = @"Membership", action = @"Default", });
 
             /*
             routes.MapRoute(@"DefaultSignIn", @"signin", new { controller = @"Membership", action = @"DoNothing", });

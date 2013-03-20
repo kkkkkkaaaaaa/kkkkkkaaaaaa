@@ -13,7 +13,7 @@ namespace kkkkkkaaaaaa.Security
         /// <param name="secureString"></param>
         /// <param name="s"></param>
         /// <returns></returns>
-        public static SecureString AppendChars(this SecureString secureString, string s)
+        public static SecureString AppendString(this SecureString secureString, string s)
         {
             foreach (var c in s) { secureString.AppendChar(c); }
 

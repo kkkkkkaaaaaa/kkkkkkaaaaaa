@@ -19,7 +19,7 @@ namespace kkkkkkaaaaaa.Xunit.DomainModels
             try
             {
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
-                membership = new Membership(new MembershipEntity() { Name = name, Password = @"", });
+                membership = new Membership(new MembershipEntity() { Name = name, Password = null, });
                 membership.Create();
 
                 Assert.True(Membership.Exists(name));

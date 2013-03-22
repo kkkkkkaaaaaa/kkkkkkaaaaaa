@@ -7,7 +7,7 @@
 	, @createdOn	DATETIME2
 	, @updatedOn	DATETIME2
 	-- 出力パラメーター
-	, @identity		NUMERIC(38, 0) = -1		OUTPUT
+	, @identity		DECIMAL(38, 0)		OUTPUT
 ) AS
 
 	-- 変数
@@ -44,21 +44,30 @@
 	SET @values = @values + N');'
 
 	-- 宣言
-	SET @stmt = (@insert + @into + @values) + dbo.NL()
-		+ N'SET @identity = SCOPE_IDENTITY();'
+	SET @stmt = N''
+		+ N'IF (0 < @id)	SET IDENTITY_INSERT Memberships ON;' + dbo.NL()
+		+ (@insert + @into + @values) + dbo.NL()
+		+ N'SET @identity = SCOPE_IDENTITY();' + dbo.NL()
+		+ N'IF (0 < @id)	SET IDENTITY_INSERT Memberships OFF;' + dbo.NL()
 
 	-- パラメーター
-	SET @params = N'@id BIGINT, @name NVARCHAR(1024), @password NVARCHAR(128), @enabled BIT, @createdOn	DATETIME2, @updatedOn DATETIME2, @identity NUMERIC(38, 0) OUTPUT'
+	SET @params = N'@id BIGINT, @name NVARCHAR(1024), @password NVARCHAR(128), @enabled BIT, @createdOn	DATETIME2, @updatedOn DATETIME2, @identity DECIMAL(38, 0) OUTPUT'
+	
 	
 	-- 実行
-	IF (0 < @id)	SET IDENTITY_INSERT Memberships ON
-	EXECUTE @result = sp_executesql
-		@stmt
-		, @params
-		, @id = @id, @name = @name, @password = @password, @enabled = @enabled, @createdOn = @createdOn, @updatedOn = @createdOn, @identity = @identity OUTPUT
-	IF (0 < @id)	SET IDENTITY_INSERT Memberships OFF
+	BEGIN TRY
+		EXECUTE @result = sp_executesql
+			@stmt
+			, @params
+			, @id = @id, @name = @name, @password = @password, @enabled = @enabled, @createdOn = @createdOn, @updatedOn = @createdOn, @identity = @identity OUTPUT
+			
+		SET @error = @@ERROR
+
+	END TRY BEGIN CATCH
+		SELECT @error = ERROR_NUMBER()
+		SET @identity = -1
+
+	END CATCH
 	
 	-- 戻り値
-	SET @error = @@ERROR
-
 	RETURN @error

@@ -11,7 +11,7 @@ namespace kkkkkkaaaaaa.Web.Security
         /// </summary>
         /// <param name="membership"></param>
         public KandaMembershipUser(MembershipEntity membership)
-            : base(Membership.Provider.Name, membership.Name, membership.ID, @"", @"", @"", membership.Enabled, false, membership.CreatedOn, default(DateTime), default(DateTime), default(DateTime), default(DateTime))
+            : base(Membership.Provider.Name, membership.Name, membership.ID, membership.Email, @"", @"", membership.Enabled, false, membership.CreatedOn, default(DateTime), default(DateTime), default(DateTime), default(DateTime))
         {
             this.doNothing();
         }

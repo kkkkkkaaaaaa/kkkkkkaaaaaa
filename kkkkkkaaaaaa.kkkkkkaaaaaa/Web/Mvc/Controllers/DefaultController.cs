@@ -4,9 +4,9 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
 {
     public class DefaultController : KandaController
     {
-        public override ActionResult Default()
+        public override ActionResult Default(string viewName = null)
         {
-            return this.View();
+            return this.View(viewName);
         }
 
         public ActionResult SignIn()

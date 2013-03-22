@@ -20,20 +20,20 @@
 		+ N') VALUES ('
 		+ N'@entityName'
 	IF (0 < @entityId) SET @stmt = @stmt + N', @entityId'
-	SET @stmt = @stmt + N');' + dbo.NL()
+	SET @stmt = @stmt + N');'
 
-	SET @stmt = @stmt + N'SET @identity = SCOPE_IDENTITY();'
+	SET @stmt = N''
+		+ N'IF (0 < @entityId) SET IDENTITY_INSERT [Entities] ON;' + dbo.NL()
+		+ @stmt + dbo.NL()
+		+ N'IF (0 < @entityId) SET IDENTITY_INSERT [Entities] OFF;' + dbo.NL()
+		+ N'SET @identity = SCOPE_IDENTITY();' + dbo.NL()
 
 	SET @params = N'@entityId INT, @entityName NVARCHAR(64), @identity NUMERIC(38, 0) OUTPUT'
-
-	IF (0 < @entityId) SET IDENTITY_INSERT [Entities] ON
 
 	EXECUTE @result = sp_executesql
 		@stmt
 		, @params
 		, @entityId = @entityId, @entityName = @entityName, @identity = @identity OUTPUT
-
-	IF (0 < @entityId) SET IDENTITY_INSERT [Entities] OFF
 		
 	SET @error = @@ERROR
 

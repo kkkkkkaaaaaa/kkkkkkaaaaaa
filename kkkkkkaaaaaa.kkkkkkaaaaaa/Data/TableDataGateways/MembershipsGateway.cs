@@ -53,9 +53,8 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <param name="entity"></param>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
-        /// <param name="identity"></param>
         /// <returns></returns>
-        public static int Insert(MembershipEntity entity, DbConnection connection, DbTransaction transaction/*, out decimal identity*/)
+        public static int Insert(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
 

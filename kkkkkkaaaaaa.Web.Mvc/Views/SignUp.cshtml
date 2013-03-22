@@ -1,18 +1,20 @@
-﻿@model TModel
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-    <head>
-        <title>title</title>
-    </head>
-    <body>
-        <div>
-              
-        </div>
-    </body>
-</html>
+﻿@model kkkkkkaaaaaa.DataTransferObjects.MembershipEntity
+<div>
+    @using(Html.BeginForm(@"SignUp", @"Membership", FormMethod.Post))
+    {
+        <table>
+            <tr><th>Item</th><th>Value</th></tr>
+            <tr><td>Name</td><td><input type="text" id="txtName" name="Name" value="(name)" /></td></tr>
+            <tr><td>Password</td><td><input type="password"id="txtPassword" name="Password" value="" /></td></tr>
+            <tr><td>Email</td><td><input type="email" id="txtEmail" name="Email" value="(email)" /></td></tr>
+            <!--<tr><td></td><td></td></tr>-->
+        </table>
+        @Html.HiddenFor((model) => model.ID, new { id = @"txtID", })
+        @Html.HiddenFor((model) => model.Enabled, new { id = @"txtEnabled", })
+        <!--
+        <input id="hdnId" type="hidden" value="" />
+        <input id="hdnEnabled" type="hidden" name="enabled" value="true" />
+        -->
+        <input id="btnSubmit" type="submit" value="Sign up" />
+    }
+</div>

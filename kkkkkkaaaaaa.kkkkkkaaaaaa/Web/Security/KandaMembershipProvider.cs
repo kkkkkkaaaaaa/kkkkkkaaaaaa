@@ -3,8 +3,6 @@ using System.Web.Security;
 using kkkkkkaaaaaa.DataTransferObjects;
 using kkkkkkaaaaaa.DomainModels;
 using kkkkkkaaaaaa.Security;
-using DomainModels = kkkkkkaaaaaa.DomainModels;
-using Membership = System.Web.Security.Membership;
 
 namespace kkkkkkaaaaaa.Web.Security
 {
@@ -29,8 +27,46 @@ namespace kkkkkkaaaaaa.Web.Security
         /// <param name="status">ユーザーが正常に作成されたかどうかを示す <see cref="T:System.Web.Security.MembershipCreateStatus"/> 列挙値。</param>
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
-            status = MembershipCreateStatus.InvalidQuestion;
-            return null;
+            status = MembershipCreateStatus.ProviderError;
+
+            // パスワードの保護
+            var securePassword = new SecureString();
+            securePassword.AppendString(password);
+
+            // 認証の作成
+            var membership = new DomainModels.Membership(
+                new MembershipEntity
+                    {
+                        Name = username,
+                        Password = securePassword,
+                        Enabled = true,
+                    });
+            membership.Create();
+
+            // 確認
+            var user = default (KandaMembershipUser);
+            membership.Found += (sender, entity) =>
+                                    {
+                                        user = new KandaMembershipUser(entity);
+
+                                        /*
+                                        user = new KandaMembershipUser(
+                                            new MembershipEntity
+                                                {
+                                                    ID = __.ID,
+                                                    Name = _.username,
+                                                    Password = null,
+                                                    Enabled = __.Enabled,
+                                                    CreatedOn = __.CreatedOn,
+                                                    UpdatedOn = __.UpdatedOn,
+                                                });
+                                        */
+                                    };
+            membership.Find();
+
+            status = MembershipCreateStatus.Success;
+
+            return user;
         }
 
         /// <summary>

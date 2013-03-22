@@ -29,28 +29,30 @@ namespace kkkkkkaaaaaa.Web.Mvc
             // img
             //routes.Ignore(@"img/*");
 
-            // 共通
+            // DefaultController
             routes.MapRoute(@"Default", @"", new { controller = @"Default", action = @"Default", });
             routes.MapRoute(@"DefaultDefault", @"default", new { controller = @"Default", action = @"Default", });
             routes.MapRoute(@"DefaultError", @"error", new { controller = @"Default", action = "Error", });
             routes.MapRoute(@"DefaultHttpStatus", @"status", new { controller = @"Default", action = "Status", status = 404, });
 
-            // 認証
+            // MembershipController
             routes.MapRoute(@"DefaultSignIn", @"signin", new { controller = @"Membership", action = @"Default", });
-
-            /*
-            routes.MapRoute(@"DefaultSignIn", @"signin", new { controller = @"Membership", action = @"DoNothing", });
-            routes.MapRoute(@"DefaultSignUp", @"signup", new { controller = @"Membership", action = @"DoNothing", });
+            routes.MapRoute(@"DefaultSignUp", @"signup", new { controller = @"Membership", action = @"Default", });
             routes.MapRoute(@"DefaultSignOut", @"signout", new { controller = @"Membership", action = @"DoNothing", });
             routes.MapRoute(@"DefaultMembership", @"membership", new { controller = @"Membership", action = @"Membership", });
+            routes.MapRoute(@"DefaultUser", @"user", new { controller = @"Users", action = @"Find" });
+            routes.MapRoute(@"DefaultRole", @"role", new { controller = @"Roles", action = @"Find", });
+            routes.MapRoute(@"DefaultAuthorization", @"authorization", new { controller = @"Authorizations", action = @"Find", });
 
-            // Memberships
-            routes.MapRoute(@"Memberships", @"memberships", new { controller = @"Membership", action = @"Get", page = UrlParameter.Optional });
-            routes.MapRoute(@"MembershipsList", @"memberships/list", new { controller = @"Get", action = @"List", });
-            routes.MapRoute(@"MembershipsMembership", @"memberships/{id}", new { controller = @"Membership", action = @"Find", id = 0, });
+            // MembershipsController
+            routes.MapRoute(@"MembershipsDefault", @"memberships", new { controller = @"Memberships", action = @"Get", });
+            routes.MapRoute(@"MembershipsID", @"memberships/{id}", new { controller = @"Memberships", action = @"Find", id = -1, });
 
             // Users
+            routes.MapRoute(@"UsersDefault", @"users", new { controller = @"Users", action = @"Get", });
+            routes.MapRoute(@"UsersID", @"users/{id}", new { controller = @"Users", action = @"Find", id = -1, });
 
+            /*
             // Roles
 
             // Authorizations
@@ -59,7 +61,8 @@ namespace kkkkkkaaaaaa.Web.Mvc
             */
 
             // それ以外
-            routes.MapRoute(@"ControllerActionID", @"{controller}/{action}/{id}", new { controller = @"Default", action = @"Default", id = UrlParameter.Optional });
+            routes.MapRoute(@"ControllerAction", @"{controller}/{action}", new { controller = @"Default", action = @"Default", });
+            routes.MapRoute(@"ControllerActionID", @"{controller}/{action}/{id}", new { controller = @"Default", action = @"Default", id = UrlParameter.Optional, });
 
             /*
             routes.MapRoute(

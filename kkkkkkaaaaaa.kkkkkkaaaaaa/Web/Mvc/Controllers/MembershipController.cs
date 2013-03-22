@@ -2,18 +2,16 @@
 using System.Web.Mvc;
 using System.Web.Security;
 using kkkkkkaaaaaa.DataTransferObjects;
-using kkkkkkaaaaaa.DomainModels;
 using kkkkkkaaaaaa.Web.Security;
-using Membership = kkkkkkaaaaaa.DomainModels.Membership;
-using Security = System.Web.Security;
 
 namespace kkkkkkaaaaaa.Web.Mvc.Controllers
 {
     public class MembershipController : KandaController
     {
-        public override ActionResult Default()
+        [HttpGet()]
+        public override ActionResult Default(string viewName = null)
         {
-            return this.View(@"SignIn");
+            return this.View(viewName);
         }
 
         public ActionResult Find()
@@ -25,13 +23,13 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
             else
             {
                 // Anonymous
-                FormsAuthentication.SetAuthCookie(Memberships.ANONYMOUS.ToString(CultureInfo.InvariantCulture), true);
+                FormsAuthentication.SetAuthCookie(DomainModels.Memberships.ANONYMOUS.ToString(CultureInfo.InvariantCulture), true);
             }
 
             var entity = default (MembershipEntity);
             if (this.User.Identity.IsAuthenticated)
             {
-                var membership = new Membership(new MembershipEntity { ID = long.Parse(this.User.Identity.Name), });
+                var membership = new DomainModels.Membership(new MembershipEntity { ID = long.Parse(this.User.Identity.Name), });
                 membership.Found += (_, __) =>
                                         {
                                             entity = __;
@@ -46,7 +44,8 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
             return this.View(entity);
         }
 
-        public ActionResult SignIn(string name, string password)
+        [HttpPost()]
+        public ActionResult SignIn(string name, string password) // , bool remember)
         {
             if (System.Web.Security.Membership.ValidateUser(name, password))
             {
@@ -73,9 +72,19 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
             return this.View();
         }
 
-        public ActionResult SignUp()
+        [HttpPost()]
+        public ActionResult SignUp(MembershipEntity entity)
         {
-            return this.View();
+            var status = MembershipCreateStatus.ProviderError;
+            var user = Membership.CreateUser(entity.Name, entity.Password[0], entity.Email, null, null, true, null, out status);
+            if (status !=  MembershipCreateStatus.Success) { return this.View(@"SignUp", entity); }
+
+            return this.RedirectToRoute(@"DefaultMembership");
+        }
+
+        public ActionResult GetUser()
+        {
+            return this.View(@"User");
         }
     }
 }

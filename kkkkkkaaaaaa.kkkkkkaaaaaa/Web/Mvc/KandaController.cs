@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 
 namespace kkkkkkaaaaaa.Web.Mvc
 {
@@ -8,7 +9,7 @@ namespace kkkkkkaaaaaa.Web.Mvc
         /// 
         /// </summary>
         /// <returns></returns>
-        public abstract ActionResult Default();
+        public abstract ActionResult Default(string viewName = null);
 
         /// <summary>
         /// 

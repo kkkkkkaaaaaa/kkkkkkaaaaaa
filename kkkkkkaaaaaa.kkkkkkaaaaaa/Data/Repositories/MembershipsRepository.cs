@@ -1,16 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Common;
-using System.Linq;
+using System.Data.SqlClient;
 using System.Security;
-using System.Security.Cryptography;
 using System.Text;
-using System.Web.Security;
 using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.TableDataGateways;
 using kkkkkkaaaaaa.DataTransferObjects;
 using kkkkkkaaaaaa.Security;
 using kkkkkkaaaaaa.Security.Cryptography;
-using kkkkkkaaaaaa.Web.Security;
 
 namespace kkkkkkaaaaaa.Data.Repositories
 {
@@ -136,6 +134,8 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
+            entity.Password = KandaSHA512.ComputeHash(((SecureString)entity.Password).GetString());
+
             var error = MembershipsGateway.Insert(entity, connection, transaction);
 
             return (error == KandaTableDataGateway.NO_ERRORS);

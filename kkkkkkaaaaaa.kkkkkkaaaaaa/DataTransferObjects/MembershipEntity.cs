@@ -6,7 +6,9 @@ namespace kkkkkkaaaaaa.DataTransferObjects
 {
     public partial class MembershipEntity
     {
-        public readonly static MembershipEntity Empty = new MembershipEntity() { ID = -1, };
+        public readonly static MembershipEntity Empty = new MembershipEntity() { ID = -1L, };
+
+        public readonly static MembershipEntity System = new MembershipEntity { ID = 1L, Name = @"System", Password = @"", CreatedOn = new DateTime(1753, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
 
         /// <summary>
         /// コンストラクター。
@@ -35,5 +37,7 @@ namespace kkkkkkaaaaaa.DataTransferObjects
 
         [KandaDbParameterMapping("@updatedOn")]
         public DateTime UpdatedOn { get; set; }
+
+        public string Email { get; set; }
     }
 }

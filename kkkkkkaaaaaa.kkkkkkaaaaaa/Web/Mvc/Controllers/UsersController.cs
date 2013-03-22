@@ -11,7 +11,7 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
 
         public ActionResult Find()
         {
-            return this.View();
+            return this.View(@"User");
         }
 
         public ActionResult Update()

@@ -128,7 +128,6 @@
     <Content Include="Views\SignUp.cshtml" />
     <Content Include="Views\SignOut.cshtml" />
     <Content Include="Views\Membership.cshtml" />
-    <Content Include="Views\Partial\MembershipStatus.cshtml" />
     <Content Include="Views\Shared\_PanesLayout.cshtml" />
     <Content Include="Views\Shared\Partial\_Head.cshtml" />
     <Content Include="Views\SignIn.cshtml" />
@@ -137,6 +136,7 @@
     <Content Include="Views\Shared\Partial\_LeftPane.cshtml" />
     <Content Include="Views\Shared\Partial\_RightPane.cshtml" />
     <Content Include="Views\Partial\_Article.cshtml" />
+    <Content Include="Views\User.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

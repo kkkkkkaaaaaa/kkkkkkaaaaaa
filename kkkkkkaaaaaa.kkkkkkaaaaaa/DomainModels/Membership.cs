@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
+using System.Globalization;
 using System.Security;
 using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.Repositories;
@@ -16,9 +17,14 @@ namespace kkkkkkaaaaaa.DomainModels
     public class Membership : KandaDomainModel
     {
         /// <summary>
-        /// 。
+        /// Find 後イベント。
         /// </summary>
         public event Action<Membership, MembershipEntity> Found;
+
+        /// <summary>
+        /// プリセットのシステムアカウント。
+        /// </summary>
+        public static readonly Membership System = new Membership(MembershipEntity.System);
 
         /// <summary>
         /// 

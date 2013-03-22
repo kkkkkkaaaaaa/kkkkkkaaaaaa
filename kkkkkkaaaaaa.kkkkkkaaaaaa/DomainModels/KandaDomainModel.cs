@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.Common;
 using System.Threading;
+using System.Web.Security;
 using kkkkkkaaaaaa.Data;
 using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.Repositories;
@@ -124,20 +125,25 @@ namespace kkkkkkaaaaaa.DomainModels
         {
             if (!KandaRepository.Memberships.Truncate(connection, transaction)) { return false; }
 
-            //var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            var createdOn = new DateTime(1753, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            //var createdOn = new DateTime(1900, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 1, Name = @"System", Password = null, CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
+            var status = MembershipCreateStatus.ProviderError;
+            if (!KandaRepository.Memberships.Create(MembershipEntity.System, connection, transaction, out status)) { return false; }
+            /*
             if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 2, Name = @"Administrator", Password = null, CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
             if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 3, Name = @"User", Password = null, CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
             if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 4, Name = @"TemporaryUser", Password = null, CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
             if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 5, Name = @"Anonymous", Password = null, CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
             if (!KandaRepository.Memberships.Create(new MembershipEntity() { ID = 6, Name = @"Tester", Password = null, CreatedOn = KandaDomainModel.PresetCreatedOn, }, connection, transaction)) { return false; }
+             * */
 
             return true;
         }
 
+
+        //var createdOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+        //var createdOn = new DateTime(1753, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+        //var createdOn = new DateTime(1900, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
         protected readonly static DateTime PresetCreatedOn = new DateTime(1753, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+
         /*
         private static bool reset(DbConnection connection, DbTransaction transaction)
         {

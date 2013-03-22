@@ -4,6 +4,7 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Security;
 using System.Text;
+using System.Web.Security;
 using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.TableDataGateways;
 using kkkkkkaaaaaa.DataTransferObjects;
@@ -132,13 +133,34 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
+        public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction, out MembershipCreateStatus status)
+        //public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
+            status = MembershipCreateStatus.ProviderError;
+
             entity.Password = KandaSHA512.ComputeHash(((SecureString)entity.Password).GetString());
 
             var error = MembershipsGateway.Insert(entity, connection, transaction);
 
-            return (error == KandaTableDataGateway.NO_ERRORS);
+            switch (error)
+            {
+                case KandaTableDataGateway.NO_ERRORS:
+                    status = MembershipCreateStatus.Success;
+                    return true;
+
+                case KandaTableDataGateway.DUPLICATE_USER_NAME:
+                    status = MembershipCreateStatus.DuplicateUserName;
+                    return true;
+
+                //case KandaTableDataGateway.DUPLICATE_PROVIDER_USER_KEY:
+                //    status = MembershipCreateStatus.DuplicateProviderUserKey;
+                    return false;
+
+                default:
+                    return false;
+            }
+
+            //return (error == KandaTableDataGateway.NO_ERRORS);
         }
 
         /// <summary>

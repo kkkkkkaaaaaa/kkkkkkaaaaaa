@@ -16,10 +16,17 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// </summary>
         public const string RETURN_VALUE = @"ReturnValue";
 
+
+
         /// <summary>
         /// 
         /// </summary>
         public const int NO_ERRORS = 0;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public const int DUPLICATE_USER_NAME = 2627;
 
         /// <summary>
         /// 

@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Common;
 using System.Globalization;
 using System.Security;
+using System.Web.Security;
 using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
@@ -169,7 +170,8 @@ namespace kkkkkkaaaaaa.DomainModels
 
                 this._entity.Enabled = true;
                 this._entity.CreatedOn = KandaRepository.GetUtcDateTime(connection, transaction);
-                if (!KandaRepository.Memberships.Create(this._entity, connection, transaction)) { transaction.Rollback(); }
+                var status = MembershipCreateStatus.ProviderError;
+                if (!KandaRepository.Memberships.Create(this._entity, connection, transaction, out status)) { transaction.Rollback(); }
                 else
                 {
                     this._entity.ID = KandaRepository.Memberships.IdentCurrent(connection, transaction);

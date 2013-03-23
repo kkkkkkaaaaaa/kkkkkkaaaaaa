@@ -11,10 +11,12 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
 
         public ActionResult SignIn()
         {
-            // SignIn.cshtml
-            this.Response.RedirectToRoute(@"DefaultSignIn", @"SignIn");
+            return this.RedirectToRoute(@"DefaultSignIn", @"SignIn");
+        }
 
-            return new EmptyResult();
+        public ActionResult SignUp()
+        {
+            return this.RedirectToRoute(@"DefaultSignUp");
         }
 
         public ActionResult Error()

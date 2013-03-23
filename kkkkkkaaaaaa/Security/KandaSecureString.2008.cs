@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Text;
 
 namespace kkkkkkaaaaaa.Security
 {
-    public static partial class KandaSecureString
+    public static class KandaSecureString
     {
         /// <summary>
         /// 

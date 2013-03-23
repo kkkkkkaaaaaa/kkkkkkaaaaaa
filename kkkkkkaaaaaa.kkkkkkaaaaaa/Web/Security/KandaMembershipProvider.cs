@@ -39,32 +39,15 @@ namespace kkkkkkaaaaaa.Web.Security
                     {
                         Name = username,
                         Password = securePassword,
-                        Enabled = true,
                     });
+            var result = MembershipCreateStatus.ProviderError;
+            membership.Created += (sender, entity) => { result = MembershipCreateStatus.Success; };
             membership.Create();
+            status = result;
 
-            // 確認
             var user = default (KandaMembershipUser);
-            membership.Found += (sender, entity) =>
-                                    {
-                                        user = new KandaMembershipUser(entity);
-
-                                        /*
-                                        user = new KandaMembershipUser(
-                                            new MembershipEntity
-                                                {
-                                                    ID = __.ID,
-                                                    Name = _.username,
-                                                    Password = null,
-                                                    Enabled = __.Enabled,
-                                                    CreatedOn = __.CreatedOn,
-                                                    UpdatedOn = __.UpdatedOn,
-                                                });
-                                        */
-                                    };
+            membership.Found += (sender, entity) => { user = new KandaMembershipUser(entity); };
             membership.Find();
-
-            status = MembershipCreateStatus.Success;
 
             return user;
         }

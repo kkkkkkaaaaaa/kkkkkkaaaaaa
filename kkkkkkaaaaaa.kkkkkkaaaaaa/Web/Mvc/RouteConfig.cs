@@ -37,9 +37,9 @@ namespace kkkkkkaaaaaa.Web.Mvc
 
             // MembershipController
             routes.MapRoute(@"DefaultSignIn", @"signin", new { controller = @"Membership", action = @"Default", });
-            routes.MapRoute(@"DefaultSignUp", @"signup", new { controller = @"Membership", action = @"Default", });
+            routes.MapRoute(@"DefaultSignUp", @"signup", new { controller = @"Membership", action = @"Default", viewName = @"signUp", });
             routes.MapRoute(@"DefaultSignOut", @"signout", new { controller = @"Membership", action = @"DoNothing", });
-            routes.MapRoute(@"DefaultMembership", @"membership", new { controller = @"Membership", action = @"Membership", });
+            routes.MapRoute(@"DefaultMembership", @"membership", new { controller = @"Membership", action = @"Find", });
             routes.MapRoute(@"DefaultUser", @"user", new { controller = @"Users", action = @"Find" });
             routes.MapRoute(@"DefaultRole", @"role", new { controller = @"Roles", action = @"Find", });
             routes.MapRoute(@"DefaultAuthorization", @"authorization", new { controller = @"Authorizations", action = @"Find", });

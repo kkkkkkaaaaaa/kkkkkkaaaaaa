@@ -137,6 +137,7 @@
     <Content Include="Views\Shared\Partial\_RightPane.cshtml" />
     <Content Include="Views\Partial\_Article.cshtml" />
     <Content Include="Views\User.cshtml" />
+    <Content Include="Views\Memberships\Get.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

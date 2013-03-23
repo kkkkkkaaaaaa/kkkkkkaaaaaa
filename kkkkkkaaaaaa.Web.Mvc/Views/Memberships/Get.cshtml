@@ -1,0 +1,7 @@
+﻿@model kkkkkkaaaaaa.DataTransferObjects.MembershipsCriteria
+<div>
+    @using(@Html.BeginForm(@"Get", @"Memberships", FormMethod.Get))
+    {
+        <input type="text" id="txtName" name="n" />
+        @Html.CheckBoxFor(model => model.Enabled.Value, new { id = @"chkEnabled" })
+</div>

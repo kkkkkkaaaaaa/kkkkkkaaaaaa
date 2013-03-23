@@ -132,6 +132,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <param name="entity"></param>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
+        /// <param name="status"></param>
         /// <returns></returns>
         public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction, out MembershipCreateStatus status)
         //public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
@@ -150,15 +151,17 @@ namespace kkkkkkaaaaaa.Data.Repositories
 
                 case KandaTableDataGateway.DUPLICATE_USER_NAME:
                     status = MembershipCreateStatus.DuplicateUserName;
-                    return true;
+                    break;
 
                 //case KandaTableDataGateway.DUPLICATE_PROVIDER_USER_KEY:
                 //    status = MembershipCreateStatus.DuplicateProviderUserKey;
-                    return false;
+                    break;
 
                 default:
-                    return false;
+                    break;
             }
+
+            return false;
 
             //return (error == KandaTableDataGateway.NO_ERRORS);
         }

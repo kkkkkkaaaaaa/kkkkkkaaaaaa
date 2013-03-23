@@ -23,6 +23,12 @@ namespace kkkkkkaaaaaa.DomainModels
         public event Action<Membership, MembershipEntity> Found;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public event Action<Membership, MembershipEntity> Created;
+
+
+        /// <summary>
         /// プリセットのシステムアカウント。
         /// </summary>
         public static readonly Membership System = new Membership(MembershipEntity.System);
@@ -171,16 +177,30 @@ namespace kkkkkkaaaaaa.DomainModels
                 this._entity.Enabled = true;
                 this._entity.CreatedOn = KandaRepository.GetUtcDateTime(connection, transaction);
                 var status = MembershipCreateStatus.ProviderError;
-                if (!KandaRepository.Memberships.Create(this._entity, connection, transaction, out status)) { transaction.Rollback(); }
+                if (!KandaRepository.Memberships.Create(this._entity, connection, transaction, out status))
+                {
+                    switch (status)
+                    {
+                        case MembershipCreateStatus.DuplicateUserName:
+                            // ユーザ名 '{0}' はすでに存在します。
+                            break;
+
+                        case MembershipCreateStatus.ProviderError:
+                            // 作成に失敗しました。
+                            break;
+                    }
+                    transaction.Rollback();
+                }
                 else
                 {
-                    this._entity.ID = KandaRepository.Memberships.IdentCurrent(connection, transaction);
                     if (this.ID < 1) { transaction.Rollback(); }
                     else if (!this.createUsers(connection, transaction)) { transaction.Rollback(); }
                     else if (!this.createRoles(connection, transaction)) { transaction.Rollback(); }
                     else if (!this.createAuthorization(connection, transaction)) { transaction.Rollback(); }
                     else { transaction.Commit(); }
                 }
+
+                if (this.Created != null) { this.Created(this, this._entity); }
 
                 return this;
             }

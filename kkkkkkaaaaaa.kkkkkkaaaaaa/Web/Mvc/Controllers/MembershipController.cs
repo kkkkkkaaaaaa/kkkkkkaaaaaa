@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Security.Authentication;
 using System.Web.Mvc;
 using System.Web.Security;
 using kkkkkkaaaaaa.DataTransferObjects;
@@ -14,34 +15,24 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
             return this.View(viewName);
         }
 
+        [HttpGet()]
         public ActionResult Find()
         {
-            if (this.User.Identity.IsAuthenticated)
-            {
+            if (!this.User.Identity.IsAuthenticated) { throw new AuthenticationException(@"MembershipController.Find()");}
 
-            }
-            else
-            {
-                // Anonymous
-                FormsAuthentication.SetAuthCookie(DomainModels.Memberships.ANONYMOUS.ToString(CultureInfo.InvariantCulture), true);
-            }
+            var id = long.Parse(this.User.Identity.Name);
+            if (id == DomainModels.Memberships.ANONYMOUS) { return this.RedirectToRoute(@"DefaultSignIn"); }
 
-            var entity = default (MembershipEntity);
-            if (this.User.Identity.IsAuthenticated)
-            {
-                var membership = new DomainModels.Membership(new MembershipEntity { ID = long.Parse(this.User.Identity.Name), });
-                membership.Found += (_, __) =>
-                                        {
-                                            entity = __;
-                                        };
-                membership.Find();
-            }
-            else
-            {
-                FormsAuthentication.SignOut();
-            }
+            var membership = new DomainModels.Membership(new MembershipEntity
+                                    {
+                                        ID = id, 
+                                        Enabled = true, 
+                                    });
+            var view = default(ViewResult);
+            membership.Found += (sender, entity) => { view = this.View(@"Membership", entity); };
+            membership.Find();
 
-            return this.View(entity);
+            return view;
         }
 
         [HttpPost()]
@@ -79,7 +70,11 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
             var user = Membership.CreateUser(entity.Name, entity.Password[0], entity.Email, null, null, true, null, out status);
             if (status !=  MembershipCreateStatus.Success) { return this.View(@"SignUp", entity); }
 
-            return this.RedirectToRoute(@"DefaultMembership");
+            var name = ((long)user.ProviderUserKey).ToString(CultureInfo.InvariantCulture);
+
+            FormsAuthentication.RedirectFromLoginPage(name, true);
+
+            return new EmptyResult();
         }
 
         public ActionResult GetUser()

@@ -79,6 +79,36 @@ namespace kkkkkkaaaaaa.Web.Security
         }
 
         /// <summary>
+        /// データ ソースからユーザーの情報を取得します。
+        /// ユーザーの最終利用日時スタンプを更新するオプションも提供されます。
+        /// </summary>
+        /// <returns>
+        /// データ ソースから取得された指定のユーザーの情報が格納された <see cref="T:System.Web.Security.MembershipUser"/> オブジェクト。
+        /// </returns>
+        /// <param name="username">
+        /// ユーザー情報を取得するユーザーの名前。
+        /// </param>
+        /// <param name="userIsOnline">
+        /// ユーザーの最終利用日時スタンプを更新する場合は true。
+        /// ユーザーの最終利用日時スタンプを更新しないでユーザー情報を返す場合は false。
+        /// </param>
+        public override MembershipUser GetUser(string username, bool userIsOnline)
+        {
+            var membership = new DomainModels.Membership(new MembershipEntity
+                                                             {
+                                                                 Name = username,
+                                                             });
+            var user = default(KandaMembershipUser);
+            membership.Found += (sender, entity) =>
+                                    {
+                                        user = new KandaMembershipUser(entity);
+                                    };
+            membership.Find();
+
+            return user;
+        }
+
+        /// <summary>
         /// メンバーシップ ユーザーの一意の識別子に基づいて、データ ソースからユーザー情報を取得します。ユーザーの最終利用日時スタンプを更新するオプションも提供されます。
         /// </summary>
         /// <returns>
@@ -158,18 +188,6 @@ namespace kkkkkkaaaaaa.Web.Security
         /// </returns>
         /// <param name="userName">ロック ステータスを解除するメンバーシップ ユーザー。</param>
         public override bool UnlockUser(string userName)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        /// <summary>
-        /// データ ソースからユーザーの情報を取得します。ユーザーの最終利用日時スタンプを更新するオプションも提供されます。
-        /// </summary>
-        /// <returns>
-        /// データ ソースから取得された指定のユーザーの情報が格納された <see cref="T:System.Web.Security.MembershipUser"/> オブジェクト。
-        /// </returns>
-        /// <param name="username">ユーザー情報を取得するユーザーの名前。</param><param name="userIsOnline">ユーザーの最終利用日時スタンプを更新する場合は true。ユーザーの最終利用日時スタンプを更新しないでユーザー情報を返す場合は false。</param>
-        public override MembershipUser GetUser(string username, bool userIsOnline)
         {
             throw new System.NotImplementedException();
         }

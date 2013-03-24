@@ -11,7 +11,7 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
 
         public ActionResult SignIn()
         {
-            return this.RedirectToRoute(@"DefaultSignIn", @"SignIn");
+            return this.RedirectToRoute(@"DefaultSignIn");
         }
 
         public ActionResult SignUp()
@@ -21,12 +21,12 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
 
         public ActionResult Error()
         {
-            return this.View(@"Error");
+            return this.RedirectToRoute(@"DefaultError");
         }
 
-        public ActionResult Status()
+        public ActionResult HttpStatus()
         {
-            return this.View(@"Status");
+            return this.View(@"HttpStatus");
         }
     }
 }

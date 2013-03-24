@@ -8,6 +8,21 @@ namespace kkkkkkaaaaaa.Web.Mvc
         /// <summary>
         /// 
         /// </summary>
+        public long MembershipID
+        {
+            get
+            {
+                var name = this.User.Identity.Name;
+                var id = long.Parse(name);
+
+                return id;
+
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public abstract ActionResult Default(string viewName = null);
 

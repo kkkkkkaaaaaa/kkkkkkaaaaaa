@@ -20,13 +20,11 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
         {
             if (!this.User.Identity.IsAuthenticated) { throw new AuthenticationException(@"MembershipController.Find()");}
 
-            var id = long.Parse(this.User.Identity.Name);
-            if (id == DomainModels.Memberships.ANONYMOUS) { return this.RedirectToRoute(@"DefaultSignIn"); }
+            if (this.MembershipID == DomainModels.Memberships.ANONYMOUS) { return this.RedirectToRoute(@"DefaultSignIn"); }
 
             var membership = new DomainModels.Membership(new MembershipEntity
                                     {
-                                        ID = id, 
-                                        Enabled = true, 
+                                        ID = this.MembershipID, 
                                     });
             var view = default(ViewResult);
             membership.Found += (sender, entity) => { view = this.View(@"Membership", entity); };
@@ -55,12 +53,14 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
             return this.View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult SignOut()
         {
             FormsAuthentication.SignOut();
-            FormsAuthentication.RedirectToLoginPage();
-
-            return this.View();
+            return this.RedirectToRoute(@"Default");
         }
 
         [HttpPost()]

@@ -31,9 +31,9 @@ namespace kkkkkkaaaaaa.Data.Repositories
             if (password == null) { this.DoNothing(); }
             else
             {
-                if (criteria.Password is SecureString) { password = KandaSecureString.GetString((SecureString) criteria.Password); }
+                if (criteria.Password is SecureString) { password = ((SecureString)criteria.Password).GetString(); }
 
-                var hash = KandaSHA5126CryptoServiceProvider.ComputeHash((string)password, Encoding.Unicode);
+                var hash = KandaSHA512.ComputeHash((string)password, Encoding.Unicode);
                 password = hash;
             }
             criteria.Password = password;
@@ -139,7 +139,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
         {
             status = MembershipCreateStatus.ProviderError;
 
-            entity.Password = KandaSHA512.ComputeHash(((SecureString)entity.Password).GetString());
+            entity.Password = KandaSHA512.ComputeHash(((SecureString)entity.Password).GetString(), Encoding.Unicode);
 
             var error = MembershipsGateway.Insert(entity, connection, transaction);
 

@@ -192,12 +192,17 @@
     <Compile Include="Data\TableDataGateways\KandaTableDataGateway.cs" />
     <Compile Include="Data\TableDataGateways\MembershipsGateway.cs" />
     <Compile Include="Data\Repositories\UsersRepository.cs" />
+    <Compile Include="Web\GlobalizationModule.cs" />
     <Compile Include="Web\ErrorModule.cs" />
+    <Compile Include="Web\Mvc\Controllers\SignUpController.cs" />
+    <Compile Include="Web\Mvc\KandaActionFilter.cs" />
+    <Compile Include="Web\Mvc\AuthorizationFilter.cs" />
     <Compile Include="Web\Mvc\Controllers\AuthorizationsController.cs" />
     <Compile Include="Web\Mvc\Controllers\DefaultController.cs" />
     <Compile Include="Web\Mvc\Controllers\MembershipController.cs" />
     <Compile Include="Web\Mvc\Controllers\MembershipsController.cs" />
     <Compile Include="Web\Mvc\Controllers\RolesController.cs" />
+    <Compile Include="Web\Mvc\Controllers\SignInController.cs" />
     <Compile Include="Web\Mvc\Controllers\UsersController.cs" />
     <Compile Include="Web\Mvc\EngineConfig.cs" />
     <Compile Include="Web\Mvc\FilterConfig.cs" />

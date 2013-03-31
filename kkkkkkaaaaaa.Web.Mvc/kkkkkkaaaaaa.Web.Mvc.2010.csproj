@@ -114,7 +114,8 @@
     <Content Include="Views\Memberships\Editor.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Authorizations\" />
+    <Folder Include="Views\Authorizations\DisplayTemplates\" />
+    <Folder Include="Views\Authorizations\EditorTemplates\" />
     <Folder Include="Views\Roles\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>

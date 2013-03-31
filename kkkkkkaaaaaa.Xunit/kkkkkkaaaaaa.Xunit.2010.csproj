@@ -45,6 +45,7 @@
     <ErrorReport>prompt</ErrorReport>
     <DebugType>full</DebugType>
     <OutputPath>..\bin\kkkkkkaaaaaa.Xunit\Debug\</OutputPath>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <PlatformTarget>x64</PlatformTarget>
@@ -57,6 +58,7 @@
     <OutputPath>..\bin\kkkkkkaaaaaa.Xunit\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -101,8 +103,13 @@
     <Compile Include="Security\KandaSecureStringFacts.cs" />
     <Compile Include="Shell32\ShellFacts.cs" />
     <Compile Include="SystemFacts.cs" />
+    <Compile Include="TextTemplates\TextTransformFacts.cs" />
+    <Compile Include="Text\EncodingFact.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -135,6 +142,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

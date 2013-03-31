@@ -1,0 +1,46 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="kkkkkkaaaaaa" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Data.Common" #>
+<#@ import namespace="kkkkkkaaaaaa.Data.Common" #>
+namespace
+{
+	public class <#= this._tableName  #>Entity
+	{
+	
+		<#
+		var connection = default(DbConnection);
+		var reader = default(KandaDbDataReader);
+		try
+		{
+			connection = KandaProviderFactory.Instance.CreateConnection();
+			connection.Open();
+
+			reader = KandaProviderFactory.Instance.CreateReader(connection);
+			reader.ExecuteReader();
+			while (reader.Read())
+			{
+		#>
+		
+		/// <summary>
+		/// <#= reader.GetString(@"ColumnName") #>
+		/// </summary>
+		public virtual <#= reader.GetString(@"DataType") #> <#= reader.GetString(@"ColumnName") #> { get; set; }
+		
+		<#
+			}
+		}
+		finally
+		{
+			if (connection != null) { connection.Close(); }
+			if (reader != null) { reader.Close(); } 
+		}
+		#>
+	}
+	
+}
+<#  #>
+
+<#  #>

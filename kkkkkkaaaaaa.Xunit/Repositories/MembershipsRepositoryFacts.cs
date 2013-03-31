@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.Common;
 using System.Globalization;
 using System.Threading;
+using System.Web.Security;
 using Xunit;
 using kkkkkkaaaaaa.Data.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
@@ -28,7 +29,8 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
 
                 var repository = new MembershipsRepository();
 
-                repository.Create(entity, connection, transaction);
+                var status = MembershipCreateStatus.ProviderError;
+                repository.Create(entity, connection, transaction, out status);
 
                 var found = repository.Find(entity.ID, connection, transaction);
 
@@ -58,7 +60,8 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
                 var repository = new MembershipsRepository();
 
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
-                repository.Create(new MembershipEntity() { Name = name, Password = @"", Enabled = false, }, connection, transaction);
+                var status = MembershipCreateStatus.ProviderError;
+                repository.Create(new MembershipEntity() { Name = name, Password = @"", Enabled = false, }, connection, transaction, out status);
 
                 var found = repository.Find(name, connection, transaction);
 
@@ -89,7 +92,8 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
 
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
                 var password = new Random().Next().ToString(CultureInfo.InvariantCulture);
-                repository.Create(new MembershipEntity() { Name = name, Password = password, Enabled = true, }, connction, transaction);
+                var status = MembershipCreateStatus.ProviderError;
+                repository.Create(new MembershipEntity() { Name = name, Password = password, Enabled = true, }, connction, transaction, out status);
 
                 var found = repository.Find(name, password, connction, transaction);
 
@@ -120,9 +124,8 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
 
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
                 var password = new Random().Next().ToString(CultureInfo.InvariantCulture);
-
-
-                repository.Create(new MembershipEntity() { Name = name, Password = password, Enabled = true, CreatedOn = DateTime.Now, }, connection, transaction);
+                var status = MembershipCreateStatus.ProviderError;
+                repository.Create(new MembershipEntity() { Name = name, Password = password, Enabled = true, CreatedOn = DateTime.Now, }, connection, transaction, out status);
 
                 var id = repository.IdentCurrent(connection, transaction);
                 Assert.True(0 < id);
@@ -151,7 +154,8 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
 
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
                 var password = new Random().Next().ToString(CultureInfo.InvariantCulture);
-                repository.Create(new MembershipEntity() { Name = name, Password = password, Enabled = true, CreatedOn = DateTime.Now, }, connection, transaction);
+                var status = MembershipCreateStatus.ProviderError;
+                repository.Create(new MembershipEntity() { Name = name, Password = password, Enabled = true, CreatedOn = DateTime.Now, }, connection, transaction, out status);
 
                 var id = repository.IdentCurrent(connection, transaction);
                 var found = repository.Find(name, password, connection, transaction);
@@ -188,7 +192,8 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
                 var repository = new MembershipsRepository();
 
                 var name = new Random().Next().ToString(CultureInfo.InvariantCulture);
-                repository.Create(new MembershipEntity() { Name = name, Password = @"", }, connection, transaction);
+                var status = MembershipCreateStatus.ProviderError;
+                repository.Create(new MembershipEntity() { Name = name, Password = @"", }, connection, transaction, out status);
 
                 var id = repository.IdentCurrent(connection, transaction);
                 Assert.True(repository.Delete(id, connection, transaction));

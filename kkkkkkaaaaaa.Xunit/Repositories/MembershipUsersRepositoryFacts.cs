@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.Common;
 using System.Globalization;
+using System.Web.Security;
 using Xunit;
 using kkkkkkaaaaaa.Data.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
@@ -149,8 +150,9 @@ namespace kkkkkkaaaaaa.Xunit.Repositories
                 // Memberships
                 var membership = new MembershipEntity() { Name = new Random().Next().ToString(CultureInfo.InvariantCulture), Password = @"password", };
                 var memberships = new MembershipsRepository();
-                membership.CreatedOn  = KandaRepository.GetUtcDateTime(connection, transaction);
-                if (!memberships.Create(membership , connection, transaction)) { Assert.True(!true); }
+                membership.CreatedOn = KandaRepository.GetUtcDateTime(connection, transaction);
+                var status = MembershipCreateStatus.ProviderError;
+                if (!memberships.Create(membership , connection, transaction, out status)) { Assert.True(!true); }
 
                 // Users
                 var user = new UserEntity() { /*ID = @"",*/ FamilyName = @"family name", GivenName = @"given name", AdditionalName = @"additional name", Description = @"description", CreatedOn = membership.CreatedOn, Enabled = true, };

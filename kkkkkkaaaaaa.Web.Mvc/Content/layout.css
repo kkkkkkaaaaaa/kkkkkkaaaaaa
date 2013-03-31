@@ -7,8 +7,16 @@ body {
 	width: 100%;
 }
 
+div {
+	
+}
+
 p {
 	
+}
+
+article {
+	text-indent: 1em;
 }
 
 a {
@@ -27,8 +35,10 @@ div.content {
 	
 }
 
-div.article {
-	
+.clearfix:after {
+	content: '';
+	display: block;
+	clear: both;
 }
 
 #divLayout {

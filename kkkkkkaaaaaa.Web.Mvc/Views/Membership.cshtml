@@ -1,3 +1,18 @@
-﻿<div>
+﻿@model kkkkkkaaaaaa.DataTransferObjects.MembershipEntity
+<div>
     <h2>Memberships</h2>
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr><th></th><th></th></tr>
+            @{ @Html.Raw(true ? @Html.EditorForModel() : @Html.DisplayForModel()); }
+            <tr><td>Name</td><td><span>@this.Model.Name</span></td></tr>
+            <tr><td>Password</td><td><input type="password" id="txtPassword" name="password" value="@this.Model.Password"></td></tr>
+            <tr><td></td><td><input type="password" id="txtPasswordConfirm" ></td></tr>
+            <tr><td>Email</td><td></td></tr>
+            <tr><td>Enabled</td><td>@Html.Encode(this.Model.Enabled ? @"有効" : @"無効")</td></tr>
+        </table>
+        <input type="hidden" id="hdnID" value="@this.Model.ID" />
+        <input type="submit" id="btnSubmit" value="編集" />
+    }
 </div>

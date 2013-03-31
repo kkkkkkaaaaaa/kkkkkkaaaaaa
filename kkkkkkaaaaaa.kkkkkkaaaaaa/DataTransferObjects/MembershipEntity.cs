@@ -8,7 +8,7 @@ namespace kkkkkkaaaaaa.DataTransferObjects
     {
         public readonly static MembershipEntity Empty = new MembershipEntity() { ID = -1L, };
 
-        public readonly static MembershipEntity System = new MembershipEntity { ID = 1L, Name = @"System", Password = @"", CreatedOn = new DateTime(1753, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
+        public readonly static MembershipEntity System = new MembershipEntity { ID = 1L, Name = @"System", Password = new SecureString(), CreatedOn = new DateTime(1753, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) };
 
         /// <summary>
         /// コンストラクター。
@@ -22,7 +22,7 @@ namespace kkkkkkaaaaaa.DataTransferObjects
         public long ID { get; set; }
 
         [KandaDbParameterMapping("@name")]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         /*
         [KandaDbParameterMapping("@password")]

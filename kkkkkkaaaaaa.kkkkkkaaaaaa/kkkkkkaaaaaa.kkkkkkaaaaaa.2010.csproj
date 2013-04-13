@@ -93,9 +93,21 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="TextTemplates\Database\Stored Procedures\InsertTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>InsertTableTemplate.cs</LastGenOutput>
+    </None>
     <None Include="TextTemplates\DataTransferObjects\TableEntityTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TableEntityTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="TextTemplates\DomainModels\DomainModelTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DomainModelTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\InsertTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>InsertTableTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -196,12 +208,32 @@
     <Compile Include="Data\TableDataGateways\KandaTableDataGateway.cs" />
     <Compile Include="Data\TableDataGateways\MembershipsGateway.cs" />
     <Compile Include="Data\Repositories\UsersRepository.cs" />
+    <Compile Include="TextTemplates\Database\Stored Procedures\InsertTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InsertTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TextTemplates\Database\Stored Procedures\InsertTableTemplate.partial.cs" />
     <Compile Include="TextTemplates\DataTransferObjects\TableEntityTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TableEntityTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="TextTemplates\DataTransferObjects\TableEntityTemplate.partial.cs" />
+    <Compile Include="TextTemplates\DomainModels\DomainModelTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DomainModelTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\DataTransferObjects\InsertTableContext.cs" />
+    <Compile Include="VisualStudio\TextTemplating\DataTransferObjects\TextTemplateContext.cs" />
+    <Compile Include="VisualStudio\TextTemplating\EntityTemplateContext.cs" />
+    <Compile Include="VisualStudio\TextTemplating\InsertTableTemplate.cs">
+      <DependentUpon>InsertTableTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\InsertTableTemplate.partial.cs" />
     <Compile Include="Web\GlobalizationModule.cs" />
     <Compile Include="Web\ErrorModule.cs" />
     <Compile Include="Web\Mvc\Controllers\SignUpController.cs" />
@@ -237,14 +269,12 @@
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\SqlClient\" />
-    <Folder Include="TextTemplates\Database\Stored Procedures\" />
     <Folder Include="TextTemplates\Data\Repositories\" />
     <Folder Include="TextTemplates\Data\TableDataGateway\" />
-    <Folder Include="TextTemplates\DomainModels\" />
-    <Folder Include="VisualStudio\TextTemplating\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

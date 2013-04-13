@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Data.Common;
-using kkkkkkaaaaaa.Data.Common;
 using kkkkkkaaaaaa.Data.TableDataGateways;
 using kkkkkkaaaaaa.DataTransferObjects;
+using kkkkkkaaaaaa.Data.Extensions;
 
 namespace kkkkkkaaaaaa.Data.Repositories
 {
@@ -11,7 +12,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
     {
         public ICollection<long> Get(MembershipAuthorizationsCriteria criteria, DbConnection connection, DbTransaction transaction)
         {
-            var reader = default(KandaDbDataReader);
+            var reader = default(IDataReader);
 
             try
             {

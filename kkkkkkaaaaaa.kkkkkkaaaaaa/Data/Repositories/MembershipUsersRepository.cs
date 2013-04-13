@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Data.Common;
 using kkkkkkaaaaaa.Data.Common;
+using kkkkkkaaaaaa.Data.Extensions;
 using kkkkkkaaaaaa.Data.TableDataGateways;
 using kkkkkkaaaaaa.DataTransferObjects;
 
@@ -21,7 +23,7 @@ namespace kkkkkkaaaaaa.Data.Repositories
         /// <returns></returns>
         public long Find(long userId, DbConnection connection, DbTransaction transaction)
         {
-            var reader = default(KandaDbDataReader);
+            var reader = default(IDataReader);
 
             try
             {

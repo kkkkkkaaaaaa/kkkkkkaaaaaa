@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "kkkkkkaaaaaa.WindowsAzure.2010", "kkkkkkaaaaaa.WindowsAzure.2010\kkkkkkaaaaaa.WindowsAzure.2010.ccproj", "{65CFBA99-1FAF-48A2-85DA-51CEBC300B41}"
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "kkkkkkaaaaaa.WindowsAzure.2010", "kkkkkkaaaaaa.WindowsAzure\kkkkkkaaaaaa.WindowsAzure.2010.ccproj", "{65CFBA99-1FAF-48A2-85DA-51CEBC300B41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

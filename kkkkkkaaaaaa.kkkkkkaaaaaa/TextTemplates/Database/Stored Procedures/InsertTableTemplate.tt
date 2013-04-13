@@ -1,0 +1,92 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Data" #>
+<#@ import namespace="System.Data" #>
+CREATE PROCEDURE Insert<#= this.Context.TableName #> (
+<#
+	var parameters = default(string);
+
+	var count = 1;
+	foreach (DataRow row in this.Schema.Rows)
+	{
+		var columnName = (string)row[@"ColumnName"];
+		var dataTypeName = (string)row[@"DataTypeName"];
+		var isIdentity = (bool)row[@"IsIdentity"];
+
+		parameters += string.Format("{0}@{1} {2}{3}", ((1 < count) ? "\t, " : ""), columnName, dataTypeName, Environment.NewLine);
+
+		count ++;
+	}
+	count = 1;
+#>
+	<#= parameters #>
+	--　Output parameters
+	, @identity		decimal(38, 0) OUTPUT
+) AS BEGIN
+
+	DECLARE
+		@insert			nvarchar(MAX)
+		, @into			nvarchar(MAX)
+		, @values		nvarchar(MAX)
+		, @stmt			nvarchar(MAX)
+		, @params		nvarchar(MAX)
+		, @result		int
+		, @error		int
+
+	SET @insert = N'INSERT'
+
+	SET @into = N' INTO [<#= this.Context.TableName #>] ('
+<#
+	var into = default(string);
+
+	count = 1;
+	foreach (DataRow row in this.Schema.Rows)
+	{
+		var columnName = (string)row[@"ColumnName"];
+		var dataTypeName = (string)row[@"DataTypeName"];
+		var isIdentity = (bool)row[@"IsIdentity"];
+		
+		into += string.Format("\t\t+ N'{0}@{1}'{2}", ((1 < count) ? ", " : ""), columnName, Environment.NewLine);
+
+		count ++;
+	}
+	count = 1;
+#>
+<#= into  #>
+	SET @values = N') VALUES ('
+<#
+	var values = default(string);
+
+	count = 1;
+	foreach (DataRow row in this.Schema.Rows)
+	{
+		var columnName = (string)row[@"ColumnName"];
+		var dataTypeName = (string)row[@"DataTypeName"];
+		var isIdentity = (bool)row[@"IsIdentity"];
+		
+		into += string.Format("\t\t+ N'{0}@{1}'{2}", ((1 < count) ? ", " : ""), columnName, Environment.NewLine);
+
+		count ++;
+	}
+	count = 1;
+#>
+<#= "value" #>
+		+ N');'
+		
+	SET @stmt = (@insert + @into + @values)
+	SET @stmt = N''
+		+ N'IF (0 < @id)	SET IDENTITY_INSERT ON;'
+		+ @stmt + N';'
+		+ N'IF (0 < @id)	SET IDENTITY_INSERT OFF;'
+		+ N'SET @identity = SCOPE_IDENTITY;'
+	SET @params = <#= "params" #>
+
+	EXECUTE @result = sp_executesql
+		@stmt
+		, @params
+		, N'<#= "params"  #>, @identity = @identity OUTPUT'
+
+	SET @error = @@ERROR
+
+	RETURN @error
+
+END

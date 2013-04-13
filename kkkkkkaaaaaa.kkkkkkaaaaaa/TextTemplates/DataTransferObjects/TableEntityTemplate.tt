@@ -1,46 +1,28 @@
 ﻿<#@ template language="C#" #>
-<#@ assembly name="System" #>
-<#@ assembly name="System.Data" #>
-<#@ assembly name="kkkkkkaaaaaa" #>
-<#@ import namespace="System" #>
-<#@ import namespace="System.Data.Common" #>
-<#@ import namespace="kkkkkkaaaaaa.Data.Common" #>
-namespace
+namespace <#= this.Context.Namespace #>
 {
-	public class <#= this._tableName  #>Entity
-	{
-	
-		<#
-		var connection = default(DbConnection);
-		var reader = default(KandaDbDataReader);
-		try
-		{
-			connection = KandaProviderFactory.Instance.CreateConnection();
-			connection.Open();
+	using System;
 
-			reader = KandaProviderFactory.Instance.CreateReader(connection);
-			reader.ExecuteReader();
-			while (reader.Read())
+	/// <summary>
+	/// <#= this.Context.TableName #> のエンティティです。
+	/// </summary>
+	public partial class <#= this.Context.TypeName #>
+	{
+		<#
+			while (this.Schema.Read())
 			{
+				var columnName = this.Schema.GetString(this.Schema.GetOrdinal(@"ColumnName"));
+				var dataType = ((Type)this.Schema.GetValue(this.Schema.GetOrdinal(@"DataType"))).Name;
 		#>
-		
+
 		/// <summary>
-		/// <#= reader.GetString(@"ColumnName") #>
+		/// <#= columnName #>。
 		/// </summary>
-		public virtual <#= reader.GetString(@"DataType") #> <#= reader.GetString(@"ColumnName") #> { get; set; }
-		
+		public virtual <#= dataType #> <#= columnName #> { get; set; }
 		<#
 			}
-		}
-		finally
-		{
-			if (connection != null) { connection.Close(); }
-			if (reader != null) { reader.Close(); } 
-		}
 		#>
+
 	}
 	
 }
-<#  #>
-
-<#  #>

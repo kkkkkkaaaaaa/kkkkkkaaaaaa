@@ -105,6 +105,8 @@
     <Compile Include="SystemFacts.cs" />
     <Compile Include="TextTemplates\TextTransformFacts.cs" />
     <Compile Include="Text\EncodingFact.cs" />
+    <Compile Include="VisualStudio\TextTemplating\InsertTableTemplateFacts.cs" />
+    <Compile Include="VisualStudio\TextTemplating\TextTemplateFact.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Moq">
@@ -113,7 +115,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.XML" />
     <Reference Include="xunit">
       <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
     </Reference>

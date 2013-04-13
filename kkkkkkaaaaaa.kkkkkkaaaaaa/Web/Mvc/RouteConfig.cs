@@ -32,8 +32,11 @@ namespace kkkkkkaaaaaa.Web.Mvc
             // DefaultController
             routes.MapRoute(@"Default", @"", new { controller = @"Default", action = @"Default", });
             routes.MapRoute(@"DefaultDefault", @"default", new { controller = @"Default", action = @"Default", });
-            routes.MapRoute(@"DefaultError", @"error", new { controller = @"Default", action = "Error", });
-            routes.MapRoute(@"DefaultHttpStatus", @"status", new { controller = @"Default", action = "Status", status = 404, });
+            routes.MapRoute(@"DefaultError", @"error", new { controller = @"Default", action = @"Error", });
+            routes.MapRoute(@"DefaultHttpStatus", @"status", new { controller = @"Default", action = @"Status", status = 404, });
+
+            routes.MapRoute(@"DefaultView", @"view", new { controller = @"Default", action = @"View", });
+
 
             // MembershipController
             routes.MapRoute(@"DefaultSignIn", @"signin", new { controller = @"SignIn", action = @"Default", });

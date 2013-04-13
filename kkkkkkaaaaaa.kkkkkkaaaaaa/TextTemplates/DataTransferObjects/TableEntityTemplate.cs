@@ -10,8 +10,6 @@
 namespace kkkkkkaaaaaa.TextTemplates.DataTransferObjects
 {
     using System;
-    using System.Data.Common;
-    using kkkkkkaaaaaa.Data.Common;
     
     
     #line 1 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
@@ -20,82 +18,70 @@ namespace kkkkkkaaaaaa.TextTemplates.DataTransferObjects
     {
         public virtual string TransformText()
         {
-            this.Write("namespace\r\n{\r\n\tpublic class ");
+            this.Write("namespace ");
             
-            #line 10 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this._tableName));
+            #line 2 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Context.Namespace));
             
             #line default
             #line hidden
-            this.Write("Entity\r\n\t{\r\n\t\r\n\t\t");
+            this.Write("\r\n{\r\n\tusing System;\r\n\r\n\t/// <summary>\r\n\t/// ");
             
-            #line 13 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
+            #line 7 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Context.TableName));
+            
+            #line default
+            #line hidden
+            this.Write(" のエンティティです。\r\n\t/// </summary>\r\n\tpublic partial class ");
+            
+            #line 9 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Context.TypeName));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t{\r\n\t\t");
+            
+            #line 11 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
 
-		var connection = default(DbConnection);
-		var reader = default(KandaDbDataReader);
-		try
-		{
-			connection = KandaProviderFactory.Instance.CreateConnection();
-			connection.Open();
-
-			reader = KandaProviderFactory.Instance.CreateReader(connection);
-			reader.ExecuteReader();
-			while (reader.Read())
+			while (this.Schema.Read())
 			{
+				var columnName = this.Schema.GetString(this.Schema.GetOrdinal(@"ColumnName"));
+				var dataType = ((Type)this.Schema.GetValue(this.Schema.GetOrdinal(@"DataType"))).Name;
 		
             
             #line default
             #line hidden
-            this.Write("\t\t\r\n\t\t/// <summary>\r\n\t\t/// ");
+            this.Write("\r\n\t\t/// <summary>\r\n\t\t/// ");
             
-            #line 28 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(reader.GetString(@"ColumnName")));
+            #line 19 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnName));
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t/// </summary>\r\n\t\tpublic virtual ");
+            this.Write("。\r\n\t\t/// </summary>\r\n\t\tpublic virtual ");
             
-            #line 30 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(reader.GetString(@"DataType")));
+            #line 21 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(dataType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 30 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(reader.GetString(@"ColumnName")));
+            #line 21 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(columnName));
             
             #line default
             #line hidden
-            this.Write(" { get; set; }\r\n\t\t\r\n\t\t");
+            this.Write(" { get; set; }\r\n\t\t");
             
-            #line 32 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
+            #line 22 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
 
 			}
-		}
-		finally
-		{
-			if (connection != null) { connection.Close(); }
-			if (reader != null) { reader.Close(); } 
-		}
 		
             
             #line default
             #line hidden
-            this.Write("\t}\r\n\t\r\n}\r\n");
-            
-            #line 44 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
-  
-            
-            #line default
-            #line hidden
-            this.Write("\r\n");
-            
-            #line 46 "C:\Projects\kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa\TextTemplates\DataTransferObjects\TableEntityTemplate.tt"
-  
-            
-            #line default
-            #line hidden
+            this.Write("\r\n\t}\r\n\t\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

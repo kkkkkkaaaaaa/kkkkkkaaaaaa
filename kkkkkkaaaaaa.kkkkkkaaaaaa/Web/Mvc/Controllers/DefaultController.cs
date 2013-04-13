@@ -28,5 +28,11 @@ namespace kkkkkkaaaaaa.Web.Mvc.Controllers
         {
             return this.View(@"HttpStatus");
         }
+
+        [ActionName(@"View")]
+        public  ActionResult DefaultView()
+        {
+            return this.View(@"View");
+        }
     }
 }

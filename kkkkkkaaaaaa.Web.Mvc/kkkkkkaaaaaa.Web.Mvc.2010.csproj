@@ -141,6 +141,7 @@
     <Content Include="Views\Memberships\Get.cshtml" />
     <Content Include="Views\Role.cshtml" />
     <Content Include="Views\Authorization.cshtml" />
+    <Content Include="Views\View.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

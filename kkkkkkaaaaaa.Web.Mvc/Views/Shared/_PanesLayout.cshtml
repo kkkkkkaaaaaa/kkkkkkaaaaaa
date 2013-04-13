@@ -1,8 +1,12 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div id="divTop" style="border: solid 0px">@Html.Partial(@"_TopPane")</div>
-<div id="divLeft" style="border: solid 0px">@Html.Partial(@"_LeftPane")</div>
+<div id="divTop" style="border: solid 0px">@Html.Partial(@"_TopPane")
+</div>
+<div id="divLeft" style="border: solid 0px">@Html.Partial(@"_LeftPane")
+</div>
 <div id="divCenter" style="border: solid 0px">@RenderBody()</div>
-<div id="divRight" style="border: solid 0px" class="clearfix">@Html.Partial(@"_RightPane")</div>
-<div id="divBottom" style="border: solid 0px">@Html.Partial(@"_BottomPane")</div>
+<div id="divRight" style="border: solid 0px" class="clearfix">@Html.Partial(@"_RightPane")
+</div>
+<div id="divBottom" style="border: solid 0px">@Html.Partial(@"_BottomPane")
+</div>

@@ -20,6 +20,11 @@ namespace kkkkkkaaaaaa.Data.Common
             this._command = command;
         }
 
+        /// <summary>
+        /// コンストラクタ―。
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
         public KandaDbDataReader(DbConnection connection, DbTransaction transaction = null)
         {
             this._command = connection.CreateCommand();
@@ -117,6 +122,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// DbDataReader の列メタデータを記述する DataTable を返します。
         /// </summary>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override DataTable GetSchemaTable()
         {
             return this._reader.GetSchemaTable();
@@ -144,6 +150,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <summary>
         /// DbDataReader オブジェクトを閉じます。
         /// </summary>
+        [DebuggerStepThrough()]
         public override void Close()
         {
             if (this._reader != null) { this._reader.Close(); }
@@ -154,6 +161,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override int GetOrdinal(string name)
         {
             return this._reader.GetOrdinal(name);
@@ -164,6 +172,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override string GetName(int ordinal)
         {
             return this._reader.GetName(ordinal);
@@ -174,21 +183,10 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override bool IsDBNull(int ordinal)
         {
             return this._reader.IsDBNull(ordinal);
-        }
-
-        /// <summary>
-        /// 列に格納されている値が存在しない値または欠損値かどうかを表す値を取得します。
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public bool IsDBNull(string name)
-        {
-            var ordinal = this.GetOrdinal(name);
-
-            return this.IsDBNull(ordinal);
         }
 
         /// <summary>
@@ -221,18 +219,10 @@ namespace kkkkkkaaaaaa.Data.Common
             return this._reader.GetString(ordinal);
         }
 
-        /// <summary>
-        /// 指定した列の値を String のインスタンスとして取得します。
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public string GetString(string name)
+        public override int GetInt32(int ordinal)
         {
-            var ordinal = this.GetOrdinal(name);
-
-            return (this.IsDBNull(ordinal) ? string.Empty : this.GetString(ordinal));
+            throw new NotImplementedException();
         }
-
 
         /// <summary>
         /// 指定した列の値を 64 ビット符号付き整数として取得します。
@@ -245,15 +235,13 @@ namespace kkkkkkaaaaaa.Data.Common
         }
 
         /// <summary>
-        /// 指定した列の値を 64 ビット符号付き整数として取得します。
+        /// 
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="ordinal"></param>
         /// <returns></returns>
-        public long GetInt64(string name)
+        public override decimal GetDecimal(int ordinal)
         {
-            var ordinal = this.GetOrdinal(name);
-
-            return (this.IsDBNull(ordinal) ? default(long) : this.GetInt64(ordinal));
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -267,18 +255,6 @@ namespace kkkkkkaaaaaa.Data.Common
         }
 
         /// <summary>
-        /// 指定した列の値をブール値として取得します。
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public bool GetBoolean(string name)
-        {
-            var ordinal = this.GetOrdinal(name);
-
-            return (this.IsDBNull(ordinal) ? default(bool) : this.GetBoolean(ordinal));
-        }
-
-        /// <summary>
         /// 指定した列の値を DateTime オブジェクトとして取得します。
         /// </summary>
         /// <param name="ordinal"></param>
@@ -286,20 +262,6 @@ namespace kkkkkkaaaaaa.Data.Common
         public override DateTime GetDateTime(int ordinal)
         {
             return this._reader.GetDateTime(ordinal);
-        }
-
-        /// <summary>
-        /// 指定した列の値を DateTime オブジェクトとして取得します。
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public DateTime GetDateTime(string name)
-        {
-            var ordinal = this.GetOrdinal(name);
-
-            return (this.IsDBNull(ordinal) ? default(DateTime) : this.GetDateTime(ordinal));
-
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -369,22 +331,12 @@ namespace kkkkkkaaaaaa.Data.Common
             throw new NotImplementedException();
         }
 
-        public override int GetInt32(int ordinal)
-        {
-            throw new NotImplementedException();
-        }
-
         public override object GetValue(int ordinal)
         {
             throw new NotImplementedException();
         }
 
         public override int GetValues(object[] values)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override decimal GetDecimal(int ordinal)
         {
             throw new NotImplementedException();
         }

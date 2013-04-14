@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>1.8</ProductVersion>
-    <ProjectGuid>{65cfba99-1faf-48a2-85da-51cebc300b41}</ProjectGuid>
+    <ProjectGuid>{9837deea-cede-4aec-9a06-ab6bb7856a20}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>kkkkkkaaaaaa.WindowsAzure.2010</RootNamespace>
@@ -35,6 +35,16 @@
     <ServiceDefinition Include="ServiceDefinition.csdef" />
     <ServiceConfiguration Include="ServiceConfiguration.Local.cscfg" />
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kkkkkkaaaaaa.Web.Mvc\kkkkkkaaaaaa.WindowsAzure.Web.Mvc.2010.csproj">
+      <Name>kkkkkkaaaaaa.WindowsAzure.Web.Mvc.2010</Name>
+      <Project>{088bd8ff-97f8-4a55-9095-21f1f6632793}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>kkkkkkaaaaaa.WindowsAzure.Web.Mvc.2010</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

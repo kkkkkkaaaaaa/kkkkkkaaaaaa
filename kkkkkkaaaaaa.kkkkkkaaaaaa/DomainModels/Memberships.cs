@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security;
 using kkkkkkaaaaaa.Data;
 using kkkkkkaaaaaa.Data.Common;
-using kkkkkkaaaaaa.Data.Repositories;
+using kkkkkkaaaaaa.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
 
 namespace kkkkkkaaaaaa.DomainModels

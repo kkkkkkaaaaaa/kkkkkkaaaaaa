@@ -33,6 +33,9 @@ namespace kkkkkkaaaaaa.Xunit.Database
 
                 KandaDbDataMapper.MapToParameters(command, entity);
 
+                var identity = this._factory.CreateParameter("@identity", DbType.Decimal, sizeof(decimal), ParameterDirection.Output, DBNull.Value);
+                command.Parameters.Add(identity);
+
                 var result = this._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
                 command.Parameters.Add(result);
 
@@ -69,6 +72,7 @@ namespace kkkkkkaaaaaa.Xunit.Database
                 command.Parameters.Add(this._factory.CreateParameter("@enabled", true));
                 command.Parameters.Add(this._factory.CreateParameter("@createdOn", DateTime.Now));
                 command.Parameters.Add(this._factory.CreateParameter("@updatedOn", DBNull.Value));
+                command.Parameters.Add(this._factory.CreateParameter("@identity", DbType.Decimal, sizeof(decimal), ParameterDirection.Output, DBNull.Value));
                 command.ExecuteNonQuery();
 
                 command = this._factory.CreateCommand(connection, transaction);

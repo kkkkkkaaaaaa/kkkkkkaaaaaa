@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Threading;
 using System.Web.Security;
 using Xunit;
-using kkkkkkaaaaaa.Data.Repositories;
+using kkkkkkaaaaaa.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
 
 namespace kkkkkkaaaaaa.Xunit.Repositories

@@ -169,16 +169,16 @@
     <Compile Include="DataTransferObjects\UsersCriteria.cs" />
     <Compile Include="Data\Common\KandaProviderFactory.cs" />
     <Compile Include="DataTransferObjects\MembershipUserEntity.cs" />
-    <Compile Include="Data\Repositories\AuthorizationsRepository.cs" />
-    <Compile Include="Data\Repositories\MembershipAuthorizationsRepository.cs" />
-    <Compile Include="Data\Repositories\MembershipRolesRepository.cs" />
-    <Compile Include="Data\Repositories\MembershipUsersRepository.cs" />
-    <Compile Include="Data\Repositories\RoleAuthorizationsRepository.cs" />
-    <Compile Include="Data\Repositories\RolesRepository.cs" />
-    <Compile Include="Data\Repositories\UserAttributeItemsRepository.cs" />
-    <Compile Include="Data\Repositories\UserHistoryAttributesRepository.cs" />
-    <Compile Include="Data\Repositories\UserAttributesRepository.cs" />
-    <Compile Include="Data\Repositories\UserHistoriesRepository.cs" />
+    <Compile Include="Repositories\AuthorizationsRepository.cs" />
+    <Compile Include="Repositories\MembershipAuthorizationsRepository.cs" />
+    <Compile Include="Repositories\MembershipRolesRepository.cs" />
+    <Compile Include="Repositories\MembershipUsersRepository.cs" />
+    <Compile Include="Repositories\RoleAuthorizationsRepository.cs" />
+    <Compile Include="Repositories\RolesRepository.cs" />
+    <Compile Include="Repositories\UserAttributeItemsRepository.cs" />
+    <Compile Include="Repositories\UserHistoryAttributesRepository.cs" />
+    <Compile Include="Repositories\UserAttributesRepository.cs" />
+    <Compile Include="Repositories\UserHistoriesRepository.cs" />
     <Compile Include="Data\TableDataGateways\AuthorizationsGateway.cs" />
     <Compile Include="Data\TableDataGateways\MembershipAuthorizationsGateway.cs" />
     <Compile Include="Data\TableDataGateways\MembershipRolesGateway.cs" />
@@ -203,11 +203,11 @@
     <Compile Include="DomainModels\UserHisotryAttributes.cs" />
     <Compile Include="DomainModels\UserHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Data\Repositories\KandaRepository.cs" />
-    <Compile Include="Data\Repositories\MembershipsRepository.cs" />
+    <Compile Include="Repositories\KandaRepository.cs" />
+    <Compile Include="Repositories\MembershipsRepository.cs" />
     <Compile Include="Data\TableDataGateways\KandaTableDataGateway.cs" />
     <Compile Include="Data\TableDataGateways\MembershipsGateway.cs" />
-    <Compile Include="Data\Repositories\UsersRepository.cs" />
+    <Compile Include="Repositories\UsersRepository.cs" />
     <Compile Include="TextTemplates\Database\Stored Procedures\InsertTableTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -275,6 +275,7 @@
     <Folder Include="Data\SqlClient\" />
     <Folder Include="TextTemplates\Data\Repositories\" />
     <Folder Include="TextTemplates\Data\TableDataGateway\" />
+    <Folder Include="WindowsAzure\Storage\Blob\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
-using kkkkkkaaaaaa.Data.Repositories;
+using kkkkkkaaaaaa.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
 
 namespace kkkkkkaaaaaa.DomainModels

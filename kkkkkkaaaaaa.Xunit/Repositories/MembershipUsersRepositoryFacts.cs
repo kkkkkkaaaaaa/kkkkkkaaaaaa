@@ -4,7 +4,7 @@ using System.Data.Common;
 using System.Globalization;
 using System.Web.Security;
 using Xunit;
-using kkkkkkaaaaaa.Data.Repositories;
+using kkkkkkaaaaaa.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
 using kkkkkkaaaaaa.DomainModels;
 

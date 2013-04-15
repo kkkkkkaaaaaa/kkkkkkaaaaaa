@@ -5,7 +5,7 @@ using System.Threading;
 using System.Web.Security;
 using kkkkkkaaaaaa.Data;
 using kkkkkkaaaaaa.Data.Common;
-using kkkkkkaaaaaa.Data.Repositories;
+using kkkkkkaaaaaa.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
 
 namespace kkkkkkaaaaaa.DomainModels

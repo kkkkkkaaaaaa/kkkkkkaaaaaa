@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Security;
 using System.Web.Security;
 using kkkkkkaaaaaa.Data.Common;
-using kkkkkkaaaaaa.Data.Repositories;
+using kkkkkkaaaaaa.Repositories;
 using kkkkkkaaaaaa.DataTransferObjects;
 
 namespace kkkkkkaaaaaa.DomainModels

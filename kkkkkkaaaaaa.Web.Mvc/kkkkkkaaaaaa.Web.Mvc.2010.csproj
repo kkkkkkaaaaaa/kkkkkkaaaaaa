@@ -47,14 +47,15 @@
     <Content Include="Content\normalize.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-2.0.0-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.0.0.js" />
+    <Content Include="Scripts\jquery-2.0.0.min.js" />
+    <Content Include="Scripts\jquery.linq-vsdoc.js" />
+    <Content Include="Scripts\jquery.linq.js" />
+    <Content Include="Scripts\jquery.linq.min.js" />
     <Content Include="Scripts\linq-vsdoc.js" />
-    <Content Include="Scripts\linq.jquery.js" />
     <Content Include="Scripts\linq.js" />
     <Content Include="Scripts\linq.min.js" />
-    <Content Include="Scripts\linq.rx.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -123,7 +124,6 @@
     <Content Include="Views\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Default.cshtml" />
     <Content Include="Views\HttpStatus.cshtml" />
     <Content Include="Views\SignUp.cshtml" />
@@ -142,6 +142,9 @@
     <Content Include="Views\Role.cshtml" />
     <Content Include="Views\Authorization.cshtml" />
     <Content Include="Views\View.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\jquery-2.0.0.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

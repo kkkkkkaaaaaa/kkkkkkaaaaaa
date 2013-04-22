@@ -107,6 +107,7 @@
     <Compile Include="Text\EncodingFact.cs" />
     <Compile Include="VisualStudio\TextTemplating\InsertTableTemplateFacts.cs" />
     <Compile Include="VisualStudio\TextTemplating\TextTemplateFact.cs" />
+    <Compile Include="WindowsAzure\Storage\Blob\Class1Facts.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Moq">

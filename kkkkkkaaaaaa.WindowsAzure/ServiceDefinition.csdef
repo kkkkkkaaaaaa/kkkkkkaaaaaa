@@ -4,15 +4,20 @@
     <Sites>
       <Site name="Web">
         <Bindings>
-          <Binding name="Endpoint1" endpointName="Endpoint1" />
+          <Binding name="Endpoint1" endpointName="Endpoint" />
         </Bindings>
       </Site>
     </Sites>
     <Endpoints>
-      <InputEndpoint name="Endpoint1" protocol="http" port="80" />
+      <InputEndpoint name="Endpoint" protocol="http" port="80" />
     </Endpoints>
     <Imports>
       <Import moduleName="Diagnostics" />
     </Imports>
+    <LocalResources>
+    </LocalResources>
+    <ConfigurationSettings>
+      <Setting name="kkkkkkaaaaaa.WindowsAzure.DevelopmentStrage.ConnectionString" />
+    </ConfigurationSettings>
   </WebRole>
 </ServiceDefinition>

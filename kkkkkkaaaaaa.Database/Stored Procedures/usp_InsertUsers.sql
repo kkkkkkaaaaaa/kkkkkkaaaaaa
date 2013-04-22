@@ -9,7 +9,7 @@
 	, @createdOn		DATETIME2(7)
 	, @updatedOn		DATETIME2(7)
 	-- 出力パラメーター
-	, @identity			NUMERIC(38, 0)		OUTPUT
+	, @identity			DECIMAL(38, 0)		OUTPUT
 ) AS
 	-- 変数
 	DECLARE
@@ -44,26 +44,36 @@
 		+ N', @description'
 		+ N', @enabled'
 		+ N', @createdOn'
-		+ N', @updatedOn'
+		+ N', @createdOn'
 	IF (0 < @id)	SET @values = @values + N', @id'
 	SET @values = @values + N');'
 	
-	-- 宣言
-	SET @stmt = N'SET @identity = SCOPE_IDENTITY();'
-	
 	-- 実行
-	IF (0 < @id)	SET IDENTITY_INSERT Users ON
-	SET @stmt = (@insert + @into + @values) + dbo.NL() + @stmt
-	SET @params = N'@id BIGINT, @familyName NVARCHAR(1024), @givenName NVARCHAR(1024), @additionalName NVARCHAR(1024), @description NVARCHAR(MAX)'
-		+ N', @enabled BIT, @createdOn DATETIME2(7), @updatedOn DATETIME2(7), @identity NUMERIC(38, 0) OUTPUT'
-	EXECUTE @result = sp_executesql
-		@stmt
-		, @params
-		, @id = @id, @familyName = @familyName, @givenName = @givenName, @additionalName = @additionalName, @description = @description
-		, @enabled = @enabled, @createdOn = @createdOn, @updatedOn = @createdOn, @identity = @identity OUTPUT
-	IF (0 < @id)	SET IDENTITY_INSERT Users OFF
+	SET @stmt = (@insert + @into + @values)
+	SET @stmt = N''
+		+ N'IF (0 < @id)	SET IDENTITY_INSERT Users ON;' + dbo.NL()
+		+ @stmt + dbo.NL()
+		+ N'SET @identity = SCOPE_IDENTITY();' + dbo.NL()
+		+ N'IF (0 < @id)	SET IDENTITY_INSERT Users OFF;' + dbo.NL()
 
-	-- 結果
-	SET @error = @@ERROR
+	SET @params = N'@id BIGINT, @familyName NVARCHAR(1024), @givenName NVARCHAR(1024), @additionalName NVARCHAR(1024), @description NVARCHAR(MAX)'
+		+ N', @enabled BIT, @createdOn DATETIME2(7), @updatedOn DATETIME2(7), @identity DECIMAL(38, 0) OUTPUT'
+
+	-- 実行
+	BEGIN TRY
+		EXECUTE @result = sp_executesql
+			@stmt
+			, @params
+			, @id = @id, @familyName = @familyName, @givenName = @givenName, @additionalName = @additionalName, @description = @description
+				, @enabled = @enabled, @createdOn = @createdOn, @updatedOn = @createdOn, @identity = @identity OUTPUT
+
+		-- 結果
+		SET @error = @@ERROR
+
+	END TRY BEGIN CATCH
+		SELECT @error = ERROR_NUMBER()
+		SET @identity = -1
+
+	END CATCH
 
 	RETURN @error

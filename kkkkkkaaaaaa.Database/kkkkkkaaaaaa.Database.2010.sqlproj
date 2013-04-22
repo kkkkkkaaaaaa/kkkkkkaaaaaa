@@ -64,6 +64,7 @@
     <None Include="Scripts\DropObjects.sql" />
     <None Include="Scripts\ExecuteInsertEntities.sql" />
     <None Include="Scripts\ExecuteBasicInsertEntities.sql" />
+    <None Include="Scripts\ExecuteInsertUsers.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Memberships.sql" />

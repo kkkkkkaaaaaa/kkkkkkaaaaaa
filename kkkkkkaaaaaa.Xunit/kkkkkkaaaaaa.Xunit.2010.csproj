@@ -73,6 +73,7 @@
     <Compile Include="Data\Common\KandaDataReaderFacts.cs" />
     <Compile Include="Data\KandaXunitDataFacts.cs" />
     <Compile Include="Data\Common\KandaXunitProviderFactoryFacts.cs" />
+    <Compile Include="Data\KandaXunitProviderFactory.2010.cs" />
     <Compile Include="Data\KandaXunitProviderFactory.cs" />
     <Compile Include="DomainModels\AuthorizationFacts.cs" />
     <Compile Include="DomainModels\KandaXunitDomainModelFacts.cs" />
@@ -117,7 +118,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.XML" />
-    <Reference Include="xunit">
+    <Reference Include="xunit, Version=1.9.1.1600, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
     </Reference>
   </ItemGroup>

@@ -81,6 +81,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <Compile Include="Data\Common\KandaDbDataReader.2010.cs" />
     <Compile Include="Data\Extensions\KandaDataReader.cs" />
     <Compile Include="Data\SqlClient\KandaSqlConnection.2008.cs" />
   </ItemGroup>

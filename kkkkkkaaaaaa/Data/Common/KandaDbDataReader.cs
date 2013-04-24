@@ -20,17 +20,6 @@ namespace kkkkkkaaaaaa.Data.Common
             this._command = command;
         }
 
-        /// <summary>
-        /// コンストラクタ―。
-        /// </summary>
-        /// <param name="connection"></param>
-        /// <param name="transaction"></param>
-        public KandaDbDataReader(DbConnection connection, DbTransaction transaction = null)
-        {
-            this._command = connection.CreateCommand();
-            this._command.Transaction = transaction;
-        }
-
 
         /// <summary>
         /// 指定した列の値を Object のインスタンスとして取得します。
@@ -356,6 +345,18 @@ namespace kkkkkkaaaaaa.Data.Common
         {
             get { return this._command; }
         }
+
+        #region Protected members...
+
+        /// <summary>
+        /// 何もしません。
+        /// </summary>
+        protected void DoNothing()
+        {
+            // 何もしない
+        }
+
+        #endregion
 
         #region Private mebers..
 

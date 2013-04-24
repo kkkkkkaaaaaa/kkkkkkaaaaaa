@@ -45,7 +45,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
 
             command.CommandText = @"usp_InsertUsers";
-
+            
             KandaDbDataMapper.MapToParameters(command, entity);
 
             var identity = KandaTableDataGateway._factory.CreateParameter("@identity", DbType.Decimal, sizeof(decimal), ParameterDirection.Output, DBNull.Value);

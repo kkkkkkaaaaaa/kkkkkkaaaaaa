@@ -108,9 +108,101 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DomainModelTemplate.cs</LastGenOutput>
     </None>
+    <None Include="VisualStudio\TextTemplating\DeleteTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DeleteTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\DomainModelTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DomainModelTemplate.cs</LastGenOutput>
+    </None>
     <None Include="VisualStudio\TextTemplating\InsertTableTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>InsertTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\MySqlDeleteTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MySqlDeleteTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\MySqlInsertTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MySqlInsertTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\MySqlSelectTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MySqlSelectTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\MySqlUpdateTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MySqlUpdateTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\NUnitTestsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>NUnitTestsTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\OracleDeleteTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>OracleDeleteTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\OracleInsertTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>OracleInsertTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\OracleSelectTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>OracleSelectTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\OracleUpdateTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>OracleUpdateTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\RepositoryTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RepositoryTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\SelectTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SelectTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\SqlDeleteTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SqlDeleteTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\SqlInsertTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SqlInsertTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\SqlSelectTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SqlSelectTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\SqlUpdateTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SqlUpdateTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\StrageBlobGatewayTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>StrageBlobGatewayTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\StrageQueueGatewayTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>StrageQueueGatewayTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\StrageTableGatewayTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>StrageTableGatewayTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\TableDataGatewayTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TableDataGatewayTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\UpdateTableTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>UpdateTableTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\TextTemplating\XunitFactsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>XunitFactsTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +322,16 @@
     </Compile>
     <Compile Include="VisualStudio\TextTemplating\DataTransferObjects\InsertTableContext.cs" />
     <Compile Include="VisualStudio\TextTemplating\DataTransferObjects\TextTemplateContext.cs" />
+    <Compile Include="VisualStudio\TextTemplating\DeleteTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeleteTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\DomainModelTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DomainModelTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="VisualStudio\TextTemplating\EntityTemplateContext.cs" />
     <Compile Include="VisualStudio\TextTemplating\InsertTableTemplate.cs">
       <DependentUpon>InsertTableTemplate.tt</DependentUpon>
@@ -237,6 +339,111 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="VisualStudio\TextTemplating\InsertTableTemplate.partial.cs" />
+    <Compile Include="VisualStudio\TextTemplating\MySqlDeleteTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlDeleteTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\MySqlInsertTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlInsertTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\MySqlSelectTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlSelectTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\MySqlUpdateTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlUpdateTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\NUnitTestsTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NUnitTestsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\OracleDeleteTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OracleDeleteTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\OracleInsertTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OracleInsertTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\OracleSelectTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OracleSelectTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\OracleUpdateTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OracleUpdateTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\RepositoryTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepositoryTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\SelectTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SelectTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\SqlDeleteTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlDeleteTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\SqlInsertTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlInsertTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\SqlSelectTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlSelectTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\SqlUpdateTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlUpdateTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\StrageBlobGatewayTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StrageBlobGatewayTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\StrageQueueGatewayTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StrageQueueGatewayTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\StrageTableGatewayTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StrageTableGatewayTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\TableDataGatewayTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TableDataGatewayTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\UpdateTableTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpdateTableTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisualStudio\TextTemplating\XunitFactsTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XunitFactsTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Web\GlobalizationModule.cs" />
     <Compile Include="Web\ErrorModule.cs" />
     <Compile Include="Web\Mvc\Controllers\SignUpController.cs" />

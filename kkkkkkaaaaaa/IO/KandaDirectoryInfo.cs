@@ -1,6 +1,4 @@
 ﻿using System.IO;
-using System.Runtime.InteropServices;
-using Shell32;
 
 namespace kkkkkkaaaaaa.IO
 {

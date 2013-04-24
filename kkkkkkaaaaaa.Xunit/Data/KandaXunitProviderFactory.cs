@@ -8,7 +8,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
     /// <summary>
     /// 
     /// </summary>
-    public class KandaXunitProviderFactory : KandaDbProviderFactory
+    public partial class KandaXunitProviderFactory : KandaDbProviderFactory
     {
         /// <summary>
         /// Singleton インスタンス。
@@ -35,21 +35,6 @@ namespace kkkkkkaaaaaa.Xunit.Data
             connection.ConnectionString = builder.ConnectionString;
 
             return connection;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="connection"></param>
-        /// <param name="transaction"></param>
-        /// <returns></returns>
-        public override DbCommand  CreateCommand(DbConnection connection, DbTransaction transaction = null)
-        {
-            var command = base.CreateCommand(connection, transaction);
-
-            command.CommandType = CommandType.StoredProcedure;
-
-            return command;
         }
 
         /// <summary>

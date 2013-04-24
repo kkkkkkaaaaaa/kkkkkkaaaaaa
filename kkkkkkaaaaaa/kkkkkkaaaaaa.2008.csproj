@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7B311ABA-03CA-412E-A54D-E5D30EE3A8B3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>kkkkkkaaaaaa</RootNamespace>
+    <AssemblyName>kkkkkkaaaaaa</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\kkkkkkaaaaaa\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\kkkkkkaaaaaa\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Data\Common\KandaDbConnection.2008.cs" />
+    <Compile Include="Data\Common\KandaDbDataMapper.cs" />
+    <Compile Include="Data\Common\KandaDbDataReader.cs" />
+    <Compile Include="Data\Common\KandaDbParameterMappingAttribute.cs" />
+    <Compile Include="Data\Common\KandaDbProviderFactory.2008.cs" />
+    <Compile Include="Data\Common\KandaDbProviderFactory.cs" />
+    <Compile Include="Data\Common\KandaMappingAttribute.cs" />
+    <Compile Include="Data\Common\KandaDbDataReader.2008.cs" />
+    <Compile Include="Data\Extensions\KandaDataReader.cs" />
+    <Compile Include="Data\KandaParameterMappingAttribute.cs" />
+    <Compile Include="Data\SqlClient\KandaSqlConnection.2008.cs" />
+    <Compile Include="IO\KandaDirectory.cs" />
+    <Compile Include="IO\KandaDirectoryInfo.cs" />
+    <Compile Include="IO\KandaFileSystemObject.cs" />
+    <Compile Include="KandaDataMapper.2008.cs" />
+    <Compile Include="KandaDataMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runtime\InteropServices\AdvApi32.cs" />
+    <Compile Include="Runtime\InteropServices\Kernel32.cs" />
+    <Compile Include="Runtime\InteropServices\Kernel32.delegates.cs" />
+    <Compile Include="Runtime\InteropServices\ShellAPI.cs" />
+    <Compile Include="Runtime\InteropServices\ShObjIdl.cs" />
+    <Compile Include="Runtime\InteropServices\WinBase.cs" />
+    <Compile Include="Runtime\InteropServices\WinDef.cs" />
+    <Compile Include="Runtime\InteropServices\Windows.cs" />
+    <Compile Include="Runtime\InteropServices\WinError.cs" />
+    <Compile Include="Runtime\InteropServices\WinNT.cs" />
+    <Compile Include="Runtime\InteropServices\_SYSTEM_INFO.cs" />
+    <Compile Include="Runtime\InteropServices\_SYSTEM_LOGICAL_PROCESSOR_INFORMATION.cs" />
+    <Compile Include="Security\Cryptography\KandaHashAlgorithm.cs" />
+    <Compile Include="Security\Cryptography\KandaMD5.cs" />
+    <Compile Include="Security\Cryptography\KandaRijndaelManaged.cs" />
+    <Compile Include="Security\Cryptography\KandaSHA1.cs" />
+    <Compile Include="Security\Cryptography\KandaSHA256CryptoServiceProvider.cs" />
+    <Compile Include="Security\Cryptography\KandaSHA512.cs" />
+    <Compile Include="Security\Cryptography\KandaSymmetricAlgorithm.cs" />
+    <Compile Include="Security\KandaSecureString.2008.cs" />
+    <Compile Include="Web\KandaHttpModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ComponentModel\" />
+    <Folder Include="Net\Mail\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

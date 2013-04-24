@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
@@ -8,7 +9,6 @@ namespace kkkkkkaaaaaa.Data.Common
     /// </summary>
     public partial class KandaDbProviderFactory
     {
-
         /// <summary>
         /// DbCommand クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
@@ -24,17 +24,38 @@ namespace kkkkkkaaaaaa.Data.Common
             return command;
         }
 
+        
+        /// <summary>
+        /// DbCommand クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <param name="connection">データベースへの接続。</param>
+        /// <returns></returns>
+        public virtual DbCommand CreateCommand(DbConnection connection)
+        {
+            return this.CreateCommand(connection, null);
+        }
+
         /// <summary>
         /// DbDataReader クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public DbDataReader CreateReader(DbConnection connection, DbTransaction transaction)
+        public KandaDbDataReader CreateReader(DbConnection connection, DbTransaction transaction)
         {
             var command = this.CreateCommand(connection, transaction);
 
-            return new KandaDataReader(command);
+            return new KandaDbDataReader(command);
+        }
+
+        /// <summary>
+        /// DbDataReader クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <returns></returns>
+        public virtual KandaDbDataReader CreateReader(DbConnection connection)
+        {
+            return this.CreateReader(connection, null);
         }
 
         /// <summary>
@@ -54,17 +75,6 @@ namespace kkkkkkaaaaaa.Data.Common
             parameter.Direction = direction;
 
             return parameter;
-        }
-
-        /// <summary>
-        /// DbParameter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public DbParameter CreateParameter(string name, object value)
-        {
-            return this.CreateParameter(name, value, ParameterDirection.Input);
         }
     }
 }

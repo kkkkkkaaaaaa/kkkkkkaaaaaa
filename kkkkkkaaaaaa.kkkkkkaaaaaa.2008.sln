@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kkkkkkaaaaaa.2008", "kkkkkkaaaaaa\kkkkkkaaaaaa.2008.csproj", "{7B311ABA-03CA-412E-A54D-E5D30EE3A8B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kkkkkkaaaaaa.kkkkkkaaaaaa.2008", "kkkkkkaaaaaa.kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa.2008.csproj", "{175F93EF-D4F4-4D47-918F-5294A1CB42A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kkkkkkaaaaaa.Xunit.2008", "kkkkkkaaaaaa.Xunit\kkkkkkaaaaaa.Xunit.2008.csproj", "{DE35C417-5C66-45B2-BC75-0A065825D6E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B311ABA-03CA-412E-A54D-E5D30EE3A8B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B311ABA-03CA-412E-A54D-E5D30EE3A8B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B311ABA-03CA-412E-A54D-E5D30EE3A8B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B311ABA-03CA-412E-A54D-E5D30EE3A8B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{175F93EF-D4F4-4D47-918F-5294A1CB42A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{175F93EF-D4F4-4D47-918F-5294A1CB42A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{175F93EF-D4F4-4D47-918F-5294A1CB42A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{175F93EF-D4F4-4D47-918F-5294A1CB42A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE35C417-5C66-45B2-BC75-0A065825D6E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE35C417-5C66-45B2-BC75-0A065825D6E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE35C417-5C66-45B2-BC75-0A065825D6E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE35C417-5C66-45B2-BC75-0A065825D6E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

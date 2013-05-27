@@ -65,16 +65,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\MembershipsFacts.cs" />
-    <Compile Include="Database\NewLineFacts.cs" />
-    <Compile Include="Database\SelectUTCDateTimeFacts.cs" />
     <Compile Include="Data\Common\DbProviderFactoriesFacts.cs" />
     <Compile Include="Data\Common\DbProviderFactoryFacts.cs" />
-    <Compile Include="Data\Common\KandaDataReaderFacts.cs" />
-    <Compile Include="Data\KandaXunitDataFacts.cs" />
-    <Compile Include="Data\Common\KandaXunitProviderFactoryFacts.cs" />
-    <Compile Include="Data\KandaXunitProviderFactory.2010.cs" />
-    <Compile Include="Data\KandaXunitProviderFactory.cs" />
     <Compile Include="IO\KandaDirectoryInfoFacts.cs" />
     <Compile Include="KandaXunitFacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,10 +80,7 @@
     <Compile Include="Security\KandaSecureStringFacts.cs" />
     <Compile Include="Shell32\ShellFacts.cs" />
     <Compile Include="SystemFacts.cs" />
-    <Compile Include="TextTemplates\TextTransformFacts.cs" />
     <Compile Include="Text\EncodingFact.cs" />
-    <Compile Include="VisualStudio\TextTemplating\InsertTableTemplateFacts.cs" />
-    <Compile Include="VisualStudio\TextTemplating\TextTemplateFact.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Moq">

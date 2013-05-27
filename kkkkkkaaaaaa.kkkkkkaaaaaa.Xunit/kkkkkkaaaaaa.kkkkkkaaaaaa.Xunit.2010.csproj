@@ -35,6 +35,14 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Database\MembershipsFacts.cs" />
+    <Compile Include="Database\NewLineFacts.cs" />
+    <Compile Include="Database\SelectUTCDateTimeFacts.cs" />
+    <Compile Include="Data\Common\KandaDataReaderFacts.cs" />
+    <Compile Include="Data\Common\KandaXunitProviderFactoryFacts.cs" />
+    <Compile Include="Data\KandaXunitDataFacts.cs" />
+    <Compile Include="Data\KandaXunitProviderFactory.2010.cs" />
+    <Compile Include="Data\KandaXunitProviderFactory.cs" />
     <Compile Include="DomainModels\AuthorizationFacts.cs" />
     <Compile Include="DomainModels\KandaDomainModelFacts.cs" />
     <Compile Include="DomainModels\KandaXunitDomainModelFacts.cs" />
@@ -45,6 +53,7 @@
     <Compile Include="DomainModels\UserFacts.cs" />
     <Compile Include="DomainModels\UserHistoryAttributeFacts.cs" />
     <Compile Include="DomainModels\UserHistoryFacts.cs" />
+    <Compile Include="KandaXunitFacts.cs" />
     <Compile Include="Practices\Unity\KandaUnityContainerFacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AuthorizationsRepositoryFacts.cs" />
@@ -54,6 +63,9 @@
     <Compile Include="Repositories\MembershipUsersRepositoryFacts.cs" />
     <Compile Include="Repositories\TableRepositoryFacts.cs" />
     <Compile Include="Repositories\UsersRepositoryFacts.cs" />
+    <Compile Include="TextTemplates\TextTransformFacts.cs" />
+    <Compile Include="VisualStudio\TextTemplating\InsertTableTemplateFacts.cs" />
+    <Compile Include="VisualStudio\TextTemplating\TextTemplateFact.cs" />
     <Compile Include="WindowsAzure\Storage\Blob\Class1Facts.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +87,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.XML" />
     <Reference Include="xunit, Version=1.9.1.1600, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
     </Reference>

@@ -33,3 +33,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: InternalsVisibleTo("kkkkkkaaaaaa.Xunit")]
+[assembly: InternalsVisibleTo("kkkkkkaaaaaa.kkkkkkaaaaaa.Xunit")]

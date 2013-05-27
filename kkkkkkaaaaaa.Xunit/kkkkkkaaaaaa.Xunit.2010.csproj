@@ -75,30 +75,14 @@
     <Compile Include="Data\Common\KandaXunitProviderFactoryFacts.cs" />
     <Compile Include="Data\KandaXunitProviderFactory.2010.cs" />
     <Compile Include="Data\KandaXunitProviderFactory.cs" />
-    <Compile Include="DomainModels\AuthorizationFacts.cs" />
-    <Compile Include="DomainModels\KandaXunitDomainModelFacts.cs" />
-    <Compile Include="DomainModels\MembershipFacts.cs" />
-    <Compile Include="DomainModels\KandaDomainModelFacts.cs" />
-    <Compile Include="DomainModels\MembershipUsersFacts.cs" />
-    <Compile Include="DomainModels\RoleFacts.cs" />
-    <Compile Include="DomainModels\UserAttributesFacts.cs" />
-    <Compile Include="DomainModels\UserFacts.cs" />
-    <Compile Include="DomainModels\UserHistoryAttributeFacts.cs" />
-    <Compile Include="DomainModels\UserHistoryFacts.cs" />
     <Compile Include="IO\KandaDirectoryInfoFacts.cs" />
     <Compile Include="KandaXunitFacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\AuthorizationsRepositoryFacts.cs" />
-    <Compile Include="Repositories\KandaRepositoryFacts.cs" />
-    <Compile Include="Repositories\MembershipUsersRepositoryFacts.cs" />
-    <Compile Include="Repositories\KandaXunitRepositoryFacts.cs" />
-    <Compile Include="Repositories\MembershipsRepositoryFacts.cs" />
-    <Compile Include="Repositories\TableRepositoryFacts.cs" />
-    <Compile Include="Repositories\UsersRepositoryFacts.cs" />
     <Compile Include="Runtime\InteropServices\AdvApi32Facts.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32Facts.cs" />
     <Compile Include="Runtime\InteropServices\MarshalFacts.cs" />
     <Compile Include="Runtime\InteropServices\WinBaseFacts.cs" />
+    <Compile Include="Runtime\InteropServices\WinInetFacts.cs" />
     <Compile Include="Security\Cryptgraphy\KandaRijndaelManagedFacts.cs" />
     <Compile Include="Security\Cryptgraphy\KandaSymmetricAlgorithmFacts.cs" />
     <Compile Include="Security\KandaSecureStringFacts.cs" />
@@ -108,7 +92,6 @@
     <Compile Include="Text\EncodingFact.cs" />
     <Compile Include="VisualStudio\TextTemplating\InsertTableTemplateFacts.cs" />
     <Compile Include="VisualStudio\TextTemplating\TextTemplateFact.cs" />
-    <Compile Include="WindowsAzure\Storage\Blob\Class1Facts.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Moq">
@@ -123,10 +106,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\kkkkkkaaaaaa.kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa.2010.csproj">
-      <Project>{4C2FB222-66B5-4BED-9251-AF9896CFFF44}</Project>
-      <Name>kkkkkkaaaaaa.kkkkkkaaaaaa.2010</Name>
-    </ProjectReference>
     <ProjectReference Include="..\kkkkkkaaaaaa\kkkkkkaaaaaa.2010.csproj">
       <Project>{24985E63-0FAF-4F7B-93DD-6764F0E3F6A4}</Project>
       <Name>kkkkkkaaaaaa.2010</Name>

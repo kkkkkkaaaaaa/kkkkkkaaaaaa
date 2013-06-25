@@ -2,5 +2,7 @@
 <xunit>
   <assemblies>
     <assembly filename="bin\kkkkkkaaaaaa.Xunit\Debug\kkkkkkaaaaaa.Xunit.dll" shadow-copy="true" />
+    <assembly filename="bin\kkkkkkaaaaaa.Xunit\Debug\kkkkkkaaaaaa.Xunit.dll" shadow-copy="true" />
+    <assembly filename="bin\kkkkkkaaaaaa.Xunit\Debug\kkkkkkaaaaaa.Xunit.dll" shadow-copy="true" />
   </assemblies>
 </xunit>

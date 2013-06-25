@@ -79,18 +79,16 @@
     <Compile Include="Security\Cryptgraphy\KandaSymmetricAlgorithmFacts.cs" />
     <Compile Include="Security\KandaSecureStringFacts.cs" />
     <Compile Include="Shell32\ShellFacts.cs" />
-    <Compile Include="SystemFacts.cs" />
+    <Compile Include="System\BooleanFacts.cs" />
+    <Compile Include="System\IntPtrFacts.cs" />
     <Compile Include="Text\EncodingFact.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.XML" />
-    <Reference Include="xunit, Version=1.9.1.1600, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+    <Reference Include="xunit">
       <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
     </Reference>
   </ItemGroup>

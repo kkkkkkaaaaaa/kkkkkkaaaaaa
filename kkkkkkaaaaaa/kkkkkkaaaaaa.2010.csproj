@@ -84,7 +84,8 @@
   <ItemGroup>
     <None Include="app.config" />
     <Compile Include="Data\Common\KandaDbDataReader.2010.cs" />
-    <Compile Include="Data\Extensions\KandaDataReader.cs" />
+    <Compile Include="Data\KandaDataTableExtensions.cs" />
+    <Compile Include="Data\KandaDataReaderExtensions.cs" />
     <Compile Include="Data\SqlClient\KandaSqlConnection.2008.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +132,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>

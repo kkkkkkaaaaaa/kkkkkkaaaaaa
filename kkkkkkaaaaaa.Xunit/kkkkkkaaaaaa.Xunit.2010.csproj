@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Data\Common\DbProviderFactoriesFacts.cs" />
     <Compile Include="Data\Common\DbProviderFactoryFacts.cs" />
+    <Compile Include="Data\KandaDataTableExtensionsFacts.cs" />
     <Compile Include="IO\KandaDirectoryInfoFacts.cs" />
     <Compile Include="KandaXunitFacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Security\KandaSecureStringFacts.cs" />
     <Compile Include="Shell32\ShellFacts.cs" />
     <Compile Include="System\BooleanFacts.cs" />
+    <Compile Include="System\DateTimeFacts.cs" />
     <Compile Include="System\IntPtrFacts.cs" />
     <Compile Include="Text\EncodingFact.cs" />
   </ItemGroup>

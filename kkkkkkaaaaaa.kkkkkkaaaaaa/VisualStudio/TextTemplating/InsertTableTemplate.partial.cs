@@ -20,7 +20,6 @@ namespace kkkkkkaaaaaa.VisualStudio.TextTemplating
             this._context = context;
         }
 
-
         /// <summary>
         /// このインスタンスを初期化します。
         /// </summary>

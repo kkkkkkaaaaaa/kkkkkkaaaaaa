@@ -17,6 +17,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         public override bool CanCreateDataSourceEnumerator
         {
+            [DebuggerStepThrough()]
             get
             {
                 return this._factory.CanCreateDataSourceEnumerator;
@@ -28,6 +29,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// DbDataSourceEnumarator クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override DbDataSourceEnumerator CreateDataSourceEnumerator()
         {
             return this._factory.CreateDataSourceEnumerator();
@@ -37,6 +39,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// DbCommandBuilder クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override DbConnectionStringBuilder CreateConnectionStringBuilder()
         {
             return this._factory.CreateConnectionStringBuilder();
@@ -76,6 +79,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// DbCommandBuilder クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override DbCommandBuilder CreateCommandBuilder()
         {
             return this._factory.CreateCommandBuilder();
@@ -85,6 +89,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// DbDataAdapter クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override DbDataAdapter CreateDataAdapter()
         {
             return this._factory.CreateDataAdapter();
@@ -95,6 +100,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="state"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override CodeAccessPermission CreatePermission(PermissionState state)
         {
             return this._factory.CreatePermission(state);
@@ -105,7 +111,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        //[DebuggerStepThrough()]
+        [DebuggerStepThrough()]
         public virtual KandaDbDataReader CreateReader(DbCommand command)
         {
             return new KandaDbDataReader(command);

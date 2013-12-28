@@ -108,7 +108,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             }
         }
 
-        [Fact()]
+        [Fact(Skip = @"Tempolary Skipped.")]
         public void FreeLibraryFact()
         {
             var fileName = new Uri(this.TestData, @"./kkkkkkaaaaaa.testdata.library/kkkkkkaaaaaa.testdata.library.dll");

@@ -71,7 +71,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             Assert.True(result);
         }
 
-        [Fact()]
+        [Fact(Skip="")]
         public void LoadLibraryFact()
         {
             var fileName = new Uri(this.TestData, @"./kkkkkkaaaaaa.testdata.library/kkkkkkaaaaaa.testdata.library.dll");
@@ -136,7 +136,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             Assert.True(0 < length);
         }
 
-        [Fact()]
+        [Fact(Skip="")]
         public void GetProcAddressFact()
         {
             var fileName = new Uri(this.TestData, @"./kkkkkkaaaaaa.testdata.library/kkkkkkaaaaaa.testdata.library.dll");

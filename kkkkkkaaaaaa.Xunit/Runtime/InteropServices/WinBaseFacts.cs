@@ -9,7 +9,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
     /// </summary>
     public class WinBaseFacts : KandaXunitFacts
     {
-        [Fact()]
+        [Fact(Skip="")]
         public void GetFileAttributes()
         {
             var fileName = new Uri(this.TestData, @"./GetFileAttributesFact").LocalPath;

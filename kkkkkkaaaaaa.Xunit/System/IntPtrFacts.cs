@@ -3,7 +3,7 @@ using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.System
 {
-    class IntPtrFacts
+    public class IntPtrFacts
     {
         [Fact()]
         public void DefaultIntPtrFact()

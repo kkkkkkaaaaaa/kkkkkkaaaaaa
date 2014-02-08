@@ -14,15 +14,15 @@ namespace kkkkkkaaaaaa.Xunit.System
         [Fact()]
         public void TryParseFact()
         {
-            this.assertParseTrial(true, bool.TrueString, true);
-            this.assertParseTrial(true, @"True", true);
-            this.assertParseTrial(true, @"true", true);
-            this.assertParseTrial(true, @"tRUE", true);
-            this.assertParseTrial(true, @"l;kjh", false);
-            this.assertParseTrial(true, null, false);
-            this.assertParseTrial(true, @"", false);
-            this.assertParseTrial(true, @" ", false);
-            this.assertParseTrial(true, @"　", false);
+            this.assertParseTrial(bool.TrueString, true);
+            this.assertParseTrial(@"True", true);
+            this.assertParseTrial(@"true", true);
+            this.assertParseTrial(@"tRUE", true);
+            this.assertParseTrial(@"l;kjh", false);
+            this.assertParseTrial(null, false);
+            this.assertParseTrial(@"", false);
+            this.assertParseTrial(@" ", false);
+            this.assertParseTrial(@"　", false);
         }
 
         #region Private members..
@@ -30,16 +30,14 @@ namespace kkkkkkaaaaaa.Xunit.System
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="default"></param>
         /// <param name="value"></param>
-        /// <param name="expects"></param>
-        private void assertParseTrial(bool @default, string value, bool expects)
+        /// <param name="expected"></param>
+        private void assertParseTrial(string value, bool expected)
         {
-            var result = @default;
+            var result = default(bool);
             bool.TryParse(value, out result);
 
-            if (expects) { Assert.True(result); }
-            else { Assert.False(result); }
+            Assert.Equal(expected, result);
         }
 
         #endregion

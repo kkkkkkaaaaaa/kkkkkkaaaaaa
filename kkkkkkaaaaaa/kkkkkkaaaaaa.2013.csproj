@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6072B27-E6ED-4E34-9A4C-C910224AD97F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>kkkkkkaaaaaa</RootNamespace>
+    <AssemblyName>kkkkkkaaaaaa</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.2013.cs" />
+    <Compile Include="Runtime\InteropServices\AdvApi32.cs" />
+    <Compile Include="Runtime\InteropServices\Kernel32.cs" />
+    <Compile Include="Runtime\InteropServices\Kernel32.delegates.cs" />
+    <Compile Include="Runtime\InteropServices\ShellAPI.cs" />
+    <Compile Include="Runtime\InteropServices\ShObjIdl.cs" />
+    <Compile Include="Runtime\InteropServices\tagPOINT.cs" />
+    <Compile Include="Runtime\InteropServices\tagRECT.cs" />
+    <Compile Include="Runtime\InteropServices\tagWINDOWPLACEMENT.cs" />
+    <Compile Include="Runtime\InteropServices\User32.cs" />
+    <Compile Include="Runtime\InteropServices\WinBase.cs" />
+    <Compile Include="Runtime\InteropServices\WinDef.cs" />
+    <Compile Include="Runtime\InteropServices\Windows.cs" />
+    <Compile Include="Runtime\InteropServices\WinError.cs" />
+    <Compile Include="Runtime\InteropServices\WinInet.cs" />
+    <Compile Include="Runtime\InteropServices\WinNT.cs" />
+    <Compile Include="Runtime\InteropServices\WinUser.cs" />
+    <Compile Include="Runtime\InteropServices\_SYSTEM_INFO.cs" />
+    <Compile Include="Runtime\InteropServices\_SYSTEM_LOGICAL_PROCESSOR_INFORMATION.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

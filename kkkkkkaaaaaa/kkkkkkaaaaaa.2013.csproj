@@ -35,6 +35,7 @@
     <Compile Include="Runtime\InteropServices\AdvApi32.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32.delegates.cs" />
+    <Compile Include="Runtime\InteropServices\MinWinDef.cs" />
     <Compile Include="Runtime\InteropServices\ShellAPI.cs" />
     <Compile Include="Runtime\InteropServices\ShObjIdl.cs" />
     <Compile Include="Runtime\InteropServices\tagPOINT.cs" />
@@ -42,6 +43,7 @@
     <Compile Include="Runtime\InteropServices\tagWINDOWPLACEMENT.cs" />
     <Compile Include="Runtime\InteropServices\User32.cs" />
     <Compile Include="Runtime\InteropServices\WinBase.cs" />
+    <Compile Include="Runtime\InteropServices\WinDef.2013.cs" />
     <Compile Include="Runtime\InteropServices\WinDef.cs" />
     <Compile Include="Runtime\InteropServices\Windows.cs" />
     <Compile Include="Runtime\InteropServices\WinError.cs" />

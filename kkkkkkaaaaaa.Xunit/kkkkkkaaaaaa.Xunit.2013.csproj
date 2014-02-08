@@ -39,6 +39,7 @@
     <Compile Include="Runtime\InteropServices\WinBaseFacts.cs" />
     <Compile Include="Runtime\InteropServices\WinInetFacts.cs" />
     <Compile Include="System\BooleanFacts.cs" />
+    <Compile Include="System\ConvertFacts.cs" />
     <Compile Include="System\DateTimeFacts.cs" />
     <Compile Include="System\IntPtrFacts.cs" />
   </ItemGroup>

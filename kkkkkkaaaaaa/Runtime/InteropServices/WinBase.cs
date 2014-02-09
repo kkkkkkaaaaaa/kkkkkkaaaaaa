@@ -27,9 +27,6 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         /// </summary>
         public const int INVALID_FILE_ATTRIBUTES = -1;
 
-        
-
-
         /// <summary>
         /// WINBASEAPI DWORD WINAPI GetFileAttributesW(__in LPCWSTR lpFileName);
         /// </summary>

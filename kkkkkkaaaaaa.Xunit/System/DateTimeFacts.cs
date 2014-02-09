@@ -5,10 +5,10 @@ namespace kkkkkkaaaaaa.Xunit.System
 {
     public class DateTimeFacts
     {
-        [Fact(Skip=@"No implementation.")]
+        [Fact()]
         public void NewFact()
         {
-            
+            Assert.Equal(DateTime.MinValue, new DateTime());
         }
     }
 }

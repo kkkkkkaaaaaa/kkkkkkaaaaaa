@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DFADFD97-33FD-42BE-8DF6-F8153295AA0C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>kkkkkkaaaaaa.kkkkkkaaaaaa</RootNamespace>
+    <AssemblyName>kkkkkkaaaaaa.kkkkkkaaaaaa</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="DataTransferObjects\AuthorizationEntity.cs" />
+    <Compile Include="DataTransferObjects\AuthorizationsCriteria.cs" />
+    <Compile Include="DataTransferObjects\KandaEntity.cs" />
+    <Compile Include="DataTransferObjects\MembershipAuthorizationEntity.cs" />
+    <Compile Include="DataTransferObjects\MembershipAuthorizationsCriteria.cs" />
+    <Compile Include="DataTransferObjects\MembershipEntity.2010.cs" />
+    <Compile Include="DataTransferObjects\MembershipEntity.cs" />
+    <Compile Include="DataTransferObjects\MembershipRoleEntity.cs" />
+    <Compile Include="DataTransferObjects\MembershipRolesCriteria.cs" />
+    <Compile Include="DataTransferObjects\MembershipsCriteria.cs" />
+    <Compile Include="DataTransferObjects\MembershipUserEntity.cs" />
+    <Compile Include="DataTransferObjects\MembershipUsersCriteria.cs" />
+    <Compile Include="DataTransferObjects\RoleAuthorizationEntity.cs" />
+    <Compile Include="DataTransferObjects\RoleAuthorizationsCriteria.cs" />
+    <Compile Include="DataTransferObjects\RoleEntity.cs" />
+    <Compile Include="DataTransferObjects\RolesCriteria.cs" />
+    <Compile Include="DataTransferObjects\TableEntity.cs" />
+    <Compile Include="DataTransferObjects\UserAttributeEntity.cs" />
+    <Compile Include="DataTransferObjects\UserAttributeItemEntity.cs" />
+    <Compile Include="DataTransferObjects\UserAttributeItemsCriteria.cs" />
+    <Compile Include="DataTransferObjects\UserAttributesCriteria.cs" />
+    <Compile Include="DataTransferObjects\UserEntity.cs" />
+    <Compile Include="DataTransferObjects\UserHistoriesCriteria.cs" />
+    <Compile Include="DataTransferObjects\UserHistoryAttributeEntity.cs" />
+    <Compile Include="DataTransferObjects\UserHistoryAttributesCriteria.cs" />
+    <Compile Include="DataTransferObjects\UserHistoryEntity.cs" />
+    <Compile Include="DataTransferObjects\UsersCriteria.cs" />
+    <Compile Include="Data\Common\KandaProviderFactory.cs" />
+    <Compile Include="Data\TableDataGateways\AuthorizationsGateway.cs" />
+    <Compile Include="Data\TableDataGateways\KandaTableDataGateway.cs" />
+    <Compile Include="Data\TableDataGateways\MembershipAuthorizationsGateway.cs" />
+    <Compile Include="Data\TableDataGateways\MembershipRolesGateway.cs" />
+    <Compile Include="Data\TableDataGateways\MembershipsGateway.cs" />
+    <Compile Include="Data\TableDataGateways\MembershipsViewGateway.cs" />
+    <Compile Include="Data\TableDataGateways\MembershipUsersGateway.cs" />
+    <Compile Include="Data\TableDataGateways\RoleAuthorizationsGateway.cs" />
+    <Compile Include="Data\TableDataGateways\RolesGateway.cs" />
+    <Compile Include="Data\TableDataGateways\TableGateway.cs" />
+    <Compile Include="Data\TableDataGateways\UserAttributeItemsGateway.cs" />
+    <Compile Include="Data\TableDataGateways\UserAttributesGateway.cs" />
+    <Compile Include="Data\TableDataGateways\UserHistoriesGateway.cs" />
+    <Compile Include="Data\TableDataGateways\UserHistoryAttributesGateway.cs" />
+    <Compile Include="Data\TableDataGateways\UsersGateway.cs" />
+    <Compile Include="DomainModels\Authentications.cs" />
+    <Compile Include="DomainModels\Authorization.cs" />
+    <Compile Include="DomainModels\KandaDomainModel.cs" />
+    <Compile Include="DomainModels\Membership.cs" />
+    <Compile Include="DomainModels\Memberships.cs" />
+    <Compile Include="DomainModels\Role.cs" />
+    <Compile Include="DomainModels\User.cs" />
+    <Compile Include="DomainModels\UserAttributes.cs" />
+    <Compile Include="DomainModels\UserHisotryAttributes.cs" />
+    <Compile Include="DomainModels\UserHistory.cs" />
+    <Compile Include="Properties\AssemblyInfo.2013.cs" />
+    <Compile Include="Repositories\AuthorizationsRepository.cs" />
+    <Compile Include="Repositories\KandaRepository.cs" />
+    <Compile Include="Repositories\MembershipAuthorizationsRepository.cs" />
+    <Compile Include="Repositories\MembershipRolesRepository.cs" />
+    <Compile Include="Repositories\MembershipsRepository.cs" />
+    <Compile Include="Repositories\MembershipUsersRepository.cs" />
+    <Compile Include="Repositories\RoleAuthorizationsRepository.cs" />
+    <Compile Include="Repositories\RolesRepository.cs" />
+    <Compile Include="Repositories\UserAttributeItemsRepository.cs" />
+    <Compile Include="Repositories\UserAttributesRepository.cs" />
+    <Compile Include="Repositories\UserHistoriesRepository.cs" />
+    <Compile Include="Repositories\UserHistoryAttributesRepository.cs" />
+    <Compile Include="Repositories\UsersRepository.cs" />
+    <Compile Include="Web\ErrorModule.cs" />
+    <Compile Include="Web\GlobalizationModule.cs" />
+    <Compile Include="Web\Mvc\AuthorizationFilter.cs" />
+    <Compile Include="Web\Mvc\Controllers\AuthorizationsController.cs" />
+    <Compile Include="Web\Mvc\Controllers\DefaultController.cs" />
+    <Compile Include="Web\Mvc\Controllers\MembershipController.cs" />
+    <Compile Include="Web\Mvc\Controllers\MembershipsController.cs" />
+    <Compile Include="Web\Mvc\Controllers\RolesController.cs" />
+    <Compile Include="Web\Mvc\Controllers\SignInController.cs" />
+    <Compile Include="Web\Mvc\Controllers\SignUpController.cs" />
+    <Compile Include="Web\Mvc\Controllers\UsersController.cs" />
+    <Compile Include="Web\Mvc\EngineConfig.cs" />
+    <Compile Include="Web\Mvc\FilterConfig.cs" />
+    <Compile Include="Web\Mvc\KandaActionFilter.cs" />
+    <Compile Include="Web\Mvc\KandaController.cs" />
+    <Compile Include="Web\Mvc\KandaRazorViewEngine.cs" />
+    <Compile Include="Web\Mvc\Models\MembershipModel.cs" />
+    <Compile Include="Web\Mvc\RouteConfig.cs" />
+    <Compile Include="Web\Mvc\WebApiConfig.cs" />
+    <Compile Include="Web\PostAuthenticateRequestModule.cs" />
+    <Compile Include="Web\Security\KandaMembershipProvider.cs" />
+    <Compile Include="Web\Security\KandaMembershipUser.cs" />
+    <Compile Include="Web\Security\KandaRoleProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.1.1\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.1\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.1.1\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.1.1\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.1\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.2\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.1\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.1\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.1\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.1\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kkkkkkaaaaaa\kkkkkkaaaaaa.2013.csproj">
+      <Project>{f6072b27-e6ed-4e34-9a4c-c910224ad97f}</Project>
+      <Name>kkkkkkaaaaaa.2013</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

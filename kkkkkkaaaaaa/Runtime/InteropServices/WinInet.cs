@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.InteropServices;
 
 namespace kkkkkkaaaaaa.Runtime.InteropServices
 {
@@ -23,6 +24,7 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         /// <param name="lpdwFlags"></param>
         /// <param name="dwReserved"></param>
         /// <returns></returns>
+        [DllImport(WinInet.DLL_NAME)]
         public static extern bool InternetGetConnectedState(int lpdwFlags, int dwReserved);
 
         /// <summary>
@@ -35,6 +37,7 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         ///     );
         /// </summary>
         /// <returns></returns>
+        [DllImport(WinInet.DLL_NAME)]
         public static extern bool InternetGetConnectedStateEx(int lpdwFlags, StringBuilder lpszConnectionName, int dwBufLen, int dwReserved);
 
         /*
@@ -69,5 +72,7 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         #define INTERNET_CONNECTION_OFFLINE         0x20
         #define INTERNET_CONNECTION_CONFIGURED      0x40
          */
+
+        private const string DLL_NAME = @"WinInet.dll";
     }
 }

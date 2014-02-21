@@ -27,7 +27,7 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         /// <param name="lpTimeZoneInformation"></param>
         /// <returns></returns>
         [DllImport(Advapi32.DLL_NAME)]
-        public static extern uint EnumDynamicTimeZoneInformation(uint dwIndex, out _TIME_DYNAMIC_ZONE_INFORMATION lpTimeZoneInformation);
+        public static extern uint EnumDynamicTimeZoneInformation([In()]uint dwIndex, out _TIME_DYNAMIC_ZONE_INFORMATION lpTimeZoneInformation);
 
 
         #region Private members...

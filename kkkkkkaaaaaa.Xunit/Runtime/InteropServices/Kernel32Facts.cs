@@ -160,7 +160,52 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             }
         }
 
+        [Fact()]
+        public void GetTimeZoneInformationForYearFact()
+        {
+            var time = this.createSystemTime(DateTime.UtcNow);
+
+            uint index = 0;
+            while (true)
+            {
+                var dtzi = default (_TIME_DYNAMIC_ZONE_INFORMATION);
+                if (!this.getDynamicTimeZone(index, out dtzi)) { break; }
+
+                var tzi = default(_TIME_ZONE_INFORMATION);
+                if (!Kernel32.GetTimeZoneInformationForYear(time.wYear, dtzi, out tzi)) { Assert.False(true); }
+
+                index++;
+            }
+
+            Assert.True(0 < index);
+            Assert.True(true);
+        }
+
+
         #region Private members...
+
+        private _SYSTEMTIME createSystemTime(DateTime dateTime)
+        {
+            var systemTime = new _SYSTEMTIME()
+            {
+                wYear = (ushort)dateTime.Year,
+                wMonth = (ushort)dateTime.Month,
+                wDay = (ushort)dateTime.Day,
+                wHour = (ushort)dateTime.Hour,
+                wMinute = (ushort)dateTime.Minute,
+                wSecond = (ushort)dateTime.Second,
+                wMilliseconds = (ushort)dateTime.Millisecond,
+            };
+
+            return systemTime;
+        }
+
+        private bool getDynamicTimeZone(uint index, out _TIME_DYNAMIC_ZONE_INFORMATION dtzi)
+        {
+            var error = Advapi32.EnumDynamicTimeZoneInformation(index, out dtzi);
+
+            return (error == WinError.ERROR_SUCCESS);
+        }
 
         /// <summary></summary>
         private delegate void Function();

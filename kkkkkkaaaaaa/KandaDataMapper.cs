@@ -23,7 +23,6 @@ namespace kkkkkkaaaaaa
             var sourceMembers = KandaDataMapper.GetMembers(source);
             var targetMembers = KandaDataMapper.GetMembers(target);
 
-
             foreach (var t in targetMembers)
             {
                 var attributes = (KandaMappingAttribute[])t.GetCustomAttributes(typeof(KandaMappingAttribute), true);

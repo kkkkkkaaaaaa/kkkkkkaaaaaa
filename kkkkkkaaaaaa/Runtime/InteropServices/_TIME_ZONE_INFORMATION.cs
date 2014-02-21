@@ -14,6 +14,7 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
     ///     LONG DaylightBias;
     /// } TIME_ZONE_INFORMATION, *PTIME_ZONE_INFORMATION, *LPTIME_ZONE_INFORMATION;
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     public struct _TIME_ZONE_INFORMATION
     {
         public int Bias;

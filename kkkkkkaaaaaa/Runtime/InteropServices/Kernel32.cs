@@ -10,6 +10,12 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
     public static class Kernel32
     {
         /// <summary>
+        /// #define TIME_ZONE_ID_INVALID ((DWORD)0xFFFFFFFF)
+        /// </summary>
+        public const uint TIME_ZONE_ID_INVALID = 0xFFFFFFFF;
+
+
+        /// <summary>
         /// WINBASEAPI VOID WINAPI GetSystemInfo(__out LPSYSTEM_INFO lpSystemInfo);
         /// </summary>
         /// <param name="lpSystemInfo"></param>
@@ -160,6 +166,152 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         /// <returns></returns>
         [DllImport(Kernel32.DLL_NAME)]
         public static extern uint FormatMessage(uint dwFlags, IntPtr lpSource, uint dwMessageId, uint dwLanguageId, out IntPtr lpBuffer, uint nSize, string[] Arguments);
+
+
+        /*
+        WINBASEAPI
+_Success_(return != FALSE)
+BOOL
+WINAPI
+SystemTimeToTzSpecificLocalTime(
+    _In_opt_ CONST TIME_ZONE_INFORMATION * lpTimeZoneInformation,
+    _In_ CONST SYSTEMTIME * lpUniversalTime,
+    _Out_ LPSYSTEMTIME lpLocalTime
+    );
+        */
+
+        /*
+WINBASEAPI
+_Success_(return != FALSE)
+BOOL
+WINAPI
+TzSpecificLocalTimeToSystemTime(
+    _In_opt_ CONST TIME_ZONE_INFORMATION * lpTimeZoneInformation,
+    _In_ CONST SYSTEMTIME * lpLocalTime,
+    _Out_ LPSYSTEMTIME lpUniversalTime
+    );
+        */
+
+        /*
+WINBASEAPI
+_Success_(return != FALSE)
+BOOL
+WINAPI
+FileTimeToSystemTime(
+    _In_ CONST FILETIME * lpFileTime,
+    _Out_ LPSYSTEMTIME lpSystemTime
+    );
+         */
+
+        /*
+WINBASEAPI
+_Success_(return != FALSE)
+BOOL
+WINAPI
+SystemTimeToFileTime(
+    _In_ CONST SYSTEMTIME * lpSystemTime,
+    _Out_ LPFILETIME lpFileTime
+    );
+         */
+
+        /*
+WINBASEAPI
+_Success_(return != TIME_ZONE_ID_INVALID)
+DWORD
+WINAPI
+GetTimeZoneInformation(
+    _Out_ LPTIME_ZONE_INFORMATION lpTimeZoneInformation
+    );
+        */
+
+        /*
+WINBASEAPI
+BOOL
+WINAPI
+SetTimeZoneInformation(
+    _In_ CONST TIME_ZONE_INFORMATION * lpTimeZoneInformation
+    );
+        */
+
+        
+        /*
+        // <expr> indicates whether normal post conditions apply to a function
+
+        #define _Null_terminated_                 _SAL2_Source_(_Null_terminated_, (), _Null_terminated_impl_)
+        #define _Success_(expr)                  _SAL2_Source_(_Success_, (expr), _Success_impl_(expr))
+
+        #define _SAL2_Source_(Name, args, annotes) _SA_annotes3(SAL_name, #Name, "", "2") _GrouP_(annotes _SAL_nop_impl_)
+        #define _SA_annotes3(n,pp1,pp2,pp3)    [SAL_annotes(Name=#n, p1=_SA_SPECSTRIZE(pp1), p2=_SA_SPECSTRIZE(pp2), p3=_SA_SPECSTRIZE(pp3))]
+
+        #define _Success_impl_(expr)          [SA_Success(Condition=#expr)]
+        #define _SA_SPECSTRIZE( x ) #x
+        */
+
+
+        /// <summary>
+        /// WINBASEAPI BOOL WINAPI SetDynamicTimeZoneInformation(_In_ CONST DYNAMIC_TIME_ZONE_INFORMATION * lpTimeZoneInformation);
+        /// </summary>
+        /// <param name="lpTimeZoneInformation"></param>
+        /// <returns></returns>
+        [DllImport(Kernel32.DLL_NAME)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool SetDynamicTimeZoneInformation(_TIME_DYNAMIC_ZONE_INFORMATION lpTimeZoneInformation);
+
+        /// <summary>
+        /// WINBASEAPI _Success_(return != TIME_ZONE_ID_INVALID) DWORD WINAPI GetDynamicTimeZoneInformation(_Out_ PDYNAMIC_TIME_ZONE_INFORMATION pTimeZoneInformation);
+        /// </summary>
+        /// <returns></returns>
+        [DllImport(Kernel32.DLL_NAME)]
+        public static extern uint GetDynamicTimeZoneInformation(out _TIME_DYNAMIC_ZONE_INFORMATION pTimeZoneInformation);
+
+        /// <summary>
+        /// _Success_(return != FALSE) BOOL WINAPI GetTimeZoneInformationForYear(_In_ USHORT wYear, _In_opt_ PDYNAMIC_TIME_ZONE_INFORMATION pdtzi, _Out_ LPTIME_ZONE_INFORMATION ptzi);
+        /// </summary>
+        /// <param name="wYear"></param>
+        /// <param name="pdtzi"></param>
+        /// <param name="ptzi"></param>
+        /// <returns></returns>
+        [DllImport(Kernel32.DLL_NAME)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetTimeZoneInformationForYear(ushort wYear, ref _TIME_DYNAMIC_ZONE_INFORMATION pdtzi, out _TIME_ZONE_INFORMATION ptzi);
+
+
+        /*
+WINBASEAPI
+_Success_(return == ERROR_SUCCESS)
+DWORD
+WINAPI
+GetDynamicTimeZoneInformationEffectiveYears(
+    _In_ CONST PDYNAMIC_TIME_ZONE_INFORMATION lpTimeZoneInformation,
+    _Out_ LPDWORD FirstYear,
+    _Out_ LPDWORD LastYear
+    );
+        */
+
+        /*
+WINBASEAPI
+_Success_(return != FALSE)
+BOOL
+WINAPI
+SystemTimeToTzSpecificLocalTimeEx(
+    _In_opt_ CONST DYNAMIC_TIME_ZONE_INFORMATION * lpTimeZoneInformation,
+    _In_ CONST SYSTEMTIME * lpUniversalTime,
+    _Out_ LPSYSTEMTIME lpLocalTime
+    );
+        */
+
+        /*
+WINBASEAPI
+_Success_(return != FALSE)
+BOOL
+WINAPI
+TzSpecificLocalTimeToSystemTimeEx(
+    _In_opt_ CONST DYNAMIC_TIME_ZONE_INFORMATION * lpTimeZoneInformation,
+    _In_ CONST SYSTEMTIME * lpLocalTime,
+    _Out_ LPSYSTEMTIME lpUniversalTime
+    );
+        */
+
 
 
         #region Private members...

@@ -60,7 +60,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
                 Marshal.Copy(source, 0, lpv, source.Length);
 
                 var lpiResult = WinNT.IS_TEXT_UNICODE_STATISTICS;
-                var result = AdvApi32.IsTextUnicode(lpv, source.Length, ref lpiResult);
+                var result = Advapi32.IsTextUnicode(lpv, source.Length, ref lpiResult);
                 Assert.True(result);
             }
             finally

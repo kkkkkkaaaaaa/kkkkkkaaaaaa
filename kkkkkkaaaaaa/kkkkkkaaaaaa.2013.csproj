@@ -46,7 +46,7 @@
     <Compile Include="KandaDataMapper.2010.cs" />
     <Compile Include="KandaDataMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.2013.cs" />
-    <Compile Include="Runtime\InteropServices\AdvApi32.cs" />
+    <Compile Include="Runtime\InteropServices\Advapi32.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32.delegates.cs" />
     <Compile Include="Runtime\InteropServices\MinWinDef.cs" />
@@ -55,6 +55,7 @@
     <Compile Include="Runtime\InteropServices\tagPOINT.cs" />
     <Compile Include="Runtime\InteropServices\tagRECT.cs" />
     <Compile Include="Runtime\InteropServices\tagWINDOWPLACEMENT.cs" />
+    <Compile Include="Runtime\InteropServices\TimeZoneApi.2013.cs" />
     <Compile Include="Runtime\InteropServices\User32.cs" />
     <Compile Include="Runtime\InteropServices\WinBase.cs" />
     <Compile Include="Runtime\InteropServices\WinDef.2012.cs" />
@@ -64,8 +65,12 @@
     <Compile Include="Runtime\InteropServices\WinInet.cs" />
     <Compile Include="Runtime\InteropServices\WinNT.cs" />
     <Compile Include="Runtime\InteropServices\WinUser.cs" />
+    <Compile Include="Runtime\InteropServices\_FILETIME.cs" />
+    <Compile Include="Runtime\InteropServices\_SYSTEMTIME.cs" />
     <Compile Include="Runtime\InteropServices\_SYSTEM_INFO.cs" />
     <Compile Include="Runtime\InteropServices\_SYSTEM_LOGICAL_PROCESSOR_INFORMATION.cs" />
+    <Compile Include="Runtime\InteropServices\_TIME_DYNAMIC_ZONE_INFORMATION.cs" />
+    <Compile Include="Runtime\InteropServices\_TIME_ZONE_INFORMATION.cs" />
     <Compile Include="Security\Cryptography\KandaHashAlgorithm.cs" />
     <Compile Include="Security\Cryptography\KandaMD5.cs" />
     <Compile Include="Security\Cryptography\KandaRijndaelManaged.cs" />

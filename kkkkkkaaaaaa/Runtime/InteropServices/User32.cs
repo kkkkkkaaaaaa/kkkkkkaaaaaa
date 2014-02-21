@@ -6,22 +6,24 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
     public static class User32
     {
         /// <summary>
-        /// FailOnFalse [gle] SetWindowPlacement(HWND hWnd, LPWINDOWPLACEMENT lpwndpl);
+        /// WINUSERAPI BOOL WINAPI GetWindowPlacement(_In_ HWND hWnd, _Inout_ WINDOWPLACEMENT *lpwndpl);
         /// </summary>
         /// <param name="hWnd"></param>
         /// <param name="lpwndpl"></param>
         /// <returns></returns>
         [DllImport(User32.DLL_NAME)]
-        public static extern bool SetWindowPlacement(IntPtr hWnd, tagWINDOWPLACEMENT lpwndpl);
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetWindowPlacement(IntPtr hWnd, ref tagWINDOWPLACEMENT lpwndpl);
 
         /// <summary>
-        /// FailOnFalse [gle] GetWindowPlacement(HWND hWnd, [out] LPWINDOWPLACEMENT lpwndpl);
+        /// WINUSERAPI BOOL WINAPI SetWindowPlacement(_In_ HWND hWnd, _In_ CONST WINDOWPLACEMENT *lpwndpl);
         /// </summary>
         /// <param name="hWnd"></param>
         /// <param name="lpwndpl"></param>
         /// <returns></returns>
         [DllImport(User32.DLL_NAME)]
-        public static extern bool GetWindowPlacement(IntPtr hWnd, [In()] ref tagWINDOWPLACEMENT lpwndpl);
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool SetWindowPlacement(IntPtr hWnd, tagWINDOWPLACEMENT lpwndpl);
 
         #region Private members...
 

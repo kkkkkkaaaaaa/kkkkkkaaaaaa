@@ -8,7 +8,7 @@ using kkkkkkaaaaaa.Runtime.InteropServices;
 
 namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
 {
-    public class AdvApi32Facts
+    public class Advapi32Facts
     {
         [Fact()]
         public void IsTextUnicodeFact()
@@ -67,6 +67,23 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             {
                 if (lpv != IntPtr.Zero) { Marshal.FreeHGlobal(lpv); }
             }
+        }
+
+        [Fact()]
+        public void EnumDynamicTimeZoneInformationFact()
+        {
+            uint index = 0;
+            while (true)
+            {
+                var zone = default(_TIME_DYNAMIC_ZONE_INFORMATION);
+                var error = Advapi32.EnumDynamicTimeZoneInformation(index, out zone);
+                if (error != WinError.ERROR_SUCCESS) { break; }
+
+                index++;
+            }
+
+            Assert.True(0 < index);
+            Assert.True(true);
         }
     }
 }

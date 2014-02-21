@@ -1,4 +1,6 @@
-﻿namespace kkkkkkaaaaaa.Runtime.InteropServices
+﻿using System.Runtime.InteropServices;
+
+namespace kkkkkkaaaaaa.Runtime.InteropServices
 {
     /// <summary>
     /// typedef struct _SYSTEMTIME {
@@ -12,6 +14,7 @@
     ///     WORD wMilliseconds;
     /// } SYSTEMTIME, *PSYSTEMTIME, *LPSYSTEMTIME;
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public struct _SYSTEMTIME
     {
         public ushort wYear;

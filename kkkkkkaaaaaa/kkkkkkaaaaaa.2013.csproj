@@ -55,7 +55,6 @@
     <Compile Include="Runtime\InteropServices\tagPOINT.cs" />
     <Compile Include="Runtime\InteropServices\tagRECT.cs" />
     <Compile Include="Runtime\InteropServices\tagWINDOWPLACEMENT.cs" />
-    <Compile Include="Runtime\InteropServices\TimeZoneApi.2013.cs" />
     <Compile Include="Runtime\InteropServices\User32.cs" />
     <Compile Include="Runtime\InteropServices\WinBase.cs" />
     <Compile Include="Runtime\InteropServices\WinDef.2012.cs" />

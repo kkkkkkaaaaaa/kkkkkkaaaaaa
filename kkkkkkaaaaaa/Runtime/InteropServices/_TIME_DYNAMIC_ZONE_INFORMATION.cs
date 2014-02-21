@@ -19,6 +19,7 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
     /// 「」
     /// http://msdn.microsoft.com/en-us/library/s9ts558h.aspx
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     public struct _TIME_DYNAMIC_ZONE_INFORMATION
     {
         public int Bias;

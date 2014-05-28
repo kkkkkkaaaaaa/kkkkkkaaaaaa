@@ -1,4 +1,6 @@
-﻿namespace kkkkkkaaaaaa.Runtime.InteropServices
+﻿using System.Runtime.InteropServices;
+
+namespace kkkkkkaaaaaa.Runtime.InteropServices
 {
     /// <summary>
     /// typedef struct tagWINDOWPLACEMENT {
@@ -10,6 +12,7 @@
     ///     RECT  rcNormalPosition;
     /// } WINDOWPLACEMENT, *LPWINDOWPLACEMENT;
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public struct tagWINDOWPLACEMENT
     {
         public uint length;

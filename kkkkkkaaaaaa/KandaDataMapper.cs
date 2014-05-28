@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using kkkkkkaaaaaa.Data.Common;
 
 namespace kkkkkkaaaaaa
@@ -22,7 +20,6 @@ namespace kkkkkkaaaaaa
         {
             var sourceMembers = KandaDataMapper.GetMembers(source);
             var targetMembers = KandaDataMapper.GetMembers(target);
-
 
             foreach (var t in targetMembers)
             {

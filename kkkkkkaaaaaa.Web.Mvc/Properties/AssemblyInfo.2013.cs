@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("kkkkkkaaaaaa")]
+[assembly: AssemblyTitle("kkkkkkaaaaaa.Web.Mvc")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("kkkkkkaaaaaa")]
+[assembly: AssemblyProduct("kkkkkkaaaaaa.Web.Mvc")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("814c4253-5fba-4349-a49c-284bb8213932")]
+[assembly: Guid("bcd2418a-ee34-4e33-a2c3-37b21ac3b37d")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -29,11 +29,7 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-// You can specify all the values or you can default the Build and Revision Numbers 
+// You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
-[assembly: InternalsVisibleTo("kkkkkkaaaaaa.Xunit")]
-[assembly: InternalsVisibleTo("kkkkkkaaaaaa.kkkkkkaaaaaa.Xunit")]

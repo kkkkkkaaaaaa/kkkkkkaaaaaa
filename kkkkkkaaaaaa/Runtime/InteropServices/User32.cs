@@ -3,25 +3,53 @@ using System.Runtime.InteropServices;
 
 namespace kkkkkkaaaaaa.Runtime.InteropServices
 {
+    /// <summary>
+    /// user32.dll。
+    /// </summary>
     public static class User32
     {
         /// <summary>
-        /// FailOnFalse [gle] SetWindowPlacement(HWND hWnd, LPWINDOWPLACEMENT lpwndpl);
+        /// WINUSERAPI BOOL WINAPI GetWindowPlacement(_In_ HWND hWnd, _Inout_ WINDOWPLACEMENT *lpwndpl);
         /// </summary>
         /// <param name="hWnd"></param>
         /// <param name="lpwndpl"></param>
         /// <returns></returns>
         [DllImport(User32.DLL_NAME)]
-        public static extern bool SetWindowPlacement(IntPtr hWnd, tagWINDOWPLACEMENT lpwndpl);
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetWindowPlacement(IntPtr hWnd, ref tagWINDOWPLACEMENT lpwndpl);
 
         /// <summary>
-        /// FailOnFalse [gle] GetWindowPlacement(HWND hWnd, [out] LPWINDOWPLACEMENT lpwndpl);
+        /// WINUSERAPI BOOL WINAPI SetWindowPlacement(_In_ HWND hWnd, _In_ CONST WINDOWPLACEMENT *lpwndpl);
         /// </summary>
         /// <param name="hWnd"></param>
         /// <param name="lpwndpl"></param>
         /// <returns></returns>
         [DllImport(User32.DLL_NAME)]
-        public static extern bool GetWindowPlacement(IntPtr hWnd, [In()] ref tagWINDOWPLACEMENT lpwndpl);
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool SetWindowPlacement(IntPtr hWnd, tagWINDOWPLACEMENT lpwndpl);
+
+        /*
+        WINUSERAPI
+        HMONITOR
+        WINAPI
+        MonitorFromPoint(
+            _In_ POINT pt,
+            _In_ DWORD dwFlags);
+
+        WINUSERAPI
+        HMONITOR
+        WINAPI
+        MonitorFromRect(
+            _In_ LPCRECT lprc,
+            _In_ DWORD dwFlags);
+
+        WINUSERAPI
+        HMONITOR
+        WINAPI
+        MonitorFromWindow(
+            _In_ HWND hwnd,
+            _In_ DWORD dwFlags);
+        */
 
         #region Private members...
 

@@ -155,7 +155,7 @@ namespace kkkkkkaaaaaa.Repositories
 
                 //case KandaTableDataGateway.DUPLICATE_PROVIDER_USER_KEY:
                 //    status = MembershipCreateStatus.DuplicateProviderUserKey;
-                    break;
+                //    break;
 
                 default:
                     break;

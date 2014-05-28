@@ -135,8 +135,6 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
             var affected = command.ExecuteNonQuery();
 
             return affected;
-
-            return (int)result.Value;
         }
 
         /// <summary>

@@ -1,11 +1,18 @@
 ﻿namespace kkkkkkaaaaaa.Runtime.InteropServices
 {
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class WinUser
     {
-        /*
-         * ShowWindow() Commands
-         */
+        #region #if(WINVER >= 0x0601)
+
+        public const uint WM_DPICHANGED = 0x02E0;
+
+        #endregion
+
+        #region ShowWindow() Commands
+
         public const uint SW_HIDE = 0;
         public const uint SW_SHOWNORMAL = 1;
         public const uint SW_NORMAL = 1;
@@ -21,5 +28,15 @@
         public const uint SW_SHOWDEFAULT = 10;
         public const uint SW_FORCEMINIMIZE = 11;
         public const uint SW_MAX = 11;
+        
+        #endregion
+
+        #region Multimonitor API.
+
+        public const uint MONITOR_DEFAULTTONULL = 0x00000000;
+        public const uint MONITOR_DEFAULTTOPRIMARY = 0x00000001;
+        public const uint MONITOR_DEFAULTTONEAREST = 0x00000002;
+
+        #endregion
     }
 }

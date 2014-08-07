@@ -3,9 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace kkkkkkaaaaaa.Runtime.InteropServices
 {
-    /// <summary>
-    /// user32.dll。
-    /// </summary>
     public static class User32
     {
         /// <summary>
@@ -27,29 +24,6 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         [DllImport(User32.DLL_NAME)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetWindowPlacement(IntPtr hWnd, tagWINDOWPLACEMENT lpwndpl);
-
-        /*
-        WINUSERAPI
-        HMONITOR
-        WINAPI
-        MonitorFromPoint(
-            _In_ POINT pt,
-            _In_ DWORD dwFlags);
-
-        WINUSERAPI
-        HMONITOR
-        WINAPI
-        MonitorFromRect(
-            _In_ LPCRECT lprc,
-            _In_ DWORD dwFlags);
-
-        WINUSERAPI
-        HMONITOR
-        WINAPI
-        MonitorFromWindow(
-            _In_ HWND hwnd,
-            _In_ DWORD dwFlags);
-        */
 
         #region Private members...
 

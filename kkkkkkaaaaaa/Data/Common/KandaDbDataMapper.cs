@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -28,7 +29,7 @@ namespace kkkkkkaaaaaa.Data.Common
                     var name = (string)row[@"ColumnName"];
                     var value = reader[name];
 
-                    var attributes = (KandaMappingAttribute[])member.GetCustomAttributes(typeof(KandaMappingAttribute), true);
+                    var attributes = (KandaDataMappingAttribute[])member.GetCustomAttributes(typeof(KandaDataMappingAttribute), true);
                     if (attributes.Length > 1) { throw new Exception(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
                     foreach (var attribute in attributes)
                     {
@@ -48,6 +49,7 @@ namespace kkkkkkaaaaaa.Data.Common
             }
         }
 
+        [DebuggerStepThrough()]
         public static T MapToObject<T>(DbDataReader reader) where T : new()
         {
             var obj = new T();
@@ -72,9 +74,27 @@ namespace kkkkkkaaaaaa.Data.Common
 
         }
 
+        [DebuggerStepThrough()]
         public static IEnumerable<T> MapToEnumerable<T>(DbDataReader reader) where T : new()
         {
             return KandaDbDataMapper.MapToCollection<T>(reader);
+        }
+
+        [DebuggerStepThrough()]
+        public static IEnumerable<T> MapToEnumerable<T>(DataTable table) where T : new()
+        {
+            var reader = default(DbDataReader);
+
+            try
+            {
+                reader = new DataTableReader(table);
+
+                return KandaDbDataMapper.MapToEnumerable<T>(reader);
+            }
+            finally
+            {
+                if (reader != null) { reader.Close(); }
+            }
         }
 
         public static void MapToParameters(DbCommand command, object obj)
@@ -109,6 +129,7 @@ namespace kkkkkkaaaaaa.Data.Common
             }
         }
 
+        [DebuggerStepThrough()]
         public static void MapToParameters(KandaDbDataReader reader, object obj)
         {
             KandaDbDataMapper.MapToParameters(reader.InnerCommand, obj);

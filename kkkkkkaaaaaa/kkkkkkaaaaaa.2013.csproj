@@ -38,7 +38,7 @@
     <Compile Include="Data\Common\KandaDbParameterMappingAttribute.cs" />
     <Compile Include="Data\Common\KandaDbProviderFactory.2010.cs" />
     <Compile Include="Data\Common\KandaDbProviderFactory.cs" />
-    <Compile Include="Data\Common\KandaMappingAttribute.cs" />
+    <Compile Include="Data\Common\KandaDataMappingAttribute.cs" />
     <Compile Include="Data\KandaDataReaderExtensions.cs" />
     <Compile Include="IO\KandaDirectory.cs" />
     <Compile Include="IO\KandaDirectoryInfo.cs" />

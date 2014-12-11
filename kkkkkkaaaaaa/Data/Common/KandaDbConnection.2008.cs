@@ -7,22 +7,22 @@ namespace kkkkkkaaaaaa.Data.Common
     {
         public static DataTable GetMetaDataCollectionsSchema(this DbConnection connection)
         {
-            return connection.GetSchema(@"DataSourceInformation");
+            return connection.GetSchema(DbMetaDataCollectionNames.DataSourceInformation);
         }
 
         public static DataTable GetDataTypesSchema(this DbConnection connection)
         {
-            return connection.GetSchema(@"DataTypes");
+            return connection.GetSchema(DbMetaDataCollectionNames.DataTypes);
         }
 
         public static DataTable GetRestrictionsSchema(this DbConnection connection)
         {
-            return connection.GetSchema(@"Restrictions");
+            return connection.GetSchema(DbMetaDataCollectionNames.Restrictions);
         }
 
         public static DataTable GetReservedWordsSchema(this DbConnection connection)
         {
-            return connection.GetSchema(@"ReservedWords");
+            return connection.GetSchema(DbMetaDataCollectionNames.ReservedWords);
         }
 
         public static DataTable GetTablesSchema(this DbConnection connection)

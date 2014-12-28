@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>kkkkkkaaaaaa.Xunit</RootNamespace>
     <AssemblyName>kkkkkkaaaaaa.Xunit</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -36,11 +36,13 @@
     <Compile Include="Runtime\InteropServices\Advapi32Facts.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32Facts.cs" />
     <Compile Include="Runtime\InteropServices\MarshalFacts.cs" />
+    <Compile Include="Runtime\InteropServices\Shell32Facts.cs" />
     <Compile Include="Runtime\InteropServices\WinBaseFacts.cs" />
     <Compile Include="Runtime\InteropServices\WinInetFacts.cs" />
     <Compile Include="System\BooleanFacts.cs" />
     <Compile Include="System\ConvertFacts.cs" />
     <Compile Include="System\DateTimeFacts.cs" />
+    <Compile Include="System\UInt32Facts.cs" />
     <Compile Include="System\IntPtrFacts.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\kkkkkkaaaaaa\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\bin\Release\kkkkkkaaaaaa\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -40,6 +40,7 @@
     <Compile Include="Data\Common\KandaDbProviderFactory.cs" />
     <Compile Include="Data\Common\KandaDataMappingAttribute.cs" />
     <Compile Include="Data\KandaDataReaderExtensions.cs" />
+    <Compile Include="Data\SqlClient\KandaSqlConnection.2008.cs" />
     <Compile Include="IO\KandaDirectory.cs" />
     <Compile Include="IO\KandaDirectoryInfo.cs" />
     <Compile Include="IO\KandaFileSystemObject.cs" />
@@ -50,9 +51,11 @@
     <Compile Include="Runtime\InteropServices\Gdi32.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32.delegates.cs" />
+    <Compile Include="Runtime\InteropServices\KNOWN_FOLDER_FLAG.cs" />
     <Compile Include="Runtime\InteropServices\MinWinDef.cs" />
     <Compile Include="Runtime\InteropServices\MONITOR_DPI_TYPE.cs" />
     <Compile Include="Runtime\InteropServices\ShCore.cs" />
+    <Compile Include="Runtime\InteropServices\Shell32.cs" />
     <Compile Include="Runtime\InteropServices\ShellAPI.cs" />
     <Compile Include="Runtime\InteropServices\ShObjIdl.cs" />
     <Compile Include="Runtime\InteropServices\tagPOINT.cs" />

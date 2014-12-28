@@ -41,21 +41,30 @@
         /// <param name="p"></param>
         /// <param name="s"></param>
         /// <returns></returns>
-        public static uint MAKELANGID(uint p, uint s) { return ((s << 10) | (p)); }
-        
+        public static uint MAKELANGID(uint p, uint s)
+        {
+            return ((s << 10) | (p));
+        }
+
         /// <summary>
         /// PRIMARYLANGID(lgid)     ((WORD)(lgid) & 0x3ff)
         /// </summary>
         /// <param name="lgid"></param>
         /// <returns></returns>
-        public static uint PRIMARYLANGID(uint lgid) { return (lgid & 0x3ff); }
+        public static uint PRIMARYLANGID(uint lgid)
+        {
+            return (lgid & 0x3ff);
+        }
 
         /// <summary>
         /// SUBLANGID(lgid)     ((WORD)(lgid) >> 10)
         /// </summary>
         /// <param name="lgid"></param>
         /// <returns></returns>
-        public static uint SUBLANGID(uint lgid) { return (lgid >> 10); }
+        public static uint SUBLANGID(uint lgid)
+        {
+            return (lgid >> 10);
+        }
 
 
         //
@@ -104,13 +113,13 @@
         public const uint LANG_BELARUSIAN = 0x23;
         public const uint LANG_BENGALI = 0x45;
         public const uint LANG_BRETON = 0x7e;
-        public const uint LANG_BOSNIAN                     = 0x1a;   // Use with SUBLANG_BOSNIAN_* Sublanguage IDs
-        public const uint LANG_BOSNIAN_NEUTRAL           = 0x781a;   // Use with the ConvertDefaultLocale function
+        public const uint LANG_BOSNIAN = 0x1a; // Use with SUBLANG_BOSNIAN_* Sublanguage IDs
+        public const uint LANG_BOSNIAN_NEUTRAL = 0x781a; // Use with the ConvertDefaultLocale function
         public const uint LANG_BULGARIAN = 0x02;
         public const uint LANG_CATALAN = 0x03;
-        public const uint LANG_CHINESE                     = 0x04;   // Use with SUBLANG_CHINESE_* Sublanguage IDs
-        public const uint LANG_CHINESE_SIMPLIFIED          = 0x04;   // Use with the ConvertDefaultLocale function
-        public const uint LANG_CHINESE_TRADITIONAL       = 0x7c04;   // Use with the ConvertDefaultLocale function
+        public const uint LANG_CHINESE = 0x04; // Use with SUBLANG_CHINESE_* Sublanguage IDs
+        public const uint LANG_CHINESE_SIMPLIFIED = 0x04; // Use with the ConvertDefaultLocale function
+        public const uint LANG_CHINESE_TRADITIONAL = 0x7c04; // Use with the ConvertDefaultLocale function
         public const uint LANG_CORSICAN = 0x83;
         public const uint LANG_CROATIAN = 0x1a;
         public const uint LANG_CZECH = 0x05;
@@ -121,7 +130,7 @@
         public const uint LANG_ENGLISH = 0x09;
         public const uint LANG_ESTONIAN = 0x25;
         public const uint LANG_FAEROESE = 0x38;
-        public const uint LANG_FARSI                       = 0x29;   // Deprecated: use LANG_PERSIAN instead
+        public const uint LANG_FARSI = 0x29; // Deprecated: use LANG_PERSIAN instead
         public const uint LANG_FILIPINO = 0x64;
         public const uint LANG_FINNISH = 0x0b;
         public const uint LANG_FRENCH = 0x0c;
@@ -140,7 +149,7 @@
         public const uint LANG_IGBO = 0x70;
         public const uint LANG_INDONESIAN = 0x21;
         public const uint LANG_INUKTITUT = 0x5d;
-        public const uint LANG_IRISH                       = 0x3c;   // Use with the SUBLANG_IRISH_IRELAND Sublanguage ID
+        public const uint LANG_IRISH = 0x3c; // Use with the SUBLANG_IRISH_IRELAND Sublanguage ID
         public const uint LANG_ITALIAN = 0x10;
         public const uint LANG_JAPANESE = 0x11;
         public const uint LANG_KANNADA = 0x4b;
@@ -157,7 +166,7 @@
         public const uint LANG_LITHUANIAN = 0x27;
         public const uint LANG_LOWER_SORBIAN = 0x2e;
         public const uint LANG_LUXEMBOURGISH = 0x6e;
-        public const uint LANG_MACEDONIAN                  = 0x2f;   // the Former Yugoslav Republic of Macedonia
+        public const uint LANG_MACEDONIAN = 0x2f; // the Former Yugoslav Republic of Macedonia
         public const uint LANG_MALAY = 0x3e;
         public const uint LANG_MALAYALAM = 0x4c;
         public const uint LANG_MALTESE = 0x3a;
@@ -183,8 +192,8 @@
         public const uint LANG_SAMI = 0x3b;
         public const uint LANG_SANSKRIT = 0x4f;
         public const uint LANG_SCOTTISH_GAELIC = 0x91;
-        public const uint LANG_SERBIAN                     = 0x1a;   // Use with the SUBLANG_SERBIAN_* Sublanguage IDs
-        public const uint LANG_SERBIAN_NEUTRAL           = 0x7c1a;   // Use with the ConvertDefaultLocale function
+        public const uint LANG_SERBIAN = 0x1a; // Use with the SUBLANG_SERBIAN_* Sublanguage IDs
+        public const uint LANG_SERBIAN_NEUTRAL = 0x7c1a; // Use with the ConvertDefaultLocale function
         public const uint LANG_SINDHI = 0x59;
         public const uint LANG_SINHALESE = 0x5b;
         public const uint LANG_SLOVAK = 0x1b;
@@ -229,8 +238,8 @@
         //  Note that the LANG, SUBLANG construction is not always consistent.
         //  The named locale APIs (eg GetLocaleInfoEx) are recommended.
         //
-        public const uint SUBLANG_NEUTRAL                             = 0x00;    // language neutral
-        public const uint SUBLANG_DEFAULT                             = 0x01;    // user default
+        public const uint SUBLANG_NEUTRAL = 0x00; // language neutral
+        public const uint SUBLANG_DEFAULT = 0x01; // user default
         /*
         #define SUBLANG_NEUTRAL                             0x00    // language neutral
         #define SUBLANG_DEFAULT                             0x01    // user default
@@ -462,74 +471,74 @@
         #define SUBLANG_ZULU_SOUTH_AFRICA                   0x01    // isiZulu / Zulu (South Africa) 0x0435 zu-ZA
         */
 
-        public const ushort PROCESSOR_ARCHITECTURE_INTEL            = 0;
-        public const ushort PROCESSOR_ARCHITECTURE_MIPS             = 1;
-        public const ushort PROCESSOR_ARCHITECTURE_ALPHA            = 2;
-        public const ushort PROCESSOR_ARCHITECTURE_PPC              = 3;
-        public const ushort PROCESSOR_ARCHITECTURE_SHX              = 4;
-        public const ushort PROCESSOR_ARCHITECTURE_ARM              = 5;
-        public const ushort PROCESSOR_ARCHITECTURE_IA64             = 6;
-        public const ushort PROCESSOR_ARCHITECTURE_ALPHA64          = 7;
-        public const ushort PROCESSOR_ARCHITECTURE_MSIL             = 8;
-        public const ushort PROCESSOR_ARCHITECTURE_AMD64            = 9;
-        public const ushort PROCESSOR_ARCHITECTURE_IA32_ON_WIN64    = 10;
-        public const ushort PROCESSOR_ARCHITECTURE_UNKNOWN          = 0xFFFF;
+        public const ushort PROCESSOR_ARCHITECTURE_INTEL = 0;
+        public const ushort PROCESSOR_ARCHITECTURE_MIPS = 1;
+        public const ushort PROCESSOR_ARCHITECTURE_ALPHA = 2;
+        public const ushort PROCESSOR_ARCHITECTURE_PPC = 3;
+        public const ushort PROCESSOR_ARCHITECTURE_SHX = 4;
+        public const ushort PROCESSOR_ARCHITECTURE_ARM = 5;
+        public const ushort PROCESSOR_ARCHITECTURE_IA64 = 6;
+        public const ushort PROCESSOR_ARCHITECTURE_ALPHA64 = 7;
+        public const ushort PROCESSOR_ARCHITECTURE_MSIL = 8;
+        public const ushort PROCESSOR_ARCHITECTURE_AMD64 = 9;
+        public const ushort PROCESSOR_ARCHITECTURE_IA32_ON_WIN64 = 10;
+        public const ushort PROCESSOR_ARCHITECTURE_UNKNOWN = 0xFFFF;
 
-        public const uint PROCESSOR_INTEL_386       = 386;
-        public const uint PROCESSOR_INTEL_486       = 486;
-        public const uint PROCESSOR_INTEL_PENTIUM   = 586;
-        public const uint PROCESSOR_INTEL_IA64      = 2200;
-        public const uint PROCESSOR_AMD_X8664       = 8664;
-        public const uint PROCESSOR_MIPS_R4000      = 4000;    // incl R4101 & R3910 for Windows CE
-        public const uint PROCESSOR_ALPHA_21064     = 21064;
-        public const uint PROCESSOR_PPC_601         = 601;
-        public const uint PROCESSOR_PPC_603         = 603;
-        public const uint PROCESSOR_PPC_604         = 604;
-        public const uint PROCESSOR_PPC_620         = 620;
-        public const uint PROCESSOR_HITACHI_SH3     = 10003;   // Windows CE
-        public const uint PROCESSOR_HITACHI_SH3E    = 10004;   // Windows CE
-        public const uint PROCESSOR_HITACHI_SH4     = 10005;   // Windows CE
-        public const uint PROCESSOR_MOTOROLA_821    = 821;     // Windows CE
-        public const uint PROCESSOR_SHx_SH3         = 103;     // Windows CE
-        public const uint PROCESSOR_SHx_SH4         = 104;     // Windows CE
-        public const uint PROCESSOR_STRONGARM       = 2577;    // Windows CE - 0xA11
-        public const uint PROCESSOR_ARM720          = 1824;    // Windows CE - 0x720
-        public const uint PROCESSOR_ARM820          = 2080;    // Windows CE - 0x820
-        public const uint PROCESSOR_ARM920          = 2336;    // Windows CE - 0x920
-        public const uint PROCESSOR_ARM_7TDMI       = 70001;   // Windows CE
-        public const uint PROCESSOR_OPTIL           = 0x494f;  // MSIL
+        public const uint PROCESSOR_INTEL_386 = 386;
+        public const uint PROCESSOR_INTEL_486 = 486;
+        public const uint PROCESSOR_INTEL_PENTIUM = 586;
+        public const uint PROCESSOR_INTEL_IA64 = 2200;
+        public const uint PROCESSOR_AMD_X8664 = 8664;
+        public const uint PROCESSOR_MIPS_R4000 = 4000; // incl R4101 & R3910 for Windows CE
+        public const uint PROCESSOR_ALPHA_21064 = 21064;
+        public const uint PROCESSOR_PPC_601 = 601;
+        public const uint PROCESSOR_PPC_603 = 603;
+        public const uint PROCESSOR_PPC_604 = 604;
+        public const uint PROCESSOR_PPC_620 = 620;
+        public const uint PROCESSOR_HITACHI_SH3 = 10003; // Windows CE
+        public const uint PROCESSOR_HITACHI_SH3E = 10004; // Windows CE
+        public const uint PROCESSOR_HITACHI_SH4 = 10005; // Windows CE
+        public const uint PROCESSOR_MOTOROLA_821 = 821; // Windows CE
+        public const uint PROCESSOR_SHx_SH3 = 103; // Windows CE
+        public const uint PROCESSOR_SHx_SH4 = 104; // Windows CE
+        public const uint PROCESSOR_STRONGARM = 2577; // Windows CE - 0xA11
+        public const uint PROCESSOR_ARM720 = 1824; // Windows CE - 0x720
+        public const uint PROCESSOR_ARM820 = 2080; // Windows CE - 0x820
+        public const uint PROCESSOR_ARM920 = 2336; // Windows CE - 0x920
+        public const uint PROCESSOR_ARM_7TDMI = 70001; // Windows CE
+        public const uint PROCESSOR_OPTIL = 0x494f; // MSIL
 
-        public const uint FILE_ATTRIBUTE_READONLY               = 0x00000001;
-        public const uint FILE_ATTRIBUTE_HIDDEN                 = 0x00000002;
-        public const uint FILE_ATTRIBUTE_SYSTEM                 = 0x00000004;
-        public const uint FILE_ATTRIBUTE_DIRECTORY              = 0x00000010;
-        public const uint FILE_ATTRIBUTE_ARCHIVE                = 0x00000020;
-        public const uint FILE_ATTRIBUTE_DEVICE                 = 0x00000040;
-        public const uint FILE_ATTRIBUTE_NORMAL                 = 0x00000080;
-        public const uint FILE_ATTRIBUTE_TEMPORARY              = 0x00000100;
-        public const uint FILE_ATTRIBUTE_SPARSE_FILE            = 0x00000200;
-        public const uint FILE_ATTRIBUTE_REPARSE_POINT          = 0x00000400;
-        public const uint FILE_ATTRIBUTE_COMPRESSED             = 0x00000800;
-        public const uint FILE_ATTRIBUTE_OFFLINE                = 0x00001000;
-        public const uint FILE_ATTRIBUTE_NOT_CONTENT_INDEXED    = 0x00002000;
-        public const uint FILE_ATTRIBUTE_ENCRYPTED              = 0x00004000;
-        public const uint FILE_ATTRIBUTE_VIRTUAL                = 0x00010000;
+        public const uint FILE_ATTRIBUTE_READONLY = 0x00000001;
+        public const uint FILE_ATTRIBUTE_HIDDEN = 0x00000002;
+        public const uint FILE_ATTRIBUTE_SYSTEM = 0x00000004;
+        public const uint FILE_ATTRIBUTE_DIRECTORY = 0x00000010;
+        public const uint FILE_ATTRIBUTE_ARCHIVE = 0x00000020;
+        public const uint FILE_ATTRIBUTE_DEVICE = 0x00000040;
+        public const uint FILE_ATTRIBUTE_NORMAL = 0x00000080;
+        public const uint FILE_ATTRIBUTE_TEMPORARY = 0x00000100;
+        public const uint FILE_ATTRIBUTE_SPARSE_FILE = 0x00000200;
+        public const uint FILE_ATTRIBUTE_REPARSE_POINT = 0x00000400;
+        public const uint FILE_ATTRIBUTE_COMPRESSED = 0x00000800;
+        public const uint FILE_ATTRIBUTE_OFFLINE = 0x00001000;
+        public const uint FILE_ATTRIBUTE_NOT_CONTENT_INDEXED = 0x00002000;
+        public const uint FILE_ATTRIBUTE_ENCRYPTED = 0x00004000;
+        public const uint FILE_ATTRIBUTE_VIRTUAL = 0x00010000;
 
-        public const int IS_TEXT_UNICODE_ASCII16                = 0x0001;
-        public const int IS_TEXT_UNICODE_REVERSE_ASCII16        = 0x0010;
-        public const int IS_TEXT_UNICODE_STATISTICS             = 0x0002;
-        public const int IS_TEXT_UNICODE_REVERSE_STATISTICS     = 0x0020;
-        public const int IS_TEXT_UNICODE_CONTROLS               = 0x0004;
-        public const int IS_TEXT_UNICODE_REVERSE_CONTROLS       = 0x0040;
-        public const int IS_TEXT_UNICODE_SIGNATURE              = 0x0008;
-        public const int IS_TEXT_UNICODE_REVERSE_SIGNATURE      = 0x0080;
-        public const int IS_TEXT_UNICODE_ILLEGAL_CHARS          = 0x0100;
-        public const int IS_TEXT_UNICODE_ODD_LENGTH             = 0x0200;
-        public const int IS_TEXT_UNICODE_DBCS_LEADBYTE          = 0x0400;
-        public const int IS_TEXT_UNICODE_NULL_BYTES             = 0x1000;
-        public const int IS_TEXT_UNICODE_UNICODE_MASK           = 0x000F;
-        public const int IS_TEXT_UNICODE_REVERSE_MASK           = 0x00F0;
-        public const int IS_TEXT_UNICODE_NOT_UNICODE_MASK       = 0x0F00;
-        public const int IS_TEXT_UNICODE_NOT_ASCII_MASK         = 0xF000;
+        public const int IS_TEXT_UNICODE_ASCII16 = 0x0001;
+        public const int IS_TEXT_UNICODE_REVERSE_ASCII16 = 0x0010;
+        public const int IS_TEXT_UNICODE_STATISTICS = 0x0002;
+        public const int IS_TEXT_UNICODE_REVERSE_STATISTICS = 0x0020;
+        public const int IS_TEXT_UNICODE_CONTROLS = 0x0004;
+        public const int IS_TEXT_UNICODE_REVERSE_CONTROLS = 0x0040;
+        public const int IS_TEXT_UNICODE_SIGNATURE = 0x0008;
+        public const int IS_TEXT_UNICODE_REVERSE_SIGNATURE = 0x0080;
+        public const int IS_TEXT_UNICODE_ILLEGAL_CHARS = 0x0100;
+        public const int IS_TEXT_UNICODE_ODD_LENGTH = 0x0200;
+        public const int IS_TEXT_UNICODE_DBCS_LEADBYTE = 0x0400;
+        public const int IS_TEXT_UNICODE_NULL_BYTES = 0x1000;
+        public const int IS_TEXT_UNICODE_UNICODE_MASK = 0x000F;
+        public const int IS_TEXT_UNICODE_REVERSE_MASK = 0x00F0;
+        public const int IS_TEXT_UNICODE_NOT_UNICODE_MASK = 0x0F00;
+        public const int IS_TEXT_UNICODE_NOT_ASCII_MASK = 0xF000;
     }
 }

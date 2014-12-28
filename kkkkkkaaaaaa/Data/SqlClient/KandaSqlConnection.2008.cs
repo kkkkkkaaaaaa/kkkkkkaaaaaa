@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.Common;
+using System.Data.SqlClient;
 
 namespace kkkkkkaaaaaa.Data.SqlClient
 {
@@ -7,7 +8,7 @@ namespace kkkkkkaaaaaa.Data.SqlClient
     {
         public static DataTable GetTablesSchema(this DbConnection connection)
         {
-            return connection.GetSchema(@"Tables");
+            return connection.GetSchema(SqlClientMetaDataCollectionNames.Tables);
         }
     }
 }

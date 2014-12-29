@@ -20,7 +20,7 @@
         /// <summary>
         /// #define S_OK                                   ((HRESULT)0L)
         /// </summary>
-        public const uint S_OK = 0;
+        public const int S_OK = 0;
 
         /// <summary>
         /// #define S_FALSE                                ((HRESULT)1L)

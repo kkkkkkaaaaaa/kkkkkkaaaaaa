@@ -58,23 +58,27 @@
     {
         KF_FLAG_DEFAULT = 0x00000000,
 
-        // #if (NTDDI_VERSION >= NTDDI_WIN7)
-        // When running inside an AppContainer, or when poviding an AppContainer token, specifying this flag will prevent redirection to AppContainer 
-        // folders and instead return the path that would be returned when not running inside an AppContainer
+        /// <summary>
+        /// #if (NTDDI_VERSION >= NTDDI_WIN7)
+        /// When running inside an AppContainer, or when poviding an AppContainer token, specifying this flag will prevent redirection to AppContainer 
+        /// folders and instead return the path that would be returned when not running inside an AppContainer
+        /// #endif //NTDDI_WIN7
+        /// </summary>
         KF_FLAG_NO_APPCONTAINER_REDIRECTION = 0x00010000,
-        // #endif //NTDDI_WIN7
 
         // Make sure that the folder already exists or create it and apply security specified in folder definition
         // If folder can not be created then function will return failure and no folder path (IDList) will be returned
         // If folder is located on the network the function may take long time to execute
         KF_FLAG_CREATE = 0x00008000,
 
-        // If this flag is specified then the folder path is returned and no verification is performed
-        // Use this flag is you want to get folder's path (IDList) and do not need to verify folder's existence
-        //
-        // If this flag is NOT specified then Known Folder API will try to verify that the folder exists
-        //     If folder does not exist or can not be accessed then function will return failure and no folder path (IDList) will be returned
-        //     If folder is located on the network the function may take long time to execute
+        /// <summary>
+        /// If this flag is specified then the folder path is returned and no verification is performed
+        /// Use this flag is you want to get folder's path (IDList) and do not need to verify folder's existence
+        ///
+        /// If this flag is NOT specified then Known Folder API will try to verify that the folder exists
+        ///     If folder does not exist or can not be accessed then function will return failure and no folder path (IDList) will be returned
+        ///     If folder is located on the network the function may take long time to execute
+        /// </summary>
         KF_FLAG_DONT_VERIFY = 0x00004000,
 
         // Set folder path as is and do not try to substitute parts of the path with environments variables.
@@ -100,9 +104,12 @@
         KF_FLAG_NOT_PARENT_RELATIVE = 0x00000200,
 
         // Build simple IDList
+
         KF_FLAG_SIMPLE_IDLIST = 0x00000100,
 
-        // only return the aliased IDLists, don't fallback to file system path
+        /// <summary>
+        /// only return the aliased IDLists, don't fallback to file system path
+        /// </summary>
         KF_FLAG_ALIAS_ONLY = 0x80000000,
     }
 }

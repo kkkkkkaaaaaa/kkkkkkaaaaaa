@@ -51,6 +51,7 @@
     <Compile Include="Runtime\InteropServices\Gdi32.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32.delegates.cs" />
+    <Compile Include="Runtime\InteropServices\KnownFolders.cs" />
     <Compile Include="Runtime\InteropServices\KNOWN_FOLDER_FLAG.cs" />
     <Compile Include="Runtime\InteropServices\MinWinDef.cs" />
     <Compile Include="Runtime\InteropServices\MONITOR_DPI_TYPE.cs" />

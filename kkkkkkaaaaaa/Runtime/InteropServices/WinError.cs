@@ -15,6 +15,7 @@
         public const int ERROR_PROC_NOT_FOUND = 127;
 
         #region HRESULT
+        // http://msdn.microsoft.com/en-us/library/windows/desktop/aa383751.aspx
         // http://msdn.microsoft.com/en-us/library/windows/desktop/aa378137.aspx
 
         /// <summary>
@@ -25,13 +26,17 @@
         /// <summary>
         /// #define S_FALSE                                ((HRESULT)1L)
         /// </summary>
-        public const uint S_FALSE = 1;
+        public const int S_FALSE = 1;
+
+        // http://blogs.msdn.com/b/masaki/archive/2010/03/04/windows-error-code-types.aspx
 
         /// <summary>
         /// // One or more arguments are invalid
         /// #define E_INVALIDARG                     _HRESULT_TYPEDEF_(0x80070057L)
         /// </summary>
-        public const uint E_INVALIDARG = 0x80070057;
+        public static readonly int E_INVALIDARG = WinError._HRESULT_TYPEDEF_(0x80070057);
+
+        //public const uint E_INVALIDARG = 0x80070057;
 
         /*
         //
@@ -115,6 +120,20 @@
         //
         #define E_ACCESSDENIED                   _HRESULT_TYPEDEF_(0x80070005L)
          */
+
+        #endregion
+
+        #region Private members...
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hresult"></param>
+        /// <returns></returns>
+        private static int _HRESULT_TYPEDEF_(uint hresult)
+        {
+            return unchecked((int)hresult);
+        }
 
         #endregion
     }

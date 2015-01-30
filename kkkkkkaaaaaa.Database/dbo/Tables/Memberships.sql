@@ -12,3 +12,14 @@
 GO
 
 CREATE INDEX [IX_Memberships_Name] ON [dbo].[Memberships] ([Name])
+
+GO
+
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'あ',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Memberships',
+    @level2type = N'COLUMN',
+    @level2name = N'ID'

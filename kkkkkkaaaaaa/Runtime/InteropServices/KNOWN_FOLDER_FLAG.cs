@@ -56,6 +56,9 @@
     /// </summary>
     public enum KNOWN_FOLDER_FLAG : uint
     {
+        /// <summary>
+        /// Default value
+        /// </summary>
         KF_FLAG_DEFAULT = 0x00000000,
 
         /// <summary>
@@ -66,9 +69,11 @@
         /// </summary>
         KF_FLAG_NO_APPCONTAINER_REDIRECTION = 0x00010000,
 
-        // Make sure that the folder already exists or create it and apply security specified in folder definition
-        // If folder can not be created then function will return failure and no folder path (IDList) will be returned
-        // If folder is located on the network the function may take long time to execute
+        /// <summary>
+        /// Make sure that the folder already exists or create it and apply security specified in folder definition
+        /// If folder can not be created then function will return failure and no folder path (IDList) will be returned
+        /// If folder is located on the network the function may take long time to execute
+        /// </summary>
         KF_FLAG_CREATE = 0x00008000,
 
         /// <summary>
@@ -81,9 +86,11 @@
         /// </summary>
         KF_FLAG_DONT_VERIFY = 0x00004000,
 
-        // Set folder path as is and do not try to substitute parts of the path with environments variables.
-        // If flag is not specified then Known Folder will try to replace parts of the path with some
-        // known environment variables (%USERPROFILE%, %APPDATA% etc.)
+        /// <summary>
+        /// Set folder path as is and do not try to substitute parts of the path with environments variables.
+        /// If flag is not specified then Known Folder will try to replace parts of the path with some
+        /// known environment variables (%USERPROFILE%, %APPDATA% etc.)
+        /// </summary>
         KF_FLAG_DONT_UNEXPAND = 0x00002000,
 
         // Get file system based IDList if available. If the flag is not specified the Known Folder API
@@ -92,19 +99,26 @@
         // Non aliased - [desktop]\[computer]\[disk_c]\[users]\[user]\[Documents] - location is determined by folder location in the file system
         KF_FLAG_NO_ALIAS = 0x00001000,
 
-        // Initialize the folder with desktop.ini settings
-        // If folder can not be initialized then function will return failure and no folder path will be returned
-        // If folder is located on the network the function may take long time to execute
+        /// <summary>
+        /// Initialize the folder with desktop.ini settings
+        /// If folder can not be initialized then function will return failure and no folder path will be returned
+        /// If folder is located on the network the function may take long time to execute
+        /// </summary>
         KF_FLAG_INIT = 0x00000800,
 
-        // Get the default path, will also verify folder existence unless KF_FLAG_DONT_VERIFY is also specified
+        /// <summary>
+        /// Get the default path, will also verify folder existence unless KF_FLAG_DONT_VERIFY is also specified
+        /// </summary>
         KF_FLAG_DEFAULT_PATH = 0x00000400,
 
-        // Get the not-parent-relative default path. Only valid with KF_FLAG_DEFAULT_PATH
+        /// <summary>
+        /// Get the not-parent-relative default path. Only valid with KF_FLAG_DEFAULT_PATH
+        /// </summary>
         KF_FLAG_NOT_PARENT_RELATIVE = 0x00000200,
 
-        // Build simple IDList
-
+        /// <summary>
+        /// Build simple IDList
+        /// </summary>
         KF_FLAG_SIMPLE_IDLIST = 0x00000100,
 
         /// <summary>

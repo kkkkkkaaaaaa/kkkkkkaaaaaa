@@ -13,7 +13,6 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         /// </summary>
         public static readonly Guid FOLDERID_NetworkFolder = KnownFolders.DEFINE_KNOWN_FOLDER(0xD20BEEC4, 0x5CA8, 0x4905, 0xAE, 0x3B, 0xBF, 0x25, 0x1E, 0xA0, 0x9B, 0x53);
 
-        
         // display name:        "Desktop"
         // default path:        "C:\Users\<UserName>\Desktop"
         // legacy default path: "C:\Documents and Settings\<userName>\Desktop"
@@ -380,10 +379,12 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
 
         // {0D4C3DB6-03A3-462F-A0E6-08924C41B5D4}
         DEFINE_KNOWN_FOLDER(FOLDERID_SearchHistory,       0x0d4c3db6, 0x03a3, 0x462f, 0xa0, 0xe6, 0x08, 0x92, 0x4c, 0x41, 0xb5, 0xd4);
+        */
 
-        // {7E636BFE-DFA9-4D5E-B456-D7B39851D8A9}
-        DEFINE_KNOWN_FOLDER(FOLDERID_SearchTemplates,     0x7e636bfe, 0xdfa9, 0x4d5e, 0xb4, 0x56, 0xd7, 0xb3, 0x98, 0x51, 0xd8, 0xa9);
-         */
+        /// <summary>
+        /// {7E636BFE-DFA9-4D5E-B456-D7B39851D8A9}
+        /// </summary>
+        public static readonly Guid FOLDERID_SearchTemplates = KnownFolders.DEFINE_KNOWN_FOLDER(0x7e636bfe, 0xdfa9, 0x4d5e, 0xb4, 0x56, 0xd7, 0xb3, 0x98, 0x51, 0xd8, 0xa9);
 
 
         // http://msdn.microsoft.com/ja-jp/library/windows/desktop/bb762181.aspx

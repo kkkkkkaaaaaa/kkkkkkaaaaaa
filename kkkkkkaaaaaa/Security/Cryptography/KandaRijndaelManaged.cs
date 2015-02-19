@@ -1,8 +1,6 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace kkkkkkaaaaaa.Security.Cryptography
 {
@@ -16,7 +14,7 @@ namespace kkkkkkaaaaaa.Security.Cryptography
             try
             {
                 stream = new MemoryStream();
-                crypto = KandaSymmetricAlgorithm.Encrypt(KandaRijndaelManaged.AlgName, plainText, KandaSymmetricAlgorithm._encoding, stream, out key, out iv);
+                crypto = Encrypt(AlgName, plainText, _encoding, stream, out key, out iv);
 
                 return stream.ToArray();
             }
@@ -30,7 +28,7 @@ namespace kkkkkkaaaaaa.Security.Cryptography
         [DebuggerStepThrough()]
         public static string Decrypt(byte[] encrypted, byte[] key, byte[] iv)
         {
-            return KandaSymmetricAlgorithm.Decrypt(KandaRijndaelManaged.AlgName, encrypted, KandaSymmetricAlgorithm._encoding, key, iv);
+            return Decrypt(AlgName, encrypted, _encoding, key, iv);
         }
 
         #region Private members...

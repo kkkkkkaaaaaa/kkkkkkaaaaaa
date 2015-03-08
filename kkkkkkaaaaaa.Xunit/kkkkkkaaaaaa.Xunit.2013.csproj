@@ -40,6 +40,7 @@
     <Compile Include="Runtime\InteropServices\Shell32Facts.cs" />
     <Compile Include="Runtime\InteropServices\WinBaseFacts.cs" />
     <Compile Include="Runtime\InteropServices\WinInetFacts.cs" />
+    <Compile Include="Security\Cryptgraphy\KandaHashAlgorithmFacts.cs" />
     <Compile Include="Security\Cryptgraphy\KandaRfc2898DeriveBytesFacts.cs" />
     <Compile Include="Security\Cryptgraphy\KandaRijndaelManagedFacts.cs" />
     <Compile Include="Security\Cryptgraphy\KandaSymmetricAlgorithmFacts.cs" />

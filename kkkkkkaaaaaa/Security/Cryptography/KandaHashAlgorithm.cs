@@ -17,24 +17,14 @@ namespace kkkkkkaaaaaa.Security.Cryptography
         /// <param name="s"></param>
         /// <param name="encoding"></param>
         /// <returns></returns>
-        public static string ComputeHash(string hashName, string s, Encoding encoding)
+        public static byte[] ComputeHash(string hashName, string s, Encoding encoding)
         {
             var algorithm = HashAlgorithm.Create(hashName);
             var buffer = encoding.GetBytes(s);
-            var hash = algorithm.ComputeHash(buffer, 0, buffer.Length);
+            var hash = algorithm.ComputeHash(buffer);
 
-            return BitConverter.ToString(hash, 0, buffer.Length);
-        }
-
-        /// <summary>
-        /// 指定された文字列のハッシュ値を計算します。
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        [DebuggerStepThrough()]
-        public static string ComputeHash(string s)
-        {
-            return KandaHashAlgorithm.ComputeHash(typeof(SHA1Managed).FullName, s, Encoding.Unicode);
+            return hash;
+            // return BitConverter.ToString(hash).ToLower().Replace(@"-", @""));
         }
     }
 }

@@ -29,7 +29,7 @@ namespace kkkkkkaaaaaa.Security.Cryptography
 
             // キー
             var sizes = rijndael.LegalKeySizes;
-            foreach (KeySizes size in sizes) { rijndael.KeySize = size.MaxSize; }
+            foreach (var size in sizes) { rijndael.KeySize = size.MaxSize; }
             rijndael.GenerateKey();
             key = rijndael.Key;
 

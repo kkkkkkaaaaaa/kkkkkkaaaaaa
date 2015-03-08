@@ -78,13 +78,8 @@
     <Compile Include="Runtime\InteropServices\_TIME_DYNAMIC_ZONE_INFORMATION.cs" />
     <Compile Include="Runtime\InteropServices\_TIME_ZONE_INFORMATION.cs" />
     <Compile Include="Security\Cryptography\KandaHashAlgorithm.cs" />
-    <Compile Include="Security\Cryptography\KandaMD5.cs" />
     <Compile Include="Security\Cryptography\KandaRfc2898DeriveBytes.cs" />
     <Compile Include="Security\Cryptography\KandaRijndaelManaged.cs" />
-    <Compile Include="Security\Cryptography\KandaSHA1.cs" />
-    <Compile Include="Security\Cryptography\KandaSHA256CryptoServiceProvider.cs" />
-    <Compile Include="Security\Cryptography\KandaSHA256.cs" />
-    <Compile Include="Security\Cryptography\KandaSHA512.cs" />
     <Compile Include="Security\Cryptography\KandaSymmetricAlgorithm.cs" />
     <Compile Include="Security\KandaSecureString.2008.cs" />
     <Compile Include="Web\KandaHttpModule.cs" />

@@ -14,7 +14,7 @@ namespace kkkkkkaaaaaa.Security.Cryptography
         /// <returns></returns>
         public static string ComputeHash(string s, Encoding encoding)
         {
-            var algorithm = HashAlgorithm.Create(typeof (SHA512CryptoServiceProvider).FullName);
+            var algorithm = HashAlgorithm.Create(typeof(SHA512CryptoServiceProvider).FullName);
             var buffer = encoding.GetBytes(s);
             var hash = algorithm.ComputeHash(buffer, 0, buffer.Length);
 

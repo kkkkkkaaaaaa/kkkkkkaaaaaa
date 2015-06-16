@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Security;
+using System.Security.Cryptography;
 using System.Text;
 using System.Web.Security;
 using kkkkkkaaaaaa.Data.Common;
@@ -33,7 +34,7 @@ namespace kkkkkkaaaaaa.Repositories
             {
                 if (criteria.Password is SecureString) { password = ((SecureString)criteria.Password).GetString(); }
 
-                var hash = KandaSHA512.ComputeHash((string)password, Encoding.Unicode);
+                var hash = KandaHashAlgorithm.ComputeHash( typeof(SHA512Managed).FullName, (string)password, Encoding.Unicode);
                 password = hash;
             }
             criteria.Password = password;
@@ -135,11 +136,10 @@ namespace kkkkkkaaaaaa.Repositories
         /// <param name="status"></param>
         /// <returns></returns>
         public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction, out MembershipCreateStatus status)
-        //public bool Create(MembershipEntity entity, DbConnection connection, DbTransaction transaction)
         {
             status = MembershipCreateStatus.ProviderError;
 
-            entity.Password = KandaSHA512.ComputeHash(((SecureString)entity.Password).GetString(), Encoding.Unicode);
+            entity.Password = KandaHashAlgorithm.ComputeHash(typeof(SHA512Managed).FullName, ((SecureString)entity.Password).GetString(), Encoding.Unicode);
 
             var error = MembershipsGateway.Insert(entity, connection, transaction);
 

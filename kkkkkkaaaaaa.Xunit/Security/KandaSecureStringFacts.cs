@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using Xunit;
+﻿using System.Security;
 using kkkkkkaaaaaa.Security;
+using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Security
 {

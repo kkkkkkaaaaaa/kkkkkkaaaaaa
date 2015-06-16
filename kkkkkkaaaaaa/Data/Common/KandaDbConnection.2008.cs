@@ -12,7 +12,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public static DataTable GetMetaDataCollectionsSchema(this DbConnection connection)
         {
-            return connection.GetSchema(DbMetaDataCollectionNames.DataSourceInformation);
+            return connection.GetSchema(DbMetaDataCollectionNames.MetaDataCollections);
         }
 
         /// <summary>

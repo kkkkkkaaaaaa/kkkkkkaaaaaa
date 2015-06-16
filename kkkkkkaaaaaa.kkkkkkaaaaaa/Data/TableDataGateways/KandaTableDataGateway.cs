@@ -16,8 +16,6 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// </summary>
         public const string RETURN_VALUE = @"ReturnValue";
 
-
-
         /// <summary>
         /// 
         /// </summary>

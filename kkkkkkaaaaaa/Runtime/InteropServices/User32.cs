@@ -3,6 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace kkkkkkaaaaaa.Runtime.InteropServices
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class User32
     {
         /// <summary>

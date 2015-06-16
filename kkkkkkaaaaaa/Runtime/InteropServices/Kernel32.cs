@@ -323,11 +323,35 @@ BOOL CALLBACK Proc( DWORD dw, WORD w16, LPCSTR lpstr, LPARAM lParam );
 				
 		 */
 
+        /*
+        https://msdn.microsoft.com/ja-jp/library/windows/desktop/aa364991.aspx
+        http://blogs.msdn.com/b/japan_platform_sdkwindows_sdk_support_team_blog/archive/2013/11/07/gettemppathname.aspx
+WINBASEAPI
+UINT
+WINAPI
+GetTempFileNameA(
+    _In_ LPCSTR lpPathName,
+    _In_ LPCSTR lpPrefixString,
+    _In_ UINT uUnique,
+    _Out_writes_(MAX_PATH) LPSTR lpTempFileName
+    );
+       
+WINBASEAPI
+UINT
+WINAPI
+GetTempFileNameW(
+    _In_ LPCWSTR lpPathName,
+    _In_ LPCWSTR lpPrefixString,
+    _In_ UINT uUnique,
+    _Out_writes_(MAX_PATH) LPWSTR lpTempFileName
+    );
+         */
 
 
-		#region Private members...
 
-		/// <summary>アンマネージメソッドを格納する DLL の名前。</summary>
+        #region Private members...
+
+        /// <summary>アンマネージメソッドを格納する DLL の名前。</summary>
 		private const string DLL_NAME = @"kernel32.dll";
 
 		#endregion

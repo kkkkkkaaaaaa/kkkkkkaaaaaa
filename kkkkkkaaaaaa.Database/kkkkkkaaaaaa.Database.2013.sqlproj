@@ -64,6 +64,8 @@
     <Folder Include="dbo\Programmability\Stored Procedures" />
     <Folder Include="dbo\Programmability\Functions" />
     <Folder Include="dbo\Tables" />
+    <Folder Include="dbo\Types" />
+    <Folder Include="dbo\Types\User-Defined Table Types" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SqlSchemaCompare.scmp" />
@@ -71,5 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Memberships.sql" />
+    <Build Include="dbo\Types\User-Defined Table Types\UserDefinedTableType1.sql" />
+    <Build Include="dbo\Types\User-Defined Table Types\UserDefinedTableType2.sql" />
   </ItemGroup>
 </Project>

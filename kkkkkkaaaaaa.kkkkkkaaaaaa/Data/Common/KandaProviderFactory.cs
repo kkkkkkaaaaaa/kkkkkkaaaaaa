@@ -25,8 +25,8 @@ namespace kkkkkkaaaaaa.Data.Common
         public override DbConnection CreateConnection()
         {
             var builder = base.CreateConnectionStringBuilder();
-            builder.Add(@"Data Source", @"(localdb)\kkkkkkaaaaaa_2010");
-            builder.Add(@"Initial Catalog", @"kkkkkkaaaaaa.Database.2010");
+            builder.Add(@"Data Source", @"(localdb)\ProjectsV12");
+            builder.Add(@"Initial Catalog", @"kkkkkkaaaaaa.Database.2013");
             builder.Add(@"Integrated Security", @"True");
             builder.Add(@"Pooling", @"False");
             builder.Add(@"Connect Timeout", @"30");

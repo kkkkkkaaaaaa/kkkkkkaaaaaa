@@ -9,7 +9,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
     /// <summary>
     /// 
     /// </summary>
-    internal class MembershipsGateway : KandaTableDataGateway
+    internal partial class MembershipsGateway : KandaTableDataGateway
     {
         /// <summary>
         /// 

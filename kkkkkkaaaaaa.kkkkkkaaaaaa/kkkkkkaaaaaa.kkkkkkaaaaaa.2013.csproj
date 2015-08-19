@@ -190,7 +190,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\TableDataGateways\MembershipsGateway.2012.cs" />
     <None Include="packages.config" />
+    <Compile Include="Repositories\MembershipsRepository.2012.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\kkkkkkaaaaaa\kkkkkkaaaaaa.2013.csproj">

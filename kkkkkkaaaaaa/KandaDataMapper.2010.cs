@@ -4,16 +4,16 @@ using System.Reflection;
 namespace kkkkkkaaaaaa
 {
     /// <summary>
-    /// 
+    /// 汎用的な DataMapperを表します。
     /// </summary>
     public partial class KandaDataMapper
     {
         /// <summary>
-        /// 
+        /// 指定したメンバーの値を取得して返します。
         /// </summary>
-        /// <param name="member"></param>
-        /// <param name="obj"></param>
-        /// <param name="nullValue"></param>
+        /// <param name="member">メンバー。</param>
+        /// <param name="obj">値を取得するオブジェクト。</param>
+        /// <param name="nullValue">null だった場合。</param>
         /// <returns></returns>
         protected static object GetValue(MemberInfo member, object obj, object nullValue = default(object))
         {

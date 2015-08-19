@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Data;
-using System.Data.Common;
-using System.Diagnostics;
+﻿using System.Data.Common;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
     /// <summary>
     /// データソースから行の前方向ストリームを読み取ります。
     /// </summary>
-    public partial class KandaDbDataReader : DbDataReader
+    public partial class KandaDbDataReader
     {
         /// <summary>
         /// コンストラクタ―。

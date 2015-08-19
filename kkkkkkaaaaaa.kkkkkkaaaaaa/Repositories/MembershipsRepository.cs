@@ -17,7 +17,7 @@ namespace kkkkkkaaaaaa.Repositories
     /// <summary>
     /// Memberships の Repository です。
     /// </summary>
-    public class MembershipsRepository : KandaRepository
+    public partial class MembershipsRepository : KandaRepository
     {
         /// <summary>
         /// 
@@ -193,6 +193,8 @@ namespace kkkkkkaaaaaa.Repositories
             return decimal.ToInt64(current);
         }
 
+        #region Internal members...
+
 
         /// <summary>
         /// コンストラクタ―。
@@ -241,5 +243,7 @@ namespace kkkkkkaaaaaa.Repositories
 
             return (error == 0);
         }
+
+        #endregion
     }
 }

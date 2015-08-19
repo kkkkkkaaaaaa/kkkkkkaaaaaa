@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Data\Common\KandaDbConnection.2008.cs" />
+    <Compile Include="Data\Common\KandaDbDataMapper.2012.cs" />
     <Compile Include="Data\Common\KandaDbDataMapper.cs" />
     <Compile Include="Data\Common\KandaDbDataReader.2010.cs" />
     <Compile Include="Data\Common\KandaDbDataReader.cs" />
@@ -89,6 +90,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
     <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\Common\KandaDbDataReader.2012.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

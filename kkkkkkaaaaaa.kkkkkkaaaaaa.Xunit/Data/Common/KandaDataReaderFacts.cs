@@ -4,7 +4,7 @@ using kkkkkkaaaaaa.Data.Common;
 
 namespace kkkkkkaaaaaa.Xunit.Data.Common
 {
-    public class KandaDataReaderFacts : KandaXunitDataFacts
+    public partial class KandaDataReaderFacts : KandaXunitDataFacts
     {
         [Fact()]
         public void ExecuteReaderFact()

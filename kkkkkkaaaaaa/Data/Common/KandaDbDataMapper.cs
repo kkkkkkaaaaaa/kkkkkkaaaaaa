@@ -9,7 +9,7 @@ using System.Reflection;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
-    public class KandaDbDataMapper : KandaDataMapper
+    public partial class KandaDbDataMapper : KandaDataMapper
     {
         public static void MapToObject(DbDataReader reader, object obj)
         {

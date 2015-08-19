@@ -25,9 +25,9 @@ namespace kkkkkkaaaaaa.Xunit.Data
         public override DbConnection CreateConnection()
         {
             var builder = base.CreateConnectionStringBuilder();
-            builder.Add(@"Data Source", @"(localdb)\Projects");
-            //builder.Add(@"Data Source", @"(localdb)\kkkkkkaaaaaa_2010");
-            builder.Add(@"Initial Catalog", @"kkkkkkaaaaaa.Database.2010");
+            // builder.Add(@"Data Source", @"(local)");
+            builder.Add(@"Data Source", @"(localdb)\ProjectsV12");
+            builder.Add(@"Initial Catalog", @"kkkkkkaaaaaa.Database.2013");
             builder.Add(@"Integrated Security", @"True");
             builder.Add(@"Pooling", @"False");
             builder.Add(@"Connect Timeout", @"30");
@@ -55,9 +55,8 @@ namespace kkkkkkaaaaaa.Xunit.Data
         #region Private members...
 
         /// <summary>
-        /// コンストラクタ。
+        /// コンストラクター。
         /// </summary>
-        /// <param name="factory"></param>
         private KandaXunitProviderFactory()
             : base(DbProviderFactories.GetFactory(@"System.Data.SqlClient"))
         {

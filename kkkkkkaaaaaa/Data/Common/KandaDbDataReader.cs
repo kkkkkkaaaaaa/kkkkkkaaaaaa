@@ -15,9 +15,42 @@ namespace kkkkkkaaaaaa.Data.Common
         /// コンストラクタ―。
         /// </summary>
         /// <param name="command"></param>
+        [DebuggerStepThrough()]
         public KandaDbDataReader(DbCommand command)
         {
             this._command = command;
+        }
+
+
+        /// <summary>
+        /// DbParameter オブジェクトのコレクションを返します。
+        /// </summary>
+        public DbParameterCollection Parameters
+        {
+            [DebuggerStepThrough()]
+            get { return this.InnerCommand.Parameters; }
+        }
+
+        /// <summary>
+        /// データソースに対して実行するテキストコマンドを取得または設定します。
+        /// </summary>
+        public string CommandText
+        {
+            [DebuggerStepThrough()]
+            get { return this.InnerCommand.CommandText; }
+            [DebuggerStepThrough()]
+            set { this.InnerCommand.CommandText = value; }
+        }
+
+        /// <summary>
+        /// DbCommand.CommandText の解釈方法を指示または指定します。
+        /// </summary>
+        public CommandType CommandType
+        {
+            [DebuggerStepThrough()]
+            get { return this.InnerCommand.CommandType; }
+            [DebuggerStepThrough()]
+            set { this.InnerCommand.CommandType = value; }
         }
 
 
@@ -28,6 +61,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public override object this[int ordinal]
         {
+            [DebuggerStepThrough()]
             get { return this._reader[ordinal]; }
         }
 
@@ -38,42 +72,49 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public override object this[string name]
         {
+            [DebuggerStepThrough()]
             get { return this._reader[name]; }
         }
 
         /// <summary>
-        /// DbParameter オブジェクトのコレクションを返します。
-        /// </summary>
-        public DbParameterCollection Parameters
-        {
-            get { return this.InnerCommand.Parameters; }
-        }
-
-        /// <summary>
-        /// データソースに対して実行するテキストコマンドを取得または設定します。
-        /// </summary>
-        public string CommandText
-        {
-            get { return this.InnerCommand.CommandText; }
-            set { this.InnerCommand.CommandText = value; }
-        }
-
-        /// <summary>
-        /// DbCommand.CommandText の解釈方法を指示または指定します。
-        /// </summary>
-        public CommandType CommandType
-        {
-            get { return this.InnerCommand.CommandType; }
-            set { this.InnerCommand.CommandType = value; }
-        }
-
-        /// <summary>
-        /// 
+        /// DbDataReader に 1 行以上の行が格納されているか銅貨を示す値を取得します。
         /// </summary>
         public override bool HasRows
         {
+            [DebuggerStepThrough()]
             get { return this._reader.HasRows; }
         }
+
+        /// <summary>
+        /// SQL ステートメントの実行によって変更、挿入、または削除された行の数を取得します。
+        /// </summary>
+        public override int RecordsAffected
+        {
+            [DebuggerStepThrough()]
+            get { return this._reader.RecordsAffected; }
+        }
+
+        /// <summary>
+        /// 現在の行の列数を取得します。
+        /// </summary>
+        public override int FieldCount
+        {
+            [DebuggerStepThrough()]
+            get { return this._reader.FieldCount; }
+        }
+
+        public override int Depth
+        {
+            [DebuggerStepThrough()]
+            get { return this._reader.Depth; ; }
+        }
+
+        public override bool IsClosed
+        {
+            [DebuggerStepThrough()]
+            get { return this._reader.IsClosed; }
+        }
+
 
 
         /// <summary>
@@ -98,10 +139,12 @@ namespace kkkkkkaaaaaa.Data.Common
             return this.ExecuteReader(CommandBehavior.Default);
         }
 
+
         /// <summary>
         /// データリーダーの行の反復に使用できる IEnumarator を返します。
         /// </summary>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override IEnumerator GetEnumerator()
         {
             return this._reader.GetEnumerator();
@@ -131,6 +174,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// バッチステートメントの結果を読み取るときに、リーダーを次の結果に進めます。
         /// </summary>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override bool NextResult()
         {
             return this._reader.NextResult();
@@ -183,6 +227,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override Type GetFieldType(int ordinal)
         {
             return this._reader.GetFieldType(ordinal);
@@ -193,6 +238,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override string GetDataTypeName(int ordinal)
         {
             return this._reader.GetDataTypeName(ordinal);
@@ -203,14 +249,21 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override string GetString(int ordinal)
         {
             return this._reader.GetString(ordinal);
         }
 
+        /// <summary>
+        /// 指定した列の値を Int32 のインスタンスとして取得します。
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns></returns>
+        [DebuggerStepThrough()]
         public override int GetInt32(int ordinal)
         {
-            throw new NotImplementedException();
+            return this._reader.GetInt32(ordinal);
         }
 
         /// <summary>
@@ -218,6 +271,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override long GetInt64(int ordinal)
         {
             return this._reader.GetInt64(ordinal);
@@ -228,9 +282,10 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override decimal GetDecimal(int ordinal)
         {
-            throw new NotImplementedException();
+            return this._reader.GetDecimal(ordinal);
         }
 
         /// <summary>
@@ -238,6 +293,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override bool GetBoolean(int ordinal)
         {
             return this._reader.GetBoolean(ordinal);
@@ -248,10 +304,87 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public override DateTime GetDateTime(int ordinal)
         {
             return this._reader.GetDateTime(ordinal);
         }
+
+        [DebuggerStepThrough()]
+        public override byte GetByte(int ordinal)
+        {
+            return this._reader.GetByte(ordinal);
+        }
+
+        [DebuggerStepThrough()]
+        public override long GetBytes(int ordinal, long dataOffset, byte[] buffer, int bufferOffset, int length)
+        {
+            return this._reader.GetBytes(ordinal, dataOffset, buffer, bufferOffset, length);
+        }
+
+        [DebuggerStepThrough()]
+        public override char GetChar(int ordinal)
+        {
+            return this._reader.GetChar(ordinal);
+        }
+
+        [DebuggerStepThrough()]
+        public override long GetChars(int ordinal, long dataOffset, char[] buffer, int bufferOffset, int length)
+        {
+            return this._reader.GetChars(ordinal, dataOffset, buffer, bufferOffset, length);
+        }
+
+        [DebuggerStepThrough()]
+        public override Guid GetGuid(int ordinal)
+        {
+            return this._reader.GetGuid(ordinal);
+        }
+
+        [DebuggerStepThrough()]
+        public override short GetInt16(int ordinal)
+        {
+            return this._reader.GetInt16(ordinal);
+        }
+
+        [DebuggerStepThrough()]
+        public override object GetValue(int ordinal)
+        {
+            return this._reader.GetValue(ordinal);
+        }
+
+        [DebuggerStepThrough()]
+        public override int GetValues(object[] values)
+        {
+            return this._reader.GetValues(values);
+        }
+
+        [DebuggerStepThrough()]
+        public override double GetDouble(int ordinal)
+        {
+            return this._reader.GetDouble(ordinal);
+        }
+
+        [DebuggerStepThrough()]
+        public override float GetFloat(int ordinal)
+        {
+            return this._reader.GetFloat(ordinal);
+        }
+
+
+        #region Internal members...
+
+        /// <summary>
+        /// データソースに対して実行する SQL ステートメントまたはストアドプロシージャを取得します。
+        /// </summary>
+        internal DbCommand InnerCommand
+        {
+            [DebuggerStepThrough()]
+            get { return this._command; }
+        }
+
+        #endregion
+
+        #region Protected members...
 
         /// <summary>
         /// DbDataReader によって使用されているマネージリソースを解放し、オプションでアンマネージリソースも解放します。
@@ -268,89 +401,10 @@ namespace kkkkkkaaaaaa.Data.Common
             base.Dispose(disposing);
         }
 
-
-        public override int RecordsAffected
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override int FieldCount
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override int Depth
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override bool IsClosed
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-
-        public override byte GetByte(int ordinal)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override long GetBytes(int ordinal, long dataOffset, byte[] buffer, int bufferOffset, int length)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override char GetChar(int ordinal)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override long GetChars(int ordinal, long dataOffset, char[] buffer, int bufferOffset, int length)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Guid GetGuid(int ordinal)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override short GetInt16(int ordinal)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override object GetValue(int ordinal)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override int GetValues(object[] values)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override double GetDouble(int ordinal)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override float GetFloat(int ordinal)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        internal DbCommand InnerCommand
-        {
-            get { return this._command; }
-        }
-
-        #region Protected members...
-
         /// <summary>
         /// 何もしません。
         /// </summary>
+        [DebuggerStepThrough()]
         protected void DoNothing()
         {
             // 何もしない

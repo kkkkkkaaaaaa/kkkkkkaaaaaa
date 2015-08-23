@@ -46,6 +46,7 @@
     <Compile Include="IO\KandaDirectoryInfo.cs" />
     <Compile Include="IO\KandaFileSystemObject.cs" />
     <Compile Include="KandaDataMapper.2010.cs" />
+    <Compile Include="KandaDataMapper.2012.cs" />
     <Compile Include="KandaDataMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.2013.cs" />
     <Compile Include="Runtime\InteropServices\Advapi32.cs" />

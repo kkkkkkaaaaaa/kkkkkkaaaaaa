@@ -121,6 +121,12 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
             return (int)result.Value;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
         public static int Delete(DbConnection connection, DbTransaction transaction)
         {
             var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.Common;
-using System.Runtime.InteropServices;
+using System.Diagnostics;
 using kkkkkkaaaaaa.Data.Common;
 
 namespace kkkkkkaaaaaa.Data.TableDataGateways
@@ -9,7 +9,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
     /// <summary>
     /// 
     /// </summary>
-    internal class KandaTableDataGateway
+    internal partial class KandaTableDataGateway
     {
         /// <summary>
         /// 
@@ -34,9 +34,9 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <returns></returns>
         public static DateTime GetUtcDateTime(DbConnection connction, DbTransaction transaction)
         {
-            var command = KandaTableDataGateway._factory.CreateCommand(connction, transaction);
+            var command = _factory.CreateCommand(connction, transaction);
 
-            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.DateTime2, 8, ParameterDirection.ReturnValue, DBNull.Value);
+            var result = _factory.CreateParameter(RETURN_VALUE, DbType.DateTime2, 8, ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);
 
             command.CommandText = @"GetUTCDateTime";
@@ -46,6 +46,8 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
             return (DateTime)result.Value;
         }
 
+        #region Internal members...
+
         /// <summary>
         /// 
         /// </summary>
@@ -54,13 +56,13 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <returns></returns>
         internal static string NewLine(int count, DbConnection connection)
         {
-            var command = KandaTableDataGateway._factory.CreateCommand(connection);
+            var command = _factory.CreateCommand(connection);
 
             // パラメーター
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@count", DbType.Int32, sizeof(int), ParameterDirection.Input, count));
+            command.Parameters.Add(_factory.CreateParameter("@count", DbType.Int32, sizeof(int), ParameterDirection.Input, count));
 
             // 戻り値
-            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.String, 0, ParameterDirection.ReturnValue, DBNull.Value);
+            var result = _factory.CreateParameter(RETURN_VALUE, DbType.String, 0, ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);
 
             command.CommandText = @"NewLine";
@@ -69,7 +71,6 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
 
             return (string)result.Value;
         }
-
 
         /// <summary>
         /// 
@@ -78,10 +79,10 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <returns></returns>
         internal static string NewLine(DbConnection connection)
         {
-            var command = KandaTableDataGateway._factory.CreateCommand(connection);
+            var command = _factory.CreateCommand(connection);
 
             // 戻り値
-            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.String, 0, ParameterDirection.ReturnValue, DBNull.Value);
+            var result = _factory.CreateParameter(RETURN_VALUE, DbType.String, 0, ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);
 
             command.CommandText = @"NewLine";
@@ -90,6 +91,8 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
 
             return (string)result.Value;
         }
+
+        #endregion
 
         #region Protected members...
 
@@ -102,13 +105,13 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <returns></returns>
         protected static int Truncate(string tableName, DbConnection connection, DbTransaction transaction)
         {
-            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
+            var command = _factory.CreateCommand(connection, transaction);
 
             command.CommandText = @"usp_TruncateTable";
 
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@tableName", tableName));
+            command.Parameters.Add(_factory.CreateParameter("@tableName", tableName));
 
-            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
+            var result = _factory.CreateParameter(RETURN_VALUE, DbType.Int32, sizeof(int), ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);
 
             command.ExecuteNonQuery();
@@ -125,13 +128,13 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <returns></returns>
         protected static decimal IdentCurrent(string tableName, DbConnection connection, DbTransaction transaction)
         {
-            var command = KandaTableDataGateway._factory.CreateCommand(connection, transaction);
+            var command = _factory.CreateCommand(connection, transaction);
 
             command.CommandText = @"IdentCurrentTable";
 
-            command.Parameters.Add(KandaTableDataGateway._factory.CreateParameter("@tableName", tableName));
+            command.Parameters.Add(_factory.CreateParameter("@tableName", tableName));
 
-            var result = KandaTableDataGateway._factory.CreateParameter(KandaTableDataGateway.RETURN_VALUE, DbType.Decimal, sizeof(decimal), ParameterDirection.ReturnValue, DBNull.Value);
+            var result = _factory.CreateParameter(RETURN_VALUE, DbType.Decimal, sizeof(decimal), ParameterDirection.ReturnValue, DBNull.Value);
             command.Parameters.Add(result);
 
             command.ExecuteNonQuery();
@@ -142,6 +145,7 @@ namespace kkkkkkaaaaaa.Data.TableDataGateways
         /// <summary>
         /// 何もしません。
         /// </summary>
+        [DebuggerStepThrough()]
         protected static void DoNothing()
         {
             // 何もしない

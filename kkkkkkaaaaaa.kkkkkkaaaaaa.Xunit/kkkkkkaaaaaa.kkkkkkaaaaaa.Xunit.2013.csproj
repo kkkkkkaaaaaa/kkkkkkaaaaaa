@@ -38,6 +38,8 @@
     <Compile Include="Data\KandaXunitDataFacts.cs" />
     <Compile Include="Data\KandaXunitProviderFactory.2010.cs" />
     <Compile Include="Data\KandaXunitProviderFactory.cs" />
+    <Compile Include="Data\TableDataGateways\KandaTableDataGatewayFacts.cs" />
+    <Compile Include="Data\TableDataGateways\MembershipsGatewayFacts.cs" />
     <Compile Include="Properties\AssemblyInfo.2013.cs" />
     <Compile Include="Repositories\KandaRepositoryFacts.cs" />
     <Compile Include="Repositories\MembershipsRepositoryFacts.cs" />

@@ -61,6 +61,7 @@
     <Compile Include="DataTransferObjects\UsersCriteria.cs" />
     <Compile Include="Data\Common\KandaProviderFactory.cs" />
     <Compile Include="Data\TableDataGateways\AuthorizationsGateway.cs" />
+    <Compile Include="Data\TableDataGateways\KandaTableDataGateway.2012.cs" />
     <Compile Include="Data\TableDataGateways\KandaTableDataGateway.cs" />
     <Compile Include="Data\TableDataGateways\MembershipAuthorizationsGateway.cs" />
     <Compile Include="Data\TableDataGateways\MembershipRolesGateway.cs" />

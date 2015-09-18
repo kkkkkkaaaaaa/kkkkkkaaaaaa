@@ -6,9 +6,6 @@ using kkkkkkaaaaaa.DataTransferObjects;
 
 namespace kkkkkkaaaaaa.Data.TableDataGateways
 {
-    /// <summary>
-    /// 
-    /// </summary>
     internal class AuthorizationsGateway : KandaTableDataGateway
     {
         public const string TABLE_NAME = @"Authorizations";

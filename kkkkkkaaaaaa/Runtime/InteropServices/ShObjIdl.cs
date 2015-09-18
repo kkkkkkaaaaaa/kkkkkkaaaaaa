@@ -1,6 +1,6 @@
 ﻿namespace kkkkkkaaaaaa.Runtime.InteropServices
 {
-    public static class ShObjIdl
+    public static partial class ShObjIdl
     {
         /*
         #define FOFX_NOSKIPJUNCTIONS         0x00010000  // Don't avoid binding to junctions (like Task folder, Recycle-Bin)
@@ -17,6 +17,8 @@
         #define FOFX_REQUIREELEVATION        0x10000000  // User expects the elevation; don't show a dialog to confirm
         #define FOFX_COPYASDOWNLOAD          0x40000000  // Show Downloading instead of Copying
         #define FOFX_DONTDISPLAYLOCATIONS    0x80000000  // Hides the locations line in the progress dialog
-         */ 
+        */
+
+
     }
 }

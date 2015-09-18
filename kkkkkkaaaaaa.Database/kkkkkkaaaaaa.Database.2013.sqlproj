@@ -14,7 +14,7 @@
     </RootPath>
     <RootNamespace>kkkkkkaaaaaa.Database</RootNamespace>
     <AssemblyName>kkkkkkaaaaaa.Database</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>1041,CS</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -23,6 +23,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Japanese_XJIS_100_BIN2</DefaultCollation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>C:\Projects\kkkkkkaaaaaa\bin\Release\</OutputPath>
@@ -66,6 +67,9 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Types" />
     <Folder Include="dbo\Types\User-Defined Table Types" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Functions" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SqlSchemaCompare.scmp" />
@@ -75,5 +79,18 @@
     <Build Include="dbo\Tables\Memberships.sql" />
     <Build Include="dbo\Types\User-Defined Table Types\UserDefinedTableType1.sql" />
     <Build Include="dbo\Types\User-Defined Table Types\UserDefinedTableType2.sql" />
+    <Build Include="dbo\Stored Procedures\usp_SelectMemberships.sql" />
+    <Build Include="dbo\Stored Procedures\usp_InsertMemberships.sql" />
+    <Build Include="dbo\Functions\NL.sql" />
+    <Build Include="dbo\Functions\NewLine.sql" />
+    <Build Include="dbo\Stored Procedures\usp_DeleteMemberships.sql" />
+    <Build Include="dbo\Stored Procedures\usp_StoredProcedure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\120\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\120\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
   </ItemGroup>
 </Project>

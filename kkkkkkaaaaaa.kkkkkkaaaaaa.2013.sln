@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kkkkkkaaaaaa.kkkkkkaaaaaa.2013", "kkkkkkaaaaaa.kkkkkkaaaaaa\kkkkkkaaaaaa.kkkkkkaaaaaa.2013.csproj", "{DFADFD97-33FD-42BE-8DF6-F8153295AA0C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kkkkkkaaaaaa.kkkkkkaaaaaa.Xunit.2013", "kkkkkkaaaaaa.kkkkkkaaaaaa.Xunit\kkkkkkaaaaaa.kkkkkkaaaaaa.Xunit.2013.csproj", "{33005B62-8424-4956-9769-9A37ED54E00C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kkkkkkaaaaaa.2013", "kkkkkkaaaaaa\kkkkkkaaaaaa.2013.csproj", "{F6072B27-E6ED-4E34-9A4C-C910224AD97F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{52DE3F02-F95C-428F-AE7C-AEFA3827A155}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

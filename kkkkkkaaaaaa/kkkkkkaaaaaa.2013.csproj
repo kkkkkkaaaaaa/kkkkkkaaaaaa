@@ -60,6 +60,7 @@
     <Compile Include="Runtime\InteropServices\ShCore.cs" />
     <Compile Include="Runtime\InteropServices\Shell32.cs" />
     <Compile Include="Runtime\InteropServices\ShellAPI.cs" />
+    <Compile Include="Runtime\InteropServices\ShObjIdl.2015.cs" />
     <Compile Include="Runtime\InteropServices\ShObjIdl.cs" />
     <Compile Include="Runtime\InteropServices\tagPOINT.cs" />
     <Compile Include="Runtime\InteropServices\tagRECT.cs" />

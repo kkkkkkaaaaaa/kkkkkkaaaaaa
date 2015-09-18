@@ -11,14 +11,41 @@ namespace kkkkkkaaaaaa.kkkkkkaaaaaa.Xunit.Data.TableDataGateways
 {
     public class MembershipsGatewayFacts : KandaTableDataGatewayFacts
     {
-        public async Task FindAsynkFact()
+        [Fact()]
+        public async Task InserAsyncFact()
         {
+            var entity = new MembershipEntity()
+            {
+                ID = 0,
+                Name = string.Format(@"MembershipsGatewayFacts.InserAsyncFact.{0}", new Random().Next()),
+                Password = @"",
+                Enabled = true,
+                CreatedOn = DateTime.Now,
+            };
+
+            var connection = this.Factory.CreateConnection();
+            var transaction = default(DbTransaction);
+            var token = CancellationToken.None;
+
+            try
+            {
+                connection.Open();
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                var inserted = await MembershipsGateway.InsertAsync(entity, connection, transaction, token);
+                Assert.True(0L < inserted);
+            }
+            finally
+            {
+                if (transaction != null) { transaction.Rollback(); }
+                if (connection != null) { connection.Close(); }
+            }
+
         }
 
         [Fact()]
-        public async void SelectAsyncFact()
+        public async Task SelectAsyncFact()
         {
-
             var connection = this.Factory.CreateConnection();
             var transaction = default(DbTransaction);
             var token = CancellationToken.None;

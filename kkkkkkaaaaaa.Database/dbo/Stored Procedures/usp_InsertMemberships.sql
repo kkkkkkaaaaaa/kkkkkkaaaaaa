@@ -55,19 +55,20 @@
 	
 	
 	-- 実行
-	BEGIN TRY
+	/* BEGIN TRY */
 		EXECUTE @result = sp_executesql
 			@stmt
 			, @params
 			, @id = @id, @name = @name, @password = @password, @enabled = @enabled, @createdOn = @createdOn, @updatedOn = @createdOn, @identity = @identity OUTPUT
 			
 		SET @error = @@ERROR
-
+	/*
 	END TRY BEGIN CATCH
 		SELECT @error = ERROR_NUMBER()
 		SET @identity = -1
 
 	END CATCH
+	*/
 	
 	-- 戻り値
 	RETURN @error

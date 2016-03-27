@@ -103,40 +103,22 @@ namespace kkkkkkaaaaaa.Data.Common
             get { return this._reader.FieldCount; }
         }
 
+        /// <summary>
+        /// 現在の行の入れ子の深さを示す値を取得します。
+        /// </summary>
         public override int Depth
         {
             [DebuggerStepThrough()]
             get { return this._reader.Depth; ; }
         }
 
+        /// <summary>
+        /// DbDataReader が閉じているかどうかを示す値を取得します。
+        /// </summary>
         public override bool IsClosed
         {
             [DebuggerStepThrough()]
             get { return this._reader.IsClosed; }
-        }
-
-
-
-        /// <summary>
-        /// DbCommand.Connection に対して DbCommand.CommandText を実行し、CommandBehavior の値の 1 つを使用して DbDataReader を実行します。
-        /// </summary>
-        /// <param name="behavior"></param>
-        /// <returns></returns>
-        [DebuggerStepThrough()]
-        public DbDataReader ExecuteReader(CommandBehavior behavior)
-        {
-            this._reader = this.InnerCommand.ExecuteReader(behavior);
-
-            return this;
-        }
-
-        /// <summary>
-        /// DbCommand.Connection に対して DbCommand.CommandText を実行し、CommandBehavior の値の 1 つを使用して DbDataReader を実行します。
-        /// </summary>
-        [DebuggerStepThrough()]
-        public DbDataReader ExecuteReader()
-        {
-            return this.ExecuteReader(CommandBehavior.Default);
         }
 
 
@@ -310,6 +292,11 @@ namespace kkkkkkaaaaaa.Data.Common
             return this._reader.GetDateTime(ordinal);
         }
 
+        /// <summary>
+        /// 指定した列の値をバイトとして取得します。
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns></returns>
         [DebuggerStepThrough()]
         public override byte GetByte(int ordinal)
         {
@@ -322,6 +309,11 @@ namespace kkkkkkaaaaaa.Data.Common
             return this._reader.GetBytes(ordinal, dataOffset, buffer, bufferOffset, length);
         }
 
+        /// <summary>
+        /// 指定した列の値を単一の文字として取得します。
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns></returns>
         [DebuggerStepThrough()]
         public override char GetChar(int ordinal)
         {
@@ -334,36 +326,66 @@ namespace kkkkkkaaaaaa.Data.Common
             return this._reader.GetChars(ordinal, dataOffset, buffer, bufferOffset, length);
         }
 
+        /// <summary>
+        ///  指定した列の値をグローバル一意識別子（GUID）として取得します。
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns></returns>
         [DebuggerStepThrough()]
         public override Guid GetGuid(int ordinal)
         {
             return this._reader.GetGuid(ordinal);
         }
 
+        /// <summary>
+        /// 指定した列の値を 16 ビット符号付き整数として取得します。
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns></returns>
         [DebuggerStepThrough()]
         public override short GetInt16(int ordinal)
         {
             return this._reader.GetInt16(ordinal);
         }
 
+        /// <summary>
+        /// 指定した列の値を System.Object のインスタンスとして取得します。
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns></returns>
         [DebuggerStepThrough()]
         public override object GetValue(int ordinal)
         {
             return this._reader.GetValue(ordinal);
         }
 
+        /// <summary>
+        /// オブジェクトの配列に現在行の列値を設定します。
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
         [DebuggerStepThrough()]
         public override int GetValues(object[] values)
         {
             return this._reader.GetValues(values);
         }
 
+        /// <summary>
+        /// 指定した列の値を倍精度浮動小数点数として取得します。
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns></returns>
         [DebuggerStepThrough()]
         public override double GetDouble(int ordinal)
         {
             return this._reader.GetDouble(ordinal);
         }
 
+        /// <summary>
+        /// 指定した列の値を単精度浮動小数点数として取得します。
+        /// </summary>
+        /// <param name="ordinal"></param>
+        /// <returns></returns>
         [DebuggerStepThrough()]
         public override float GetFloat(int ordinal)
         {

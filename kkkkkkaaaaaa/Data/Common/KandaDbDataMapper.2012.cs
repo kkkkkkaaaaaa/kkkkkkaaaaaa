@@ -6,9 +6,6 @@ namespace kkkkkkaaaaaa.Data.Common
 {
     public partial class KandaDbDataMapper
     {
-        public static async Task MapToObjectAsync(DbDataReader reader, object obj)
-        {
-            throw new NotImplementedException(string.Format(@"KandaDbDataMapper.MapToObjectAsync()"));
-        }
+        // public static async Task MapToObjectAsync(DbDataReader reader, object obj) {}
     }
 }

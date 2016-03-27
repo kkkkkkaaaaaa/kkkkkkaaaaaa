@@ -59,7 +59,7 @@ namespace kkkkkkaaaaaa.Data.Common
 
         public async Task<T> GetFieldValueAsync<T>(string name, CancellationToken token)
         {
-            var value = new Task<T>(() => default(T));
+            var value = Task.FromResult(default(T));
 
             var ordinal = this.GetOrdinal(name);
             if (!await this.IsDBNullAsync(ordinal, token)) { value = this.GetFieldValueAsync<T>(ordinal, token); }

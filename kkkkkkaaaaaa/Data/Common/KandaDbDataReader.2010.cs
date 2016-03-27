@@ -1,4 +1,6 @@
-﻿using System.Data.Common;
+﻿using System.Data;
+using System.Data.Common;
+using System.Diagnostics;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
@@ -16,6 +18,19 @@ namespace kkkkkkaaaaaa.Data.Common
         {
             this._command = connection.CreateCommand();
             this._command.Transaction = transaction;
+        }
+
+        /// <summary>
+        /// DbCommand.Connection に対して DbCommand.CommandText を実行し、CommandBehavior の値の 1 つを使用して DbDataReader を実行します。
+        /// </summary>
+        /// <param name="behavior"></param>
+        /// <returns></returns>
+        [DebuggerStepThrough()]
+        public DbDataReader ExecuteReader(CommandBehavior behavior = CommandBehavior.Default)
+        {
+            this._reader = this.InnerCommand.ExecuteReader(behavior);
+
+            return this;
         }
     }
 }

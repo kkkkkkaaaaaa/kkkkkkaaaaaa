@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace kkkkkkaaaaaa.Runtime.InteropServices
 {
@@ -406,6 +407,9 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
               _Out_  LPTSTR pszPath
             );
          */
+
+        [DllImport(Shell32.DLL_NAME)]
+        public static extern int SHGetFolderPath(IntPtr hwndOwner, int nFolder, IntPtr hToken, uint dwFlags, ref string pszPath);
 
         #region Private members...
 

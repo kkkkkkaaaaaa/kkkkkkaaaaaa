@@ -28,10 +28,17 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetWindowPlacement(IntPtr hWnd, tagWINDOWPLACEMENT lpwndpl);
 
-        #region Private members...
+        #region Internal members...
 
-        /// <summary></summary>
-        private const string DLL_NAME = @"User32.dll";
+        /// <summary>
+        /// 
+        /// </summary>
+        internal const string DLL_NAME = @"User32.dll";
+
+        #endregion
+
+
+        #region Private members...
 
         #endregion
     }

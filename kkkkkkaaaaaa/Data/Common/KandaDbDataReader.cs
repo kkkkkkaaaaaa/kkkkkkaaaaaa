@@ -3,6 +3,7 @@ using System.Collections;
 using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
+using kkkkkkaaaaaa.Data;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
@@ -303,6 +304,17 @@ namespace kkkkkkaaaaaa.Data.Common
             return this._reader.GetByte(ordinal);
         }
 
+        /// <summary>
+        /// 指定した列の dataOffset で指定された位置から開始されるバイトストリームを、バッファーの bufferOffset で指定された開始位置に読み込みます。
+        /// </summary>
+        /// <returns>
+        /// 実際に読み取られたバイト数を返します。
+        /// </returns>
+        /// <param name="ordinal">インデックス番号が 0 から始まる列序数。</param>
+        /// <param name="dataOffset">読み取り操作を開始する行内のインデックス。</param>
+        /// <param name="buffer">データのコピー先のバッファー。</param>
+        /// <param name="bufferOffset">データのコピー先となるバッファーのインデックス。</param>
+        /// <param name="length">読み取り対象の最大文字数。</param>
         [DebuggerStepThrough()]
         public override long GetBytes(int ordinal, long dataOffset, byte[] buffer, int bufferOffset, int length)
         {
@@ -320,6 +332,17 @@ namespace kkkkkkaaaaaa.Data.Common
             return this._reader.GetChar(ordinal);
         }
 
+        /// <summary>
+        /// 指定した列の dataOffset で指定された位置から開始される文字ストリームを、バッファーの bufferOffset で指定された開始位置に読み込みます。
+        /// </summary>
+        /// <returns>
+        /// 実際に読み込まれた文字数を返します。
+        /// </returns>
+        /// <param name="ordinal">インデックス番号が 0 から始まる列序数。</param>
+        /// <param name="dataOffset">読み取り操作を開始する行内のインデックス。</param>
+        /// <param name="buffer">データのコピー先のバッファー。</param>
+        /// <param name="bufferOffset">データのコピー先となるバッファーのインデックス。</param>
+        /// <param name="length">読み取り対象の最大文字数。</param>
         [DebuggerStepThrough()]
         public override long GetChars(int ordinal, long dataOffset, char[] buffer, int bufferOffset, int length)
         {

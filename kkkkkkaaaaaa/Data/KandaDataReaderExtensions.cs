@@ -6,8 +6,9 @@ namespace kkkkkkaaaaaa.Data
     /// <summary>
     /// 
     /// </summary>
-    public static class KandaDataReaderExtensions
+    public static partial class KandaDataRecordExtensions
     {
+        /*
         /// <summary>
         /// 列に格納されている値が存在しない値または欠損値かどうかを表す値を取得します。
         /// </summary>
@@ -72,5 +73,6 @@ namespace kkkkkkaaaaaa.Data
 
             return reader.GetDateTime(ordinal);
         }
+        */
     }
 }

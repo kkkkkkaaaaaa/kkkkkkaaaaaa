@@ -42,6 +42,12 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
             );
          */
 
+
+        /// <summary>
+        /// アンマネージメソッドを格納する DLL の名前。
+        /// </summary>
+        internal const string DLL_NAME = @"shell32.dll";
+
         #region Private members...
 
         /// <summary>
@@ -59,9 +65,6 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         {
             return new Guid(l, w1, w2, b1, b2, b3, b4, b5, b6, b7, b8);
         }
-
-        /// <summary>アンマネージメソッドを格納する DLL の名前。</summary>
-        private const string DLL_NAME = @"shell32.dll";
 
         #endregion
     }

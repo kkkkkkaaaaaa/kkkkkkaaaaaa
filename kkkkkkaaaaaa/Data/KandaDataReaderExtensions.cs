@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 <<<<<<< master
+=======
+>>>>>>> remotes/origin/0.0.11
 ﻿using System;
 using System.Data;
 
@@ -7,6 +10,7 @@ namespace kkkkkkaaaaaa.Data
     /// <summary>
     /// 
     /// </summary>
+<<<<<<< HEAD
     public static class KandaDataReaderExtensions
     {
         /// <summary>
@@ -92,6 +96,11 @@ namespace kkkkkkaaaaaa.Data
     public static class KandaDataReaderExtensions
     {
 >>>>>>> local
+=======
+    public static partial class KandaDataRecordExtensions
+    {
+        /*
+>>>>>>> remotes/origin/0.0.11
         /// <summary>
         /// 列に格納されている値が存在しない値または欠損値かどうかを表す値を取得します。
         /// </summary>
@@ -156,6 +165,7 @@ namespace kkkkkkaaaaaa.Data
 
             return reader.GetDateTime(ordinal);
         }
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
         */
 =======
@@ -163,3 +173,8 @@ namespace kkkkkkaaaaaa.Data
     }
 }
 >>>>>>> local
+=======
+        */
+    }
+}
+>>>>>>> remotes/origin/0.0.11

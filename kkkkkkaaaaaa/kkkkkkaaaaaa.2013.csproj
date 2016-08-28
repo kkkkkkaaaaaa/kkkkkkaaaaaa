@@ -63,6 +63,8 @@
     <Compile Include="Runtime\InteropServices\ShellAPI.cs" />
     <Compile Include="Runtime\InteropServices\ShObjIdl.2015.cs" />
     <Compile Include="Runtime\InteropServices\ShObjIdl.cs" />
+    <Compile Include="Runtime\InteropServices\tagGESTURECONFIG.cs" />
+    <Compile Include="Runtime\InteropServices\tagGESTUREINFO.cs" />
     <Compile Include="Runtime\InteropServices\tagPOINT.cs" />
     <Compile Include="Runtime\InteropServices\tagRECT.cs" />
     <Compile Include="Runtime\InteropServices\tagWINDOWPLACEMENT.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Runtime\InteropServices\_SYSTEM_LOGICAL_PROCESSOR_INFORMATION.cs" />
     <Compile Include="Runtime\InteropServices\_TIME_DYNAMIC_ZONE_INFORMATION.cs" />
     <Compile Include="Runtime\InteropServices\_TIME_ZONE_INFORMATION.cs" />
+    <Compile Include="Runtime\InteropServices\tagPOINTS.cs" />
     <Compile Include="Security\Cryptography\KandaHashAlgorithm.cs" />
     <Compile Include="Security\Cryptography\KandaRfc2898DeriveBytes.cs" />
     <Compile Include="Security\Cryptography\KandaRijndaelManaged.cs" />
@@ -120,6 +123,7 @@
   <ItemGroup>
     <Compile Include="Data\Common\KandaDbDataReader.2012.cs" />
   </ItemGroup>
+<<<<<<< HEAD
 <<<<<<< master
 =======
   <ItemGroup>
@@ -129,6 +133,11 @@
     <None Include="packages.config" />
   </ItemGroup>
 >>>>>>> local
+=======
+  <ItemGroup>
+    <Compile Include="Data\KandaDataRecordExtensions.cs" />
+  </ItemGroup>
+>>>>>>> remotes/origin/0.0.11
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

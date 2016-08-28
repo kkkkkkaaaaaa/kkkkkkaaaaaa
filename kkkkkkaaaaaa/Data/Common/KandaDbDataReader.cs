@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 <<<<<<< master
+=======
+>>>>>>> remotes/origin/0.0.11
 ﻿using System;
 using System.Collections;
 using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
+<<<<<<< HEAD
 
 namespace kkkkkkaaaaaa.Data.Common
 {
@@ -433,6 +437,9 @@ using System.Diagnostics;
 using kkkkkkaaaaaa.Data;
 =======
 >>>>>>> local
+=======
+using kkkkkkaaaaaa.Data;
+>>>>>>> remotes/origin/0.0.11
 
 namespace kkkkkkaaaaaa.Data.Common
 {
@@ -533,24 +540,36 @@ namespace kkkkkkaaaaaa.Data.Common
             get { return this._reader.FieldCount; }
         }
 
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
         /// <summary>
         /// 現在の行の入れ子の深さを示す値を取得します。
         /// </summary>
 =======
 >>>>>>> local
+=======
+        /// <summary>
+        /// 現在の行の入れ子の深さを示す値を取得します。
+        /// </summary>
+>>>>>>> remotes/origin/0.0.11
         public override int Depth
         {
             [DebuggerStepThrough()]
             get { return this._reader.Depth; ; }
         }
 
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
         /// <summary>
         /// DbDataReader が閉じているかどうかを示す値を取得します。
         /// </summary>
 =======
 >>>>>>> local
+=======
+        /// <summary>
+        /// DbDataReader が閉じているかどうかを示す値を取得します。
+        /// </summary>
+>>>>>>> remotes/origin/0.0.11
         public override bool IsClosed
         {
             [DebuggerStepThrough()]
@@ -558,6 +577,7 @@ namespace kkkkkkaaaaaa.Data.Common
         }
 
 
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
 =======
 
@@ -585,6 +605,8 @@ namespace kkkkkkaaaaaa.Data.Common
 
 
 >>>>>>> local
+=======
+>>>>>>> remotes/origin/0.0.11
         /// <summary>
         /// データリーダーの行の反復に使用できる IEnumarator を返します。
         /// </summary>
@@ -755,21 +777,30 @@ namespace kkkkkkaaaaaa.Data.Common
             return this._reader.GetDateTime(ordinal);
         }
 
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
+=======
+>>>>>>> remotes/origin/0.0.11
         /// <summary>
         /// 指定した列の値をバイトとして取得します。
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+<<<<<<< HEAD
 =======
 >>>>>>> local
+=======
+>>>>>>> remotes/origin/0.0.11
         [DebuggerStepThrough()]
         public override byte GetByte(int ordinal)
         {
             return this._reader.GetByte(ordinal);
         }
 
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
+=======
+>>>>>>> remotes/origin/0.0.11
         /// <summary>
         /// 指定した列の dataOffset で指定された位置から開始されるバイトストリームを、バッファーの bufferOffset で指定された開始位置に読み込みます。
         /// </summary>
@@ -781,29 +812,41 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <param name="buffer">データのコピー先のバッファー。</param>
         /// <param name="bufferOffset">データのコピー先となるバッファーのインデックス。</param>
         /// <param name="length">読み取り対象の最大文字数。</param>
+<<<<<<< HEAD
 =======
 >>>>>>> local
+=======
+>>>>>>> remotes/origin/0.0.11
         [DebuggerStepThrough()]
         public override long GetBytes(int ordinal, long dataOffset, byte[] buffer, int bufferOffset, int length)
         {
             return this._reader.GetBytes(ordinal, dataOffset, buffer, bufferOffset, length);
         }
 
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
+=======
+>>>>>>> remotes/origin/0.0.11
         /// <summary>
         /// 指定した列の値を単一の文字として取得します。
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+<<<<<<< HEAD
 =======
 >>>>>>> local
+=======
+>>>>>>> remotes/origin/0.0.11
         [DebuggerStepThrough()]
         public override char GetChar(int ordinal)
         {
             return this._reader.GetChar(ordinal);
         }
 
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
+=======
+>>>>>>> remotes/origin/0.0.11
         /// <summary>
         /// 指定した列の dataOffset で指定された位置から開始される文字ストリームを、バッファーの bufferOffset で指定された開始位置に読み込みます。
         /// </summary>
@@ -815,92 +858,131 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <param name="buffer">データのコピー先のバッファー。</param>
         /// <param name="bufferOffset">データのコピー先となるバッファーのインデックス。</param>
         /// <param name="length">読み取り対象の最大文字数。</param>
+<<<<<<< HEAD
 =======
 >>>>>>> local
+=======
+>>>>>>> remotes/origin/0.0.11
         [DebuggerStepThrough()]
         public override long GetChars(int ordinal, long dataOffset, char[] buffer, int bufferOffset, int length)
         {
             return this._reader.GetChars(ordinal, dataOffset, buffer, bufferOffset, length);
         }
 
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
+=======
+>>>>>>> remotes/origin/0.0.11
         /// <summary>
         ///  指定した列の値をグローバル一意識別子（GUID）として取得します。
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+<<<<<<< HEAD
 =======
 >>>>>>> local
+=======
+>>>>>>> remotes/origin/0.0.11
         [DebuggerStepThrough()]
         public override Guid GetGuid(int ordinal)
         {
             return this._reader.GetGuid(ordinal);
         }
 
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
+=======
+>>>>>>> remotes/origin/0.0.11
         /// <summary>
         /// 指定した列の値を 16 ビット符号付き整数として取得します。
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+<<<<<<< HEAD
 =======
 >>>>>>> local
+=======
+>>>>>>> remotes/origin/0.0.11
         [DebuggerStepThrough()]
         public override short GetInt16(int ordinal)
         {
             return this._reader.GetInt16(ordinal);
         }
 
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
+=======
+>>>>>>> remotes/origin/0.0.11
         /// <summary>
         /// 指定した列の値を System.Object のインスタンスとして取得します。
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+<<<<<<< HEAD
 =======
 >>>>>>> local
+=======
+>>>>>>> remotes/origin/0.0.11
         [DebuggerStepThrough()]
         public override object GetValue(int ordinal)
         {
             return this._reader.GetValue(ordinal);
         }
 
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
+=======
+>>>>>>> remotes/origin/0.0.11
         /// <summary>
         /// オブジェクトの配列に現在行の列値を設定します。
         /// </summary>
         /// <param name="values"></param>
         /// <returns></returns>
+<<<<<<< HEAD
 =======
 >>>>>>> local
+=======
+>>>>>>> remotes/origin/0.0.11
         [DebuggerStepThrough()]
         public override int GetValues(object[] values)
         {
             return this._reader.GetValues(values);
         }
 
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
+=======
+>>>>>>> remotes/origin/0.0.11
         /// <summary>
         /// 指定した列の値を倍精度浮動小数点数として取得します。
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+<<<<<<< HEAD
 =======
 >>>>>>> local
+=======
+>>>>>>> remotes/origin/0.0.11
         [DebuggerStepThrough()]
         public override double GetDouble(int ordinal)
         {
             return this._reader.GetDouble(ordinal);
         }
 
+<<<<<<< HEAD
 <<<<<<< remotes/origin/0.0.11
+=======
+>>>>>>> remotes/origin/0.0.11
         /// <summary>
         /// 指定した列の値を単精度浮動小数点数として取得します。
         /// </summary>
         /// <param name="ordinal"></param>
         /// <returns></returns>
+<<<<<<< HEAD
 =======
 >>>>>>> local
+=======
+>>>>>>> remotes/origin/0.0.11
         [DebuggerStepThrough()]
         public override float GetFloat(int ordinal)
         {
@@ -959,4 +1041,7 @@ namespace kkkkkkaaaaaa.Data.Common
         #endregion
     }
 }
+<<<<<<< HEAD
 >>>>>>> local
+=======
+>>>>>>> remotes/origin/0.0.11

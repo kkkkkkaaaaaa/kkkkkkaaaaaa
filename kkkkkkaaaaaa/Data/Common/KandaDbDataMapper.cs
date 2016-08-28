@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
 
 namespace kkkkkkaaaaaa.Data.Common

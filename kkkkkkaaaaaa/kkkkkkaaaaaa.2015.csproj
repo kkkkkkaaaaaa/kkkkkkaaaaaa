@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8107DB4E-0B4E-4869-ADA4-063DADB28197}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>kkkkkkaaaaaa</RootNamespace>
+    <AssemblyName>kkkkkkaaaaaa</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\kkkkkkaaaaaa\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\kkkkkkaaaaaa\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\kkkkkkaaaaaa\Release\kkkkkkaaaaaa.XML</DocumentationFile>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Data\Common\KandaDataMappingAttribute.cs" />
+    <Compile Include="Data\Common\KandaDbConnection.2008.cs" />
+    <Compile Include="Data\Common\KandaDbDataMapper.2012.cs" />
+    <Compile Include="Data\Common\KandaDbDataMapper.cs" />
+    <Compile Include="Data\Common\KandaDbDataReader.2010.cs" />
+    <Compile Include="Data\Common\KandaDbDataReader.2012.cs" />
+    <Compile Include="Data\Common\KandaDbDataReader.cs" />
+    <Compile Include="Data\Common\KandaDbParameterMappingAttribute.cs" />
+    <Compile Include="Data\Common\KandaDbProviderFactory.2010.cs" />
+    <Compile Include="Data\Common\KandaDbProviderFactory.cs" />
+    <Compile Include="Data\KandaDataReaderExtensions.cs" />
+    <Compile Include="Data\KandaDataRecordExtensions.cs" />
+    <Compile Include="Data\KandaParameterMappingAttribute.cs" />
+    <Compile Include="Data\SqlClient\KandaSqlConnection.2008.cs" />
+    <Compile Include="KandaDataMapper.2010.cs" />
+    <Compile Include="KandaDataMapper.2012.cs" />
+    <Compile Include="KandaDataMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.2015.cs" />
+    <Compile Include="Runtime\InteropServices\AdvApi32.cs" />
+    <Compile Include="Runtime\InteropServices\Gdi32.cs" />
+    <Compile Include="Runtime\InteropServices\Kernel32.cs" />
+    <Compile Include="Runtime\InteropServices\Kernel32.delegates.cs" />
+    <Compile Include="Runtime\InteropServices\KnownFolders.cs" />
+    <Compile Include="Runtime\InteropServices\KNOWN_FOLDER_FLAG.cs" />
+    <Compile Include="Runtime\InteropServices\MinWinDef.cs" />
+    <Compile Include="Runtime\InteropServices\MONITOR_DPI_TYPE.cs" />
+    <Compile Include="Runtime\InteropServices\ShCore.cs" />
+    <Compile Include="Runtime\InteropServices\Shell32.cs" />
+    <Compile Include="Runtime\InteropServices\ShellAPI.cs" />
+    <Compile Include="Runtime\InteropServices\ShObjIdl.2015.cs" />
+    <Compile Include="Runtime\InteropServices\ShObjIdl.cs" />
+    <Compile Include="Runtime\InteropServices\tagGESTURECONFIG.cs" />
+    <Compile Include="Runtime\InteropServices\tagGESTUREINFO.cs" />
+    <Compile Include="Runtime\InteropServices\tagPOINT.cs" />
+    <Compile Include="Runtime\InteropServices\tagPOINTS.cs" />
+    <Compile Include="Runtime\InteropServices\tagRECT.cs" />
+    <Compile Include="Runtime\InteropServices\tagWINDOWPLACEMENT.cs" />
+    <Compile Include="Runtime\InteropServices\User32.cs" />
+    <Compile Include="Runtime\InteropServices\WinBase.cs" />
+    <Compile Include="Runtime\InteropServices\WinDef.2012.cs" />
+    <Compile Include="Runtime\InteropServices\WinDef.cs" />
+    <Compile Include="Runtime\InteropServices\Windows.cs" />
+    <Compile Include="Runtime\InteropServices\WinError.cs" />
+    <Compile Include="Runtime\InteropServices\WinInet.cs" />
+    <Compile Include="Runtime\InteropServices\WinNT.cs" />
+    <Compile Include="Runtime\InteropServices\WinUser.cs" />
+    <Compile Include="Runtime\InteropServices\_FILETIME.cs" />
+    <Compile Include="Runtime\InteropServices\_SYSTEMTIME.cs" />
+    <Compile Include="Runtime\InteropServices\_SYSTEM_INFO.cs" />
+    <Compile Include="Runtime\InteropServices\_SYSTEM_LOGICAL_PROCESSOR_INFORMATION.cs" />
+    <Compile Include="Runtime\InteropServices\_TIME_DYNAMIC_ZONE_INFORMATION.cs" />
+    <Compile Include="Runtime\InteropServices\_TIME_ZONE_INFORMATION.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

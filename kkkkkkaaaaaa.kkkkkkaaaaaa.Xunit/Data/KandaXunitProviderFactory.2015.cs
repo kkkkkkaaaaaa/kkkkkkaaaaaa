@@ -27,7 +27,7 @@ namespace kkkkkkaaaaaa.Data
         public override DbConnection CreateConnection()
         {
             var connection = base.CreateConnection();
-            connection.ConnectionString = wwi.ConnectionString;
+            connection.ConnectionString = KandaXunitProviderFactory._wwi.ConnectionString;
 
             return connection;
         }

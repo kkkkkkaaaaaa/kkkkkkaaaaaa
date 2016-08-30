@@ -38,6 +38,7 @@ namespace kkkkkkaaaaaa.Data.Common
                         if (attribute.Ignore) { break; } // 無視
                         if (attribute.MappingName != name) { continue; } // マッピング一致なし
 
+                        value = ((value is DBNull) ? attribute.DefaultValue : value);
                         KandaDataMapper.SetValue(member, obj, value);
                         break;
                     }
@@ -45,6 +46,7 @@ namespace kkkkkkaaaaaa.Data.Common
                     if (0 < attributes.Length) { continue; } // MappingAttribute あり
                     if (member.Name != name) { continue; } // メンバー名一致なし
 
+                    value = ((value is DBNull) ? null : value);
                     KandaDataMapper.SetValue(member, obj, value);
                     break;
                 }

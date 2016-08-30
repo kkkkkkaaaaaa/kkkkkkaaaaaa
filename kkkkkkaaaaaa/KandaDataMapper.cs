@@ -89,7 +89,7 @@ namespace kkkkkkaaaaaa
             if (member is PropertyInfo)
             {
                 // プロパティ
-                ((PropertyInfo)member).SetValue(obj, (value ?? nullValue) , BindingFlags.Default, null, null, null);
+                ((PropertyInfo)member).SetValue(obj, value, BindingFlags.Default, null, null, null);
             }
             else if (member is FieldInfo)
             {

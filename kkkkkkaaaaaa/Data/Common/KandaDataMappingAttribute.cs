@@ -32,5 +32,10 @@ namespace kkkkkkaaaaaa.Data.Common
         /// このマッピングの説明です。
         /// </summary>
         public string Description = null;
+
+        /// <summary>
+        /// 規定値の値です。
+        /// </summary>
+        public object DefaultValue = null;
     }
 }

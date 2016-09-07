@@ -4,9 +4,8 @@ using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 
-namespace kkkkkkaaaaaa.Windows.Reactive
+namespace kkkkkkaaaaaa.Reactive.Windows
 {
-    [Obsolete(@"use kkkkkkaaaaaa.Reactive.Windows.ButtonExtensions")]
     public static class ButtonExtensions
     {
         /// <summary>

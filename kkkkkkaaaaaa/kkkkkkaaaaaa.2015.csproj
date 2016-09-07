@@ -32,7 +32,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ComponentModel\NotifyPropertyChangedExtensions.cs" />
+    <Compile Include="ComponentModel\KandaNotifyPropertyChanged.cs" />
     <Compile Include="Data\Common\KandaDataMappingAttribute.cs" />
     <Compile Include="Data\Common\KandaDbConnection.2008.cs" />
     <Compile Include="Data\Common\KandaDbDataMapper.2012.cs" />

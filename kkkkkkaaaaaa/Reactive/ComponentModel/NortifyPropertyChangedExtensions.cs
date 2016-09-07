@@ -5,8 +5,16 @@ using System.Reactive.Linq;
 
 namespace kkkkkkaaaaaa.Reactive.ComponentModel
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class NotifyPropertyChangedExtensions
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="vm"></param>
+        /// <returns></returns>
         public static IObservable<EventPattern<PropertyChangedEventArgs>> PropertyChangedAsObservable(this INotifyPropertyChanged vm)
         {
             return Observable.FromEventPattern<PropertyChangedEventHandler, PropertyChangedEventArgs>(

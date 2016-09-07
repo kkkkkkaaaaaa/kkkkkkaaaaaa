@@ -52,6 +52,9 @@
     <Compile Include="KandaDataMapper.2012.cs" />
     <Compile Include="KandaDataMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.2015.cs" />
+    <Compile Include="Reactive\ComponentModel\NortifyPropertyChangedExtensions.cs" />
+    <Compile Include="Reactive\Windows\ButtonExtensions.cs" />
+    <Compile Include="Reactive\Windows\UIElementExtensions.cs" />
     <Compile Include="Runtime\InteropServices\AdvApi32.cs" />
     <Compile Include="Runtime\InteropServices\Gdi32.cs" />
     <Compile Include="Runtime\InteropServices\Kernel32.cs" />
@@ -113,6 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reactive\Windows\Input\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

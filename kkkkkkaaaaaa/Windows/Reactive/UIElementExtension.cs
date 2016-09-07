@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Reactive;
-using System.Reactive.Linq;
-using System.Windows;
-using System.Windows.Controls.Primitives;
 
 namespace kkkkkkaaaaaa.Windows.Reactive
 {
+    [Obsolete(@"use kkkkkkaaaaaa.Reactive.Windows.UIElementExtensions")]
     public static class UiElementExtensions
     {
     }

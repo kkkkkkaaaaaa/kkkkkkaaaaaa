@@ -89,8 +89,6 @@
     <Compile Include="Runtime\InteropServices\_SYSTEM_LOGICAL_PROCESSOR_INFORMATION.cs" />
     <Compile Include="Runtime\InteropServices\_TIME_DYNAMIC_ZONE_INFORMATION.cs" />
     <Compile Include="Runtime\InteropServices\_TIME_ZONE_INFORMATION.cs" />
-    <Compile Include="Windows\Reactive\ButtonExtensions.cs" />
-    <Compile Include="Windows\Reactive\UIElementExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -119,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Reactive\Windows\Input\" />
+    <Folder Include="Windows\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

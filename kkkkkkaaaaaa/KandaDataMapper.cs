@@ -62,7 +62,7 @@ namespace kkkkkkaaaaaa
         #region Protected members...
 
         /// <summary>
-        /// 
+        /// 指定したオブジェクトのプロパティとフィールドを取得します。
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -78,7 +78,7 @@ namespace kkkkkkaaaaaa
         }
 
         /// <summary>
-        /// 
+        /// 指定したオブジェクトのメンバーに値を設定します。
         /// </summary>
         /// <param name="member"></param>
         /// <param name="obj"></param>
@@ -103,11 +103,11 @@ namespace kkkkkkaaaaaa
         }
 
         /// <summary>
-        /// 
+        /// 指定したオブジェクトのメンバーに値を設定します。
         /// </summary>
-        /// <param name="member"></param>
-        /// <param name="obj"></param>
-        /// <param name="value"></param>
+        /// <param name="member">値を設定するメンバー情報。</param>
+        /// <param name="obj">値を設定するオブジェクト。</param>
+        /// <param name="value">オブジェクトのメンバーに設定する値。</param>
         protected static void SetValue(MemberInfo member, object obj, object value)
         {
             KandaDataMapper.SetValue(member, obj, value, value);

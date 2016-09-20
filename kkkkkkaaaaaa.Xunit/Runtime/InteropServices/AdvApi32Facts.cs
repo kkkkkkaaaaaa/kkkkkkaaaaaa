@@ -8,8 +8,10 @@ using kkkkkkaaaaaa.Runtime.InteropServices;
 
 namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
 {
+    /// <summary></summary>
     public class Advapi32Facts
     {
+        /// <summary></summary>
         [Fact()]
         public void IsTextUnicodeFact()
         {
@@ -69,6 +71,8 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             }
         }
 
+
+        /// <summary></summary>
         [Fact()]
         public void EnumDynamicTimeZoneInformationFact()
         {

@@ -47,7 +47,7 @@
         }
 
         /// <summary>
-        /// PRIMARYLANGID(lgid)     ((WORD)(lgid) & 0x3ff)
+        /// PRIMARYLANGID(lgid)     ((WORD)(lgid) &amp; 0x3ff)
         /// </summary>
         /// <param name="lgid"></param>
         /// <returns></returns>

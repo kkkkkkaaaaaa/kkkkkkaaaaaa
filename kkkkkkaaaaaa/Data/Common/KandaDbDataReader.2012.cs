@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public partial class KandaDbDataReader
     {
         /// <summary>

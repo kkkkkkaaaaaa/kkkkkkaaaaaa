@@ -13,26 +13,33 @@ namespace kkkkkkaaaaaa.Data.Common
     /// </summary>
     public partial class KandaDbDataMapper : KandaDataMapper
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="obj"></param>
         public static void MapToObject(DbDataReader reader, object obj)
         {
+            if (obj == null) { throw new ArgumentNullException(@"KandaDbDataMapper.MapToObject(reader, null)"); }
+
             var type = obj.GetType();
-            if (obj == null) { throw new ArgumentNullException(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
 
             var schema = reader.GetSchemaTable();
 
             var members = new List<MemberInfo>();
-            members.AddRange(type.GetProperties((BindingFlags.Instance | BindingFlags.Public)));
-            members.AddRange(type.GetFields((BindingFlags.Instance | BindingFlags.Public)));
+            members.AddRange(type.GetProperties(BindingFlags.Instance | BindingFlags.Public));
+            members.AddRange(type.GetFields(BindingFlags.Instance | BindingFlags.Public));
 
             foreach (var member in members)
             {
+                var attributes = (KandaDataMappingAttribute[])member.GetCustomAttributes(typeof(KandaDataMappingAttribute), true);
+                if (1 < attributes.Length) { throw new Exception(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
+
                 foreach (DataRow row in schema.Rows)
                 {
                     var name = (string)row[@"ColumnName"];
                     var value = reader[name];
 
-                    var attributes = (KandaDataMappingAttribute[])member.GetCustomAttributes(typeof(KandaDataMappingAttribute), true);
-                    if (attributes.Length > 1) { throw new Exception(string.Format(@"KandaDbDataMapper.MapToObject<{0}>()", type.FullName)); }
                     foreach (var attribute in attributes)
                     {
                         if (attribute.Ignore) { break; } // 無視
@@ -53,6 +60,7 @@ namespace kkkkkkaaaaaa.Data.Common
             }
         }
 
+        /// <summary></summary>
         [DebuggerStepThrough()]
         public static T MapToObject<T>(DbDataReader reader) where T : new()
         {
@@ -63,6 +71,12 @@ namespace kkkkkkaaaaaa.Data.Common
             return obj;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         public static ICollection<T> MapToCollection<T>(DbDataReader reader) where T : new()
         {
             var collection = new Collection<T>();
@@ -78,12 +92,14 @@ namespace kkkkkkaaaaaa.Data.Common
 
         }
 
+        /// <summary></summary>
         [DebuggerStepThrough()]
         public static IEnumerable<T> MapToEnumerable<T>(DbDataReader reader) where T : new()
         {
             return KandaDbDataMapper.MapToCollection<T>(reader);
         }
 
+        /// <summary></summary>
         [DebuggerStepThrough()]
         public static IEnumerable<T> MapToEnumerable<T>(DataTable table) where T : new()
         {
@@ -101,6 +117,11 @@ namespace kkkkkkaaaaaa.Data.Common
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="obj"></param>
         public static void MapToParameters(DbCommand command, object obj)
         {
             if (obj == null) { throw new ArgumentNullException(string.Format(@"KandaDbDataMapper.MapToParameters()")); }
@@ -108,8 +129,8 @@ namespace kkkkkkaaaaaa.Data.Common
             var type = obj.GetType();
 
             var members = new List<MemberInfo>();
-            members.AddRange(type.GetProperties((BindingFlags.Instance | BindingFlags.Public)));
-            members.AddRange(type.GetFields((BindingFlags.Instance | BindingFlags.Public)));
+            members.AddRange(type.GetProperties(BindingFlags.Instance | BindingFlags.Public));
+            members.AddRange(type.GetFields(BindingFlags.Instance | BindingFlags.Public));
 
             foreach (var member in members)
             {
@@ -133,6 +154,7 @@ namespace kkkkkkaaaaaa.Data.Common
             }
         }
 
+        /// <summary></summary>
         [DebuggerStepThrough()]
         public static void MapToParameters(KandaDbDataReader reader, object obj)
         {

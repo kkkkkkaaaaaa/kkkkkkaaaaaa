@@ -3,14 +3,17 @@ using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.System
 {
+    /// <summary></summary>
     public class BooleanFacts
     {
+        /// <summary></summary>
         [Fact()]
         public void DefaultBooleanFact()
         {
             Assert.Equal(false, default(Boolean));
         }
 
+        /// <summary></summary>
         [Fact()]
         public void TryParseFact()
         {

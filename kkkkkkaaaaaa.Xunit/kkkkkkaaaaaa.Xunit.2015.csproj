@@ -48,6 +48,7 @@
     <Compile Include="Runtime\InteropServices\Kernel32Facts.cs" />
     <Compile Include="Runtime\InteropServices\MarshalFacts.cs" />
     <Compile Include="Runtime\InteropServices\Shell32Facts.cs" />
+    <Compile Include="Runtime\InteropServices\ShLwApiFacts.cs" />
     <Compile Include="Runtime\InteropServices\WinInetFacts.cs" />
     <Compile Include="SystemFacts.cs" />
     <Compile Include="System\BooleanFacts.cs" />

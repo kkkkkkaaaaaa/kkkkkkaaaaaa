@@ -66,6 +66,7 @@
     <Compile Include="Runtime\InteropServices\ShCore.cs" />
     <Compile Include="Runtime\InteropServices\Shell32.cs" />
     <Compile Include="Runtime\InteropServices\ShellAPI.cs" />
+    <Compile Include="Runtime\InteropServices\ShLwApi.cs" />
     <Compile Include="Runtime\InteropServices\ShObjIdl.2015.cs" />
     <Compile Include="Runtime\InteropServices\ShObjIdl.cs" />
     <Compile Include="Runtime\InteropServices\tagGESTURECONFIG.cs" />
@@ -118,6 +119,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Common\KandaDbDataMapper.2008.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

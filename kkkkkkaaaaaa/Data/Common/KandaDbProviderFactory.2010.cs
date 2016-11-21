@@ -1,10 +1,8 @@
-﻿using System;
-using System.Data;
-using System.Data.Common;
-using System.Diagnostics;
+﻿using System.Data.Common;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
+    /// <summary></summary>
     public partial class KandaDbProviderFactory
     {
         /// <summary>

@@ -54,6 +54,7 @@ namespace kkkkkkaaaaaa.Data.Common
             return await this._reader.IsDBNullAsync(ordinal, token);
         }
 
+        /// <summary></summary>
         public async Task<T> GetFieldValueAsync<T>(string name, CancellationToken token)
         {
             var value = Task.FromResult(default(T));
@@ -82,6 +83,7 @@ namespace kkkkkkaaaaaa.Data.Common
             return await this._reader.GetFieldValueAsync<T>(ordinal, token);
         }
 
+        /// <summary></summary>
         [DebuggerStepThrough()]
         public override async Task<bool> NextResultAsync(CancellationToken token)
         {
@@ -101,18 +103,21 @@ namespace kkkkkkaaaaaa.Data.Common
             return this._reader;
         }
 
+        /// <summary></summary>
         [DebuggerStepThrough()]
         public async Task<DbDataReader> ExecuteReaderAsync()
         {
             return await this.ExecuteReaderAsync(CommandBehavior.Default, CancellationToken.None);
         }
 
+        /// <summary></summary>
         [DebuggerStepThrough()]
         public async Task<DbDataReader> ExecuteReaderAsync(CommandBehavior behavior)
         {
             return await this.ExecuteReaderAsync(behavior, CancellationToken.None);
         }
 
+        /// <summary></summary>
         [DebuggerStepThrough()]
         public async Task<DbDataReader> ExecuteReaderAsync(CancellationToken token)
         {

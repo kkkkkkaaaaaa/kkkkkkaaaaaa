@@ -32,9 +32,9 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         /// </summary>
         [DllImport(WinBase.DLL_NAME)]
         public static extern uint GetFileAttributes(string lpFileName);
-
-        #region Private members...
         
+        #region Private members...
+
         /// <summary>DLL 名。</summary>
         private const string DLL_NAME = @"kernel32.dll";
 

@@ -14,12 +14,61 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
 		/// </summary>
 		public const uint TIME_ZONE_ID_INVALID = 0xFFFFFFFF;
 
+        /// <summary>
+        /// Windows のシステムディレクトリのパスを取得します。システムディレクトリには、Windows ライブラリ、ドライバなどのファイルが置かれています。
+        /// 
+        /// 「GetSystemDirectory」
+        /// https://msdn.microsoft.com/ja-jp/library/cc429803.aspx
+        /// </summary>
+        /// <param name="lpBuffer">
+        /// 1 個のバッファへのポインタを指定します。
+        /// 関数から制御が返ると、このバッファに、システムディレクトリのパス名を表す、NULL で終わる文字列が格納されます。
+        /// たとえばシステムディレクトリがドライブ C の WINDOWS\SYSTEM と命名されている場合、この関数が取得するシステムディレクトリのパスは、C:\WINDOWS\SYSTEM です。
+        /// </param>
+        /// <param name="uSize">
+        /// バッファのサイズを TCHAR 単位で指定します。
+        /// MAX_PATH 以上の値を指定してください。 
+        /// </param>
+        /// <returns>
+        /// 関数が成功すると、lpBuffer バッファに書き込まれた文字数（終端の NULL 文字を除く）が TCHAR 単位で返ります。
+        /// パス名がバッファのサイズを上回った場合、パスを格納するために必要なバッファのサイズ（終端の NULL 文字を含む）が返ります。
+        /// 
+        /// 関数が失敗すると、0 が返ります。拡張エラー情報を取得するには、 関数を使います。
+        /// </returns>
+        [DllImport(Kernel32.DLL_NAME, SetLastError = true)]
+        public static extern uint GetSystemDirectory([Out]StringBuilder lpBuffer, [In]int uSize);
+        
+        /// <summary>
+        /// Windows ディレクトリのパスを取得します。
+        /// Windows ディレクトリには、「アクセサリ」のアプリケーション、.ini ファイル、ヘルプファイルなどが配置されています。
+        /// 
+        /// 「GetWindowsDirectory」
+        /// https://msdn.microsoft.com/ja-jp/library/cc429838.aspx
+        /// </summary>
+        /// <param name="lpBuffer">
+        /// 1 個のバッファへのポインタを指定します。
+        /// 関数から制御が返ると、このバッファに、Windows ディレクトリのパス名を表す、NULL で終わる文字列が格納されます。
+        /// Windows ディレクトリがドライブのルートディレクトリでない限り、円記号（\）で終わることはありません。
+        /// たとえば、Windows ディレクトリがドライブ C の WINDOWS と命名されている場合、この関数が取得する Windows ディレクトリのパスは、C:\WINDOWS です。
+        /// システムがドライブ C のルートディレクトリにインストールされている場合、この関数が取得するパスは C:\ です。
+        /// </param>
+        /// <param name="uSize">
+        /// lpBuffer パラメータが指すバッファのサイズを TCHAR 単位で指定します。
+        /// パスを格納するための十分なサイズを確保するために MAX_PATH を指定してください。
+        /// </param>
+        /// <returns>
+        /// 関数が成功すると、lpBuffer バッファに書き込まれた文字数（終端の NULL 文字を除く）が TCHAR 単位で返ります。
+        /// バッファのサイズが不足して、パス名の一部を格納できなかった場合、必要なバッファのサイズ（終端の NULL 文字を含む）が返ります。
+        /// 関数が失敗すると、0 が返ります。拡張エラー情報を取得するには、 関数を使います。
+        /// </returns>
+        [DllImport(Kernel32.DLL_NAME, SetLastError = true)]
+        public static extern uint GetWindowsDirectory([Out]StringBuilder lpBuffer, [In]uint uSize);
 
-		/// <summary>
-		/// WINBASEAPI VOID WINAPI GetSystemInfo(__out LPSYSTEM_INFO lpSystemInfo);
-		/// </summary>
-		/// <param name="lpSystemInfo"></param>
-		[DllImport(Kernel32.DLL_NAME, SetLastError = true, BestFitMapping = true)]
+        /// <summary>
+        /// WINBASEAPI VOID WINAPI GetSystemInfo(__out LPSYSTEM_INFO lpSystemInfo);
+        /// </summary>
+        /// <param name="lpSystemInfo"></param>
+        [DllImport(Kernel32.DLL_NAME, SetLastError = true, BestFitMapping = true)]
 		public static extern void GetSystemInfo(out _SYSTEM_INFO lpSystemInfo);
 
 		/// <summary>

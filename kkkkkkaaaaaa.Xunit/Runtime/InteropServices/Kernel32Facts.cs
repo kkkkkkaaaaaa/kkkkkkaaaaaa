@@ -7,8 +7,10 @@ using kkkkkkaaaaaa.Runtime.InteropServices;
 
 namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
 {
+    /// <summary></summary>
     public class Kernel32Facts : KandaXunitFacts
     {
+        /// <summary></summary>
         [Fact()]
         public void GetLastErrorFact()
         {
@@ -18,6 +20,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             Assert.True(true, string.Format(@"Kernel32.GetLastError() == {0}", lastError));
         }
 
+        /// <summary></summary>
         [Fact()]
         public void FormatMessage()
         {
@@ -30,6 +33,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             Assert.False(length <= 0, message);
         }
 
+        /// <summary></summary>
         [Fact()]
         public void GetSystemInfoFact()
         {
@@ -51,6 +55,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             var revision = info.wProcessorRevision;
         }
 
+        /// <summary></summary>
         [Fact()]
         public void GetNativeSystemInfoFact()
         {
@@ -61,6 +66,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             Assert.NotEqual(default(_SYSTEM_INFO), info);
         }
 
+        /// <summary></summary>
         [Fact()]
         public void IsWow64ProcessFact()
         {
@@ -71,6 +77,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             Assert.True(result);
         }
 
+        /// <summary></summary>
         [Fact(Skip="")]
         public void LoadLibraryFact()
         {
@@ -89,6 +96,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             }
         }
 
+        /// <summary></summary>
         [Fact()]
         public void LoadLibraryExFact()
         {
@@ -108,6 +116,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             }
         }
 
+        /// <summary></summary>
         [Fact(Skip = @"Tempolary Skipped.")]
         public void FreeLibraryFact()
         {
@@ -118,6 +127,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             Assert.True(result);
         }
 
+        /// <summary></summary>
         [Fact()]
         public void GetModuleHandleFact()
         {
@@ -125,6 +135,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             Assert.NotEqual(IntPtr.Zero, handle);
         }
 
+        /// <summary></summary>
         [Fact()]
         public void GetModuleFileName()
         {
@@ -136,6 +147,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             Assert.True(0 < length);
         }
 
+        /// <summary></summary>
         [Fact(Skip="")]
         public void GetProcAddressFact()
         {
@@ -160,6 +172,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             }
         }
 
+        /// <summary></summary>
         [Fact()]
         public void GetTimeZoneInformationForYearFact()
         {
@@ -181,6 +194,30 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             Assert.True(true);
         }
 
+        /// <summary></summary>
+        [Fact()]
+        public void GetSystemDirectoryFact()
+        {
+            var directory = new StringBuilder();
+            var result = Kernel32.GetSystemDirectory(directory, WinBase.MAX_PATH);
+
+            var expects = Environment.GetFolderPath(Environment.SpecialFolder.System);
+
+            Assert.True(directory.ToString() == expects);
+            Assert.True(directory.Length == result);
+        }
+
+        [Fact()]
+        public void GetWindowsDirectoryFact()
+        {
+            var directory = new StringBuilder();
+            var result = Kernel32.GetWindowsDirectory(directory, WinBase.MAX_PATH);
+
+            var expects = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
+
+            Assert.True(directory.ToString() == expects);
+            Assert.True(directory.Length == result);
+        }
 
         #region Private members...
 

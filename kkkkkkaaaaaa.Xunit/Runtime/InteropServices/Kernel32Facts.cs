@@ -16,7 +16,7 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
         {
             var lastWin32Error = Marshal.GetLastWin32Error();
             var lastError = Kernel32.GetLastError();
-            Assert.Equal((uint)lastWin32Error, lastError);
+            Assert.Equal((uint) lastWin32Error, lastError);
             Assert.True(true, string.Format(@"Kernel32.GetLastError() == {0}", lastError));
         }
 
@@ -28,8 +28,11 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             var languageId = WinNT.MAKELANGID(WinNT.LANG_NEUTRAL, WinNT.SUBLANG_DEFAULT);
             var buffer = default(IntPtr);
 
-            var length = Kernel32.FormatMessage((WinBase.FORMAT_MESSAGE_ALLOCATE_BUFFER | WinBase.FORMAT_MESSAGE_FROM_SYSTEM | WinBase.FORMAT_MESSAGE_IGNORE_INSERTS), IntPtr.Zero, messageId, languageId, out buffer, 0, null);
-            var message = Marshal.PtrToStringAnsi(buffer, (int)length);
+            var length =
+                Kernel32.FormatMessage(
+                    (WinBase.FORMAT_MESSAGE_ALLOCATE_BUFFER | WinBase.FORMAT_MESSAGE_FROM_SYSTEM |
+                     WinBase.FORMAT_MESSAGE_IGNORE_INSERTS), IntPtr.Zero, messageId, languageId, out buffer, 0, null);
+            var message = Marshal.PtrToStringAnsi(buffer, (int) length);
             Assert.False(length <= 0, message);
         }
 
@@ -64,6 +67,17 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             Kernel32.GetNativeSystemInfo(out info);
 
             Assert.NotEqual(default(_SYSTEM_INFO), info);
+        }
+
+
+        /// <summary></summary>
+        [Fact()]
+        public void GetLogicalProcessorInfomatiuon()
+        {
+            var buffer = default(_SYSTEM_LOGICAL_PROCESSOR_INFORMATION);
+            var length = default(uint);
+            var result = Kernel32.GetLogicalProcessorInfomatiuon(out buffer, out length);
+
         }
 
         /// <summary></summary>

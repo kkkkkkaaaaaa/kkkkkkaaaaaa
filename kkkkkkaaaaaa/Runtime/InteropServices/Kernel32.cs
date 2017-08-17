@@ -84,8 +84,9 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
 		/// WINBASEAPI BOOL WINAPI GetLogicalProcessorInformation(__out_bcount_part_opt(*ReturnedLength, *ReturnedLength) PSYSTEM_LOGICAL_PROCESSOR_INFORMATION Buffer, __inout PDWORD ReturnedLength);
 		/// </summary>
 		/// <returns></returns>
-		//[DllImport(Kernel32.DLL_NAME, SetLastError = true, BestFitMapping = true)]
-		//public static extern uint GetLogicalProcessorInfomatiuon();
+		[DllImport(Kernel32.DLL_NAME, SetLastError = true, BestFitMapping = true)]
+		[return: MarshalAs(UnmanagedType.Bool)]
+        public static extern uint GetLogicalProcessorInfomatiuon([Out()]out _SYSTEM_LOGICAL_PROCESSOR_INFORMATION Buffer, out uint ReturnedLength);
 
 		/// <summary>
 		/// #if _WIN32_WINNT >= 0x0501
@@ -99,12 +100,16 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
 		[return: MarshalAs(UnmanagedType.Bool)]
 		public static extern bool IsWow64Process([In()]IntPtr hProcess, [MarshalAs(UnmanagedType.Bool)]out bool Wow64Process);
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="lpLibFileName"></param>
-		/// <returns></returns>
-		[DllImport(Kernel32.DLL_NAME)]
+        /// <summary>
+        /// 指定された実行可能モジュールを、呼び出し側プロセスのアドレス空間内にマップします。
+        /// 
+	    /// HMODULE LoadLibrary(
+	    ///     LPCTSTR lpFileName   // モジュールのファイル名
+	    /// );
+        /// </summary>
+        /// <param name="lpLibFileName"></param>
+        /// <returns></returns>
+        [DllImport(Kernel32.DLL_NAME)]
 		public static extern IntPtr LoadLibrary(string lpLibFileName);
 
 		/// <summary>
@@ -132,12 +137,33 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
 		[DllImport(Kernel32.DLL_NAME)]
 		public static extern uint GetModuleFileName(IntPtr hModule, StringBuilder lpFilename, uint nSize);
 
-		/// <summary>
-		/// WINBASEAPI BOOL WINAPI FreeLibrary (__in HMODULE hLibModule);
-		/// </summary>
-		/// <param name="hLibModule"></param>
-		/// <returns></returns>
-		[DllImport(Kernel32.DLL_NAME)]
+	    /// <summary>
+	    /// 開いているオブジェクトハンドルを閉じます。
+	    /// 
+	    /// 
+	    /// WINBASEAPI
+	    ///   BOOL
+	    /// WINAPI
+	    ///   CloseHandle(
+	    ///     _In_ HANDLE hObject
+	    /// );
+	    /// </summary>
+	    /// <param name="hObject">オブジェクトのハンドル。</param>
+	    /// <returns>
+	    /// 関数が成功すると、0 以外の値が返ります。
+	    /// 
+	    /// 関数が失敗すると、0 が返ります。拡張エラー情報を取得するには、 関数を使います。
+	    /// </returns>
+	    [DllImport(Kernel32.DLL_NAME)]
+	    [return: MarshalAs(UnmanagedType.Bool)]
+	    public static extern bool CloseHandle([In()] IntPtr hObject);
+
+        /// <summary>
+        /// WINBASEAPI BOOL WINAPI FreeLibrary (__in HMODULE hLibModule);
+        /// </summary>
+        /// <param name="hLibModule"></param>
+        /// <returns></returns>
+        [DllImport(Kernel32.DLL_NAME)]
 		[return : MarshalAs(UnmanagedType.Bool)]
 		public static extern bool FreeLibrary(IntPtr hLibModule);
 
@@ -227,7 +253,7 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
 		[return : MarshalAs(UnmanagedType.Bool)]
 		public static extern bool SystemTimeToTzSpecificLocalTime(_TIME_ZONE_INFORMATION lpTimeZoneInformation, _SYSTEMTIME lpUniversalTime, out _SYSTEMTIME lpLocalTime);
 
-		/*
+        /*
 		WINBASEAPI
 		_Success_(return != FALSE)
 		BOOL
@@ -239,29 +265,27 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
 			);
 		*/
 
-		/*
-		WINBASEAPI
-		_Success_(return != FALSE)
-		BOOL
-		WINAPI
-		FileTimeToSystemTime(
-			_In_ CONST FILETIME * lpFileTime,
-			_Out_ LPSYSTEMTIME lpSystemTime
-			);
-		 */
+        /// <summary>
+        /// WINBASEAPI _Success_(return != FALSE) BOOL WINAPI FileTimeToSystemTime(_In_ CONST FILETIME * lpFileTime, _Out_ LPSYSTEMTIME lpSystemTime);
+        /// </summary>
+        /// <param name="lpFileTime"></param>
+        /// <param name="lpSystemTime"></param>
+        /// <returns></returns>
+        [DllImport(Kernel32.DLL_NAME)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool FileTimeToSystemTime([In()]ref _FILETIME lpFileTime, [Out()]out _SYSTEMTIME lpSystemTime);
 
-		/*
-		WINBASEAPI
-		_Success_(return != FALSE)
-		BOOL
-		WINAPI
-		SystemTimeToFileTime(
-			_In_ CONST SYSTEMTIME * lpSystemTime,
-			_Out_ LPFILETIME lpFileTime
-			);
-		 */
+        /// <summary>
+        /// WINBASEAPI _Success_(return != FALSE) BOOL WINAPI SystemTimeToFileTime(_In_ CONST SYSTEMTIME * lpSystemTime);
+        /// </summary>
+        /// <param name="lpSystemTime"></param>
+        /// <param name="lpFileTime"></param>
+        /// <returns></returns>
+	    [DllImport(Kernel32.DLL_NAME)]
+	    [return: MarshalAs(UnmanagedType.Bool)]
+	    public static extern bool SystemTimeToFileTime([In()]_SYSTEMTIME lpSystemTime, [Out()] _FILETIME lpFileTime);
 
-		/*
+        /*
 		WINBASEAPI
 		_Success_(return != TIME_ZONE_ID_INVALID)
 		DWORD
@@ -271,7 +295,7 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
 			);
 		*/
 
-		/*
+        /*
 		WINBASEAPI
 		BOOL
 		WINAPI
@@ -280,8 +304,8 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
 			);
 		*/
 
-		
-		/*
+
+        /*
 		// <expr> indicates whether normal post conditions apply to a function
 
 		#define _Null_terminated_                 _SAL2_Source_(_Null_terminated_, (), _Null_terminated_impl_)
@@ -295,12 +319,12 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
 		*/
 
 
-		/// <summary>
-		/// WINBASEAPI BOOL WINAPI SetDynamicTimeZoneInformation(_In_ CONST DYNAMIC_TIME_ZONE_INFORMATION * lpTimeZoneInformation);
-		/// </summary>
-		/// <param name="lpTimeZoneInformation"></param>
-		/// <returns></returns>
-		[DllImport(Kernel32.DLL_NAME)]
+        /// <summary>
+        /// WINBASEAPI BOOL WINAPI SetDynamicTimeZoneInformation(_In_ CONST DYNAMIC_TIME_ZONE_INFORMATION * lpTimeZoneInformation);
+        /// </summary>
+        /// <param name="lpTimeZoneInformation"></param>
+        /// <returns></returns>
+        [DllImport(Kernel32.DLL_NAME)]
 		[return: MarshalAs(UnmanagedType.Bool)]
 		public static extern bool SetDynamicTimeZoneInformation(_TIME_DYNAMIC_ZONE_INFORMATION lpTimeZoneInformation);
 
@@ -375,28 +399,26 @@ BOOL CALLBACK Proc( DWORD dw, WORD w16, LPCSTR lpstr, LPARAM lParam );
         /*
         https://msdn.microsoft.com/ja-jp/library/windows/desktop/aa364991.aspx
         http://blogs.msdn.com/b/japan_platform_sdkwindows_sdk_support_team_blog/archive/2013/11/07/gettemppathname.aspx
-WINBASEAPI
-UINT
-WINAPI
-GetTempFileNameA(
-    _In_ LPCSTR lpPathName,
-    _In_ LPCSTR lpPrefixString,
-    _In_ UINT uUnique,
-    _Out_writes_(MAX_PATH) LPSTR lpTempFileName
-    );
-       
-WINBASEAPI
-UINT
-WINAPI
-GetTempFileNameW(
-    _In_ LPCWSTR lpPathName,
-    _In_ LPCWSTR lpPrefixString,
-    _In_ UINT uUnique,
-    _Out_writes_(MAX_PATH) LPWSTR lpTempFileName
-    );
+        WINBASEAPI
+        UINT
+        WINAPI
+        GetTempFileNameA(
+            _In_ LPCSTR lpPathName,
+            _In_ LPCSTR lpPrefixString,
+            _In_ UINT uUnique,
+            _Out_writes_(MAX_PATH) LPSTR lpTempFileName
+            );
+               
+        WINBASEAPI
+        UINT
+        WINAPI
+        GetTempFileNameW(
+            _In_ LPCWSTR lpPathName,
+            _In_ LPCWSTR lpPrefixString,
+            _In_ UINT uUnique,
+            _Out_writes_(MAX_PATH) LPWSTR lpTempFileName
+            );
          */
-
-
 
         #region Private members...
 

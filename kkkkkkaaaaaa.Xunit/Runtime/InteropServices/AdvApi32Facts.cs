@@ -71,7 +71,6 @@ namespace kkkkkkaaaaaa.Xunit.Runtime.InteropServices
             }
         }
 
-
         /// <summary></summary>
         [Fact()]
         public void EnumDynamicTimeZoneInformationFact()

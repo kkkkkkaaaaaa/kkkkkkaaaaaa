@@ -92,11 +92,13 @@
         /// known environment variables (%USERPROFILE%, %APPDATA% etc.)
         /// </summary>
         KF_FLAG_DONT_UNEXPAND = 0x00002000,
-
-        // Get file system based IDList if available. If the flag is not specified the Known Folder API
-        // will try to return aliased IDList by default. Example for FOLDERID_Documents -
-        // Aliased - [desktop]\[user]\[Documents] - exact location is determined by shell namespace layout and might change
-        // Non aliased - [desktop]\[computer]\[disk_c]\[users]\[user]\[Documents] - location is determined by folder location in the file system
+        
+        /// <summary>
+        /// Get file system based IDList if available. If the flag is not specified the Known Folder API
+        /// will try to return aliased IDList by default. Example for FOLDERID_Documents -
+        /// Aliased - [desktop]\[user]\[Documents] - exact location is determined by shell namespace layout and might change
+        /// Non aliased - [desktop]\[computer]\[disk_c]\[users]\[user]\[Documents] - location is determined by folder location in the file system
+        /// </summary>
         KF_FLAG_NO_ALIAS = 0x00001000,
 
         /// <summary>

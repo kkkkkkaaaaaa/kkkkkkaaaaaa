@@ -1,6 +1,4 @@
 ﻿using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -12,11 +10,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("kkkkkkaaaaaa.Windows")]
-<<<<<<< HEAD
 [assembly: AssemblyCopyright("Copyright © 2015")]
-=======
-[assembly: AssemblyCopyright("Copyright ©  2015")]
->>>>>>> remotes/origin/0.0.11
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

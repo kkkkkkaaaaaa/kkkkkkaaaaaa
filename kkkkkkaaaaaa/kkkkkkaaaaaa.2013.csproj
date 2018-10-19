@@ -34,7 +34,6 @@
     <Compile Include="Data\Common\KandaDbConnection.2008.cs" />
     <Compile Include="Data\Common\KandaDbDataMapper.2012.cs" />
     <Compile Include="Data\Common\KandaDbDataMapper.cs" />
-    <Compile Include="Data\Common\KandaDbDataReader.2010.cs" />
     <Compile Include="Data\Common\KandaDbDataReader.cs" />
     <Compile Include="Data\Common\KandaDbParameterMappingAttribute.cs" />
     <Compile Include="Data\Common\KandaDbProviderFactory.2010.cs" />
@@ -78,6 +77,7 @@
     <Compile Include="Runtime\InteropServices\WinNT.cs" />
     <Compile Include="Runtime\InteropServices\WinUser.cs" />
     <Compile Include="Runtime\InteropServices\_FILETIME.cs" />
+    <Compile Include="Runtime\InteropServices\_NOTIFYICONDATA.cs" />
     <Compile Include="Runtime\InteropServices\_SYSTEMTIME.cs" />
     <Compile Include="Runtime\InteropServices\_SYSTEM_INFO.cs" />
     <Compile Include="Runtime\InteropServices\_SYSTEM_LOGICAL_PROCESSOR_INFORMATION.cs" />
@@ -123,21 +123,9 @@
   <ItemGroup>
     <Compile Include="Data\Common\KandaDbDataReader.2012.cs" />
   </ItemGroup>
-<<<<<<< HEAD
-<<<<<<< master
-=======
   <ItemGroup>
     <Compile Include="Data\KandaDataRecordExtensions.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
->>>>>>> local
-=======
-  <ItemGroup>
-    <Compile Include="Data\KandaDataRecordExtensions.cs" />
-  </ItemGroup>
->>>>>>> remotes/origin/0.0.11
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

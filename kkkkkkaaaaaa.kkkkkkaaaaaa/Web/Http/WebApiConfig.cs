@@ -1,5 +1,4 @@
 ﻿using System.Web.Http;
-using System.Web.Routing;
 
 namespace kkkkkkaaaaaa.Web.Http
 {
@@ -13,12 +12,7 @@ namespace kkkkkkaaaaaa.Web.Http
             // 属性ルーティング
             config.MapHttpAttributeRoutes();
 
-            // ルートマッピング
-<<<<<<< HEAD
-            // config.Routes.MapHttpRoute(@"Default", @"");
-=======
             config.Routes.MapHttpRoute(@"Default", @"");
->>>>>>> remotes/origin/0.0.11
 
             // アクションメソッドは規約に従う
             config.Routes.MapHttpRoute(

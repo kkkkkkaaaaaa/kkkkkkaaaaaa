@@ -42,11 +42,15 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
             );
          */
 
-
-        /// <summary>
-        /// アンマネージメソッドを格納する DLL の名前。
-        /// </summary>
-        internal const string DLL_NAME = @"shell32.dll";
+        /*
+        SHSTDAPI_(BOOL) Shell_NotifyIconA(DWORD dwMessage, _In_ PNOTIFYICONDATAA lpData);
+        SHSTDAPI_(BOOL) Shell_NotifyIconW(DWORD dwMessage, _In_ PNOTIFYICONDATAW lpData);
+        #ifdef UNICODE
+        #define Shell_NotifyIcon  Shell_NotifyIconW
+        #else
+        #define Shell_NotifyIcon  Shell_NotifyIconA
+        #endif // !UNICODE
+         */
 
         #region Private members...
 
@@ -65,6 +69,9 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
         {
             return new Guid(l, w1, w2, b1, b2, b3, b4, b5, b6, b7, b8);
         }
+
+        /// <summary>アンマネージメソッドを格納する DLL の名前。</summary>
+        internal const string DLL_NAME = @"shell32.dll";
 
         #endregion
     }

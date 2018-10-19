@@ -1,0 +1,44 @@
+﻿@using System.Drawing
+@{
+  Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <title>kkkkkkaaaaaa.Web.Http</title>
+  <style>
+    /*
+    @@font-face {
+      font-family: Meiryo, Tahoma, Verdana, Arial, sans-serif;
+    }
+    */
+
+    .navigate--a {
+      width: 120px
+    }
+    .navigate--label {
+      padding-left: 40px
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h2>ASP.NET API's Convention over Configuration（CoC; 設定より規約）and its overwrite.</h2>
+    <h3>config.Routes.MapHttpRoute(@@"WebApi",@@"{controller}/{action}/{id:int}", new { id = RouteParameter.Optional })</h3>
+    <ul>
+      <li><a class="navigate--a" href="./Membership/1" title='config.MapHttpRoute("{controller}/{id:int}")'>Membership.GetByConvention()</a><label class="navigate--label">Membership/1</label></li>
+      <li><a class="navigate--a" href="./Membership/GetByRouteMapping/1" title='config.MapHttpRoute("{controller}/{action}/{id:int}")'>Membership.GetByRouteMapping()</a><label class="navigate--label">Membership/Get/1</label></li>
+    </ul>
+
+    <h3>[RoutePrefix(@@"Membership")]class MembershipController : ApiController</h3>
+    <ul>
+      <li><a class="navigate--a" href="./Membership/m/c/1" title='[Route("m/c/{id:int}")]'>Membership.GetByRouteAttribute()</a><label class="navigate--label">Membership/m/c/1</label></li>
+      <li><a class="navigate--a" href="./Membership/get/1" title='[Route("get/{id:int}")]'>Membership.CetByRouteAttribute()</a><label class="navigate--label">Membership/get/1</label></li>
+    </ul>
+
+  </div>
+</body>
+</html>

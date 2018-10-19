@@ -75,6 +75,7 @@
     <Compile Include="Runtime\InteropServices\WinNT.cs" />
     <Compile Include="Runtime\InteropServices\WinUser.cs" />
     <Compile Include="Runtime\InteropServices\_FILETIME.cs" />
+    <Compile Include="Runtime\InteropServices\_NOTIFYICONDATA.cs" />
     <Compile Include="Runtime\InteropServices\_SYSTEMTIME.cs" />
     <Compile Include="Runtime\InteropServices\_SYSTEM_INFO.cs" />
     <Compile Include="Runtime\InteropServices\_SYSTEM_LOGICAL_PROCESSOR_INFORMATION.cs" />

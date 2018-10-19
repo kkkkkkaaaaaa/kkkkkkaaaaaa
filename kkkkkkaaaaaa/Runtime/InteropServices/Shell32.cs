@@ -42,6 +42,16 @@ namespace kkkkkkaaaaaa.Runtime.InteropServices
             );
          */
 
+        /*
+        SHSTDAPI_(BOOL) Shell_NotifyIconA(DWORD dwMessage, _In_ PNOTIFYICONDATAA lpData);
+        SHSTDAPI_(BOOL) Shell_NotifyIconW(DWORD dwMessage, _In_ PNOTIFYICONDATAW lpData);
+        #ifdef UNICODE
+        #define Shell_NotifyIcon  Shell_NotifyIconW
+        #else
+        #define Shell_NotifyIcon  Shell_NotifyIconA
+        #endif // !UNICODE
+         */
+
         #region Private members...
 
         /// <summary>

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>kkkkkkaaaaaa.</RootNamespace>
+    <RootNamespace>kkkkkkaaaaaa</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <BaseOutputPath>C:\Projects.Spikes\kkkkkkaaaaaa.1\bin\kkkkkkaaaaaa</BaseOutputPath>

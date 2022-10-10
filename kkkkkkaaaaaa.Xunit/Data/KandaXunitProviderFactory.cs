@@ -11,7 +11,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
     {
         static KandaXunitProviderFactory()
         {
-            // DbProviderFactories.RegisterFactory(@"System.Data.SqlClient.SqlClientFactory", SqlClientFactory.Instance);
+            // TODO: appSettings.json <- ConfigurationBuilder -> AppSettings.InvalidProviderName
             DbProviderFactories.RegisterFactory(@"System.Data.SqlClient", SqlClientFactory.Instance);
         }
 

@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>kkkkkkaaaaaa.Xunit</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <BaseOutputPath>C:\Projects.Spikes\kkkkkkaaaaaa.1\bin\kkkkkkaaaaaa.Xunit</BaseOutputPath>
+    <AssemblyName>kkkkkkaaaaaa.Xunit</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="IO\**" />
+    <Compile Remove="Runtime\**" />
+    <Compile Remove="Security\**" />
+    <Compile Remove="Shell32\**" />
+    <Compile Remove="System\**" />
+    <Compile Remove="Text\**" />
+    <EmbeddedResource Remove="IO\**" />
+    <EmbeddedResource Remove="Runtime\**" />
+    <EmbeddedResource Remove="Security\**" />
+    <EmbeddedResource Remove="Shell32\**" />
+    <EmbeddedResource Remove="System\**" />
+    <EmbeddedResource Remove="Text\**" />
+    <None Remove="IO\**" />
+    <None Remove="Runtime\**" />
+    <None Remove="Security\**" />
+    <None Remove="Shell32\**" />
+    <None Remove="System\**" />
+    <None Remove="Text\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.2013.cs" />
+    <Compile Remove="Properties\AssemblyInfo.2015.cs" />
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\kkkkkkaaaaaa\kkkkkkaaaaaa.2022.csproj" />
+  </ItemGroup>
+
+</Project>

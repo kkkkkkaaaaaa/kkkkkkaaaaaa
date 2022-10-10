@@ -1,9 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Data;
-using System.Data.Common;
-using kkkkkkaaaaaa.Data;
-using kkkkkkaaaaaa.Data.Common;
+﻿using kkkkkkaaaaaa.Data;
+using kkkkkkaaaaaa.Data.Common.Extensions;
 using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Data

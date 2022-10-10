@@ -9,6 +9,9 @@ namespace kkkkkkaaaaaa.Xunit.Data
     /// </summary>
     public class KandaXunitProviderFactory : KandaDbProviderFactory
     {
+        /// <summary>
+        /// 静的コンストラクター。
+        /// </summary>
         static KandaXunitProviderFactory()
         {
             // TODO: appSettings.json <- ConfigurationBuilder -> AppSettings.InvalidProviderName

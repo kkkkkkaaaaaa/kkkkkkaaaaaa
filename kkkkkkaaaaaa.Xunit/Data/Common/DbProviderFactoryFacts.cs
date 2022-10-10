@@ -6,7 +6,7 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
 {
     public class DbProviderFactoryFacts
     {
-        [Fact(Skip="")]
+        [Fact(Skip= "System.Data.OleDb")]
         public void OpenMicrosoftAceOleDb120ProviderFact()
         {
             var factory = DbProviderFactories.GetFactory(@"System.Data.OleDb");

@@ -1,8 +1,6 @@
-﻿using System;
+﻿using kkkkkkaaaaaa.Data.Common;
 using System.Data.Common;
 using System.Data.SqlClient;
-using System.Threading;
-using kkkkkkaaaaaa.Data.Common;
 
 namespace kkkkkkaaaaaa.Xunit.Data
 {

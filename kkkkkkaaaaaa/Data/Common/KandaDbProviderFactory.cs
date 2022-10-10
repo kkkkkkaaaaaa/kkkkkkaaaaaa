@@ -1,9 +1,6 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
-using System.Security;
-using System.Security.Permissions;
 
 namespace kkkkkkaaaaaa.Data.Common
 {

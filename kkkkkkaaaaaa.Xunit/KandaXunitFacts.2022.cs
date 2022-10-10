@@ -1,4 +1,5 @@
-﻿using System;
+﻿using kkkkkkaaaaaa.Xunit.Data;
+using System;
 using System.Data.Common;
 using System.Data.SqlClient;
 
@@ -27,8 +28,24 @@ namespace kkkkkkaaaaaa.Xunit
         }
 
         /// <summary>
+        /// DbProviderFactory を取得します。
+        /// </summary>
+        protected DbProviderFactory Provider
+        {
+            get { return this._factory; }
+        }
+
+        /// <summary>
         /// テストデータのフォルダのルートを返します。
         /// </summary>
         protected Uri TestData { get; private set; }
+
+
+        #region Private members...
+
+        /// <summary></summary>
+        private readonly DbProviderFactory _factory = new KandaXunitProviderFactory();
+
+        #endregion
     }
 }

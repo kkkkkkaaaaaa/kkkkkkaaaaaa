@@ -19,7 +19,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
 
             try
             {
-                connection = this._factory.CreateConnection();
+                connection = this.Provider.CreateConnection();
                 connection.Open();
 
                 Assert.True(true);
@@ -29,8 +29,5 @@ namespace kkkkkkaaaaaa.Xunit.Data
                 if (connection != null) { connection.Close(); }
             }
         }
-
-        /// <summary></summary>
-        private readonly DbProviderFactory _factory = new KandaXunitProviderFactory();
     }
 }

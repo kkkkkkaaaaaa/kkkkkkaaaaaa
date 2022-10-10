@@ -3,14 +3,19 @@ using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.System
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class BooleanFacts
     {
+        /// <summary></summary>
         [Fact()]
         public void DefaultBooleanFact()
         {
-            Assert.Equal(false, default(Boolean));
+            Assert.True(default(Boolean) == false);
         }
 
+        /// <summary></summary>
         [Fact()]
         public void TryParseFact()
         {
@@ -32,7 +37,7 @@ namespace kkkkkkaaaaaa.Xunit.System
         /// </summary>
         /// <param name="value"></param>
         /// <param name="expected"></param>
-        private void assertParseTrial(string value, bool expected)
+        private void assertParseTrial(string? value, bool expected)
         {
             var result = default(bool);
             bool.TryParse(value, out result);

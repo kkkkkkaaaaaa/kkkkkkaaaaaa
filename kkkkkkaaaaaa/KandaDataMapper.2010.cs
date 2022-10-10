@@ -15,7 +15,7 @@ namespace kkkkkkaaaaaa
         /// <param name="obj">値を取得するオブジェクト。</param>
         /// <param name="nullValue">null だった場合。</param>
         /// <returns></returns>
-        protected static object GetValue(MemberInfo member, object obj, object nullValue = default(object))
+        protected static object GetValue(MemberInfo member, object obj, object? nullValue = default(object))
         {
             var value = default(object);
 

@@ -1,10 +1,17 @@
 ﻿using System.Data.Common;
+using System.Data.SqlClient;
 using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Data
 {
-    public class KandaXunitProviderFactoryFacts
+    public class KandaXunitProviderFactoryFacts : KandaXunitFacts
     {
+        static KandaXunitProviderFactoryFacts()
+        {
+            DbProviderFactories.RegisterFactory(@"System.Data.SqlClient", SqlClientFactory.Instance);
+        }
+
+
         [Fact()]
         public void CreateConectionFact()
         {

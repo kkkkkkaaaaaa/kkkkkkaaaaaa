@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>kkkkkkaaaaaa</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <BaseOutputPath>C:\Projects.Spikes\kkkkkkaaaaaa.1\bin\kkkkkkaaaaaa</BaseOutputPath>
+    <AssemblyName>kkkkkkaaaaaa</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ComponentModel\**" />
+    <Compile Remove="Data\SqlClient\**" />
+    <Compile Remove="IO\**" />
+    <Compile Remove="Reactive\**" />
+    <Compile Remove="Security\**" />
+    <Compile Remove="Web\**" />
+    <Compile Remove="Windows\**" />
+    <EmbeddedResource Remove="ComponentModel\**" />
+    <EmbeddedResource Remove="Data\SqlClient\**" />
+    <EmbeddedResource Remove="IO\**" />
+    <EmbeddedResource Remove="Reactive\**" />
+    <EmbeddedResource Remove="Security\**" />
+    <EmbeddedResource Remove="Web\**" />
+    <EmbeddedResource Remove="Windows\**" />
+    <None Remove="ComponentModel\**" />
+    <None Remove="Data\SqlClient\**" />
+    <None Remove="IO\**" />
+    <None Remove="Reactive\**" />
+    <None Remove="Security\**" />
+    <None Remove="Web\**" />
+    <None Remove="Windows\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Common\KandaDbConnection.2008.cs" />
+    <Compile Remove="Data\Common\KandaDbDataMapper.2012.cs" />
+    <Compile Remove="Data\Common\KandaDbDataReader.2008.cs" />
+    <Compile Remove="Data\Common\KandaDbDataReader.2010.cs" />
+    <Compile Remove="Data\Common\KandaDbDataReader.2012.cs" />
+    <Compile Remove="Data\Common\KandaDbProviderFactory.2008.cs" />
+    <Compile Remove="Data\Common\KandaDbProviderFactory.2010.cs" />
+    <Compile Remove="Data\Common\KandaDbProviderFactory.cs" />
+    <Compile Remove="KandaDataMapper.2008.cs" />
+    <Compile Remove="KandaDataMapper.2010.cs" />
+    <Compile Remove="KandaDataMapper.2012.cs" />
+    <Compile Remove="Properties\AssemblyInfo.2013.cs" />
+    <Compile Remove="Properties\AssemblyInfo.2015.cs" />
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Text.Json\" />
+    <Folder Include="Text\" />
+  </ItemGroup>
+
+</Project>

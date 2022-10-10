@@ -1,15 +1,21 @@
-﻿using System;
-using System.Linq;
-using System.Data;
-using System.Data.Common;
+﻿using System.Data.Common;
+using System.Data.SqlClient;
 using kkkkkkaaaaaa.Data;
-using kkkkkkaaaaaa.Data.Common;
+using kkkkkkaaaaaa.Data.Common.Extensions;
 using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Data
 {
-    public class KandaDataTableExtensionsFacts
+    public class KandaDataTableExtensionsFacts : KandaXunitFacts
     {
+        /// <summary>
+        /// 静的コンストラクター。
+        /// </summary>
+        static KandaDataTableExtensionsFacts()
+        {
+            DbProviderFactories.RegisterFactory(@"System.Data.SqlClient", SqlClientFactory.Instance);
+        }
+
         [Fact()]
         public void AsDynamicFact()
         {

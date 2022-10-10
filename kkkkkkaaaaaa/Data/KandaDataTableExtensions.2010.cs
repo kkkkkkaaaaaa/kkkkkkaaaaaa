@@ -1,23 +1,20 @@
-﻿using System;
-using System.Data;
-using System.Collections.Generic;
+﻿using System.Data;
 using System.Dynamic;
 
 namespace kkkkkkaaaaaa.Data
 {
     /// <summary>
-    /// 
+    /// Syatem.Data.DataTable に拡張メソッドを提供します。
     /// </summary>
     public static class KandaDataTableExtensions
     {
         /// <summary>
-        /// DataTableの各RowをExpandoObjectに変換します。
+        /// DataTable の各 Row を ExpandoObject に変換します。
         /// </summary>
         /// <param name="table"></param>
         /// <returns></returns>
         public static dynamic AsDynamic(this DataTable table)
         {
-            // return table.AsEnumerable()
             var dynamic = table.AsEnumerable()
                 .Select(row =>
                 {
@@ -29,7 +26,7 @@ namespace kkkkkkaaaaaa.Data
                         if (value is DBNull) { value = null; }
                         expando.Add(column.ColumnName, value);
                     }
-                    return (dynamic) expando;
+                    return (dynamic)expando;
                 });
 
             return dynamic;

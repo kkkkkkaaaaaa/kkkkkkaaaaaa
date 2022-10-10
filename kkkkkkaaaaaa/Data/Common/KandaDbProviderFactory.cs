@@ -1,9 +1,6 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
-using System.Security;
-using System.Security.Permissions;
 
 namespace kkkkkkaaaaaa.Data.Common
 {
@@ -93,17 +90,6 @@ namespace kkkkkkaaaaaa.Data.Common
         public override DbDataAdapter CreateDataAdapter()
         {
             return this._factory.CreateDataAdapter();
-        }
-
-        /// <summary>
-        /// プロバイダーのバージョンの CodeAccessPermission クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
-        /// </summary>
-        /// <param name="state"></param>
-        /// <returns></returns>
-        [DebuggerStepThrough()]
-        public override CodeAccessPermission CreatePermission(PermissionState state)
-        {
-            return this._factory.CreatePermission(state);
         }
 
         /// <summary>

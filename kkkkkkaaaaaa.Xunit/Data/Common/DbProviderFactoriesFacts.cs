@@ -3,7 +3,7 @@ using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Data.Common
 {
-    public class DbProviderFactoriesFacts
+    public class DbProviderFactoriesFacts : KandaXunitFacts
     {
         [Fact()]
         public void GetProvidersFact()

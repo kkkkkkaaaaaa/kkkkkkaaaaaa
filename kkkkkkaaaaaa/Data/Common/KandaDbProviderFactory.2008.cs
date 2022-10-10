@@ -76,5 +76,16 @@ namespace kkkkkkaaaaaa.Data.Common
 
             return parameter;
         }
+
+        /// <summary>
+        /// プロバイダーのバージョンの CodeAccessPermission クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
+        /// </summary>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        [DebuggerStepThrough()]
+        public override CodeAccessPermission CreatePermission(PermissionState state)
+        {
+            return this._factory.CreatePermission(state);
+        }
     }
 }

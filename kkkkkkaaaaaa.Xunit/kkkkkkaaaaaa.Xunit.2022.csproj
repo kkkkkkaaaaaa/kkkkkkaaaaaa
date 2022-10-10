@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -16,19 +16,16 @@
     <Compile Remove="Runtime\**" />
     <Compile Remove="Security\**" />
     <Compile Remove="Shell32\**" />
-    <Compile Remove="System\**" />
     <Compile Remove="Text\**" />
     <EmbeddedResource Remove="IO\**" />
     <EmbeddedResource Remove="Runtime\**" />
     <EmbeddedResource Remove="Security\**" />
     <EmbeddedResource Remove="Shell32\**" />
-    <EmbeddedResource Remove="System\**" />
     <EmbeddedResource Remove="Text\**" />
     <None Remove="IO\**" />
     <None Remove="Runtime\**" />
     <None Remove="Security\**" />
     <None Remove="Shell32\**" />
-    <None Remove="System\**" />
     <None Remove="Text\**" />
   </ItemGroup>
 
@@ -39,6 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
@@ -53,6 +52,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\kkkkkkaaaaaa\kkkkkkaaaaaa.2022.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appSettings.2022.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

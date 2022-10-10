@@ -4,14 +4,11 @@ using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Data.Common
 {
-    public class DbProviderFactoriesFacts
+    public class DbProviderFactoriesFacts : KandaXunitFacts
     {
         [Fact()]
         public void GetProvidersFact()
         {
-            // DbProviderFactories.RegisterFactory(@"System.Data.SqlClient.SqlClientFactory", SqlClientFactory.Instance);
-            DbProviderFactories.RegisterFactory(@"System.Data.SqlClient", SqlClientFactory.Instance);
-
             var classes = DbProviderFactories.GetFactoryClasses();
             Assert.NotNull(classes);
         }

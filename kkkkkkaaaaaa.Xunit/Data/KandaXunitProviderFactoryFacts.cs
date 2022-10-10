@@ -4,7 +4,7 @@ using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Data
 {
-    public class KandaXunitProviderFactoryFacts
+    public class KandaXunitProviderFactoryFacts : KandaXunitFacts
     {
         static KandaXunitProviderFactoryFacts()
         {

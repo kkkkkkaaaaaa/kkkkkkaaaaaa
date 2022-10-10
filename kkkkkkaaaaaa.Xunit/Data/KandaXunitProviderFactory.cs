@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Threading;
 using kkkkkkaaaaaa.Data.Common;
 
@@ -10,6 +11,13 @@ namespace kkkkkkaaaaaa.Xunit.Data
     /// </summary>
     public class KandaXunitProviderFactory : KandaDbProviderFactory
     {
+        static KandaXunitProviderFactory()
+        {
+            // DbProviderFactories.RegisterFactory(@"System.Data.SqlClient.SqlClientFactory", SqlClientFactory.Instance);
+            DbProviderFactories.RegisterFactory(@"System.Data.SqlClient", SqlClientFactory.Instance);
+        }
+
+
         /// <summary>
         /// Singleton インスタンス。
         /// </summary>
@@ -33,7 +41,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
         {
             var builder = this.CreateConnectionStringBuilder();
             builder.Add(@"Data Source", @"(local)");
-            builder.Add(@"Initial Catalog", @"kkkkkkaaaaaa");
+            builder.Add(@"Initial Catalog", @"AdventureWorks2019");
             builder.Add(@"Integrated Security", @"True");
             builder.Add(@"Pooling", @"True");
             builder.Add(@"Connect Timeout", @"10");

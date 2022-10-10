@@ -1,4 +1,5 @@
 ﻿using System.Data.Common;
+using System.Data.SqlClient;
 using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Data.Common
@@ -8,7 +9,8 @@ namespace kkkkkkaaaaaa.Xunit.Data.Common
         [Fact()]
         public void GetProvidersFact()
         {
-            DbProviderFactories.RegisterFactory(@"System.Data.SqlClient.SqlProviderFactory", @"Microsoft.Data.SqlClient");
+            // DbProviderFactories.RegisterFactory(@"System.Data.SqlClient.SqlClientFactory", SqlClientFactory.Instance);
+            DbProviderFactories.RegisterFactory(@"System.Data.SqlClient", SqlClientFactory.Instance);
 
             var classes = DbProviderFactories.GetFactoryClasses();
             Assert.NotNull(classes);

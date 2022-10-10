@@ -43,6 +43,7 @@
     <Compile Remove="Data\Common\KandaDbProviderFactory.2010.cs" />
     <Compile Remove="Data\Common\KandaDbProviderFactory.cs" />
     <Compile Remove="KandaDataMapper.2008.cs" />
+    <Compile Remove="KandaDataMapper.2010.cs" />
     <Compile Remove="KandaDataMapper.2012.cs" />
     <Compile Remove="Properties\AssemblyInfo.2013.cs" />
     <Compile Remove="Properties\AssemblyInfo.2015.cs" />

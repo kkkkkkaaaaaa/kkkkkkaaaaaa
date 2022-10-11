@@ -54,7 +54,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
         
         /// <summary></summary>
         [Fact()]
-        public void AsDynamicAsDynamicFact()
+        public void AsDynamicFact()
         {
             using (var connection = this.Provider.CreateConnection())
             using (var reader = this.Provider.CreateDataReader(connection))
@@ -98,6 +98,26 @@ namespace kkkkkkaaaaaa.Xunit.Data
                         return p;
                     })
                     .ToArray();
+            }
+        }
+
+        /// <summary></summary>
+        [Fact()]
+        public void AsDataTableFact()
+        {
+            using (var connection = this.Provider.CreateConnection())
+            using (var reader = this.Provider.CreateDataReader(connection))
+            {
+                reader.CommandType = CommandType.Text;
+                reader.CommandText = @"SELECT TOP(10) * FROM Person.Person";
+
+                connection.Open();
+
+                var people = reader.ExecuteReader()
+                    .AsDataTable();
+
+                Assert.NotNull(people);
+                Assert.NotNull(0 < people.Columns.Count);
             }
         }
     }

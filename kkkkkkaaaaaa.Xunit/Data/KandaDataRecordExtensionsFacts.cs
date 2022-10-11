@@ -10,6 +10,16 @@ namespace kkkkkkaaaaaa.Xunit.Data
     /// </summary>
     public class KandaDataRecordExtensionsFacts : KandaXunitFacts
     {
+        private KandaDbDataReader getReader(DbConnection connection, string statement)
+        {
+            var reader = this.Provider.CreateReader(connection);
+            reader.CommandType = CommandType.Text;
+            reader.CommandText = statement;
+
+            return reader;
+        }
+
+        /// <summary></summary>
         [Fact()]
         public void GetInt32Fact()
         {
@@ -19,17 +29,10 @@ namespace kkkkkkaaaaaa.Xunit.Data
             try
             {
                 connection = this.Provider.CreateConnection();
-
-                reader = this.Provider.CreateReader(connection);
-                reader.CommandType = CommandType.Text;
-                reader.CommandText = @"
-SELECT
-    1   AS I
-";
-                
+                reader = this.getReader(connection, @"SELECT 1 AS I");
                 connection.Open();
-                reader.ExecuteReader();
 
+                reader.ExecuteReader();
                 if (reader.Read())
                 {
                     var o = reader.GetInt32(0);
@@ -39,7 +42,39 @@ SELECT
                     Assert.True(n == 1);
 
                 }
-                else { Assert.True(true); }
+                else { Assert.False(true); }
+            }
+            finally
+            {
+                reader?.Close();
+                connection?.Close();
+            }
+        }
+
+        /// <summary></summary>
+        [Fact()]
+        public void GetStringFact()
+        {
+            var connection = default(DbConnection);
+            var reader = default(KandaDbDataReader);
+
+            try
+            {
+                connection = this.Provider.CreateConnection();
+                reader = this.getReader(connection, @"SELECT N's' AS S");
+                connection.Open();
+
+                reader.ExecuteReader();
+                if (reader.Read())
+                {
+                    var o = reader.GetString(0);
+                    Assert.True(o == @"s");
+
+                    var n = reader.GetString("S");
+                    Assert.True(n == @"s");
+
+                }
+                else { Assert.False(true); }
             }
             finally
             {

@@ -78,11 +78,8 @@ namespace kkkkkkaaaaaa.Xunit.Data
         [Fact()]
         public void GetDateTimeFact()
         {
-            var connection = default(DbConnection);
-            var reader = default(KandaDbDataReader);
-
-            using (connection = connection = this.Provider.CreateConnection())
-            using (reader = this.getReader(connection, @"SELECT CONVERT(datetime, '2022-10-11') AS D"))
+            using (var connection = this.Provider.CreateConnection())
+            using (var reader = this.getReader(connection, @"SELECT CONVERT(datetime, '2022-10-11') AS D"))
             {
                 connection.Open();
 

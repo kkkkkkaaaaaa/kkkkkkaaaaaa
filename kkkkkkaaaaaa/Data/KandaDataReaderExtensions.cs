@@ -72,11 +72,9 @@ namespace kkkkkkaaaaaa.Data
         /// <returns></returns>
         public static dynamic? AsDynamic(this DbDataReader reader)
         {
-            IDictionary<string, object>? result = default(ExpandoObject);
+            if (reader.Read() == false) { return null; }
 
-            if (reader.Read() == false) { return result; }
-
-            result = new ExpandoObject()!;
+            IDictionary<string, object>? result = new ExpandoObject()!;
             for (var f = 0; f < reader.FieldCount; f++)
             {
                 var name = reader.GetName(f);
@@ -109,6 +107,11 @@ namespace kkkkkkaaaaaa.Data
             return result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         public static DataTable AsDataTable(this DbDataReader reader)
         {
             var result = KandaDataReaderExtensions.createTable(reader);
@@ -124,8 +127,6 @@ namespace kkkkkkaaaaaa.Data
         }
 
         #region Private members...
-
-        #endregion
 
         /// <summary></summary>
         private static DataTable createTable(DbDataReader reader)
@@ -161,5 +162,7 @@ namespace kkkkkkaaaaaa.Data
 
             return row;
         }
+
+        #endregion
     }
 }

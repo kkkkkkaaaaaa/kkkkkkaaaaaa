@@ -58,14 +58,16 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <returns></returns>
         public override DbCommand CreateCommand()
         {
-            return this.CreateCommand(CommandType.StoredProcedure);
+            return this.CreateCommand(default(DbConnection), default(DbTransaction), CommandType.StoredProcedure);
         }
 
         /// <summary></summary>
         [DebuggerStepThrough()]
-        public DbCommand CreateCommand(CommandType type)
+        public DbCommand CreateCommand(DbConnection connection, DbTransaction transaction, CommandType type = CommandType.StoredProcedure)
         {
             var command = this._factory.CreateCommand();
+            command.Connection = connection;
+            command.Transaction = transaction;
             command.CommandType = type;
 
             return command;

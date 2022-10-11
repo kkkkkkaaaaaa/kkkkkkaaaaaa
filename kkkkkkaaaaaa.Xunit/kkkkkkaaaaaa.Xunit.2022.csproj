@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\KandaXunitDataFacts.cs" />
     <Compile Remove="KandaXunitFacts.cs" />
     <Compile Remove="Properties\AssemblyInfo.2013.cs" />
     <Compile Remove="Properties\AssemblyInfo.2015.cs" />
@@ -60,6 +61,11 @@
     <None Update="appSettings.2022.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Aggregates\ValueObjects\" />
+    <Folder Include="Aggregates\DataTransferObjects\" />
   </ItemGroup>
 
 </Project>

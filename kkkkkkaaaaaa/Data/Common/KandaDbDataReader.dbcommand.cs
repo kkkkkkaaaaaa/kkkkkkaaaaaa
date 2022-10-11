@@ -48,6 +48,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <param name="behavior"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public DbDataReader ExecuteReader(CommandBehavior behavior = CommandBehavior.Default)
         {
             this._reader = this.InnerCommand.ExecuteReader(CommandBehavior.Default);

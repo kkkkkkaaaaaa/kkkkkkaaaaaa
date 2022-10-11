@@ -55,25 +55,7 @@ namespace kkkkkkaaaaaa
 
             return target;
         }
-
-        #region Protected members...
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        protected static IEnumerable<MemberInfo> GetMembers(object obj)
-        {
-            var type = obj.GetType();
-
-            var members = new List<MemberInfo>();
-            members.AddRange(type.GetProperties(BindingFlags.Public | BindingFlags.Instance));
-            members.AddRange(type.GetFields(BindingFlags.Public | BindingFlags.Instance));
-
-            return members;
-        }
-
+        
         /// <summary>
         /// 
         /// </summary>
@@ -81,7 +63,7 @@ namespace kkkkkkaaaaaa
         /// <param name="obj"></param>
         /// <param name="value"></param>
         /// <param name="nullValue"></param>
-        protected static void SetValue(MemberInfo member, object obj, object value, object nullValue)
+        public static void SetValue(MemberInfo member, object obj, object value, object nullValue)
         {
             if (member is PropertyInfo)
             {
@@ -105,9 +87,27 @@ namespace kkkkkkaaaaaa
         /// <param name="member"></param>
         /// <param name="obj"></param>
         /// <param name="value"></param>
-        protected static void SetValue(MemberInfo member, object obj, object value)
+        public static void SetValue(MemberInfo member, object obj, object value)
         {
             KandaDataMapper.SetValue(member, obj, value, value);
+        }
+
+        #region Protected members...
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        protected static IEnumerable<MemberInfo> GetMembers(object obj)
+        {
+            var type = obj.GetType();
+
+            var members = new List<MemberInfo>();
+            members.AddRange(type.GetProperties(BindingFlags.Public | BindingFlags.Instance));
+            members.AddRange(type.GetFields(BindingFlags.Public | BindingFlags.Instance));
+
+            return members;
         }
 
         #endregion

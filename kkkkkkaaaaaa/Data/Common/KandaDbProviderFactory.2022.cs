@@ -98,7 +98,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public virtual KandaDbDataReader CreateReader(DbConnection connection, DbTransaction? transaction = default(DbTransaction))
+        public virtual KandaDbDataReader CreateDataReader(DbConnection connection, DbTransaction? transaction = default(DbTransaction))
         {
             return new KandaDbDataReader(connection, transaction);
         }

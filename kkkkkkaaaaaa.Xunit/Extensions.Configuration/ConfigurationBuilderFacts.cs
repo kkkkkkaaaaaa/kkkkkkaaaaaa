@@ -7,7 +7,6 @@ namespace kkkkkkaaaaaa.Xunit.Extensions.Configuration
     /// <summary></summary>
     public class ConfigurationBuilderFacts
     {
-
         /// <summary></summary>
         [Fact()]
         public void Fact()

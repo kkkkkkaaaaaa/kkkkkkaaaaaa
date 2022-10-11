@@ -101,7 +101,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
         /// <summary></summary>
         private KandaDbDataReader getReader(DbConnection connection, string statement)
         {
-            var reader = this.Provider.CreateReader(connection);
+            var reader = this.Provider.CreateDataReader(connection);
             reader.CommandType = CommandType.Text;
             reader.CommandText = statement;
 

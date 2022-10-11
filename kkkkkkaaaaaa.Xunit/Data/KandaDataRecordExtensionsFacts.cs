@@ -91,7 +91,6 @@ namespace kkkkkkaaaaaa.Xunit.Data
 
                     var n = reader.GetDateTime("D");
                     Assert.True(n == new DateTime(2022, 10, 11));
-
                 }
                 else { Assert.False(true); }
             }

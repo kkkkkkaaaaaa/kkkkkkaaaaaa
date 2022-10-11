@@ -10,15 +10,6 @@ namespace kkkkkkaaaaaa.Xunit.Data
     /// </summary>
     public class KandaDataRecordExtensionsFacts : KandaXunitFacts
     {
-        private KandaDbDataReader getReader(DbConnection connection, string statement)
-        {
-            var reader = this.Provider.CreateReader(connection);
-            reader.CommandType = CommandType.Text;
-            reader.CommandText = statement;
-
-            return reader;
-        }
-
         /// <summary></summary>
         [Fact()]
         public void GetInt32Fact()
@@ -82,5 +73,19 @@ namespace kkkkkkaaaaaa.Xunit.Data
                 connection?.Close();
             }
         }
+
+        #region Private members...
+
+        /// <summary></summary>
+        private KandaDbDataReader getReader(DbConnection connection, string statement)
+        {
+            var reader = this.Provider.CreateReader(connection);
+            reader.CommandType = CommandType.Text;
+            reader.CommandText = statement;
+
+            return reader;
+        }
+
+        #endregion
     }
 }

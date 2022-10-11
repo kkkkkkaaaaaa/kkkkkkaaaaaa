@@ -1,6 +1,6 @@
 ﻿namespace kkkkkkaaaaaa.Data.Common.Extensions
 {
-    public static partial class KandaDbConnectionExtensions
+    public static partial class KandaConnectionExtensions
     {
         /// <summary>
         /// 

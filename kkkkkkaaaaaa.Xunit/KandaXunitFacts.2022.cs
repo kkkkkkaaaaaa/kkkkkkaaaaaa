@@ -1,9 +1,12 @@
-﻿using System;
+﻿using kkkkkkaaaaaa.Xunit.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 
 namespace kkkkkkaaaaaa.Xunit
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class KandaXunitFacts
     {
         /// <summary>
@@ -15,9 +18,7 @@ namespace kkkkkkaaaaaa.Xunit
         }
 
         #region Protected members...
-
-        #endregion
-
+        
         /// <summary>
         /// コンストラクター。
         /// </summary>
@@ -27,8 +28,28 @@ namespace kkkkkkaaaaaa.Xunit
         }
 
         /// <summary>
+        /// DbProviderFactory を取得します。
+        /// </summary>
+        protected KandaXunitProviderFactory Provider
+        {
+            get { return this._factory.Value; }
+        }
+
+        /// <summary>
         /// テストデータのフォルダのルートを返します。
         /// </summary>
         protected Uri TestData { get; private set; }
+
+        #endregion
+        
+        #region Private members...
+
+        /// <summary></summary>
+        private readonly Lazy<KandaXunitProviderFactory> _factory = new Lazy<KandaXunitProviderFactory>(
+            () => new KandaXunitProviderFactory(),
+            LazyThreadSafetyMode.ExecutionAndPublication
+        );
+
+        #endregion
     }
 }

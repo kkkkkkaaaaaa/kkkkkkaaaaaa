@@ -4,14 +4,19 @@ using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Data
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class KandaXunitProviderFactoryFacts : KandaXunitFacts
     {
+        /// <summary>静的コンストラクター。</summary>
         static KandaXunitProviderFactoryFacts()
         {
             DbProviderFactories.RegisterFactory(@"System.Data.SqlClient", SqlClientFactory.Instance);
         }
 
 
+        /// <summary></summary>
         [Fact()]
         public void CreateConectionFact()
         {
@@ -19,8 +24,8 @@ namespace kkkkkkaaaaaa.Xunit.Data
 
             try
             {
-                connection = this._factory.CreateConnection();
-                connection.Open();
+                connection = this.Provider.CreateConnection();
+                connection?.Open();
 
                 Assert.True(true);
             }
@@ -29,8 +34,5 @@ namespace kkkkkkaaaaaa.Xunit.Data
                 if (connection != null) { connection.Close(); }
             }
         }
-
-        /// <summary></summary>
-        private readonly DbProviderFactory _factory = new KandaXunitProviderFactory();
     }
 }

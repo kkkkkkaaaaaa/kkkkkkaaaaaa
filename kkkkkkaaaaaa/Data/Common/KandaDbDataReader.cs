@@ -13,6 +13,17 @@ namespace kkkkkkaaaaaa.Data.Common
     public partial class KandaDbDataReader : DbDataReader
     {
         /// <summary>
+        /// コンストラクター。
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        public KandaDbDataReader(DbConnection connection, DbTransaction? transaction = default(DbTransaction))
+        {
+            this._command = connection.CreateCommand();
+            this._command.Transaction = transaction;
+        }
+
+        /// <summary>
         /// コンストラクタ―。
         /// </summary>
         /// <param name="command"></param>
@@ -21,39 +32,7 @@ namespace kkkkkkaaaaaa.Data.Common
         {
             this._command = command;
         }
-
-
-        /// <summary>
-        /// DbParameter オブジェクトのコレクションを返します。
-        /// </summary>
-        public DbParameterCollection Parameters
-        {
-            [DebuggerStepThrough()]
-            get { return this.InnerCommand.Parameters; }
-        }
-
-        /// <summary>
-        /// データソースに対して実行するテキストコマンドを取得または設定します。
-        /// </summary>
-        public string CommandText
-        {
-            [DebuggerStepThrough()]
-            get { return this.InnerCommand.CommandText; }
-            [DebuggerStepThrough()]
-            set { this.InnerCommand.CommandText = value; }
-        }
-
-        /// <summary>
-        /// DbCommand.CommandText の解釈方法を指示または指定します。
-        /// </summary>
-        public CommandType CommandType
-        {
-            [DebuggerStepThrough()]
-            get { return this.InnerCommand.CommandType; }
-            [DebuggerStepThrough()]
-            set { this.InnerCommand.CommandType = value; }
-        }
-
+        
 
         /// <summary>
         /// 指定した列の値を Object のインスタンスとして取得します。
@@ -462,7 +441,7 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <summary>データソースに対して実行する SQL ステートメントまたはストアドプロシージャを表わします。</summary>
         private readonly DbCommand _command;
         /// <summary>データソースから行の前方向ストリームを読み取ります。</summary>
-        private DbDataReader _reader;
+        private DbDataReader? _reader;
 
         #endregion
     }

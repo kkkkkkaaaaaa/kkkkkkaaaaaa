@@ -1,78 +1,165 @@
-using System;
 using System.Data;
+using System.Data.Common;
+using System.Dynamic;
 
 namespace kkkkkkaaaaaa.Data
 {
     /// <summary>
     /// 
     /// </summary>
-    public static partial class KandaDataRecordExtensions
+    public static partial class KandaDataReaderExtensions
     {
-        /*
         /// <summary>
-        /// 列に格納されている値が存在しない値または欠損値かどうかを表す値を取得します。
+        /// 
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="reader"></param>
-        /// <param name="name"></param>
         /// <returns></returns>
-        public static bool IsDBNull(this IDataReader reader, string name)
+        public static T AsObject<T>(this DbDataReader reader) where T : new()
         {
-            var ordinal = reader.GetOrdinal(name);
+            if (reader.Read() == false) { return default(T); }
 
-            return reader.IsDBNull(ordinal);
+            var result = new T();
+            var members = KandaDataMapper.GetMembers(typeof(T));
+            for (var f = 0; f < reader.FieldCount; f++)
+            {
+                var _ = members
+                    .Where(m =>
+                    {
+                        var name = reader.GetName(f);
+                        return name == m.Name;
+                    })
+                    .Select(m =>
+                    {
+                        var value = (reader[f] == DBNull.Value)
+                            ? null
+                            : reader[f];
+
+                        KandaDataMapper.SetValue(m, result, value, value);
+                        return m;
+                    })
+                    .ToArray();
+            }
+
+
+            return result;
         }
 
         /// <summary>
-        /// 指定した列の値を String のインスタンスとして取得します。
+        /// 
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="reader"></param>
-        /// <param name="name"></param>
         /// <returns></returns>
-        public static string GetString(this IDataReader reader, string name)
+        public static IEnumerable<T> AsObjectEnumerable<T>(this DbDataReader reader) where T : new()
         {
-            var ordinal = reader.GetOrdinal(name);
+            var result = Enumerable.Empty<T>();
+            while (true)
+            {
+                var item = AsObject<T>(reader);
+                if (item == null) { break; }
 
-            return reader.GetString(ordinal);
+                result = result.Concat(new[] { item, });
+            }
+
+            return result;
         }
-
+        
         /// <summary>
-        /// 指定した列の値を 64 ビット符号付き整数として取得します。
+        /// 
         /// </summary>
         /// <param name="reader"></param>
-        /// <param name="name"></param>
         /// <returns></returns>
-        public static long GetInt64(this IDataReader reader, string name)
+        public static dynamic? AsDynamic(this DbDataReader reader)
         {
-            var ordinal = reader.GetOrdinal(name);
+            IDictionary<string, object>? result = default(ExpandoObject);
 
-            return reader.GetInt64(ordinal);
+            if (reader.Read() == false) { return result; }
+
+            result = new ExpandoObject()!;
+            for (var f = 0; f < reader.FieldCount; f++)
+            {
+                var name = reader.GetName(f);
+
+                var value  = reader[f];
+                if (value is DBNull) { value = null; }
+
+                result.Add(name, value!);
+            }
+
+            return result;
         }
-
+        
         /// <summary>
-        /// 指定した列の値をブール値として取得します。
+        /// 
         /// </summary>
         /// <param name="reader"></param>
-        /// <param name="name"></param>
         /// <returns></returns>
-        public static bool GetBoolean(this IDataReader reader, string name)
+        public static IEnumerable<dynamic> AsDynamicEnumerable(this DbDataReader reader)
         {
-            var ordinal = reader.GetOrdinal(name);
+            var result = Enumerable.Empty<dynamic>();
+            while (true)
+            {
+                var item = reader.AsDynamic();
+                if (item == default(dynamic)) { break; }
 
-            return reader.GetBoolean(ordinal);
+                result = result.Concat(new[] { item, });
+            }
+
+            return result;
         }
 
-        /// <summary>
-        /// 指定した列の値を DateTime オブジェクトとして取得します。
-        /// </summary>
-        /// <param name="reader"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public static DateTime GetDateTime(this IDataReader reader, string name)
+        public static DataTable AsDataTable(this DbDataReader reader)
         {
-            var ordinal = reader.GetOrdinal(name);
+            var result = KandaDataReaderExtensions.createTable(reader);
+            
+            while (reader.Read())
+            {
+                var row = KandaDataReaderExtensions.createRow(result, reader);
 
-            return reader.GetDateTime(ordinal);
+                result.Rows.Add(row);
+            }
+
+            return result;
         }
-        */
+
+        #region Private members...
+
+        #endregion
+
+        /// <summary></summary>
+        private static DataTable createTable(DbDataReader reader)
+        {
+            var table = new DataTable();
+
+            for (var f = 0; f < reader.FieldCount; f++)
+            {
+                var name = reader.GetName(f);
+
+                var _ = table.Columns.Add(name, reader.GetFieldType(f), @"");
+            }
+
+            return table;
+        }
+
+        /// <summary></summary>
+        private static DataRow createRow(DataTable table, DbDataReader reader)
+        {
+            var row = table.NewRow();
+
+            row.BeginEdit();
+            for (var f = 0; f < reader.FieldCount; f++)
+            {
+                var name = reader.GetName(f);
+
+                var value = reader[f];
+                if (value is DBNull) { value = null; }
+
+                row[name] = value;
+            }
+            row.EndEdit();
+
+            return row;
+        }
     }
 }

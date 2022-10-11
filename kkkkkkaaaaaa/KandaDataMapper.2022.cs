@@ -8,6 +8,23 @@ namespace kkkkkkaaaaaa
     public partial class KandaDataMapper
     {
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static IEnumerable<MemberInfo> GetMembers(Type type)
+        {
+            // TODO: Enumerable.Empty()
+            var members = new List<MemberInfo>();
+            
+            // TODO: IEnumerable.Concat()
+            members.AddRange(type.GetProperties(BindingFlags.Public | BindingFlags.Instance));
+            members.AddRange(type.GetFields(BindingFlags.Public | BindingFlags.Instance));
+
+            return members;
+        }
+
+        /// <summary>
         /// 指定したメンバーの値を取得して返します。
         /// </summary>
         /// <param name="member">メンバー。</param>

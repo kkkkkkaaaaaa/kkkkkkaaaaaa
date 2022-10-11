@@ -3,7 +3,7 @@ using System.Data.Common;
 
 namespace kkkkkkaaaaaa.Data.Common.Extensions
 {
-    public static partial class KandaDbConnectionExtensions
+    public static partial class KandaConnectionExtensions
     {
         /// <summary>
         /// https://learn.microsoft.com/ja-jp/dotnet/framework/data/adonet/getschema-and-schema-collections

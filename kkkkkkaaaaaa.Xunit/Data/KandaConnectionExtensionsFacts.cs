@@ -2,10 +2,12 @@
 using System.Data.Common;
 using Xunit;
 
-namespace kkkkkkaaaaaa.Xunit.Data.Commom.Extensions
+namespace kkkkkkaaaaaa.Xunit.Data
 {
-    public class KandaDbConnectionExtensionsFacts : KandaXunitFacts
+    /// <summary></summary>
+    public class KandaConnectionExtensionsFacts : KandaXunitFacts
     {
+        /// <summary></summary>
         [Fact()]
         public void Fact()
         {
@@ -13,7 +15,7 @@ namespace kkkkkkaaaaaa.Xunit.Data.Commom.Extensions
 
             try
             {
-                connection = this.Provider.CreateConnection();
+                connection = Provider.CreateConnection();
                 connection?.Open();
 
                 var tables = connection?.GetTablesSchema();
@@ -25,8 +27,7 @@ namespace kkkkkkaaaaaa.Xunit.Data.Commom.Extensions
             {
                 connection?.Close();
             }
-                
-                
         }
     }
 }
+

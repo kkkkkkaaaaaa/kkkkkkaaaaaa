@@ -95,8 +95,15 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <summary>
         /// DbDataReader クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
-        /// <param name="command"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
         /// <returns></returns>
+        public virtual KandaDbDataReader CreateReader(DbConnection connection, DbTransaction? transaction = default(DbTransaction))
+        {
+            return new KandaDbDataReader(connection, transaction);
+        }
+
+        /// <summary></summary>
         [DebuggerStepThrough()]
         public virtual KandaDbDataReader CreateReader(DbCommand command)
         {

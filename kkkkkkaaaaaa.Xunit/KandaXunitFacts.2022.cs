@@ -30,7 +30,7 @@ namespace kkkkkkaaaaaa.Xunit
         /// <summary>
         /// DbProviderFactory を取得します。
         /// </summary>
-        protected DbProviderFactory Provider
+        protected KandaXunitProviderFactory Provider
         {
             get { return this._factory.Value; }
         }
@@ -45,7 +45,7 @@ namespace kkkkkkaaaaaa.Xunit
         #region Private members...
 
         /// <summary></summary>
-        private readonly Lazy<DbProviderFactory> _factory = new Lazy<DbProviderFactory>(
+        private readonly Lazy<KandaXunitProviderFactory> _factory = new Lazy<KandaXunitProviderFactory>(
             () => new KandaXunitProviderFactory(),
             LazyThreadSafetyMode.ExecutionAndPublication
         );

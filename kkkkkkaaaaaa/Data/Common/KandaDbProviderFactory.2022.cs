@@ -56,10 +56,19 @@ namespace kkkkkkaaaaaa.Data.Common
         /// DbCommand クラスを実装しているプロバイダーのクラスの新しいインスタンスを返します。
         /// </summary>
         /// <returns></returns>
-        [DebuggerStepThrough()]
-        public override DbCommand? CreateCommand()
+        public override DbCommand CreateCommand()
         {
-            return this._factory.CreateCommand();
+            return this.CreateCommand(CommandType.StoredProcedure);
+        }
+
+        /// <summary></summary>
+        [DebuggerStepThrough()]
+        public DbCommand CreateCommand(CommandType type)
+        {
+            var command = this._factory.CreateCommand();
+            command.CommandType = type;
+
+            return command;
         }
 
         /// <summary>

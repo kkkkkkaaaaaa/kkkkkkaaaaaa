@@ -161,55 +161,5 @@ namespace kkkkkkaaaaaa.Data
 
             return row;
         }
-
-        /*
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="target"></param>
-        public static void MapToObject(object source, object target)
-        {
-            var sourceMembers = KandaDataMapper.GetMembers(source);
-            var targetMembers = KandaDataMapper.GetMembers(target);
-
-            foreach (var t in targetMembers)
-            {
-                var attributes = (KandaDataMappingAttribute[])t.GetCustomAttributes(typeof(KandaDataMappingAttribute), true);
-                foreach (var s in sourceMembers)
-                {
-                    var value = KandaDataMapper.GetValue(s, source);
-                    foreach (var attribute in attributes)
-                    {
-                        if (s.Name != attribute.MappingName) { continue; }
-
-                        KandaDataMapper.SetValue(t, target, value);
-                        break;
-                    }
-
-                    if (attributes.Any()) { continue; }
-                    if (s.Name != t.Name) { continue; }
-
-                    KandaDataMapper.SetValue(t, target, value);
-                    break;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        public static T MapToObject<T>(object source) where T : new()
-        {
-            var target = new T();
-
-            KandaDataMapper.MapToObject(source, target);
-
-            return target;
-        }
-        */
     }
 }

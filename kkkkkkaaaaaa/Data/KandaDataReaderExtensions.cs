@@ -1,4 +1,5 @@
 using System.Data.Common;
+using System.Dynamic;
 
 namespace kkkkkkaaaaaa.Data
 {
@@ -44,6 +45,51 @@ namespace kkkkkkaaaaaa.Data
             {
                 var item = AsObject<T>(reader);
                 if (item == null) { break; }
+
+                result = result.Concat(new[] { item, });
+            }
+
+            return result;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
+        public static dynamic? AsDynamic(this DbDataReader reader)
+        {
+            IDictionary<string, object>? result = default(ExpandoObject);
+
+            if (reader.Read() == false) { return result; }
+
+            result = new ExpandoObject()!;
+            for (var f = 0; f < reader.FieldCount; f++)
+            {
+                var name = reader.GetName(f);
+
+                var value  = reader[f];
+                if (value is DBNull) { value = null; }
+
+                result.Add(name, value!);
+            }
+
+            return result;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
+        public static IEnumerable<dynamic> AsDynamicEnumerable(this DbDataReader reader)
+        {
+            var result = Enumerable.Empty<dynamic>();
+            while (true)
+            {
+                var item = reader.AsDynamic();
+                if (item == default(dynamic)) { break; }
 
                 result = result.Concat(new[] { item, });
             }

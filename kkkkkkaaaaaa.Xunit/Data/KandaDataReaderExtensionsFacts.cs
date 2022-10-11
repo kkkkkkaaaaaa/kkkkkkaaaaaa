@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using kkkkkkaaaaaa.Data;
 using kkkkkkaaaaaa.Xunit.Aggregates.Entities;
+using Microsoft.CSharp.RuntimeBinder;
 using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Data
@@ -38,7 +39,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
             using (var reader = this.Provider.CreateDataReader(connection))
             {
                 reader.CommandType = CommandType.Text;
-                reader.CommandText = @"SELECT TOP(100) * FROM Person.Person";
+                reader.CommandText = @"SELECT TOP(10) * FROM Person.Person";
 
                 connection.Open();
 
@@ -50,11 +51,10 @@ namespace kkkkkkaaaaaa.Xunit.Data
                 Assert.True(0 < people.Count());
             }
         }
-
-        /*
+        
         /// <summary></summary>
         [Fact()]
-        public void AsDynamicEnumerableFact()
+        public void AsDynamicAsDynamicFact()
         {
             using (var connection = this.Provider.CreateConnection())
             using (var reader = this.Provider.CreateDataReader(connection))
@@ -65,14 +65,13 @@ namespace kkkkkkaaaaaa.Xunit.Data
                 connection.Open();
 
                 var person = reader.ExecuteReader()
-                    .AsDynamic<PersonEntity>();
+                    .AsDynamic();
 
-                Assert.NotNull(person)
+                Assert.NotNull(person);
+                Assert.NotNull(person.BusinessEntityID);
             }
         }
-        */
-
-        /*
+        
         /// <summary></summary>
         [Fact()]
         public void AsDynamicEnumerableFact()
@@ -81,7 +80,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
             using (var reader = this.Provider.CreateDataReader(connection))
             {
                 reader.CommandType = CommandType.Text;
-                reader.CommandText = @"SELECT TOP(100) * FROM Person.Person";
+                reader.CommandText = @"SELECT TOP(10) * FROM Person.Person";
 
                 connection.Open();
 
@@ -89,9 +88,17 @@ namespace kkkkkkaaaaaa.Xunit.Data
                     .AsDynamicEnumerable();
 
                 Assert.NotNull(people);
-                Assert.True(0 < people.Count);
+                Assert.True(0 < people.Count());
+                var _ = people
+                    .Select(p =>
+                    {
+                        Assert.NotNull(p.BusinessEntityID);
+                        Assert.Throws<RuntimeBinderException>(() => p.NotContansProperty);
+
+                        return p;
+                    })
+                    .ToArray();
             }
         }
-        */
     }
 }

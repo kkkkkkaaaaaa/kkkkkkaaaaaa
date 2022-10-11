@@ -14,7 +14,10 @@ namespace kkkkkkaaaaaa
         /// <returns></returns>
         public static IEnumerable<MemberInfo> GetMembers(Type type)
         {
+            // TODO: Enumerable.Empty()
             var members = new List<MemberInfo>();
+            
+            // TODO: IEnumerable.Concat()
             members.AddRange(type.GetProperties(BindingFlags.Public | BindingFlags.Instance));
             members.AddRange(type.GetFields(BindingFlags.Public | BindingFlags.Instance));
 

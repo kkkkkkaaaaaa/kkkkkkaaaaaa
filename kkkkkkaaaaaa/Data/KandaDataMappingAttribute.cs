@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace kkkkkkaaaaaa.Data.Common
+namespace kkkkkkaaaaaa.Data
 {
     /// <summary>
     /// 
@@ -14,8 +14,8 @@ namespace kkkkkkaaaaaa.Data.Common
         /// <param name="mappingName"></param>
         public KandaDataMappingAttribute(string mappingName)
         {
-            this.MappingName = mappingName;
-            this.Description = this.MappingName;
+            MappingName = mappingName;
+            Description = MappingName;
         }
 
         /// <summary>

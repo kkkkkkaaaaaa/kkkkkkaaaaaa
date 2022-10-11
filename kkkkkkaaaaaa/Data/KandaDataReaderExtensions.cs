@@ -7,7 +7,7 @@ namespace kkkkkkaaaaaa.Data
     /// </summary>
     public static partial class KandaDataReaderExtensions
     {
-        public static T? AsObject<T>(this DbDataReader reader) where T : new()
+        public static T AsObject<T>(this DbDataReader reader) where T : new()
         {
             if (reader.Read() == false) { return default(T); }
 
@@ -15,7 +15,6 @@ namespace kkkkkkaaaaaa.Data
             var members = KandaDataMapper.GetMembers(typeof(T));
             for (var f = 0; f < reader.FieldCount; f++)
             {
-                var name = reader.GetName(f);
                 var _ = members
                     .Where(m =>
                     {
@@ -34,6 +33,20 @@ namespace kkkkkkaaaaaa.Data
                     .ToArray();
             }
 
+
+            return result;
+        }
+
+        public static IEnumerable<T> AsObjectEnumerable<T>(this DbDataReader reader) where T : new()
+        {
+            var result = Enumerable.Empty<T>();
+            while (true)
+            {
+                var item = AsObject<T>(reader);
+                if (item == null) { break; }
+
+                result = result.Concat(new[] { item, });
+            }
 
             return result;
         }

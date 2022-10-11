@@ -29,8 +29,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
 
             } // reader.Dispose(); connection.Dispose();
         }
-
-        /*
+        
         /// <summary></summary>
         [Fact()]
         public void AsObjectEnumerableFact()
@@ -39,18 +38,18 @@ namespace kkkkkkaaaaaa.Xunit.Data
             using (var reader = this.Provider.CreateDataReader(connection))
             {
                 reader.CommandType = CommandType.Text;
-                reader.CommandText = @"SELECT * FROM Person.Person";
+                reader.CommandText = @"SELECT TOP(100) * FROM Person.Person";
 
                 connection.Open();
 
-                var people = reader.ExecuteReader()
+                var people = reader
+                    .ExecuteReader()
                     .AsObjectEnumerable<PersonEntity>();
         
                 Assert.NotNull(people);
-                Assert.True(0 < people.Count);
+                Assert.True(0 < people.Count());
             }
         }
-        */
 
         /*
         /// <summary></summary>
@@ -82,7 +81,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
             using (var reader = this.Provider.CreateDataReader(connection))
             {
                 reader.CommandType = CommandType.Text;
-                reader.CommandText = @"SELECT * FROM Person.Person";
+                reader.CommandText = @"SELECT TOP(100) * FROM Person.Person";
 
                 connection.Open();
 

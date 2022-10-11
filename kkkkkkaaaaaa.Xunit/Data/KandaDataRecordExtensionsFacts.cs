@@ -74,6 +74,32 @@ namespace kkkkkkaaaaaa.Xunit.Data
             }
         }
 
+        /// <summary></summary>
+        [Fact()]
+        public void GetDateTimeFact()
+        {
+            var connection = default(DbConnection);
+            var reader = default(KandaDbDataReader);
+
+            using (connection = connection = this.Provider.CreateConnection())
+            using (reader = this.getReader(connection, @"SELECT CONVERT(datetime, '2022-10-11') AS D"))
+            {
+                connection.Open();
+
+                reader.ExecuteReader();
+                if (reader.Read())
+                {
+                    var o = reader.GetDateTime(0);
+                    Assert.True(o == new DateTime(2022, 10, 11));
+
+                    var n = reader.GetDateTime("D");
+                    Assert.True(n == new DateTime(2022, 10, 11));
+
+                }
+                else { Assert.False(true); }
+            }
+        }
+
         #region Private members...
 
         /// <summary></summary>

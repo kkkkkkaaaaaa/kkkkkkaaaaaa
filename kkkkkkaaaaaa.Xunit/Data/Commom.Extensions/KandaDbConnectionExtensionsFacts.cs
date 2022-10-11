@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using kkkkkkaaaaaa.Data.Common.Extensions;
 using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using kkkkkkaaaaaa.Data.Common.Extensions;
 using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Data.Commom.Extensions
@@ -24,7 +18,8 @@ namespace kkkkkkaaaaaa.Xunit.Data.Commom.Extensions
 
                 var tables = connection?.GetTablesSchema();
 
-                ;
+                Assert.NotNull(tables);
+                Assert.True(0 < tables?.Rows.Count);
             }
             finally
             {

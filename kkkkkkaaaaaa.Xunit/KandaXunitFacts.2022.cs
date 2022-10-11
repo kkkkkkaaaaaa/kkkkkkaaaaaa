@@ -1,10 +1,12 @@
 ﻿using kkkkkkaaaaaa.Xunit.Data;
-using System;
 using System.Data.Common;
 using System.Data.SqlClient;
 
 namespace kkkkkkaaaaaa.Xunit
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class KandaXunitFacts
     {
         /// <summary>
@@ -16,9 +18,7 @@ namespace kkkkkkaaaaaa.Xunit
         }
 
         #region Protected members...
-
-        #endregion
-
+        
         /// <summary>
         /// コンストラクター。
         /// </summary>
@@ -32,7 +32,7 @@ namespace kkkkkkaaaaaa.Xunit
         /// </summary>
         protected DbProviderFactory Provider
         {
-            get { return this._factory; }
+            get { return this._factory.Value; }
         }
 
         /// <summary>
@@ -40,11 +40,15 @@ namespace kkkkkkaaaaaa.Xunit
         /// </summary>
         protected Uri TestData { get; private set; }
 
-
+        #endregion
+        
         #region Private members...
 
         /// <summary></summary>
-        private readonly DbProviderFactory _factory = new KandaXunitProviderFactory();
+        private readonly Lazy<DbProviderFactory> _factory = new Lazy<DbProviderFactory>(
+            () => new KandaXunitProviderFactory(),
+            LazyThreadSafetyMode.ExecutionAndPublication
+        );
 
         #endregion
     }

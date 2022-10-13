@@ -10,6 +10,18 @@ namespace kkkkkkaaaaaa.Xunit.Data
     /// </summary>
     public class KandaCommandExtensionsFacts : KandaXunitFacts
     {
+        [Fact()]
+        public void SetCommandTypeFact()
+        {
+            var command = this.Provider.CreateCommand();
+
+            command.SetCommandType(CommandType.StoredProcedure);
+            Assert.True(command.CommandType == CommandType.StoredProcedure);
+
+            command.SetCommandType(CommandType.Text);
+            Assert.True(command.CommandType == CommandType.Text);
+        }
+
         /// <summary></summary>
         [Fact()]
         public void DeriveParametersFact()
@@ -29,7 +41,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
                         .DeriveParameters()
                     ;
                 
-                Assert.True(true);
+                Assert.True(0 < command.Parameters.Count);
             }
             finally
             {
@@ -40,7 +52,55 @@ namespace kkkkkkaaaaaa.Xunit.Data
 
         /// <summary></summary>
         [Fact()]
-        public void ExecuteStoredProcedureFact()
+        public void BindParametersFact()
+        {
+            // Data Transfer Object(DTO)
+            var dto = new
+            {
+                Id = 0,
+            };
+
+            var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
+
+            try
+            {
+                connection = this.Provider.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                var command = this.Provider.CreateCommand(connection, transaction)
+                        .SetCommandType(CommandType.StoredProcedure)
+                        .SetCommandText(@"uspGetBillOfMaterials")
+                        .DeriveParameters()
+                        .BindParameters(new
+                        {
+                            Id = 0,
+                        })
+                    ;
+
+                Assert.True(0 < command.Parameters.Count);
+                var _ = command.Parameters
+                        .Cast<DbParameter>()
+                        .Select(p =>
+                        {
+                            Assert.True(true);
+
+                            return p;
+                        })
+                        .ToArray()
+                    ;
+            }
+            finally
+            {
+                transaction?.Rollback();
+                connection?.Close();
+            }
+        }
+        
+        /// <summary></summary>
+        [Fact()]
+        public void ExecuteGetBillOfMaterialsFact()
         {
             var connection = default(DbConnection);
             var transaction = default(DbTransaction);
@@ -56,7 +116,10 @@ namespace kkkkkkaaaaaa.Xunit.Data
                         .SetCommandType(CommandType.StoredProcedure)
                         .SetCommandText(@"uspGetBillOfMaterials")
                         .DeriveParameters()
-                    // .MapToParmeters(dto)
+                        .BindParameters(new
+                        {
+                            Id = 0,
+                        })
                     ;
                 Assert.True(true);
 

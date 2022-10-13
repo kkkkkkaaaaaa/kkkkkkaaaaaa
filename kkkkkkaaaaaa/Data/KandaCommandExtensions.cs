@@ -15,68 +15,6 @@ namespace kkkkkkaaaaaa.Data
         /// 
         /// </summary>
         /// <param name="command"></param>
-        /// <returns></returns>
-        public static DbCommand DeriveParameters(this DbCommand command)
-        {
-            var _ = command.GetType().Assembly
-                    .GetTypes()
-                    .Where(t => t.Name.EndsWith(@"CommandBuilder"))
-                    .SingleOrDefault(t =>
-                    {
-                        var method = t
-                                .GetMethods()
-                                .SingleOrDefault(m => m.Name.EndsWith(@"DeriveParameters"))
-                            ;
-
-                        var __ = method?.Invoke(t, BindingFlags.Static, null, new[] { command, },
-                            CultureInfo.InvariantCulture);
-
-                        return true;
-                    })
-                ;
-
-            return command;
-        }
-
-        /* 
-            // *CommandBuilder
-            var builder = command.GetType()
-                .Assembly.GetTypes()
-                .Where(t => t.Name.EndsWith(@"CommandBuilder"))
-                .FirstOrDefault();
-
-            // *CommandBuilder.DeriveParameters()
-            var derive = builder?.GetMethods()
-                .Where(m => m.Name == @"DeriveParameters")
-                .FirstOrDefault();
-
-            // *CommandBuilder.DeriveParameters(command)
-            derive?.Invoke(null, new[] { command, });
-         */
-
-        /*
-        var builder = command.GetType().Assembly
-                .GetTypes()
-                .Where(t => t.Name.EndsWith(@"CommandBuilder"))
-                .SingleOrDefault()
-                ;
-        if (builder == null) { return command; }
-
-        var method = builder.GetMethods()
-            .Where(m => m.Name.EndsWith(@"DeriveParameters"))
-            .SingleOrDefault()
-            ;
-        if (method == null) { return command; }
-
-        method.Invoke(builder, BindingFlags.Static, null, new[] { command, }, CultureInfo.InvariantCulture);
-        
-        return command;
-        */
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="command"></param>
         /// <param name="type"></param>
         /// <returns></returns>
         [DebuggerStepThrough()]
@@ -101,58 +39,74 @@ namespace kkkkkkaaaaaa.Data
             return command;
         }
 
-        #region Obsolete members...
-
-        /*
-        public static DbCommand DeriveParameters(this DbCommand command)
-        {
-            var _ = command.GetType().Assembly
-                    .GetTypes()
-                    .Where(t => t.Name.EndsWith(@"CommandBuilder"))
-                    .Select(t =>
-                    {
-                        var method = t.GetMethods()
-                                .Where(m => m.Name.EndsWith(@"DeriveParameters"))
-                                .SingleOrDefault()
-                            ;
-
-                        method?.Invoke(t, BindingFlags.Static, null, new[] { command, }, CultureInfo.InvariantCulture);
-
-                        return t;
-                    })
-                    .ToArray()
-                // .SingleOrDefault()
-                ;
-
-            return command;
-        }
-        // CommandBuilder.DeriveParameters()
-        */
-
-        /*
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         public static DbCommand DeriveParameters(this DbCommand command)
         {
             var builder = command.GetType().Assembly
                     .GetTypes()
                     .Where(t => t.Name.EndsWith(@"CommandBuilder"))
                     .SingleOrDefault()
-                    ;
+                ;
             if (builder == null) { return command; }
 
             var method = builder.GetMethods()
-                .Where(m => m.Name.EndsWith(@"DeriveParameters"))
-                .SingleOrDefault()
+                    .Where(m => m.Name.EndsWith(@"DeriveParameters"))
+                    .SingleOrDefault()
                 ;
             if (method == null) { return command; }
 
             method.Invoke(builder, BindingFlags.Static, null, new[] { command, }, CultureInfo.InvariantCulture);
-            
+
             return command;
         }
-        */
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static DbCommand BindParameters(this DbCommand command, object obj)
+        {
+            var type = obj.GetType();
 
-        #endregion
+            var members = new List<MemberInfo>();
+            members.AddRange(type.GetProperties((BindingFlags.Instance | BindingFlags.Public)));
+            members.AddRange(type.GetFields((BindingFlags.Instance | BindingFlags.Public)));
+
+            var _ = command.Parameters
+                .Cast<DbParameter>()
+                .Select(p =>
+                {
+                    foreach (var member in members)
+                    {
+                        var attributes = (KandaDbParameterMappingAttribute[])member.GetCustomAttributes(typeof(KandaDbParameterMappingAttribute), true);
+                        if (1 < attributes.Length) { throw new Exception(string.Format(@"KandaDbDataMapper.MapToParameters()")); }
+
+                        foreach (var attribute in attributes)
+                        {
+                            if (attribute.Ignore) { continue; } // 無視
+                            if ((p.ParameterName != member.Name)
+                                && (p.ParameterName != attribute.MappingName)) { continue; } // 名前が一致しない
+                            
+                            p.DbType = attribute.DbType;
+                            p.Direction = attribute.Direction;
+                            p.Value = KandaDataMapper.GetValue(member, obj, attribute.DefaultValue);
+
+                            break;
+                        }
+                    }
+                    return p;
+                })
+                .ToArray();
+
+            return command;
+        }
     }
 
 }

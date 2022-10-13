@@ -5,33 +5,37 @@ using System.Reflection;
 
 namespace kkkkkkaaaaaa.Data
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class KandaCommandExtensions
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         public static DbCommand DeriveParameters(this DbCommand command)
         {
             var _ = command.GetType().Assembly
                     .GetTypes()
                     .Where(t => t.Name.EndsWith(@"CommandBuilder"))
-                    .Select(t =>
+                    .SingleOrDefault(t =>
                     {
-                        var method = t.GetMethods()
-                                .Where(m => m.Name.EndsWith(@"DeriveParameters"))
-                                .SingleOrDefault()
+                        var method = t
+                                .GetMethods()
+                                .SingleOrDefault(m => m.Name.EndsWith(@"DeriveParameters"))
                             ;
 
-                        method?.Invoke(t, BindingFlags.Static, null, new[] { command, }, CultureInfo.InvariantCulture);
+                        var __ = method?.Invoke(t, BindingFlags.Static, null, new[] { command, },
+                            CultureInfo.InvariantCulture);
 
-                        return t;
+                        return true;
                     })
-                    .ToArray()
-                // .SingleOrDefault()
                 ;
 
             return command;
         }
-        // CommandBuilder.DeriveParameters()
-
 
         /// <summary>
         /// 
@@ -58,6 +62,59 @@ namespace kkkkkkaaaaaa.Data
 
             return command;
         }
+
+        #region Obsolete members...
+
+        /*
+        public static DbCommand DeriveParameters(this DbCommand command)
+        {
+            var _ = command.GetType().Assembly
+                    .GetTypes()
+                    .Where(t => t.Name.EndsWith(@"CommandBuilder"))
+                    .Select(t =>
+                    {
+                        var method = t.GetMethods()
+                                .Where(m => m.Name.EndsWith(@"DeriveParameters"))
+                                .SingleOrDefault()
+                            ;
+
+                        method?.Invoke(t, BindingFlags.Static, null, new[] { command, }, CultureInfo.InvariantCulture);
+
+                        return t;
+                    })
+                    .ToArray()
+                // .SingleOrDefault()
+                ;
+
+            return command;
+        }
+        // CommandBuilder.DeriveParameters()
+        */
+
+        /*
+        public static DbCommand DeriveParameters(this DbCommand command)
+        {
+            var builder = command.GetType().Assembly
+                    .GetTypes()
+                    .Where(t => t.Name.EndsWith(@"CommandBuilder"))
+                    .SingleOrDefault()
+                    ;
+            if (builder == null) { return command; }
+
+            var method = builder.GetMethods()
+                .Where(m => m.Name.EndsWith(@"DeriveParameters"))
+                .SingleOrDefault()
+                ;
+            if (method == null) { return command; }
+
+            method.Invoke(builder, BindingFlags.Static, null, new[] { command, }, CultureInfo.InvariantCulture);
+            
+            return command;
+        }
+        */
+
+
+        #endregion
     }
 
 }

@@ -5,14 +5,18 @@ using Xunit;
 
 namespace kkkkkkaaaaaa.Xunit.Data
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class KandaCommandExtensionsFacts : KandaXunitFacts
     {
+        /// <summary></summary>
         [Fact()]
-        public void Fact()
+        public void DeriveParametersFact()
         {
             var connection = default(DbConnection);
             var transaction = default(DbTransaction);
-            var reader = default(DbDataReader);
+
             try
             {
                 connection = this.Provider.CreateConnection();
@@ -20,11 +24,41 @@ namespace kkkkkkaaaaaa.Xunit.Data
                 transaction = connection.BeginTransaction(IsolationLevel.Serializable);
 
                 var command = this.Provider.CreateCommand(connection, transaction)
-                        // .SetCommadType(CommandType.StoredProcedure)
+                        .SetCommandType(CommandType.StoredProcedure)
                         .SetCommandText(@"uspGetBillOfMaterials")
                         .DeriveParameters()
-                        // .MapToParmeters(dto)
                     ;
+                
+                Assert.True(true);
+            }
+            finally
+            {
+                transaction?.Rollback();
+                connection?.Close();
+            }
+        }
+
+        /// <summary></summary>
+        [Fact()]
+        public void ExecuteStoredProcedureFact()
+        {
+            var connection = default(DbConnection);
+            var transaction = default(DbTransaction);
+            var reader = default(DbDataReader);
+
+            try
+            {
+                connection = this.Provider.CreateConnection();
+                connection.Open();
+                transaction = connection.BeginTransaction(IsolationLevel.Serializable);
+
+                var command = this.Provider.CreateCommand(connection, transaction)
+                        .SetCommandType(CommandType.StoredProcedure)
+                        .SetCommandText(@"uspGetBillOfMaterials")
+                        .DeriveParameters()
+                    // .MapToParmeters(dto)
+                    ;
+                Assert.True(true);
 
                 // var reader = command.ExecuteReader()
                 //    .AsObjectEnumerable<>();
@@ -33,7 +67,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
             }
             finally
             {
-                reader.Close();
+                reader?.Close();
                 transaction?.Rollback();
                 connection?.Close();
             }

@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 
@@ -37,12 +38,48 @@ namespace kkkkkkaaaaaa.Data
             return command;
         }
 
+        /* 
+            // *CommandBuilder
+            var builder = command.GetType()
+                .Assembly.GetTypes()
+                .Where(t => t.Name.EndsWith(@"CommandBuilder"))
+                .FirstOrDefault();
+
+            // *CommandBuilder.DeriveParameters()
+            var derive = builder?.GetMethods()
+                .Where(m => m.Name == @"DeriveParameters")
+                .FirstOrDefault();
+
+            // *CommandBuilder.DeriveParameters(command)
+            derive?.Invoke(null, new[] { command, });
+         */
+
+        /*
+        var builder = command.GetType().Assembly
+                .GetTypes()
+                .Where(t => t.Name.EndsWith(@"CommandBuilder"))
+                .SingleOrDefault()
+                ;
+        if (builder == null) { return command; }
+
+        var method = builder.GetMethods()
+            .Where(m => m.Name.EndsWith(@"DeriveParameters"))
+            .SingleOrDefault()
+            ;
+        if (method == null) { return command; }
+
+        method.Invoke(builder, BindingFlags.Static, null, new[] { command, }, CultureInfo.InvariantCulture);
+        
+        return command;
+        */
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="command"></param>
         /// <param name="type"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public static DbCommand SetCommandType(this DbCommand command, CommandType type)
         {
             command.CommandType = type;
@@ -56,6 +93,7 @@ namespace kkkkkkaaaaaa.Data
         /// <param name="command"></param>
         /// <param name="text"></param>
         /// <returns></returns>
+        [DebuggerStepThrough()]
         public static DbCommand SetCommandText(this DbCommand command, string text)
         {
             command.CommandText = text;

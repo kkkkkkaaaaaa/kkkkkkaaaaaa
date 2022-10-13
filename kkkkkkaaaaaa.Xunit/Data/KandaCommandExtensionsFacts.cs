@@ -10,6 +10,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
     /// </summary>
     public class KandaCommandExtensionsFacts : KandaXunitFacts
     {
+        /// <summary></summary>
         [Fact()]
         public void SetCommandTypeFact()
         {
@@ -20,6 +21,17 @@ namespace kkkkkkaaaaaa.Xunit.Data
 
             command.SetCommandType(CommandType.Text);
             Assert.True(command.CommandType == CommandType.Text);
+        }
+
+        /// <summary></summary>
+        [Fact()]
+        public void SetCommandTextFact()
+        {
+            const string TEXT = @"text";
+            var command = this.Provider.CreateCommand();
+
+            command.SetCommandText(TEXT);
+            Assert.True(command.CommandText == TEXT);
         }
 
         /// <summary></summary>

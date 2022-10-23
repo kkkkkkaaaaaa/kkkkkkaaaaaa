@@ -21,6 +21,9 @@ namespace kkkkkkaaaaaa.Xunit.Data
 
             command.SetCommandType(CommandType.Text);
             Assert.True(command.CommandType == CommandType.Text);
+
+            // command.SetCommandType(CommandType.TableDirect);
+            // Assert.True(command.CommandType == CommandType.TableDirect);
         }
 
         /// <summary></summary>
@@ -66,12 +69,6 @@ namespace kkkkkkaaaaaa.Xunit.Data
         [Fact()]
         public void BindParametersFact()
         {
-            // Data Transfer Object(DTO)
-            var dto = new
-            {
-                Id = 0,
-            };
-
             var connection = default(DbConnection);
             var transaction = default(DbTransaction);
 
@@ -130,7 +127,7 @@ namespace kkkkkkaaaaaa.Xunit.Data
                         .DeriveParameters()
                         .BindParameters(new
                         {
-                            Id = 0,
+                            StartProductID = 1,
                         })
                     ;
                 Assert.True(true);

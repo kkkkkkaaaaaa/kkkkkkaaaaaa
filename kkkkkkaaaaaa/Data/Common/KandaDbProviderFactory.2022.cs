@@ -63,7 +63,7 @@ namespace kkkkkkaaaaaa.Data.Common
 
         /// <summary></summary>
         [DebuggerStepThrough()]
-        public DbCommand CreateCommand(DbConnection connection, DbTransaction transaction, CommandType type = CommandType.StoredProcedure)
+        public DbCommand CreateCommand(DbConnection? connection, DbTransaction? transaction = default(DbTransaction), CommandType type = CommandType.StoredProcedure)
         {
             var command = this._factory.CreateCommand();
             command.Connection = connection;

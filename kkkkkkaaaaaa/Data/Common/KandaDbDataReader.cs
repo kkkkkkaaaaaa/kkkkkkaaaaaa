@@ -117,9 +117,9 @@ namespace kkkkkkaaaaaa.Data.Common
         /// </summary>
         /// <returns></returns>
         [DebuggerStepThrough()]
-        public override DataTable GetSchemaTable()
+        public override DataTable? GetSchemaTable()
         {
-            return this._reader.GetSchemaTable();
+            return this._reader?.GetSchemaTable();
         }
 
         /// <summary>

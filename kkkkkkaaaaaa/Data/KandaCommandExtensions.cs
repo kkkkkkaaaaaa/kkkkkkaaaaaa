@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
 using System.Globalization;
@@ -85,14 +86,15 @@ namespace kkkkkkaaaaaa.Data
                 {
                     foreach (var member in members)
                     {
+                        if (p.ParameterName == $@"@{member.Name}") { p.Value = KandaDataMapper.GetValue(member, obj); }
+
                         var attributes = (KandaDbParameterMappingAttribute[])member.GetCustomAttributes(typeof(KandaDbParameterMappingAttribute), true);
                         if (1 < attributes.Length) { throw new Exception(string.Format(@"KandaDbDataMapper.MapToParameters()")); }
 
                         foreach (var attribute in attributes)
                         {
                             if (attribute.Ignore) { continue; } // 無視
-                            if ((p.ParameterName != member.Name)
-                                && (p.ParameterName != attribute.MappingName)) { continue; } // 名前が一致しない
+                            if (p.ParameterName != attribute.MappingName) { continue; } // 名前が一致しない
                             
                             p.DbType = attribute.DbType;
                             p.Direction = attribute.Direction;
